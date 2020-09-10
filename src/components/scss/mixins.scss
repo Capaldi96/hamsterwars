@@ -1,0 +1,10 @@
+@import "variables.scss";
+
+@mixin button {
+	background: #FBF2E3;
+	border: 2px solid $lightpurple;
+	border-radius: 8px;
+	color: $lightpurple;
+	padding:10px 28px;
+	font-size: 1em;
+}

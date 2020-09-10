@@ -1,14 +1,15 @@
+@import "../src/components/scss/variables.scss";
+
 * {
   padding: 0;
   margin:0;
   box-sizing: border-box;
   font-family: Ubuntu, sans-serif;
-
 }
 .App{
   width: 100vw;
   height: 100vh;
-  background-color: #FBF2E3;
+  background-color: $lightbeige;
 }
 .App-header{
   display: flex;
@@ -29,14 +30,14 @@
 .waves{
   width:50em;
 }
-button{
+/* button{
   background: #FBF2E3;
   border: 2px solid #AD86C2;
   border-radius: 8px;
   color:#AD86C2;
   padding:10px 28px;
   font-size: 1em;
-}
+} */
 h1{
   color: #EFA377;
   font-weight: 900;
@@ -55,6 +56,8 @@ p,span{
 a{
   color:#AD86C2;
   font-size:1.3em;
+  text-decoration: none;
+  margin-left: 0.5em;
 }
 input[type="text"]{
   padding:0.3em 0.5em;
