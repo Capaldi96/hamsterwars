@@ -3,3 +3,18 @@
 button{
 	@include button
 }
+.home-main{
+	position: relative;
+}
+.home-container{
+	position: absolute;
+	background-image: url('../../assets/start-potato.svg');
+	height: 35em;
+	width: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+	top: 4em;
+	left: 50%;
+
+}

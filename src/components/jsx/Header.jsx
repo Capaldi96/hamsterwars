@@ -3,7 +3,7 @@ import '../scss/Header.scss';
 
 function Header() {
 	return (
-	  <div>
+	<div>
 		<header className="App-header">
         	<nav>
 				<a href="Home.jsx">Home</a>
@@ -12,8 +12,8 @@ function Header() {
 				<a href="Statistic.jsx">Statistic</a>
         	</nav>
         	<img className="top-wave" src={require('../../assets/top_waves.png')} alt="wave"/>
-      </header>
-	  </div>
+      	</header>
+	</div>
 	);
   }
   
