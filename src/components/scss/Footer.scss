@@ -1,0 +1,14 @@
+.App-footer{
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+.bottom-wave{
+	width: 50%;
+}
+@media screen and (max-width: 880px) {
+	.bottom-wave{
+		width: 80%;
+	}
+	
+  }

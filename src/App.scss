@@ -11,53 +11,19 @@
   height: 100vh;
   background-color: $lightbeige;
 }
-.App-header{
-  display: flex;
-  justify-content: space-between;
-}
-.App-header nav{
-  display: flex;
-  justify-content: space-between;
-  width:25em;
-  margin-top:2em;
-  margin-left: 2em;
-}
-.App-footer{
-  position:absolute;
-  bottom:0;
-  width:100%;
-}
-.waves{
-  width:50em;
-}
-/* button{
-  background: #FBF2E3;
-  border: 2px solid #AD86C2;
-  border-radius: 8px;
-  color:#AD86C2;
-  padding:10px 28px;
-  font-size: 1em;
-} */
 h1{
-  color: #EFA377;
+  color: $orange;
   font-weight: 900;
   font-size: 64px;
 }
 h2{
-  color: #EFA377;
+  color: $orange;
 }
 h3{
-  color:#AD86C2;
+  color: $lightpurple;
 }
 p,span{
-  color:#fffafa;
-}
-/* nav-link */
-a{
-  color:#AD86C2;
-  font-size:1.3em;
-  text-decoration: none;
-  margin-left: 0.5em;
+  color: $white;
 }
 input[type="text"]{
   padding:0.3em 0.5em;

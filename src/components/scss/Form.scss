@@ -1,7 +1,15 @@
 @import 'mixins.scss';
 @import 'variables.scss';
 
+//TODO detta är potatisen för desktop. Jag ska ha den för mobilen egentligen, och desktop ska ligga under
+//TODO stava potetoe som potato
 
+// @media screen and (max-width: 880px) {
+//     .test{
+//         test: test;
+//     }
+
+//   }
 //obs fixa även desktop, glöm inte att detta är mobilefirst
 .form-wrapper{
 
