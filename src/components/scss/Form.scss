@@ -1,1 +1,25 @@
 @import 'mixins.scss';
+@import 'variables.scss';
+
+
+//obs fixa även desktop, glöm inte att detta är mobilefirst
+.form-wrapper{
+
+// display:flex;
+// justify-content:center;
+	// position: fixed;
+	// top: 50%;
+	// left: 50%;
+	// margin-top: -50px;
+	// margin-left: -100px;
+	background-image:url('../../assets/formpotatoe.svg');
+	height:35em;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	border:1px solid black;
+	// width:50%vw;
+
+	
+
+}

@@ -2,6 +2,7 @@ import React from 'react';
 // import { Counter } from './features/counter/Counter';
 import './App.scss';
 import Home from '../src/components/jsx/Home';
+import Form from '../src/components/jsx/Form';
 
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
         </nav>
         <img className="waves" src={require('./assets/top_waves.png')} alt="wave"/>
       </header>
-	  <Home/>
-      <footer className="App-footer">
+		<Home/>
+		<Form/>
+      {/* <footer className="App-footer">
         <img className="waves" src={require('./assets/bottom_waves.png')} alt="wave"/>
-      </footer>
+      </footer> */}
     </div>
   );
 }
