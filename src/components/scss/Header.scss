@@ -1,1 +1,22 @@
 @import 'mixins.scss';
+
+.App-header{
+	display: flex;
+	justify-content: space-between;
+}
+.App-header nav{
+	display: flex;
+	justify-content: space-between;
+	width:25em;
+	margin-top:2em;
+	margin-left: 2em;
+}
+a{
+	color: $lightpurple;
+	font-size:1.3em;
+	text-decoration: none;
+	margin-left: 0.5em;
+}
+.top-wave{
+	width: 60%;
+}
