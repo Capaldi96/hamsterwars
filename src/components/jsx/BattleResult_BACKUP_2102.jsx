@@ -1,10 +1,23 @@
+<<<<<<< HEAD
+import React, {useState} from 'react';
+=======
 import React, { useState } from 'react';
+>>>>>>> jonas
 import '../scss/BattleResult.scss';
 
 const BattleResult = () => {
 
 
 	return (
+<<<<<<< HEAD
+	  <div>
+		<h1>hej</h1>
+	  </div>
+	);
+  }			
+  
+  export default BattleResult;
+=======
 		<div id="battleResult">
             <div className="container">
                     <h1>Choose your cutest</h1>
@@ -45,3 +58,4 @@ const BattleResult = () => {
 }
 
 export default BattleResult;
+>>>>>>> jonas
