@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../scss/BattleCard.scss';
 
-const BattleCard = () => {
+const BattleCard = props => {
 	return (
-		<div className="flip-card">
+		<div className="flip-card" onClick={()=>props.setWinnerData("kalle")}>
 			<img className="flip-card-info" src={require('../../assets/info.svg')} />
 			<div className="flip-card-inner">
 				<div className="flip-card-front">

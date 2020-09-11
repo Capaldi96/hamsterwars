@@ -8,7 +8,7 @@
 }
 
 #battleResult .container h1 {
-	font-size: 5vh;
+	font-size: 7vw;
 }
 
 #battleResult .container .VS {
@@ -91,12 +91,16 @@
 .competitor-img{
 	max-width: 40%;
 	max-height: 40%;
-}  
+}
 @media only screen and (min-width: 650px){
+
 	#battleResult .container {
         grid-template-rows: 1fr 2fr 2fr;
 
-    }
+	}
+	#battleResult .container h1{
+		font-size: 4vw;
+	}
     #battleResult .flip-card{
 		max-width:20vw;
 	}

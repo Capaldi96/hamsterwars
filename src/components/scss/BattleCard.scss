@@ -29,8 +29,8 @@
 .flip-card-info:hover + .flip-card-inner {
 	transform: rotateY(180deg);
 }
-.flip-card-info:hover{
-	color: $lightbeige;
+.flip-card-inner:hover{
+	cursor: pointer;
 }
 .flip-card-front,
 .flip-card-back {
