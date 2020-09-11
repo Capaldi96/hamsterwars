@@ -1,24 +1,15 @@
 @import 'mixins.scss';
 @import 'variables.scss';
 
-//TODO detta är potatisen för desktop. Jag ska ha den för mobilen egentligen, och desktop ska ligga under
-//TODO stava potetoe som potato
-
-// @media screen and (max-width: 880px) {
-//     .test{
-//         test: test;
-//     }
-
-//   }
-//obs fixa även desktop, glöm inte att detta är mobilefirst
 .form-component{
 	position:relative;
 	height:100vh;
 }
+
 .form-wrapper{
 
 	position:absolute;
-	background-image:url('../../assets/formpotatomobile4.svg');	
+	background-image:url('../../assets/formpotatomobile.svg');
 	height:80%;
 	background-size:contain;
 	background-repeat:no-repeat;
@@ -39,33 +30,72 @@
 			font-size:22px;
 			margin-bottom:1em;
 		}
-		form{
+		.form{
 		
-			display:flex;
-			flex-direction:column;
-			justify-content:center;
-			align-items:center;
+			// display:flex;
+			// flex-direction:column;
+			// justify-content:center;
+			// align-items:center;
 
-			div{
-				
+			.form-group{
+				margin-bottom:1em;
+				transition:all .3s;//*transition för att allt ska växa, det kan nog tas bort sen
+	
+				.form-label{
+					//originalkod, provar att ta bort i samband med floating labels
+					// top: 0;
+					// bottom: 0;
+					// left: 0;
+					// width: 100%;
 
-				input{
-					width:250px;
-					margin:.7em auto;
-					padding: .6em;
-					
+					//för floating labels
+					font-size:1em;
+					color:#aaa;
 					display:block;
-					
-				}
-				label{
+					opacity:1;
+					transform:translateY(-1.25em);
+					transform-origin:0 0;//*rör sig upp till övre vänstra hörnet
+					transition:all .3s;
 
-					
-					top: 0;
-					bottom: 0;
-					left: 0;
-					width: 100%;
-					transition: 0.2s;
 				}
+				//inputfält
+				.form-control{
+					//originalkod innan floating labels
+					// width:250px;
+					// margin:.7em auto;
+					// padding: .6em;
+					// display:block;
+
+					//floating labels
+					//*för styling av inputfält, vi kan ändra dessa tror jag
+					box-shadow:none;
+					background-color:rgba(0,0,0, .02);
+					border-radius:0px;
+					border-color:#ccc;
+					border-style:none none solid none;
+					width:80%;
+					transition:all .5s;	//*styr border bottom på formcontrol focus orange
+					padding:5px;
+					
+				}
+				.form-control::placeholder{
+					color: transparent;
+				}
+
+				.form-control:focus{
+					box-shadow:none;
+					outline:none;
+					border-color:orange;
+				}
+
+				.form-control:focus + .form-label{
+					transform:translateY(-2.5em) scale(.8)
+					  
+				}
+				.form-control:not(:placeholder-shown) + .form-label{
+					transform:translateY(-2.5em) scale(.8)
+				}
+			
 
 			}
 

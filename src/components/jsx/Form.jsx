@@ -11,57 +11,69 @@ const Form=()=>{
 	const [loves, setLoves]=useState('')
 	const [image, setImage]=useState('')
 
-
-
 	return(
 
 		<div className='form-component'>
 			<div className='form-wrapper'>
 
-				<p>Add your own hamster</p>
-				<form>
+				{/* <p>Add your own hamster</p> */}
+				<form className='form'>
 
-					<div>
+					<div className='form-group'>
 						<input type='text'
 						id="name"
+						name='name'
+						className='form-control'
 						value={name}
+						placeholder='name placeholder'
 						onChange={event=>setName(event.target.value)}/>
-						<label for="name">Hamster name</label>
+						<label htmlFor="name" className='form-label'>name label</label>
 					</div>
 					
-					<div>
+					<div className='form-group'>
 						<input type='text' 
 						id='age'
+						name='age'
+						className='form-control'
 						value={age}
+						placeholder='age placeholder'
 						onChange={event=>setAge(event.target.value)}/>
-						<label for="age">Hamster age</label>
+						<label htmlFor="age" className='form-label'>age label</label>
 					</div>
 			
-					<div>
+					<div className='form-group'>
 						<input type='text'
-						id='favoritefood' 
+						id='favoritefood'
+						name='favoritefood'
+						className='form-control' 
 						value={favoritefood}
+						placeholder='food placeholder'
 						onChange={event=>setFavoritefood(event.target.value)}/>
-						<label for="favoritefood">Favoritefood</label>
+						<label htmlFor="favoritefood" className='form-label'>food label</label>
 
 					</div>
 				
-					<div>
+					<div className='form-group'>
 						<input type='text'
-						id='loves' 
+						className='form-control'
+						id='loves'
+						name='loves' 
 						value={loves}
+						placeholder='love placeholder'
 						onChange={event=>setLoves(event.target.value)}/>
-						<label for="loves">Loves</label>
+						<label htmlFor="loves" className='form-label'>Loves label</label>
 
 					</div>
 				
-					<div>
+					<div className='form-group'>
 						<input type='text'
-						id='image' 
+						className='form-control'
+						id='image'
+						name='image' 
 						value={image}
+						placeholder='image placeholder'
 						onChange={event=>setImage(event.target.value)}/>
-						<label for="image">Image</label>
-
+						<label htmlFor="image" className='form-label'>Image label</label>
 
 					</div>
 				
