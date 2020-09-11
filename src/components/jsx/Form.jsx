@@ -16,7 +16,7 @@ const Form=()=>{
 		<div className='form-component'>
 			<div className='form-wrapper'>
 
-				{/* <p>Add your own hamster</p> */}
+				<p>Add your own hamster</p>
 				<form className='form'>
 
 					<div className='form-group'>
@@ -27,7 +27,7 @@ const Form=()=>{
 						value={name}
 						placeholder='name placeholder'
 						onChange={event=>setName(event.target.value)}/>
-						<label htmlFor="name" className='form-label'>name label</label>
+						<label htmlFor="name" className='form-label'>Name</label>
 					</div>
 					
 					<div className='form-group'>
@@ -38,7 +38,7 @@ const Form=()=>{
 						value={age}
 						placeholder='age placeholder'
 						onChange={event=>setAge(event.target.value)}/>
-						<label htmlFor="age" className='form-label'>age label</label>
+						<label htmlFor="age" className='form-label'>Age</label>
 					</div>
 			
 					<div className='form-group'>
@@ -49,7 +49,7 @@ const Form=()=>{
 						value={favoritefood}
 						placeholder='food placeholder'
 						onChange={event=>setFavoritefood(event.target.value)}/>
-						<label htmlFor="favoritefood" className='form-label'>food label</label>
+						<label htmlFor="favoritefood" className='form-label'>Favorite food</label>
 
 					</div>
 				
@@ -61,7 +61,7 @@ const Form=()=>{
 						value={loves}
 						placeholder='love placeholder'
 						onChange={event=>setLoves(event.target.value)}/>
-						<label htmlFor="loves" className='form-label'>Loves label</label>
+						<label htmlFor="loves" className='form-label'>Loves</label>
 
 					</div>
 				
@@ -73,7 +73,7 @@ const Form=()=>{
 						value={image}
 						placeholder='image placeholder'
 						onChange={event=>setImage(event.target.value)}/>
-						<label htmlFor="image" className='form-label'>Image label</label>
+						<label htmlFor="image" className='form-label'>Image</label>
 
 					</div>
 				

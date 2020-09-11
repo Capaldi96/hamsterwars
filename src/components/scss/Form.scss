@@ -7,7 +7,7 @@
 }
 
 .form-wrapper{
-
+	
 	position:absolute;
 	background-image:url('../../assets/formpotatomobile.svg');
 	height:80%;
@@ -31,51 +31,38 @@
 			margin-bottom:1em;
 		}
 		.form{
-		
-			// display:flex;
-			// flex-direction:column;
-			// justify-content:center;
-			// align-items:center;
-
+			
+			width:70%;
+	
 			.form-group{
-				margin-bottom:1em;
+				margin-bottom:.3em;
 				transition:all .3s;//*transition för att allt ska växa, det kan nog tas bort sen
 	
 				.form-label{
-					//originalkod, provar att ta bort i samband med floating labels
-					// top: 0;
-					// bottom: 0;
-					// left: 0;
-					// width: 100%;
-
-					//för floating labels
-					font-size:1em;
+					//*för floating labels
+					font-size:1.2em;
 					color:#aaa;
 					display:block;
-					opacity:1;
-					transform:translateY(-1.25em);
+					transform:translateY(-1.5em);//*styr labeltexten höjdledes i inputfältet
+					padding-left:.5em;
 					transform-origin:0 0;//*rör sig upp till övre vänstra hörnet
 					transition:all .3s;
 
 				}
+
 				//inputfält
 				.form-control{
-					//originalkod innan floating labels
-					// width:250px;
-					// margin:.7em auto;
-					// padding: .6em;
-					// display:block;
-
+			
+					font-size:1.2em;
 					//floating labels
 					//*för styling av inputfält, vi kan ändra dessa tror jag
-					box-shadow:none;
-					background-color:rgba(0,0,0, .02);
-					border-radius:0px;
+			
+					border-radius:10px;
 					border-color:#ccc;
-					border-style:none none solid none;
-					width:80%;
-					transition:all .5s;	//*styr border bottom på formcontrol focus orange
-					padding:5px;
+					// border-style:none none solid none;
+					width:100%;
+					// transition:all .5s;	//*styr border bottom på formcontrol focus orange
+					padding:7px;
 					
 				}
 				.form-control::placeholder{
@@ -83,28 +70,27 @@
 				}
 
 				.form-control:focus{
-					box-shadow:none;
 					outline:none;
-					border-color:orange;
+					// border-color:orange;
 				}
 
 				.form-control:focus + .form-label{
-					transform:translateY(-2.5em) scale(.8)
+					//translate styr hur högt de hamnar 2 är lägre, 3 högre
+					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
+					transform:translateY(-2.7em) scale(.9);
+					color:purple;
 					  
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
-					transform:translateY(-2.5em) scale(.8)
+					transform:translateY(-2.7em) scale(.9);
+					
 				}
 			
-
 			}
-
-			
 		}
 	button{
-		margin-top:1.2em;
+		margin-top:1em;
 	}
-
 }
 
 
@@ -115,12 +101,75 @@
 		top: 1em;
 		margin-left: auto;
 		margin-right: auto;
+		border:1px solid green;
+
+		.form{
+
+			border:1px solid green;
+			width:40%;
+			
+			.form-group{
+	
+				.form-label{
+					font-size:1em;
+					transform:translateY(-1.65em);//*styr labeltexten höjdledes i inputfältet
+					
+				}
+				.form-control:focus + .form-label{
+					//translate styr hur högt de hamnar 2 är lägre, 3 högre
+					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
+					transform:translateY(-3.1em) scale(.9);
+					color:blue;
+						
+				}
+				.form-control:not(:placeholder-shown) + .form-label{
+					transform:translateY(-2.7em) scale(.9);
+					
+				}
+			
+			}
+	
+		}
+
+
 	}
+
+
 }
 @media screen and (min-width:880px){
 	.form-wrapper{
 		top:-2em;
+		border:2px solid blue;
+
+		.form{
+
+			border:1px solid blue;
+			width:35%;
+			.form-group{
+
+				.form-label{
+					font-size:1em;
+					transform:translateY(-1.65em);//*styr labeltexten höjdledes i inputfältet
+					
+				}
+				.form-control:focus + .form-label{
+					//translate styr hur högt de hamnar 2 är lägre, 3 högre
+					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
+					transform:translateY(-3.1em) scale(.9);
+					color:blue;
+						
+				}
+				.form-control:not(:placeholder-shown) + .form-label{
+					transform:translateY(-2.7em) scale(.9);
+					
+				}
+			
+			}
+
+		}
+
 	}
+
 }
 
 @media screen and (min-width: 1076px){
@@ -131,6 +180,41 @@
 		top: -4em;
 		margin-left: auto;
 		margin-right: auto;
+		border:2px solid hotpink;
+
+		.form{
+			width:25%;
+			border:2px solid hotpink;
+			.form-group{
+
+				.form-label{
+					font-size:1em;
+					transform:translateY(-1.65em);//*styr labeltexten höjdledes i inputfältet
+					
+				}
+				.form-control:focus + .form-label{
+					//translate styr hur högt de hamnar 2 är lägre, 3 högre
+					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
+					transform:translateY(-3.1em) scale(.9);
+					color:blue;
+					  
+				}
+				.form-control:not(:placeholder-shown) + .form-label{
+					transform:translateY(-2.7em) scale(.9);
+					
+				}
+	
+			}
+
+
+
+
+		}
+			
+		
+
+		
+	
 	}
 	
 }
