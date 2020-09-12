@@ -4,6 +4,7 @@ import './App.scss';
 import Home from '../src/components/jsx/Home';
 import Header from '../src/components/jsx/Header';
 import Footer from '../src/components/jsx/Footer';
+import Statistic from '../src/components/jsx/Statistic';
 
 
 
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
 		<Header/>
 		<Home/>
+		<Statistic/>
 		<Footer/>
     </div>
   );
