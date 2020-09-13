@@ -12,21 +12,21 @@ button{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
-	background-image: url('../../assets/start-potato.svg');
+	position: relative;
+	background-image: url('../../assets/home-potato.svg');
 	height: 35em;
 	width: 70%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-	top: -4em;
+	top: 5em;
 	z-index: 10;
 	margin-left: auto;
     margin-right: auto;
     left: 0;
-	right: 0;	
+	right: 0;
 }
-.home-container h1{
+.home-container > h1{
 	font-size: 3em;
 	line-height: 1.1em;
 	margin-bottom: 0.5em;
@@ -35,11 +35,42 @@ button{
 	color: $orange;
 	line-height: 1.4em;
 	margin-bottom: 3em;
+	padding: 0 3em 0;
 }
 .hamster-icon{
 	position: absolute;
 	width: 15em;
 	top: 0;
-	right: 10%;
+	z-index: 15;
+}
+@media screen and (max-width: 800px){
+	.home-container{
+		height: 35em;
+		width: 80%;
+	}
+	
+	.home-container p{
+		font-size: 1em;
+	}
+
 }
 
+@media screen and (max-width: 700px){
+	.home-container{
+		background-image:url('../../assets/home-potato-responsive.svg');
+		margin-left: auto;
+		margin-right: auto;
+		height: 700px;
+		width: 100%;
+		top: 0;
+	}
+	.hamster-icon{
+		display: none;
+	}
+	.home-container > h1{
+		font-size: 2em;
+	}
+	.home-container p{
+		font-size: 1em;
+	}
+}
