@@ -30,7 +30,6 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconGamesPlayed.svg')} alt=""/></div>
 <p className="miniIconText">Games played</p>
 
-
 {/* Top 5 winners */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
 <div className="ellipsbackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
@@ -53,7 +52,6 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 <img className="iconInsideCircle" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconTop5Loosers.svg')} alt=""/></div>
 <p className="miniIconText">Top 5 Loosers</p>
-
 
 {/* Least participated */}
 <FadeEffectLeastParticipated showLeastParticipated={showLeastParticipated}>
