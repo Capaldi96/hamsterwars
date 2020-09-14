@@ -6,3 +6,8 @@
 .bottom-wave{
 	width: 50%;
 }
+@media screen and (max-width: 880px) {
+	.bottom-wave{
+		width: 80%;
+	}
+  }
