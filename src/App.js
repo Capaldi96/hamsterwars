@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Counter } from './features/counter/Counter';
 import './App.scss';
-import { Route, BrowserRouter as Router} from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from '../src/components/jsx/Home';
 import Form from '../src/components/jsx/Form';
 import Header from '../src/components/jsx/Header';
@@ -11,18 +11,18 @@ import Statistic from '../src/components/jsx/Statistic';
 
 
 function App() {
-  return (
-    <Router>
-	<div className="App">
-		<Header/>
-		<Route path="/Home" component={Home}/>
-		<Route path="/Form" component={Form}/>
-		<Route path="/Battle" component={BattleResult}/>
-		<Route path="/Statistic" component={Statistic}/>
-		<Footer/>
-    </div>
-	</Router>
-  );
+	return (
+		<Router>
+			<div className="App">
+				<Header />
+				<Route path="/Home" component={Home} />
+				<Route path="/Form" component={Form} />
+				<Route path="/Battle" component={BattleResult} />
+				<Route path="/Statistic" component={Statistic} />
+				<Footer />
+			</div>
+		</Router>
+	);
 }
 
 export default App;
