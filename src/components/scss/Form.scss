@@ -1,6 +1,8 @@
 @import 'mixins.scss';
 @import 'variables.scss';
 
+//?Hannas potatis ändras till mobilpotatis vid 700px
+
 .form-component{
 	position:relative;
 	height:100vh;
@@ -31,8 +33,6 @@
 			margin-bottom:1em;
 		}
 		.form{
-			
-			// width:70%;
 	
 			.form-group{
 				margin-bottom:.3em;
@@ -78,7 +78,7 @@
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
 					transform:translateY(-2.7em) scale(.9);
-					color:purple;
+					color:grey;
 					  
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
@@ -101,11 +101,9 @@
 		top: 1em;
 		margin-left: auto;
 		margin-right: auto;
-		border:1px solid green;
-
+		
 		.form{
 
-			border:1px solid green;
 			width:40%;
 			
 			.form-group{
@@ -119,7 +117,7 @@
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
 					transform:translateY(-3.1em) scale(.9);
-					color:blue;
+					color:grey;
 						
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
@@ -131,19 +129,15 @@
 	
 		}
 
-
 	}
-
 
 }
 @media screen and (min-width:880px){
 	.form-wrapper{
 		top:-2em;
-		border:2px solid blue;
-
+		
 		.form{
 
-			border:1px solid blue;
 			width:35%;
 			.form-group{
 
@@ -156,7 +150,7 @@
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
 					transform:translateY(-3.1em) scale(.9);
-					color:blue;
+					color:grey;
 						
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
@@ -180,11 +174,9 @@
 		top: -4em;
 		margin-left: auto;
 		margin-right: auto;
-		border:2px solid hotpink;
 
 		.form{
 			width:25%;
-			border:2px solid hotpink;
 			.form-group{
 
 				.form-label{
@@ -196,7 +188,7 @@
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
 					transform:translateY(-3.1em) scale(.9);
-					color:blue;
+					color:grey;
 					  
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
@@ -206,15 +198,8 @@
 	
 			}
 
-
-
-
 		}
-			
-		
 
-		
-	
 	}
 	
 }
