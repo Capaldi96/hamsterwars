@@ -12,39 +12,6 @@
 	background-color: $lightbeige;
 	position: fixed;
 }
-.App-header {
-	display: flex;
-	justify-content: space-between;
-	height:10vh;
-}
-.App-header nav {
-	display: flex;
-	justify-content: space-between;
-	width: 25em;
-	margin-top: 2em;
-	margin-left: 2em;
-}
-.App-footer {
-	position: absolute;
-	width: 100%;
-	height:10vh;
-	z-index: 1;
-}
-.App-footer .waves{
-	position: fixed;
-	bottom: 0;
-}
-.waves {
-	width: 50%;
-}
-/* button{
-  background: #FBF2E3;
-  border: 2px solid #AD86C2;
-  border-radius: 8px;
-  color:#AD86C2;
-  padding:10px 28px;
-  font-size: 1em;
-} */
 h1 {
 	color: #efa377;
 	font-weight: 900;
@@ -60,15 +27,10 @@ p,
 span {
 	color: #fffafa;
 }
-/* nav-link */
-a {
-	color: #ad86c2;
-	font-size: 1.3em;
-	text-decoration: none;
-	margin-left: 0.5em;
-}
 input[type="text"] {
 	padding: 0.3em 0.5em;
 	border: none;
 	border-radius: 10px;
 }
+
+

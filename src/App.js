@@ -1,28 +1,24 @@
 import React from 'react';
 // import { Counter } from './features/counter/Counter';
 import './App.scss';
+import Home from '../src/components/jsx/Home';
+import Form from '../src/components/jsx/Form';
+import Header from '../src/components/jsx/Header';
+import Footer from '../src/components/jsx/Footer';
 import BattleResult from '../src/components/jsx/BattleResult';
+import Statistic from '../src/components/jsx/Statistic';
 
 
 function App() {
-
-	return (
-		<div className="App">
-			<header className="App-header">
-				<nav>
-					<a href="">Home</a>
-					<a href="">Battle</a>
-					<a href="">Add hamster</a>
-					<a href="">Statistic</a>
-				</nav>
-				<img className="waves" src={require('./assets/top_waves.png')} alt="wave" />
-			</header>
-			<BattleResult />
-			<footer className="App-footer">
-				<img className="waves" src={require('./assets/bottom_waves.png')} alt="wave" />
-			</footer>
-		</div>
-	);
+  return (
+    <div className="App">
+		<Header/>
+		<Form/>
+		<Home/>
+		<Statistic/>
+		<Footer/>
+    </div>
+  );
 }
 
 export default App;
