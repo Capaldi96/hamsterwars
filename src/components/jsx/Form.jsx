@@ -26,8 +26,7 @@ const Form=()=>{
 	}
 
 	async function addHamster(){
-
-		const response= await fetch('/api/addHamster', {
+		const response= await fetch('/api/addhamster', {
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
@@ -35,8 +34,8 @@ const Form=()=>{
             method:'POST',
             body:JSON.stringify(newHamster)
         });
-        const text=await response.json();
-        console.log(text)
+        const text=await response.text();
+		console.log(text)
 
 	
 	}
