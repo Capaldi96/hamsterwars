@@ -1,5 +1,8 @@
 @import "mixins.scss";
-
+#battleResult{
+	position: relative;
+	margin-top: 10vh;
+}
 #battleResult .container {
 	height: 80vh;
 	display: grid;
@@ -33,73 +36,19 @@
 	background-repeat: no-repeat;
 	background-position: center;
 }
-
-.flip-card-info{
-    float:right;
-	top:2vh;
-    width: 50px;
-    height: 50px;
-    position: relative;
-	z-index: 2;
-
-}
-
-.flip-card {
-	background-color: transparent;
-    width: 65%;
-	height: 30vh;
-    perspective: 1000px;
-    border-radius: 15px;
-}
-
-.flip-card-inner {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	transition: transform 0.9s;
-    transform-style: preserve-3d;
-}
-.flip-card-info:hover + .flip-card-inner {
-	transform: rotateY(180deg);
-}
-.flip-card-info:hover{
-	opacity: 0;
-}
-.flip-card-front,
-.flip-card-back {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	-webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1em solid $lightgreen;
-    border-radius: 15px;
-}
-
-.flip-card-front {
-	background-color: #bbb;
-	color: black;
-}
-
-.flip-card-back {
-	background-color: $lightgreen;
-	color: white;
-    transform: rotateY(180deg);
-    border: 1em solid $lightgreen;
-}
 .competitor-img{
 	max-width: 40%;
 	max-height: 40%;
 }
-@media only screen and (min-width: 650px){
+
+@media only screen and (min-width: 700px){
 
 	#battleResult .container {
         grid-template-rows: 1fr 2fr 2fr;
 
 	}
 	#battleResult .container h1{
-		font-size: 4vw;
+		font-size: 3vw;
 	}
     #battleResult .flip-card{
 		max-width:20vw;
@@ -117,8 +66,13 @@
     }
 	
 }
+@media only screen and (min-width: 700px) and (max-width:900px){
+	#battleResult .container h1{
+		font-size: 5vw;
+	}
+}
 
-@media only screen and (min-width: 600px) and (max-width: 1350px){
+@media only screen and (min-width: 700px) and (max-width: 1350px){
 	#battleResult .container {
 		grid-template-rows: 1fr 2fr 2fr;
     }
