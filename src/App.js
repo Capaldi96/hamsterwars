@@ -6,14 +6,16 @@ import Form from '../src/components/jsx/Form';
 import Header from '../src/components/jsx/Header';
 import Footer from '../src/components/jsx/Footer';
 import BattleResult from '../src/components/jsx/BattleResult';
+import Statistic from '../src/components/jsx/Statistic';
 
 
 function App() {
   return (
     <div className="App">
 		<Header/>
-		{/* <Home/> */}
 		<Form/>
+		<Home/>
+		<Statistic/>
 		<Footer/>
     </div>
   );
