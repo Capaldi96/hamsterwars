@@ -4,7 +4,6 @@
 	display: flex;
 	justify-content: space-between;
 }
-
 .navbar{
 	width: 250px;
 	height: 70%;
@@ -89,21 +88,7 @@
 	}
 
   }
-
-.App-header nav{
-	display: flex;
-	justify-content: space-between;
-	width:25em;
-	margin-top:2em;
-	margin-left: 2em;
-}
-a{
-	color: $lightpurple;
-	font-size:1.3em;
-	text-decoration: none;
-	margin-left: 0.5em;
-}
-.top-wave{
-	width: 60%;
-}
+	.top-wave{
+		width: 60%;
+	}
 
