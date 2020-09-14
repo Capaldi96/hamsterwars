@@ -13,6 +13,19 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
+
+
+app.get('/api/kalle', (req,res)=>{
+	res.send("Kalle")
+})
+
+
+
+app.use((req, res, next) => {
+	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
 
 //querystring
 // app.delete('/api/', (req, res) => {
@@ -23,12 +36,9 @@ app.use(cors());
 // app.put('/api/', (req, res) => {
 // });
 // add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
-app.use(express.static("public"));
 
-app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-});
+
+
 
 
 
