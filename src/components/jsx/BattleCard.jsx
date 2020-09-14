@@ -14,8 +14,8 @@ const BattleCard = props => {
 					/>
 				</div>
 				<div className="flip-card-back">
-					<h1>Hamter</h1>
-					<p>Carrot eater</p>
+					<h1>{props.hamster.name}</h1>
+					<p>Years: {props.hamster.year}</p>
 					<p>We love that hampter</p>
 				</div>
 			</div>
