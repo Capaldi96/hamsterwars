@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
 		<Header/>
-		<Form/>
-		<Home/>
+		{/* <Form/>
+		<Home/> */}
 		<Statistic/>
 		<Footer/>
     </div>

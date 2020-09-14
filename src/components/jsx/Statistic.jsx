@@ -8,7 +8,8 @@ const [showGamesPlayed, setShowGamesPlayed] = useState(false);
 const [showTop5Winners, setShowTop5Winners] = useState(false);
 
 	return (
-<div className="circlesInRow">
+		<div className="circlesInRowContainer">
+		<div className="circlesInRow">
 
 {/* Games played */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
@@ -18,7 +19,9 @@ const [showTop5Winners, setShowTop5Winners] = useState(false);
 </div>
 </FadeEffectGamesPlayed> 
 
-<img className="bigCircle1" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)} src={require('../../assets/bigCircleGamesPlayed.svg')} alt=""/> 
+<div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
+<img className="iconInsideCircle" src={require('../../assets/iconGamesPlayed.svg')} alt=""/> 
+</div>
 
 
 {/* Top 5 winners */}
@@ -30,19 +33,29 @@ const [showTop5Winners, setShowTop5Winners] = useState(false);
 </div>
 </FadeEffectTop5Winners> 
 
-<img className="bigCircle2" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)} src={require('../../assets/bigCircleTop5Winners.svg')} alt=""/> 
+<div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconTop5Winners.svg')} alt=""/> 
+</div>
 
-<img className="bigCircle3" src={require('../../assets/bigCircleTop5Loosers.svg')} alt=""/> 
+<div className="statCircle3 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
+</div>
 
-<img className="bigCircle4" src={require('../../assets/bigCircleLeastParticipated.svg')} alt=""/> 
+<div className="statCircle4 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconLeastParticipated.svg')} alt=""/> 
+</div>
 
-<img className="bigCircle5" src={require('../../assets/bigCircleLatestBattles.svg')} alt=""/> 
+<div className="statCircle5 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconLatestBattles" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
+</div>
 
 
 
 
 
 </div>
+		</div>
+
 	)
 }
 
