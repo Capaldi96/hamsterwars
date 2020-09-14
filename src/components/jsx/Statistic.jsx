@@ -19,9 +19,12 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 		<div className="circlesInRowContainer">
 		<div className="circlesInRow">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> amended img to dov circles, media q, fade effect
 =======
 >>>>>>> amended img to dov circles, media q, fade effect
 
@@ -35,12 +38,18 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 <div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
 <img className="iconInsideCircle" src={require('../../assets/iconGamesPlayed.svg')} alt=""/> 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconGamesPlayed.svg')} alt=""/></div>
 <p className="miniIconText">Games played</p>
 <<<<<<< HEAD
 </div>
 </div>
 
+=======
+=======
+</div>
+>>>>>>> amended img to dov circles, media q, fade effect
+<<<<<<< HEAD
 =======
 =======
 </div>
@@ -78,6 +87,10 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 =======
 </div>
 
+<<<<<<< HEAD
+>>>>>>> amended img to dov circles, media q, fade effect
+=======
+<<<<<<< HEAD
 >>>>>>> amended img to dov circles, media q, fade effect
 <div className="statCircle3 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 <img className="iconInsideCircle" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
@@ -105,6 +118,23 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 <img className="iconInsideCircle" src={require('../../assets/iconLeastParticipated.svg')} alt=""/> 
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconLeastParticipated.svg')} alt=""/></div>
 <p className="miniIconText">Least participated</p>
+=======
+<div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconTop5Winners.svg')} alt=""/> 
+</div>
+
+<div className="statCircle3 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
+</div>
+
+<div className="statCircle4 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconLeastParticipated.svg')} alt=""/> 
+</div>
+
+<div className="statCircle5 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<img className="iconLatestBattles" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
+</div>
+>>>>>>> amended img to dov circles, media q, fade effect
 
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 <img className="iconInsideCircle" src={require('../../assets/iconTop5Winners.svg')} alt=""/> 
