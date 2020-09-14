@@ -5,14 +5,7 @@ import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
 	useEffect(()=>{
-		getData()
 	})
-	async function getData(){
-		let response = await axios.get('http://localhost:5000/api/kalle');
-		
-		let data = response.data;
-		console.log(data)
-	}
 	return (
 		<div className="flip-card" onClick={()=>props.setWinnerData("kalle")}>
 			<img className="flip-card-info" src={require('../../assets/info.svg')} />

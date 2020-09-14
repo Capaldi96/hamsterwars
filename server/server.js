@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters } = require('./database.js');
+const { getAllHamsters, getMatch } = require('./database.js');
 
 
 
@@ -26,11 +26,13 @@ app.get('/api/kalle', (req,res)=>{
 app.get('/api/getAllHamsters', (req, res)=>{
 	getAllHamsters(dataOrError => {
 		res.send(dataOrError);
-		console.log('yes')
 	})
 })
-
-
+app.get('/api/Battle', (req, res)=>{
+	getMatch(dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
@@ -44,11 +46,7 @@ app.use((req, res, next) => {
 // })
 // app.put('/api/', (req, res) => {
 // });
-// add middlewares
-
-
-
-
+// add middleware
 
 
 app.listen(port, () => {
