@@ -54,11 +54,36 @@ function getMatch(callback) {
         }
     })
 }
+function addHamster(reqBody, callback){
+    const document = reqBody;
+    MongoClient.connect(url, {useUnifiedTopology:true},
+        async (error, client) => {
+            if (error){
+                callback("'Error! Couldnt connect'");
+                return;
+            }
+            const col = client.db(dbName).collection(collectionName);
+            try {
+                const result = await col.insertOne(document);
+                callback({
+                    result: result.result,
+                    ops: result.ops
+                })
+            } catch(error){
+                console.error('Failed to add boat: ' + error.message);
+                callback('"ERROR! query error"');
+            } finally{
+                client.close();
+            }
+        }
+    )
+}
 function getAllHamsters(callback) {
     get({}, callback)
 }
 
 module.exports = {
     getAllHamsters,
-    getMatch
+	getMatch,
+	addHamster
 }
