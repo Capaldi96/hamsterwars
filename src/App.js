@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { Counter } from './features/counter/Counter';
 import './App.scss';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from '../src/components/jsx/Home';
 import Form from '../src/components/jsx/Form';
 import Header from '../src/components/jsx/Header';
@@ -10,35 +11,18 @@ import Statistic from '../src/components/jsx/Statistic';
 
 
 function App() {
-
-	const HOME = 'home', BATTLE = 'battle', ADD = 'add', STATISTIC = 'statistic';
-	const [currentComp, setCurrentComp] = useState(HOME);
-
-	let content = null;
-	switch (currentComp) {
-        case HOME:
-            content = ( <Home/> )
-            break;
-        case BATTLE:
-            content = ( <BattleResult/> )
-			break;
-		case ADD:
-			content = ( <Form/> )
-			break;
-		case STATISTIC:
-			content = (	<Statistic/> )
-			break;
-		default:
-			content = ( <Home/> )
-	}
-
-  return (
-    <div className="App">
-		<Header toHomeComp={() => setCurrentComp(HOME)} toBattleComp={() =>setCurrentComp(BATTLE)} toFormComp={() => setCurrentComp(ADD)} toStatComp={() => setCurrentComp(STATISTIC)}/>
-		{ content }
-		<Footer/>
-    </div>
-  );
+	return (
+		<Router>
+			<div className="App">
+				<Header />
+				<Route path="/Home" component={Home} />
+				<Route path="/Form" component={Form} />
+				<Route path="/Battle" component={BattleResult} />
+				<Route path="/Statistic" component={Statistic} />
+				<Footer />
+			</div>
+		</Router>
+	);
 }
 
 export default App;
