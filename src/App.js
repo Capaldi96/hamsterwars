@@ -15,7 +15,7 @@ function App() {
 		<Router>
 			<div className="App">
 				<Header />
-				<Route path="/Home" component={Home} />
+				<Route path="/" exact component={Home} />
 				<Route path="/Form" component={Form} />
 				<Route path="/Battle" component={BattleResult} />
 				<Route path="/Statistic" component={Statistic} />
