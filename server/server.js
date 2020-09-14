@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters } = require('./database.js');
+const { getAllHamsters, getMatch } = require('./database.js');
 
 const port = process.env.PORT || 5000;
 
@@ -21,6 +21,12 @@ app.get('/api/getAllHamsters', (req, res)=>{
 		console.log('yes')
 	})
 })
+
+app.get('/api/getMatch', (req, res) => {
+	getMatch(dataOrError => {
+		res.send(dataOrError)
+	})
+})
 //querystring
 // app.delete('/api/', (req, res) => {
 
@@ -36,8 +42,6 @@ app.use(express.static("public"));
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-
-
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);
