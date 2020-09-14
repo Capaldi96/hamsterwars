@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/Header.scss';
 
-const header = () => {
+const header = (props) => {
 
 	function toggle(){
 		console.log('toggle click')
