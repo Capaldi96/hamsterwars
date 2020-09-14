@@ -11,6 +11,8 @@
 	height: 100vh;
 	background-color: $lightbeige;
 	position: fixed;
+	display: flex;
+	flex-direction: column;
 }
 h1 {
 	color: #efa377;
