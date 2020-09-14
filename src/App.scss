@@ -1,67 +1,33 @@
 @import "../src/components/scss/variables.scss";
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: Ubuntu, sans-serif;
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+  font-family: Ubuntu, sans-serif;
 }
-.App {
-	width: 100vw;
-	height: 100vh;
-	background-color: $lightbeige;
-	position: fixed;
+.App{
+  width: 100vw;
+  height: 100vh;
+  background-color: $lightbeige;
+  position:fixed;
 }
-.App-header {
-	display: flex;
-	justify-content: space-between;
-	height:10vh;
+h1{
+  color: $orange;
+  font-weight: 900;
+  font-size: 64px;
 }
-.App-header nav {
-	display: flex;
-	justify-content: space-between;
-	width: 25em;
-	margin-top: 2em;
-	margin-left: 2em;
+h2{
+  color: $orange;
 }
-.App-footer {
-	position: absolute;
-	width: 100%;
-	height:10vh;
-	z-index: 1;
+h3{
+  color: $lightpurple;
 }
-.App-footer .waves{
-	position: fixed;
-	bottom: 0;
+p,span{
+  color: $white;
 }
-.waves {
-	width: 50%;
-}
-
-h1 {
-	color: #efa377;
-	font-weight: 900;
-	font-size: 64px;
-}
-h2 {
-	color: #efa377;
-}
-h3 {
-	color: #ad86c2;
-}
-p,
-span {
-	color: #fffafa;
-}
-/* nav-link */
-a {
-	color: #ad86c2;
-	font-size: 1.3em;
-	text-decoration: none;
-	margin-left: 0.5em;
-}
-input[type="text"] {
-	padding: 0.3em 0.5em;
-	border: none;
-	border-radius: 10px;
+input[type="text"]{
+  padding:0.3em 0.5em;
+  border:none;
+  border-radius: 10px;
 }
