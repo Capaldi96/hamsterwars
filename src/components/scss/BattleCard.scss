@@ -7,7 +7,6 @@
     height: 50px;
     position: relative;
 	z-index: 2;
-
 }
 
 .flip-card {
@@ -26,12 +25,15 @@
 	transition: transform 0.9s;
     transform-style: preserve-3d;
 }
+
 .flip-card-info:hover + .flip-card-inner {
 	transform: rotateY(180deg);
 }
+
 .flip-card-inner:hover{
 	cursor: pointer;
 }
+
 .flip-card-front,
 .flip-card-back {
 	position: absolute;
