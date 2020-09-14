@@ -7,10 +7,54 @@ const Form=()=>{
 	// const [name, setName]=useState('')
 	const [name, setName]=useState('')
 	const [age, setAge]=useState('')
-	const [favoritefood, setFavoritefood]=useState('')
+	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
 	const [image, setImage]=useState('')
 
+
+
+	let newHamster={
+		name:name,
+		age:age,
+		favFood:favFood,
+		loves:loves,
+		imgName:image,
+		wins:0,
+		defeats:0,
+		games:0
+
+	}
+
+	async function addHamster(){
+
+		const response= await fetch('/api/addHamster', {
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            method:'POST',
+            body:JSON.stringify(newHamster)
+        });
+        const text=await response.json();
+        console.log(text)
+
+	
+	}
+
+
+
+
+
+	// {
+	// 	"name":"Sicte",
+	// 	"age":1,
+	// 	"favFood":"ostbollar",
+	// 	"loves":"Running that wheeeeeeeeeeeeeeeel!",
+	// 	"imgName":"hamster-1.jpg",
+	// 	"wins":0,
+	// 	"defeats":0,
+	// 	"games":0
+	//  },
 	return(
 
 		<div className='form-component'>
@@ -46,9 +90,9 @@ const Form=()=>{
 						id='favoritefood'
 						name='favoritefood'
 						className='form-control' 
-						value={favoritefood}
+						value={favFood}
 						placeholder='food placeholder'
-						onChange={event=>setFavoritefood(event.target.value)}/>
+						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favoritefood" className='form-label'>Favorite food</label>
 
 					</div>
@@ -79,7 +123,7 @@ const Form=()=>{
 				
 
 				</form>
-				<button>Add hamster</button>
+				<button onClick={addHamster}>Add hamster</button>
 			
 
 			</div>
