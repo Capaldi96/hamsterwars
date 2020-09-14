@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const cors = require('cors');
+const { getAllHamsters } = require('./database.js');
 
 const port = process.env.PORT || 5000;
 
@@ -14,6 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+app.get('/api/getAllHamsters', (req, res)=>{
+	getAllHamsters(dataOrError => {
+		res.send(dataOrError);
+		console.log('yes')
+	})
+})
 //querystring
 // app.delete('/api/', (req, res) => {
 
