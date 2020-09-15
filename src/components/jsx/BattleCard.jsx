@@ -4,8 +4,17 @@ import axios from 'axios';
 import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
+
+
+
+	const wrapperFunction = () => {
+		
+		props.setWinner(props.hamster)
+		props.setShowCutestH1(false);
+	}
+
 	return (
-		<div className="flip-card" onClick={()=>props.setWinner(props.hamster)}>
+		<div className="flip-card" onClick={wrapperFunction}>
 			<img className="flip-card-info" src={require('../../assets/info.svg')} />
 			<div className="flip-card-inner">
 				<div className="flip-card-front">

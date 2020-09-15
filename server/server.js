@@ -30,13 +30,8 @@ app.get('/api/Battle', (req, res)=>{
 		res.send(dataOrError);
 	})
 })
-app.get('/api/top', (req, res)=>{
-	getGroupOfHamsters('battle',dataOrError => {
-		res.send(dataOrError);
-	})
-})
-app.get('/api/Battle', (req, res)=>{
-	getGroupOfHamsters('battle',dataOrError => {
+app.get('/api/topWinners', (req, res)=>{
+	getGroupOfHamsters(dataOrError => {
 		res.send(dataOrError);
 	})
 })
@@ -48,11 +43,27 @@ app.put('/api/updateHamster/:id', (req, res)=>{
 })
 
 
+app.post('/api/addhamster', (req, res) => {
+	console.log('POST / addhamster', req.body)
+})
+//querystring
+// app.delete('/api/', (req, res) => {
+
+// });
+// app.post('/api/', (req, res) => {
+// })
+// app.put('/api/', (req, res) => {
+// });
+
+// add middlewares
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
+
+
 
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);
