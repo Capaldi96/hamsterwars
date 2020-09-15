@@ -15,7 +15,7 @@ const [showTop5Winners, setShowTop5Winners] = useState(false);
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
 <div className="ellipsbackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
 
-		<img className="ellipseGamesPlayed" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/>
+		<img className="ellipse1" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/>
 </div>
 </FadeEffectGamesPlayed> 
 
@@ -29,7 +29,7 @@ const [showTop5Winners, setShowTop5Winners] = useState(false);
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
 <div className="ellipsbackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 
-		<img className="ellipseGamesPlayed" src={require('../../assets/ellipseTop5Winners.svg')} alt=""/>
+		<img className="ellipse2" src={require('../../assets/ellipseTop5Winners.svg')} alt=""/>
 </div>
 </FadeEffectTop5Winners> 
 
