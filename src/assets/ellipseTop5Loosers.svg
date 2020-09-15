@@ -1,9 +1,9 @@
-<svg width="932" height="881" viewBox="0 0 932 881" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="919" height="884" viewBox="0 0 919 884" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d)">
-<path d="M585.785 707.023C429.511 795.418 147.395 592.287 74.4584 463.342C1.52222 334.398 140.571 260.854 321.112 239.104C570.922 228.34 680.54 102.359 753.476 231.304C826.412 360.249 742.06 618.629 585.785 707.023Z" fill="#D8DBBA"/>
+<path d="M679.522 661.759C573.866 816.273 232.67 766.791 112.756 684.794C-7.15825 602.797 88.97 469.939 244.372 364.205C467.418 235.409 514.99 69.096 634.905 151.093C754.819 233.09 785.178 507.245 679.522 661.759Z" fill="#D8DBBA"/>
 </g>
 <defs>
-<filter id="filter0_d" x="0" y="0" width="931.689" height="886.076" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d" x="0" y="0" width="918.244" height="960.531" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
 <feOffset dy="4"/>
