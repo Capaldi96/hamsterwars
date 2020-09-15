@@ -29,28 +29,33 @@ function get( filter, callback) {
         }
     })
 }
-function getGroup(filter, callback) {
+
+/* function getMatch(callback) {
+
     MongoClient.connect( url, { useUnifiedTopology : true }, async (error, client)=>{ 
+
         if(error){
             callback('cant connect to database', error.message)
             console.log(error)
             return;
         }
+
         const theCollection = client.db(dbName).collection(dbCollection); 
         try{
-            const cursor = theCollection.aggregate(filter);
+            const cursor = theCollection.aggregate( [ 
+                { "$sample": { "size": 2 } }
+            ]);
             const array = await cursor.toArray();
             callback(array);
 
         } catch(error){
             console.log('Wrong query, error: ', error.message);
             callback('Wrong query'); 
-
         } finally{
             client.close();
         }
     })
-}
+} */
 function addHamster(reqBody, callback){
     const document = reqBody;
     MongoClient.connect(url, {useUnifiedTopology:true},

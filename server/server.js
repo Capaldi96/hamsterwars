@@ -35,6 +35,18 @@ app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
+app.get('/api/getAllHamsters', (req, res)=>{
+	getAllHamsters(dataOrError => {
+		res.send(dataOrError);
+		console.log('yes')
+	})
+})
+
+app.get('/api/getMatch', (req, res) => {
+	getMatch(dataOrError => {
+		res.send(dataOrError)
+	})
+})
 //querystring
 // app.delete('/api/', (req, res) => {
 
