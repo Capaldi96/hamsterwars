@@ -33,10 +33,12 @@ const Form=()=>{
             },
             method:'POST',
             body:JSON.stringify(newHamster)
-        });
-        const text=await response.text();
-		console.log(text)
+		});
 
+
+		const text = await response.text(); // Parse it as text
+		const data = JSON.parse(text); // Try to parse it as json
+		console.log('response: ', data)
 	
 	}
 
