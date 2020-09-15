@@ -42,20 +42,6 @@ const Form=()=>{
 	
 	}
 
-
-
-
-
-	// {
-	// 	"name":"Sicte",
-	// 	"age":1,
-	// 	"favFood":"ostbollar",
-	// 	"loves":"Running that wheeeeeeeeeeeeeeeel!",
-	// 	"imgName":"hamster-1.jpg",
-	// 	"wins":0,
-	// 	"defeats":0,
-	// 	"games":0
-	//  },
 	return(
 
 		<div className='form-component'>
