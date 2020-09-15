@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FadeEffectGamesPlayed from './FadeEffect/FadeEffectGamesPlayed'
 import FadeEffectTop5Winners from './FadeEffect/FadeEffectTop5Winners'
 import FadeEffectTop5Loosers from './FadeEffect/FadeEffectTop5Loosers'
 import FadeEffectLeastParticipated from './FadeEffect/FadeEffectLeastParticipated'
-import FadeEffectLatestBattles from './FadeEffect/FadeEffectLatestBattles'
+import FadeEffectLatestBattles from './FadeEffect/FadeEffectLatestBattles' 
 
 import StatisticsInfo from './StatisticsInfo'
-import axios from 'axios';
 import '../scss/Statistics.scss';
 
 const Statistic = () => {
@@ -14,8 +13,8 @@ const [showGamesPlayed, setShowGamesPlayed] = useState(false);
 const [showTop5Winners, setShowTop5Winners] = useState(false);
 const [showTop5Loosers, setShowTop5Loosers] = useState(false);
 const [showLeastParticipated, setShowLeastParticipated] = useState(false);
-const [showLatestBattles, setShowLatestBattles] = useState(false);
-
+const [showLatestBattles, setShowLatestBattles] = useState(false); 
+ 
 
 	return (
 		<div className="circlesInRowContainer">

@@ -7,7 +7,6 @@ import '../scss/Statistics.scss';
 const StatisticsInfo = ({winners, loosers})=> {
 const [top5Winners, setTop5Winners] = useState([]);
 const [top5Loosers, setTop5Loosers] = useState([]);
-const [sumAge, setSumAge] = useState([]);
 
 
 	useEffect(() => {
