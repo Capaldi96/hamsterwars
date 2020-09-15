@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
+<<<<<<< HEAD
 //querystring
 // app.delete('/api/', (req, res) => {
 
