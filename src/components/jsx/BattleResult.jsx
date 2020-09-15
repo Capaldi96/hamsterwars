@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 const BattleResult = () => {
-	const [winnerData, setWinnerData] = useState(null);
+	const [winner, setWinner] = useState(null);
 	const [hamster1, setHamster1] = useState({});
 	const [hamster2, setHamster2] = useState({})
 	
@@ -22,17 +22,28 @@ const BattleResult = () => {
 		setHamster2(data[1]);
 		
 	}
-	console.log(hamster1)
+	useEffect(()=>{
+		console.log(hamster1)
+		console.log(hamster2)
+		if(hamster1 == winner){
+			
+			hamster1.games++;
+			hamster1.wins++;
+			setHamster1(hamster1)
+			console.log(hamster1)
+		}
+	});
+	
 	return (
 		<div id="battleResult">
 			<div className="container">
 				<h1>Click on the cutest</h1>
 				<div className="match-container">
-                    <BattleCard setWinnerData={setWinnerData} hamster={hamster1} />
+                    <BattleCard setWinner={setWinner} hamster={hamster1} />
 					<img className="VS" src={require('../../assets/vs.png')}></img>
-					<BattleCard setWinnerData={setWinnerData} hamster={hamster2}/>
+					<BattleCard setWinner={setWinner} hamster={hamster2}/>
 				</div>
-				{ winnerData ? <div className="resultPotato"></div>: null }
+				{ winner ? <div className="resultPotato"></div>: null }
 			</div>
 		</div>
     );
