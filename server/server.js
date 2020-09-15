@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getMatch } = require('./database.js');
+const { getAllHamsters, getMatch, addHamster } = require('./database.js');
 
 
 
@@ -16,6 +16,10 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
+
+// add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 
@@ -34,6 +38,13 @@ app.get('/api/Battle', (req, res)=>{
 	})
 })
 
+app.post('/api/addhamster', (req, res) => {
+	console.log('POST / addhamster', req.body)
+	addHamster(req.body, dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
@@ -46,15 +57,6 @@ app.use((req, res, next) => {
 // })
 // app.put('/api/', (req, res) => {
 // });
-
-// add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
-app.use(express.static("public"));
-
-app.post('/api/addhamster', (req, res) => {
-	console.log('POST / addhamster', req.body)
-})
-
 
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));

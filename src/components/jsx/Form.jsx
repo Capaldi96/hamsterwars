@@ -13,7 +13,7 @@ const Form=()=>{
 
 
 
-	let newHamster={
+	let newHamster = {
 		name:name,
 		age:age,
 		favFood:favFood,
@@ -21,11 +21,12 @@ const Form=()=>{
 		imgName:image,
 		wins:0,
 		defeats:0,
-		games:0
-
+		games:0,
+		latestGame: ''
 	}
 
 	async function addHamster(){
+		console.log('addHamster click')
 		const response= await fetch('/api/addhamster', {
             headers:{
                 'Accept':'application/json',
@@ -42,20 +43,6 @@ const Form=()=>{
 	
 	}
 
-
-
-
-
-	// {
-	// 	"name":"Sicte",
-	// 	"age":1,
-	// 	"favFood":"ostbollar",
-	// 	"loves":"Running that wheeeeeeeeeeeeeeeel!",
-	// 	"imgName":"hamster-1.jpg",
-	// 	"wins":0,
-	// 	"defeats":0,
-	// 	"games":0
-	//  },
 	return(
 
 		<div className='form-component'>
