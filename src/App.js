@@ -11,6 +11,7 @@ import Statistic from '../src/components/jsx/Statistic';
 
 
 function App() {
+<<<<<<< HEAD
 	return (
 		<Router>
 			<div className="App">
@@ -23,6 +24,15 @@ function App() {
 			</div>
 		</Router>
 	);
+  return (
+    <div className="App">
+		<Header/>
+		<Form/>
+		<Home/>
+		<Statistic/>
+		<Footer/>
+    </div>
+  );
 }
 
 export default App;
