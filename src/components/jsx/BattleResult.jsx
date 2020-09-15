@@ -21,7 +21,6 @@ const BattleResult = () => {
 		let data = response.data;
 		setHamster1(data[0]);
 		setHamster2(data[1]);
-		
 	}
 	console.log(hamster1)
 	
@@ -37,9 +36,9 @@ const BattleResult = () => {
 				{ winnerData ? <div className="resultPotato">
 					
 					<div className="winnerData">
-						<p className="winnerData-p">Winner is: 		<strong>{winner.name}</strong></p>
-						<p className="winnerData-p">Current rank:  	<strong>{winner.rank}</strong></p>
-						<p className="winnerData-p">Total games:   	<strong>{winner.games}</strong></p>
+						<p className="winnerData-p">Winner is: 		{/* <strong>{hamster.name}</strong> */}</p>
+						<p className="winnerData-p">Wins:  			{/* <strong>{hamster.wins}</strong> */}</p>
+						<p className="winnerData-p">Total games:   	{/* <strong>{hamster.games}</strong> */}</p>
 						<button className="nextBattleBtn">Next Battle</button>
 						</div>
 					</div>: null }

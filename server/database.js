@@ -56,6 +56,7 @@ function get( filter, callback) {
         }
     })
 } */
+
 function addHamster(reqBody, callback){
     const document = reqBody;
     MongoClient.connect(url, {useUnifiedTopology:true},
@@ -80,9 +81,11 @@ function addHamster(reqBody, callback){
         }
     )
 }
+
 function getAllHamsters(callback) {
     get({}, callback)
 }
+
 function getGroupOfHamsters(sort,callback){
 	let filter;
 	switch (sort) {
