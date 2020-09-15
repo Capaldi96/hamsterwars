@@ -29,19 +29,16 @@ function get( filter, callback) {
         }
     })
 }
-function getMatch(callback) {
-
+function getGroup(filter, callback) {
     MongoClient.connect( url, { useUnifiedTopology : true }, async (error, client)=>{ 
-
         if(error){
             callback('cant connect to database', error.message)
             console.log(error)
             return;
         }
-
         const theCollection = client.db(dbName).collection(dbCollection); 
         try{
-            const cursor = theCollection.aggregate([ { $sample: { size: 2 } } ]);
+            const cursor = theCollection.aggregate(filter);
             const array = await cursor.toArray();
             callback(array);
 
@@ -81,9 +78,34 @@ function addHamster(reqBody, callback){
 function getAllHamsters(callback) {
     get({}, callback)
 }
-
+function getGroupOfHamsters(sort,callback){
+	let filter;
+	switch (sort) {
+		case 'topWinners':
+			filter = [ {$sort: {wins : -1} },{ $limit: 5 } ];
+			break;
+		case 'topLoosers':
+			filter = [ {$sort: {defeats : -1} },{ $limit: 5 } ];
+			break;
+		case 'mostGames':
+			filter = [ {$sort: {games : -1} } ];	
+			break;
+		case 'leastGames':
+			filter = [ {$sort: {games : 1} },{ $limit: 5 } ];	
+			break;
+		case 'latestBattles':
+			break;
+		case 'battle':
+			filter = [ {$sample: {size : 2} }];	
+			break;
+		default:
+			filter = [ {$sort: {wins : -1} },{ $limit: 5 } ];
+			break;
+	}
+	getGroup(filter, callback)
+}
 module.exports = {
     getAllHamsters,
-	getMatch,
+	getGroupOfHamsters,
 	addHamster
 }
