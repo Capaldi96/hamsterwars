@@ -23,7 +23,6 @@ function App() {
 			</div>
 		</Router>
 	);
-  return (
 }
 
 export default App;
