@@ -29,6 +29,7 @@ function get( filter, callback) {
         }
     })
 }
+
 function getMatch(callback) {
 
     MongoClient.connect( url, { useUnifiedTopology : true }, async (error, client)=>{ 
@@ -42,8 +43,7 @@ function getMatch(callback) {
         const theCollection = client.db(dbName).collection(dbCollection); 
         try{
             const cursor = theCollection.aggregate( [ 
-                { "$unwind": "$name" }, 
-                { "$sample": { "size": 2 } } 
+                { "$sample": { "size": 2 } }
             ]);
             const array = await cursor.toArray();
             callback(array);
@@ -56,6 +56,7 @@ function getMatch(callback) {
         }
     })
 }
+
 function getAllHamsters(callback) {
     get({}, callback)
 }

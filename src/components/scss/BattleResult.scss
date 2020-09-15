@@ -1,4 +1,6 @@
 @import "mixins.scss";
+@import 'variables.scss';
+
 #battleResult{
 	position: relative;
 	margin-top: 10vh;
@@ -7,7 +9,8 @@
 	height: 80vh;
 	display: grid;
 	place-items: center;
-    grid-gap: 1em;
+	grid-gap: 1em;
+	grid-template-rows: 2fr 4fr 3fr;
 }
 
 #battleResult .container h1 {
@@ -15,28 +18,50 @@
 }
 
 #battleResult .container .VS {
-	height: 15vh;
-	width: 20vw;
+	height: 10vh;
+	width: 13vw;
 }
+
 #battleResult .match-container{
 	display:grid;
 	width:100%;
 	place-items: center;
 }
-.competitior-img{
+#battleResult .competitior-img{
     width: 100%;
     height: 100%;
 }
 
-.resultPotato{
-	height: 38vh;
-	width: 38vw;
+#battleResult .container .nextBattleBtn {
+	position: relative;
+	z-index: 3;
+}
+
+#battleResult .winnerData{
+	display: grid;
+	margin-top: 70px;
+	grid-template-rows: 35px 35px 35px 60px; 
+	align-items: center;
+	justify-content: center;
+}
+
+#battleResult .winnerData-p{
+	color: $orange;
+	font-size: 20px;
+}
+
+#battleResult .resultPotato{
+	height: 300px;
+	width: 400px;
 	background-image: url('../../assets/result-potato-smaller.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	position: relative;
+	bottom: 30px;
 }
-.competitor-img{
+
+#battleResult .competitor-img{
 	max-width: 40%;
 	max-height: 40%;
 }
@@ -45,25 +70,60 @@
 
 	#battleResult .container {
         grid-template-rows: 1fr 2fr 2fr;
-
 	}
+
 	#battleResult .container h1{
 		font-size: 3vw;
 	}
+
     #battleResult .flip-card{
 		max-width:20vw;
 	}
+
     #battleResult .container .VS {
         height: 15vh;
         width: 10vw;
 	}
+
 	#battleResult .match-container{
         grid-template-columns: 4fr 1fr 4fr;
-        max-width:70vw;
-    }
+		max-width:70vw;
+		margin-top: 50px
+	}
+	
     #battleResult .flip-card h1 {
         font-size: 33px;
-    }
+	}
+	
+	#battleResult .resultPotato{
+		height: 400px;
+		width: 700px;
+		background-image: url('../../assets/result-potato-smaller.svg');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		margin-top: 70px;
+	}
+
+	#battleResult .container .nextBattleBtn {
+		position: relative;
+		z-index: 3;
+	}
+	
+	#battleResult .winnerData{
+		display: grid;
+		margin-top: 70px;
+		grid-template-rows: 50px 50px 50px 120px; 
+		align-items: center;
+		justify-content: center;
+	}
+	
+	#battleResult .winnerData-p{
+		color: $orange;
+		font-size: 28px;
+	}
+	
 	
 }
 @media only screen and (min-width: 700px) and (max-width:900px){
