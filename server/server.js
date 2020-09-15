@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getMatch } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters } = require('./database.js');
 
 
 
@@ -20,16 +20,13 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 
 
-app.get('/api/kalle', (req,res)=>{
-	res.send("Kalle")
-})
 app.get('/api/getAllHamsters', (req, res)=>{
 	getAllHamsters(dataOrError => {
 		res.send(dataOrError);
 	})
 })
 app.get('/api/Battle', (req, res)=>{
-	getMatch(dataOrError => {
+	getGroupOfHamsters('battle',dataOrError => {
 		res.send(dataOrError);
 	})
 })
@@ -59,7 +56,6 @@ app.post('/api/addhamster', (req, res) => {
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
- 
 
 
 

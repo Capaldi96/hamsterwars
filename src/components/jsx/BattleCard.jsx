@@ -4,8 +4,6 @@ import axios from 'axios';
 import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
-	useEffect(()=>{
-	})
 	return (
 		<div className="flip-card" onClick={()=>props.setWinnerData("kalle")}>
 			<img className="flip-card-info" src={require('../../assets/info.svg')} />
@@ -20,8 +18,12 @@ const BattleCard = props => {
 				</div>
 				<div className="flip-card-back">
 					<h1>{props.hamster.name}</h1>
-					<p>Years: {props.hamster.year}</p>
-					<p>We love that hampter</p>
+					<p>Years: {props.hamster.age}</p>
+					<p>Games : {props.hamster.games}</p>
+					<p>FavFood{props.hamster.favFood}</p>
+					<p>Loves: {props.hamster.loves}</p>
+					<span>wins: {props.hamster.wins}</span>
+					<span>losses: {props.hamster.defeats}</span>
 				</div>
 			</div>
 		</div>

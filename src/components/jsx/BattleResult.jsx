@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../scss/BattleResult.scss';
 import BattleCard from './BattleCard'
+import axios from 'axios';
+
 
 
 
 
 const BattleResult = () => {
 	const [winnerData, setWinnerData] = useState(null);
-	let hamster1 = {
-		name: "kalle",
-		year: 1
+	const [hamster1, setHamster1] = useState({});
+	const [hamster2, setHamster2] = useState({})
+	
+	useEffect(()=>{
+		getMatch()
+	},[]);
+	async function getMatch(){
+		let response = await axios.get('/api/Battle');
+		let data = response.data;
+		setHamster1(data[0]);
+		setHamster2(data[1]);
+		
 	}
-	let hamster2 = {
-		name: "Pelle",
-		year: 2
-	}
+	console.log(hamster1)
 	return (
 		<div id="battleResult">
 			<div className="container">
