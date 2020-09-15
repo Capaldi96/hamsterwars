@@ -13,7 +13,7 @@ const [showGamesPlayed, setShowGamesPlayed] = useState(false);
 const [showTop5Winners, setShowTop5Winners] = useState(false);
 const [showTop5Loosers, setShowTop5Loosers] = useState(false);
 const [showLeastParticipated, setShowLeastParticipated] = useState(false);
-const [showLatestBattles, setShowLatestBattles] = useState(false); 
+const [showLatestBattles, setShowLatestBattles] = useState(false);  
  
 
 	return (
