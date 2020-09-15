@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster } = require('./database.js');
 
 
 
@@ -16,8 +16,10 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+// add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
+
 
 
 app.get('/api/getAllHamsters', (req, res)=>{
@@ -31,7 +33,13 @@ app.get('/api/Battle', (req, res)=>{
 	})
 })
 app.get('/api/topWinners', (req, res)=>{
-	getGroupOfHamsters(dataOrError => {
+	getGroupOfHamsters('topWinners',dataOrError => {
+		res.send(dataOrError);
+	})
+});
+app.post('/api/addhamster', (req, res) => {
+	console.log('POST / addhamster', req.body)
+	addHamster(req.body, dataOrError => {
 		res.send(dataOrError);
 	})
 })
@@ -43,27 +51,15 @@ app.put('/api/updateHamster/:id', (req, res)=>{
 })
 
 
-app.post('/api/addhamster', (req, res) => {
-	console.log('POST / addhamster', req.body)
-})
-//querystring
-// app.delete('/api/', (req, res) => {
 
-// });
-// app.post('/api/', (req, res) => {
-// })
-// app.put('/api/', (req, res) => {
-// });
 
-// add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
-app.use(express.static("public"));
 
 
 
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
+
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);
