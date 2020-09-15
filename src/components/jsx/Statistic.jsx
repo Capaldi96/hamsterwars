@@ -75,10 +75,9 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconLatestBattles.svg')} alt=""/></div>
 <p className="miniIconText">Latests battles</p>
 
+</div>
 
 </div>
-		</div>
-
 	)
 }
 
