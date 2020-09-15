@@ -21,7 +21,9 @@ const [showTop5Winners, setShowTop5Winners] = useState(false);
 
 <div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
 <img className="iconInsideCircle" src={require('../../assets/iconGamesPlayed.svg')} alt=""/> 
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconGamesPlayed.svg')} alt=""/> 
 </div>
+<p className="miniIconText">Games played</p>
 
 
 {/* Top 5 winners */}
@@ -35,20 +37,27 @@ const [showTop5Winners, setShowTop5Winners] = useState(false);
 
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 <img className="iconInsideCircle" src={require('../../assets/iconTop5Winners.svg')} alt=""/> 
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconTop5Winners.svg')} alt=""/> 
 </div>
+<p className="miniIconText">Top 5 Winners</p>
 
 <div className="statCircle3 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 <img className="iconInsideCircle" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconTop5Loosers.svg')} alt=""/> 
 </div>
+<p className="miniIconText">Top 5 Loosers</p>
 
 <div className="statCircle4 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 <img className="iconInsideCircle" src={require('../../assets/iconLeastParticipated.svg')} alt=""/> 
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconLeastParticipated.svg')} alt=""/> 
 </div>
+<p className="miniIconText">Least participated</p>
 
 <div className="statCircle5 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
-<img className="iconLatestBattles" src={require('../../assets/iconTop5Loosers.svg')} alt=""/> 
+<img className="iconInsideCircle" src={require('../../assets/iconLatestBattles.svg')} alt=""/> 
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconLatestBattles.svg')} alt=""/> 
 </div>
-
+<p className="miniIconText">Latests battles</p>
 
 
 
