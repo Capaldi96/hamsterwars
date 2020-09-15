@@ -6,6 +6,7 @@ button{
 .home-main{
 	position: relative;
 	text-align: center;
+	height:100vh;
 }
 .home-container{
 	display: flex;
@@ -44,19 +45,21 @@ button{
 	left: 70%;
 	z-index: 15;
 }
+@media screen and (max-width: 950px){
+	.hamster-icon{
+		left: 75%;
+		width: 12em;
+	}
+
+}
 @media screen and (max-width: 800px){
 	.home-container{
 		height: 35em;
 		width: 80%;
 	}
-	
 	.home-container p{
 		font-size: 1em;
 	}
-	.hamster-icon{
-		left: 80%;
-	}
-
 }
 
 @media screen and (max-width: 700px){
