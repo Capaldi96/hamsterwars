@@ -1,5 +1,13 @@
 @import 'mixins.scss';
 
+.hamsterTest{
+	color: black; 
+	z-index: 10000;
+}
+.imgContainer{
+	 position: relative;
+  text-align: center;
+}
     .ellipsbackground {
 	background-color: transparent;
 	width: 100%;

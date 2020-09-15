@@ -1,34 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FadeEffectGamesPlayed from './FadeEffect/FadeEffectGamesPlayed'
 import FadeEffectTop5Winners from './FadeEffect/FadeEffectTop5Winners'
 import FadeEffectTop5Loosers from './FadeEffect/FadeEffectTop5Loosers'
 import FadeEffectLeastParticipated from './FadeEffect/FadeEffectLeastParticipated'
 import FadeEffectLatestBattles from './FadeEffect/FadeEffectLatestBattles'
 
+import StatisticsInfo from './StatisticsInfo'
+import axios from 'axios';
 import '../scss/Statistics.scss';
 
-
-export default function Statistic() {
+const Statistic = () => {
 const [showGamesPlayed, setShowGamesPlayed] = useState(false);
 const [showTop5Winners, setShowTop5Winners] = useState(false);
 const [showTop5Loosers, setShowTop5Loosers] = useState(false);
 const [showLeastParticipated, setShowLeastParticipated] = useState(false);
 const [showLatestBattles, setShowLatestBattles] = useState(false);
 
+
 	return (
 		<div className="circlesInRowContainer">
-		<div className="circlesInRow">
 
+<StatisticsInfo />
+		
+<div className="circlesInRow">
 {/* Games played */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
 <div className="ellipsbackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
-<img className="ellipse" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/></div>
+
+<img className="ellipse" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/> 
+</div>
 </FadeEffectGamesPlayed> 
 
 <div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
 <img className="iconInsideCircle" src={require('../../assets/iconGamesPlayed.svg')} alt=""/> 
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconGamesPlayed.svg')} alt=""/></div>
 <p className="miniIconText">Games played</p>
+
+
 
 {/* Top 5 winners */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
@@ -81,3 +89,5 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 	)
 }
 
+
+export default Statistic;

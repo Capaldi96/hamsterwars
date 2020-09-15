@@ -31,6 +31,54 @@ app.get('/api/Battle', (req, res)=>{
 	})
 })
 
+app.get('/api/TopWinners', (req, res) => {
+	getGroupOfHamsters('topWinners', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/TopLoosers', (req, res) => {
+	getGroupOfHamsters('topLoosers', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/TotalGamesEachHamster', (req, res) => {
+	getGroupOfHamsters('totalGamesEachHamster', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/SumAllWins', (req, res) => {
+	getGroupOfHamsters('sumAllWins', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/SumAllDefeats', (req, res) => {
+	getGroupOfHamsters('sumAllDefeats', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/SumAllGames', (req, res) => {
+	getGroupOfHamsters('sumAllGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/MostGames', (req, res) => {
+	getGroupOfHamsters('mostGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/LeastGames', (req, res) => {
+	getGroupOfHamsters('leastGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
