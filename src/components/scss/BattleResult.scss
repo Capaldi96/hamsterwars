@@ -18,8 +18,7 @@
 }
 
 #battleResult .container .VS {
-	height: 10vh;
-	width: 13vw;
+	height: 15vh;
 }
 
 #battleResult .match-container{
@@ -32,6 +31,12 @@
     height: 100%;
 }
 
+.resultPotato{
+	height: 38vh;
+	display: grid;
+	place-items: center;
+	width: 38vw;
+}
 #battleResult .container .nextBattleBtn {
 	position: relative;
 	z-index: 3;
@@ -73,18 +78,13 @@
 	}
 
 	#battleResult .container h1{
-		font-size: 3vw;
+		font-size: 2.5vw;
 	}
 
     #battleResult .flip-card{
 		max-width:20vw;
 	}
-
-    #battleResult .container .VS {
-        height: 15vh;
-        width: 10vw;
-	}
-
+    
 	#battleResult .match-container{
         grid-template-columns: 4fr 1fr 4fr;
 		max-width:70vw;
@@ -122,9 +122,7 @@
 	#battleResult .winnerData-p{
 		color: $orange;
 		font-size: 28px;
-	}
-	
-	
+	}	
 }
 @media only screen and (min-width: 700px) and (max-width:900px){
 	#battleResult .container h1{
@@ -140,10 +138,6 @@
 		max-width:50vw;
 		width: 80%;
 	}
-    #battleResult .container .VS {
-        height: 15vh;
-        width: 10vw;
-	}
 	#battleResult .match-container{
         grid-template-columns: 4fr 1fr 4fr;
         max-width:70vw;
@@ -151,5 +145,4 @@
     #battleResult .flip-card h1 {
         font-size: 33px;
     }
-	
 }

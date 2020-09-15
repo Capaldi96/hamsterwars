@@ -29,10 +29,11 @@ p,
 span {
 	color: #fffafa;
 }
-input[type="text"] {
+input[type="text"], input[type='number'] {
 	padding: 0.3em 0.5em;
 	border: none;
 	border-radius: 10px;
 }
+
 
 
