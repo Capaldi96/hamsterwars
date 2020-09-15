@@ -23,7 +23,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Games played */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
 <div className="ellipsbackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
-<img className="ellipse1" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/></div>
+<img className="ellipse" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/></div>
 </FadeEffectGamesPlayed> 
 
 <div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
@@ -35,7 +35,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 winners */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
 <div className="ellipsbackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
-<img className="ellipse2" src={require('../../assets/ellipseTop5Winners.svg')} alt=""/></div>
+<img className="ellipse" src={require('../../assets/ellipseTop5Winners.svg')} alt=""/></div>
 </FadeEffectTop5Winners> 
 
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
@@ -47,7 +47,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 loosers */}
 <FadeEffectTop5Loosers showTop5Loosers={showTop5Loosers}>
 <div className="ellipsbackground" onClick={() => setShowTop5Loosers(showTop5Loosers => !showTop5Loosers)}>
-<img className="ellipse2" src={require('../../assets/ellipseTop5Loosers.svg')} alt=""/></div>
+<img className="ellipse" src={require('../../assets/ellipseTop5Loosers.svg')} alt=""/></div>
 </FadeEffectTop5Loosers> 
 
 <div className="statCircle3 circleSpecifics" onClick={() => setShowTop5Loosers(showTop5Loosers => !showTop5Loosers)}>
@@ -59,7 +59,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Least participated */}
 <FadeEffectLeastParticipated showLeastParticipated={showLeastParticipated}>
 <div className="ellipsbackground" onClick={() => setShowLeastParticipated(showLeastParticipated => !showLeastParticipated)}>
-<img className="ellipse2" src={require('../../assets/ellipseLeastParticipated.svg')} alt=""/></div>
+<img className="ellipse" src={require('../../assets/ellipseLeastParticipated.svg')} alt=""/></div>
 </FadeEffectLeastParticipated> 
 
 <div className="statCircle4 circleSpecifics" onClick={() => setShowLeastParticipated(showLeastParticipated => !showLeastParticipated)}>
@@ -71,7 +71,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Latest battles */}
 <FadeEffectLatestBattles showLatestBattles={showLatestBattles}>
 <div className="ellipsbackground" onClick={() => setShowLatestBattles(showLatestBattles => !showLatestBattles)}>
-<img className="ellipse2" src={require('../../assets/ellipseLatestBattles.svg')} alt=""/></div>
+<img className="ellipse" src={require('../../assets/ellipseLatestBattles.svg')} alt=""/></div>
 </FadeEffectLatestBattles> 
 
 <div className="statCircle5 circleSpecifics" onClick={() => setShowLatestBattles(showLatestBattles => !showLatestBattles)}>

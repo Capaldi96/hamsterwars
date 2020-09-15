@@ -16,8 +16,8 @@
 	
   }
 
-.ellipse1{
-	margin-left: 13%;
+.ellipse{
+	max-width: 100vw;
 }
   
 .circlesInRowContainer{
@@ -146,6 +146,10 @@
 	.circlesInRowContainer{
 	justify-items: center;
 	grid-template-rows: 20vh 1fr 20vh;
+}
+
+.ellipse1{
+
 }
 
 
