@@ -26,20 +26,30 @@ const Form=()=>{
 	}
 
 	async function addHamster(){
-		console.log('addHamster click')
-		const response= await fetch('/api/addhamster', {
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json'
-            },
-            method:'POST',
-            body:JSON.stringify(newHamster)
-		});
+		try{
+
+			const response= await fetch('/api/addhamster', {
+				headers:{
+					'Accept':'application/json',
+					'Content-Type':'application/json'
+				},
+				method:'POST',
+				body:JSON.stringify(newHamster)
+			});
+	
+	
+			const text = await response.text(); // Parse it as text
+			console.log('text: ', text)
+			const data = JSON.parse(text); // Try to parse it as json
+			console.log('response: ', data)
+
+			//TODO Lägg upp meddelande om success when adding hamster
 
 
-		const text = await response.text(); // Parse it as text
-		const data = JSON.parse(text); // Try to parse it as json
-		console.log('response: ', data)
+		}catch(error){
+			console.log('something went wrong when adding hamster')
+		}
+		
 	
 	}
 
