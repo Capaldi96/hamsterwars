@@ -10,9 +10,9 @@
 	background-color: $mediumbeige;
 	position: fixed;
 	top: 0;
-	left: -500px;
+	left: -300px;
 	display: flex;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: center;
 	border-radius:  0 40% 90% 0;
 	z-index: 100;
@@ -86,9 +86,10 @@
 	.mobile-logo{
 		display: block;
 	}
+	.top-wave{
+		width: 50%;
+	}
 
   }
-	.top-wave{
-		width: 60%;
-	}
+	
 

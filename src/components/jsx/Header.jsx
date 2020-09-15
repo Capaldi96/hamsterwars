@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/Header.scss';
 
-const header = () => {
+const header = (props) => {
 
 	function toggle(){
 		console.log('toggle click')
@@ -22,16 +22,16 @@ const header = () => {
 				</div>
 				<ul className="nav-list">
 					<li className="nav-item">
-					<a href="#" className="nav-link">Home</a>
+					<a href="/" className="nav-link">Home</a>
 					</li>
 					<li className="nav-item">
-					<a href="#" className="nav-link">Battle</a>
+					<a href="/Battle" className="nav-link">Battle</a>
 					</li>
 					<li className="nav-item">
-					<a href="#" className="nav-link">Add hamster</a>
+					<a href="/Form" className="nav-link">Add hamster</a>
 					</li>
 					<li className="nav-item">
-					<a href="#" className="nav-link">Statistic</a>
+					<a href="/Statistic" className="nav-link">Statistic</a>
 					</li>
 				</ul>
 			</nav>

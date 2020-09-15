@@ -27,7 +27,8 @@ const BattleResult = () => {
 				{ winnerData ? <div className="resultPotato"></div>: null }
 			</div>
 		</div>
-	);
+    );
+
 }
 
 export default BattleResult;
