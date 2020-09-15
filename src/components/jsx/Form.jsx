@@ -62,7 +62,7 @@ const Form=()=>{
 
 				<p>Add your own hamster</p>
 				<form className='form' onSubmit={handleSubmit(onSubmit)}>
-
+					{/* Name */}
 					<div className='form-group'>
 						<input type='text'
 						id="name"
@@ -77,7 +77,8 @@ const Form=()=>{
 					{errors.name && errors.name.type==='required' && <span>This field is required</span>}
 					{errors.name && errors.name.type==='maxLength' && <span>Max 15 characters</span>}
 					{errors.name && errors.name.type==='minLength' && <span>Min 1 character</span>}
-				
+
+					{/* Age */}
 					<div className='form-group'>
 						<input type='number' 
 						id='age'
@@ -92,7 +93,8 @@ const Form=()=>{
 					{errors.age && errors.age.type==='required' && <span>This field is required</span>}
 					{errors.age && errors.age.type==='maxLength' && <span>Max 10 characters</span>}
 					{errors.age && errors.age.type==='minLength' && <span>Min 1 character</span>}
-			
+
+					{/* favFood */}
 					<div className='form-group'>
 						<input type='text'
 						id='favFood'
@@ -108,7 +110,8 @@ const Form=()=>{
 					{errors.favFood && errors.favFood.type==='required' && <span>This field is required</span>}
 					{errors.favFood && errors.favFood.type==='maxLength' && <span>Max 10 characters</span>}
 					{errors.favFood && errors.favFood.type==='minLength' && <span>Min 2 character</span>}
-				
+
+					{/* Loves */}
 					<div className='form-group'>
 						<input type='text'
 						className='form-control'
@@ -124,7 +127,8 @@ const Form=()=>{
 					{errors.loves && errors.loves.type==='required' && <span>This field is required</span>}
 					{errors.loves && errors.loves.type==='maxLength' && <span>Max 15 characters</span>}
 					{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
-				
+
+					{/* Image */}
 					<div className='form-group'>
 						<input type='text'
 						className='form-control'
@@ -135,11 +139,10 @@ const Form=()=>{
 						ref={register({ required: true })}
 						onChange={event=>setImage(event.target.value)}/>
 						<label htmlFor="image" className='form-label'>Image</label>
-
 					</div>
 					{errors.image && errors.image.type==='required' && <span>This field is required</span>}
 				
-					<input type="submit" />
+					<input type="submit" /> 
 				</form>
 				<button onClick={addHamster}>Add hamster</button>
 			
