@@ -6,6 +6,8 @@ const BattleCard = props => {
 	const [disableImg, setDisableImg] = useState(false);
 
 	const wrapperFunction = () => {
+		props.hamster.wins++;
+		props.hamster.games++;
 		props.setWinner(props.hamster)
 		props.setShowCutestH1(false);
 		setDisableImg(true);
