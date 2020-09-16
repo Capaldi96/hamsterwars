@@ -11,6 +11,7 @@ const Form=()=>{
 	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
 	const [image, setImage]=useState('')
+	const [fileName, setFileName] = useState('Choose file')
 
 	const { register, handleSubmit, errors } = useForm();
 	const onSubmit = data => console.log(data);
@@ -28,8 +29,7 @@ const Form=()=>{
 	}
 
 	async function addHamster(){
-		try{
-
+		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{
 					'Accept':'application/json',
@@ -48,15 +48,14 @@ const Form=()=>{
 			//TODO Lägg upp meddelande om success when adding hamster
 
 
-		}catch(error){
+		} catch(error){
 			console.log('something went wrong when adding hamster')
 		}
 		
 	
 	}
 
-	return(
-
+	return (
 		<div className='form-component'>
 			<div className='form-wrapper'>
 
@@ -70,13 +69,14 @@ const Form=()=>{
 						className='form-control'
 						value={name}
 						placeholder='name placeholder'
-						ref={register({ required: true, maxLength:15, minLength:1 })}
+						ref={register({ required: true, maxLength:15 })}
 						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
+						<div className="error-message">
+							{errors.name && errors.name.type==='required' && <span>Please enter the hamsters name</span>}
+							{errors.name && errors.name.type==='maxLength' && <span>Hey! Max 15 characters</span>}
+						</div>
 					</div>
-					{errors.name && errors.name.type==='required' && <span>This field is required</span>}
-					{errors.name && errors.name.type==='maxLength' && <span>Max 15 characters</span>}
-					{errors.name && errors.name.type==='minLength' && <span>Min 1 character</span>}
 
 					{/* Age */}
 					<div className='form-group'>
@@ -88,11 +88,15 @@ const Form=()=>{
 						placeholder='age placeholder'
 						ref={register({ required: true, maxLength:10, minLength:1 })}
 						onChange={event=>setAge(event.target.value)}/>
-						<label htmlFor="age" className='form-label'>Age (3 mån=0.3. 1 år=1)</label>
+						<label htmlFor="age" className='form-label'>Age in months</label>
+						<div className="error-message">
+							{errors.age && errors.age.type==='required' && <span>The age please</span>}
+							{errors.age && errors.age.type==='maxLength' && <span>Whops! Max 10 characters</span>}
+							{errors.age && errors.age.type==='minLength' && <span>Min 1 character</span>}
+						</div>
 					</div>
-					{errors.age && errors.age.type==='required' && <span>This field is required</span>}
-					{errors.age && errors.age.type==='maxLength' && <span>Max 10 characters</span>}
-					{errors.age && errors.age.type==='minLength' && <span>Min 1 character</span>}
+				
+				
 
 					{/* favFood */}
 					<div className='form-group'>
@@ -105,11 +109,14 @@ const Form=()=>{
 						ref={register({ required: true, maxLength:10, minLength:2 })}
 						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
-
+						<div className="error-message">
+							{errors.favFood && errors.favFood.type==='required' && <span>Enter favorite food please</span>}
+							{errors.favFood && errors.favFood.type==='maxLength' && <span>Max 10 characters please</span>}
+							{errors.favFood && errors.favFood.type==='minLength' && <span>Min 2 character</span>}
+						</div>
 					</div>
-					{errors.favFood && errors.favFood.type==='required' && <span>This field is required</span>}
-					{errors.favFood && errors.favFood.type==='maxLength' && <span>Max 10 characters</span>}
-					{errors.favFood && errors.favFood.type==='minLength' && <span>Min 2 character</span>}
+					
+					
 
 					{/* Loves */}
 					<div className='form-group'>
@@ -122,15 +129,18 @@ const Form=()=>{
 						ref={register({ required: true, maxLength:15, minLength:2 })}
 						onChange={event=>setLoves(event.target.value)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
-
+						<div className="error-message">
+							{errors.loves && errors.loves.type==='required' && <span>Poor hamster, nothing to love?</span>}
+							{errors.loves && errors.loves.type==='maxLength' && <span>Max 15 characters</span>}
+							{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
+						</div>
 					</div>
-					{errors.loves && errors.loves.type==='required' && <span>This field is required</span>}
-					{errors.loves && errors.loves.type==='maxLength' && <span>Max 15 characters</span>}
-					{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
-
+				
+				
+				{/* 	//!  */}
 					{/* Image */}
 					<div className='form-group'>
-						<input type='text'
+						<input type='file'
 						className='form-control'
 						id='image'
 						name='image' 
@@ -138,27 +148,17 @@ const Form=()=>{
 						placeholder='image placeholder'
 						ref={register({ required: true })}
 						onChange={event=>setImage(event.target.value)}/>
-						<label htmlFor="image" className='form-label'>Image</label>
+						<label htmlFor="image" className='form-label'>{ fileName }</label>
+						<div className="error-message">
+							{errors.image && errors.image.type==='required' && <span>Please upload hamster image</span>}
+						</div>
 					</div>
-					{errors.image && errors.image.type==='required' && <span>This field is required</span>}
-				
 					<input type="submit" /> 
 				</form>
 				<button onClick={addHamster}>Add hamster</button>
-			
-
 			</div>
-					
-
 		</div>
-
-
 )
-
-
-
-
-
 }
 
 
