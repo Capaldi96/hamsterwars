@@ -3,7 +3,6 @@ import axios from 'axios';
 import '../../scss/Statistics.scss'
 
 const GetTopLoosers = ()=> {
-
 const [top5Loosers, setTop5Loosers] = useState([]);
 
 		useEffect(() => {
@@ -19,9 +18,12 @@ const [top5Loosers, setTop5Loosers] = useState([]);
 
 		return (
 		<div>
-{top5Loosers.map(loosers => (
-	<li key={loosers.name}>{loosers.name}</li>
-))}
+			<div className="potatoeContainer">
+			<img className="ellipse" src={require('../../../assets/ellipseTop5Loosers.svg')} alt=""/>
+			<div className="potatoeText">
+			{top5Loosers.map(loosers => (<h1 key={loosers.name}>{loosers.name}</h1>))}
+			</div>
+			</div>
 
 		</div>
 	)

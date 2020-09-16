@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+import '../scss/Statistics.scss';
 import FadeEffectGamesPlayed from './fadeEffect/FadeEffectGamesPlayed'
 import FadeEffectTop5Winners from './fadeEffect/FadeEffectTop5Winners'
 import FadeEffectTop5Loosers from './fadeEffect/FadeEffectTop5Loosers'
 import FadeEffectLeastParticipated from './fadeEffect/FadeEffectLeastParticipated'
 import FadeEffectLatestBattles from './fadeEffect/FadeEffectLatestBattles' 
 
-
 import GetTopLoosers from './statisticsApiReq/GetTopLoosers'
-
 import GetTopWinners from './statisticsApiReq/GetTopWinners'
 
-import '../scss/Statistics.scss';
 
 const Statistic = () => {
 const [showGamesPlayed, setShowGamesPlayed] = useState(false);
@@ -23,22 +21,18 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 	return (
 		<div className="circlesInRowContainer">
 
-<GetTopLoosers />
-		
 <div className="circlesInRow">
+
 {/* Games played */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
 <div className="ellipsbackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
-
-<img className="ellipse" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/> 
-</div>
+<img className="ellipse" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/></div>
 </FadeEffectGamesPlayed> 
 
 <div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
 <img className="iconInsideCircle" src={require('../../assets/iconGamesPlayed.svg')} alt=""/> 
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconGamesPlayed.svg')} alt=""/></div>
 <p className="miniIconText">Games played</p>
-
 
 
 {/* Top 5 winners */}
@@ -56,7 +50,8 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 loosers */}
 <FadeEffectTop5Loosers showTop5Loosers={showTop5Loosers}>
 <div className="ellipsbackground" onClick={() => setShowTop5Loosers(showTop5Loosers => !showTop5Loosers)}>
-<img className="ellipse" src={require('../../assets/ellipseTop5Loosers.svg')} alt=""/></div>
+<GetTopLoosers />
+</div>
 </FadeEffectTop5Loosers> 
 
 <div className="statCircle3 circleSpecifics" onClick={() => setShowTop5Loosers(showTop5Loosers => !showTop5Loosers)}>

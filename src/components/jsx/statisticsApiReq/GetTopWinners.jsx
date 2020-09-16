@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
 
-
-
 const GetTopWinners = () => {
 	const [top5Winners, setTop5Winners] = useState([]);
 
