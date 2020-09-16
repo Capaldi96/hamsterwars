@@ -52,14 +52,15 @@ function getGroup(filter, callback) {
     })
 }
 function addHamster(reqBody, callback){
+	console.log('database addHamster')
     const document = reqBody;
-    MongoClient.connect(url, {useUnifiedTopology:true},
+    MongoClient.connect(url, {useUnifiedTopology: true},
         async (error, client) => {
             if (error){
                 callback("'Error! Couldnt connect'");
                 return;
             }
-            const col = client.db(dbName).collection(collectionName);
+            const col = client.db(dbName).collection(dbCollection);
             try {
                 const result = await col.insertOne(document);
                 callback({
@@ -67,7 +68,7 @@ function addHamster(reqBody, callback){
                     ops: result.ops
                 })
             } catch(error){
-                console.error('Failed to add boat: ' + error.message);
+                console.error('Failed to add hamster: ' + error.message);
                 callback('"ERROR! query error"');
             } finally{
                 client.close();
@@ -75,6 +76,7 @@ function addHamster(reqBody, callback){
         }
     )
 }
+
 function getAllHamsters(callback) {
     get({}, callback)
 }
