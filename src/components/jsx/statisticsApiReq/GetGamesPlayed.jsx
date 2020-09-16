@@ -3,13 +3,13 @@ import axios from 'axios';
 import '../../scss/Statistics.scss'
 
 const GetTopLoosers = ()=> {
-const [top5Loosers, setTop5Loosers] = useState([]);
+const [gamesPlayed, setGamesPlayed] = useState([]);
 
 		useEffect(() => {
-		axios.get('/api/TopLoosers')
+		axios.get('/api/SumAllGames')
 		.then(res => {
 			console.log(res)
-			setTop5Loosers(res.data)
+			setGamesPlayed(res.data)
 		})
 		.catch(err => {
 			console.log(err)
@@ -19,12 +19,9 @@ const [top5Loosers, setTop5Loosers] = useState([]);
 		return (
 		<div>
 			<div className="potatoeContainer">
-
-			<img className="ellipse" src={require('../../../assets/ellipseTop5Loosers.svg')} alt=""/>
-
+			<img className="ellipse" src={require('../../../assets/ellipseGamesPlayed.svg')} alt=""/>
 			<div className="potatoeText">
-			{top5Loosers.map(loosers => (<h1 key={loosers.name}>{loosers.name}</h1>))}
-			
+			{gamesPlayed.map(games => (<h1 key={games.sumAllGames}>{games.sumAllGames}</h1>))}
 			</div>
 			</div>
 

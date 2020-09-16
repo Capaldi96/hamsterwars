@@ -6,6 +6,7 @@ import FadeEffectTop5Loosers from './fadeEffect/FadeEffectTop5Loosers'
 import FadeEffectLeastParticipated from './fadeEffect/FadeEffectLeastParticipated'
 import FadeEffectLatestBattles from './fadeEffect/FadeEffectLatestBattles' 
 
+import GetGamesPlayed from './statisticsApiReq/GetGamesPlayed'
 import GetTopLoosers from './statisticsApiReq/GetTopLoosers'
 import GetTopWinners from './statisticsApiReq/GetTopWinners'
 
@@ -27,7 +28,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Games played - fade potatoe */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
 <div className="ellipsbackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
-<img className="ellipse" src={require('../../assets/ellipseGamesPlayed.svg')} alt=""/></div>
+<GetGamesPlayed /></div>
 </FadeEffectGamesPlayed> 
 {/* Games played - green circles */}
 <div className="statCircle1 circleSpecifics" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
@@ -40,7 +41,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 winners - fade potatoe */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
 <div className="ellipsbackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
-<img className="ellipse" src={require('../../assets/ellipseTop5Winners.svg')} alt=""/></div>
+<GetTopWinners /></div>
 </FadeEffectTop5Winners> 
 {/* Top 5 winners - green circles */}
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
