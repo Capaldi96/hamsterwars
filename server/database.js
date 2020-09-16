@@ -50,7 +50,7 @@ function getGroup(filter, callback) {
             client.close();
         }
     })
-}
+} 
 function addHamster(reqBody, callback){
 	console.log('database addHamster')
     const document = reqBody;
@@ -100,9 +100,14 @@ function editHamster(obj, callback){
     )
 }
 
+/* function postWinnerHamster(){
+
+} */
+
 function getAllHamsters(callback) {
     get({}, callback)
 }
+
 function getGroupOfHamsters(sort,callback){
 	let filter;
 	switch (sort) {
