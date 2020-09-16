@@ -32,7 +32,6 @@ app.get('/api/Battle', (req, res)=>{
 		res.send(dataOrError);
 	})
 })
-<<<<<<< HEAD
 
 app.get('/api/TopWinners', (req, res) => {
 	getGroupOfHamsters('topWinners', dataOrError => {
@@ -84,12 +83,12 @@ app.get('/api/LeastGames', (req, res) => {
 
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-=======
+
 app.get('/api/topWinners', (req, res)=>{
 	getGroupOfHamsters('topWinners',dataOrError => {
 		res.send(dataOrError);
 	})
->>>>>>> develop
+
 });
 app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
