@@ -12,7 +12,7 @@ const BattleResult = () => {
 	const [hamster1, setHamster1] = useState({});
 	const [hamster2, setHamster2] = useState({})
 	const [showCutestH1, setShowCutestH1] = useState(true);
-	
+
 	useEffect(()=>{
 		getMatch()
 	},[]);
@@ -30,7 +30,11 @@ const BattleResult = () => {
 			hamster1.games++;
 			hamster1.wins++;
 			setHamster1(hamster1)
-			console.log(hamster1)
+
+		}else if(hamster2 == winner){
+			hamster2.games++;
+			hamster2.wins++;
+			setHamster2(hamster2)
 		}
 	});
 	
@@ -44,18 +48,16 @@ const BattleResult = () => {
 					<BattleCard setWinner={setWinner} setShowCutestH1={setShowCutestH1} hamster={hamster2}/>
 				</div>
 				{ winner ? <div className="resultPotato">
-					
-					<div className="winnerData">
-						<p className="winnerData-p">Winner is: 		{/* <strong>{hamster.name}</strong> */}</p>
-						<p className="winnerData-p">Wins:  			{/* <strong>{hamster.wins}</strong> */}</p>
-						<p className="winnerData-p">Total games:   	{/* <strong>{hamster.games}</strong> */}</p>
+						<div className="winnerData">
+						<p className="winnerData-p">Winner is: 		<strong>{winner.name}</strong></p>
+						<p className="winnerData-p">Wins:  			<strong>{winner.wins}</strong></p>
+						<p className="winnerData-p">Total games:   	<strong>{winner.games}</strong></p>
 						<button className="nextBattleBtn">Next Battle</button>
 						</div>
 					</div>: null }
 			</div>
 		</div>
     );
-
 }
 
 export default BattleResult;

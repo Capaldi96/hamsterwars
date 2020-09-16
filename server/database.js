@@ -77,6 +77,10 @@ function addHamster(reqBody, callback){
     )
 }
 
+/* function postWinnerHamster(){
+
+} */
+
 function getAllHamsters(callback) {
     get({}, callback)
 }

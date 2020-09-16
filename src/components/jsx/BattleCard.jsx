@@ -5,8 +5,6 @@ import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
 
-
-
 	const wrapperFunction = () => {
 		
 		props.setWinner(props.hamster)
@@ -26,12 +24,12 @@ const BattleCard = props => {
 				</div>
 				<div className="flip-card-back">
 					<h1>{props.hamster.name}</h1>
-					<p>Years: {props.hamster.age}</p>
-					<p>Games : {props.hamster.games}</p>
-					<p>FavFood{props.hamster.favFood}</p>
-					<p>Loves: {props.hamster.loves}</p>
-					<span>wins: {props.hamster.wins}</span>
-					<span>losses: {props.hamster.defeats}</span>
+					<p class="inner-card-p">Years: {props.hamster.age}</p>
+					<p class="inner-card-p">Games: {props.hamster.games}</p>
+					<p class="inner-card-p">FavFood: {props.hamster.favFood}</p>
+					<p class="inner-card-p">Loves: {props.hamster.loves}</p>
+					<p class="inner-card-p">wins: {props.hamster.wins}</p>
+					<p class="inner-card-p">losses: {props.hamster.defeats}</p>
 				</div>
 			</div>
 		</div>
