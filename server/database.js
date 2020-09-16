@@ -53,6 +53,9 @@ function getGroup(filter, callback) {
 } 
 function addHamster(reqBody, callback){
 	console.log('database addHamster')
+
+	
+
     const document = reqBody;
     MongoClient.connect(url, {useUnifiedTopology: true},
         async (error, client) => {

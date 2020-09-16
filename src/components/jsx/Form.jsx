@@ -29,6 +29,8 @@ const Form=()=>{
 	}
 
 	async function addHamster(){
+
+		console.log('newHamster: ', newHamster)
 		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{

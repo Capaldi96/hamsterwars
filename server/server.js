@@ -48,6 +48,10 @@ app.get('/api/topLoosers', (req, res) => {
 
 app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
+
+	// const file=req.files.imageName
+	// console.log("server.js, file: ", file)
+
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError);
 	})
