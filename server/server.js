@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster } = require('./database.js');
 
 
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload())
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
@@ -37,6 +39,13 @@ app.get('/api/topWinners', (req, res)=>{
 		res.send(dataOrError);
 	})
 });
+
+app.get('/api/topLoosers', (req, res) => {
+	getGroupOfHamsters('topLoosers', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
 app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
 	addHamster(req.body, dataOrError => {
@@ -45,15 +54,46 @@ app.post('/api/addhamster', (req, res) => {
 })
 
 app.put('/api/updateHamster/:id', (req, res)=>{
-	updateCompetitor(req.body, req.params.id, () => {
+	editHamster(req.body, () => {
 		res.send(req.body);
 	})
 })
 
+app.get('/api/TotalGamesEachHamster', (req, res) => {
+	getGroupOfHamsters('totalGamesEachHamster', dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
+app.get('/api/SumAllWins', (req, res) => {
+	getGroupOfHamsters('sumAllWins', dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
+app.get('/api/SumAllDefeats', (req, res) => {
+	getGroupOfHamsters('sumAllDefeats', dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
+app.get('/api/SumAllGames', (req, res) => {
+	getGroupOfHamsters('sumAllGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
+app.get('/api/MostGames', (req, res) => {
+	getGroupOfHamsters('mostGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
+app.get('/api/LeastGames', (req, res) => {
+	getGroupOfHamsters('leastGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
 
 app.use((req, res, next) => {
@@ -64,3 +104,13 @@ app.use((req, res, next) => {
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);
 });
+
+
+
+
+
+
+
+
+
+

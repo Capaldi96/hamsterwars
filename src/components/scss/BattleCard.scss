@@ -26,6 +26,10 @@
     transform-style: preserve-3d;
 }
 
+.flip-card-info:hover{
+	opacity: 0;
+}
+
 .flip-card-info:hover + .flip-card-inner {
 	transform: rotateY(180deg);
 }
@@ -34,6 +38,10 @@
 	cursor: pointer;
 }
 
+.flip-card .inner-card-p{
+	font-size: 17px;
+	line-height: 1.3;
+}
 
 
 .flip-card-front,
@@ -57,4 +65,8 @@
 	color: white;
     transform: rotateY(180deg);
     border: 1em solid $lightgreen;
+}
+
+.flip-card-h1{
+	font-size: 35px;
 }

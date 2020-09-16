@@ -50,7 +50,7 @@ function getGroup(filter, callback) {
             client.close();
         }
     })
-}
+} 
 function addHamster(reqBody, callback){
 	console.log('database addHamster')
     const document = reqBody;
@@ -76,10 +76,38 @@ function addHamster(reqBody, callback){
         }
     )
 }
+function editHamster(obj, callback){
+    MongoClient.connect(url, {useUnifiedTopology:true},
+        async (error, client) => {
+            if (error){
+                callback("'Error! Couldnt connect'");
+                return;
+            }
+            const col = client.db(dbName).collection(dbCollection);
+            try {
+                const result = await col.updateOne({_id: obj._id }, { $set: obj });
+                callback({
+                    result: result.result,
+                    ops: result.ops
+                })
+            } catch(error){
+                console.error('Failed to update hamster: ' + error.message);
+                callback('error');
+            } finally{
+                client.close();
+            }
+        }
+    )
+}
+
+/* function postWinnerHamster(){
+
+} */
 
 function getAllHamsters(callback) {
     get({}, callback)
 }
+
 function getGroupOfHamsters(sort,callback){
 	let filter;
 	switch (sort) {
@@ -90,10 +118,22 @@ function getGroupOfHamsters(sort,callback){
 			filter = [ {$sort: {defeats : -1} },{ $limit: 5 } ];
 			break;
 		case 'mostGames':
-			filter = [ {$sort: {games : -1} } ];	
+			filter = [ {$sort: {games : -1} },{ $limit: 5 } ];	
 			break;
 		case 'leastGames':
 			filter = [ {$sort: {games : 1} },{ $limit: 5 } ];	
+			break;
+		case 'totalGamesEachHamster':
+			filter = [ { $project: { totalGamesEachHamster: { $sum: [ "$wins", "$defeats" ]}}}];
+			break;
+		case 'sumAllWins':
+			filter = [ {$group: {_id: null, sumAllWins: {$sum: "$wins"} }} ];
+			break;
+		case 'sumAllDefeats':
+			filter = [ {$group: {_id: null, sumAllDefeats: {$sum: "$defeats"} }} ];
+			break;
+		case 'sumAllGames':
+			filter = [ {"$group" : { _id : null, sumAllGames : { "$sum" : {"$sum" : ["$wins", "$defeats"]}}}}];
 			break;
 		case 'latestBattles':
 			break;
@@ -109,5 +149,6 @@ function getGroupOfHamsters(sort,callback){
 module.exports = {
     getAllHamsters,
 	getGroupOfHamsters,
-	addHamster
+	addHamster,
+	editHamster
 }
