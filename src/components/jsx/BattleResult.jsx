@@ -71,7 +71,7 @@ const BattleResult = () => {
 	return (
 		<div id="battleResult">
 			<div className="container">
-				{showCutestH1 ? <h1>Click on the cutest</h1> : null}
+				{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 				<div className="match-container">
 					<BattleCard setWinner={setWinner} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
 					<img className="VS" src={require('../../assets/vs.png')}></img>
