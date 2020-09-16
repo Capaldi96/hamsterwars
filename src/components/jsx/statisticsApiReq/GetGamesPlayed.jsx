@@ -16,12 +16,16 @@ const [gamesPlayed, setGamesPlayed] = useState([]);
 		})
 	},[])
 
+
+
 		return (
 		<div>
 			<div className="potatoeContainer">
 			<img className="ellipse" src={require('../../../assets/ellipseGamesPlayed.svg')} alt=""/>
 			<div className="potatoeText">
+
 			{gamesPlayed.map(games => (<h1 key={games.sumAllGames}>{games.sumAllGames}</h1>))}
+
 			</div>
 			</div>
 
