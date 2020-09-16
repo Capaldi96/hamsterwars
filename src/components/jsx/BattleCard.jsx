@@ -8,7 +8,8 @@ const BattleCard = props => {
 
 
 	const wrapperFunction = () => {
-		
+		props.hamster.wins++;
+		props.hamster.games++;
 		props.setWinner(props.hamster)
 		props.setShowCutestH1(false);
 	}

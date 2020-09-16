@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster } = require('./database.js');
 
 
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload())
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
@@ -45,7 +47,7 @@ app.post('/api/addhamster', (req, res) => {
 })
 
 app.put('/api/updateHamster/:id', (req, res)=>{
-	updateCompetitor(req.body, req.params.id, () => {
+	editHamster(req.body, () => {
 		res.send(req.body);
 	})
 })

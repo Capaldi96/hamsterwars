@@ -76,6 +76,29 @@ function addHamster(reqBody, callback){
         }
     )
 }
+function editHamster(obj, callback){
+    MongoClient.connect(url, {useUnifiedTopology:true},
+        async (error, client) => {
+            if (error){
+                callback("'Error! Couldnt connect'");
+                return;
+            }
+            const col = client.db(dbName).collection(dbCollection);
+            try {
+                const result = await col.updateOne({_id: obj._id }, { $set: obj });
+                callback({
+                    result: result.result,
+                    ops: result.ops
+                })
+            } catch(error){
+                console.error('Failed to update hamster: ' + error.message);
+                callback('error');
+            } finally{
+                client.close();
+            }
+        }
+    )
+}
 
 function getAllHamsters(callback) {
     get({}, callback)
@@ -109,5 +132,6 @@ function getGroupOfHamsters(sort,callback){
 module.exports = {
     getAllHamsters,
 	getGroupOfHamsters,
-	addHamster
+	addHamster,
+	editHamster
 }
