@@ -11,7 +11,9 @@ const Form=()=>{
 	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
 	const [image, setImage]=useState('')
-	const [fileName, setFileName] = useState('Choose file')
+	const [file, setFile] = useState(''); // FILE
+	const [fileName, setFileName] = useState('Choose file');
+
 
 	const { register, handleSubmit, errors } = useForm();
 	const onSubmit = data => console.log(data);
@@ -29,13 +31,16 @@ const Form=()=>{
 	}
 
 	async function addHamster(){
+		const formData = new FormData();
+		formData.append('file', file);
 
 		console.log('newHamster: ', newHamster)
 		try {
-			const response= await fetch('/api/addhamster', {
+			const response= await fetch('/api/addhamster', formData, {
 				headers:{
 					'Accept':'application/json',
-					'Content-Type':'application/json'
+					'Content-Type':'application/json',
+					'Content-Type': 'multipart/form-data'
 				},
 				method:'POST',
 				body:JSON.stringify(newHamster)
@@ -52,9 +57,17 @@ const Form=()=>{
 
 		} catch(error){
 			console.log('something went wrong when adding hamster')
-		}
+		}	
+
+
+	}
+
+	const onChange = e => {
+		setFile(e.target.files[0])
+		setFileName(e.target.files[0].name)
+		console.log('file', file)
+		console.log('fileName', fileName)
 		
-	
 	}
 
 	return (
@@ -149,7 +162,7 @@ const Form=()=>{
 						value={image}
 						placeholder='image placeholder'
 						ref={register({ required: true })}
-						onChange={event=>setImage(event.target.value)}/>
+						onChange={onChange}/>
 						<label htmlFor="image" className='form-label'>{ fileName }</label>
 						<div className="error-message">
 							{errors.image && errors.image.type==='required' && <span>Please upload hamster image</span>}
