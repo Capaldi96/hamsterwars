@@ -1,8 +1,12 @@
 @import 'mixins.scss';
 
-button{
+.link-toBattle{
 	@include button
 }
+.link-toBattle{
+	text-decoration: none;
+}
+
 .home-main{
 	position: relative;
 	text-align: center;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../scss/BattleResult.scss';
 import BattleCard from './BattleCard'
 import axios from 'axios';
-//import {useStateWithCallbackLazy} from 'use-state-with-callback'
 
 const BattleResult = () => {
 	const [winnerId, setWinnerId] = useState(null);
@@ -109,7 +108,7 @@ const BattleResult = () => {
 					<p className="winnerData-p">Winner is: 		<strong>{hamster1.name}</strong></p>
 					<p className="winnerData-p">Current rank:  	<strong>{hamster1.rank}</strong></p>
 					<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
-					<button className="nextBattleBtn">Next Battle</button>
+					<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
 				</div>
 			</div>
 	} else if (winnerId === hamster2._id) {
@@ -119,16 +118,20 @@ const BattleResult = () => {
 					<p className="winnerData-p">Winner is: 		<strong>{hamster2.name}</strong></p>
 					<p className="winnerData-p">Current rank:  	<strong>{hamster2.rank}</strong></p>
 					<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
-					<button className="nextBattleBtn">Next Battle</button>
+					<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
 				</div>
 			</div>
 
 	}
 
+	function nextBattleBtn(){
+		window.location.reload(false);
+	}
+
 	return (
 		<div id="battleResult">
 			<div className="container">
-				{showCutestH1 ? <h1>Click on the cutest</h1> : null}
+				{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 				<div className="match-container">
 					<BattleCard setShowCutestH1={setShowCutestH1} hamster={hamster1} setWinnerId={setWinnerId} setWinnerAndLooser={setWinnerAndLooser} />
 					<img className="VS" src={require('../../assets/vs.png')}></img>
