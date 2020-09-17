@@ -49,18 +49,15 @@ app.get('/api/topLoosers', (req, res) => {
 app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
 
-	// const file=req.files.imageName
-	// console.log("server.js, file: ", file)
-
-	
-
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError);
 	})
 })
 
 app.post('/api/addhamsterImage', (req, res)=>{
-	console.log('server.js POST / addhamsterImage: ', req.body)
+	console.log('server.js POST / addhamsterImage files: ', req.files)
+	console.log('server.js POST / addhamsterImage req: ',req)
+	if(!req.files) return 
 	const file= req.files.fileName;
 	console.log('server.js, file: ', file)
 	file.mv(`${__dirname}/src/assets/${file.name}`)

@@ -18,7 +18,7 @@ const Form=()=>{
 
  	const onChangeSaveFile=(e)=>{
 		setImage(e.target.value)
-		setFileName(e.target.files)
+		setFileName(e.target.files[0])
 		console.log('image: ', image)
 		console.log('filename: ', fileName)
 	}
@@ -38,10 +38,12 @@ const Form=()=>{
 
 	async function addHamsterImage(){
 
-		console.log('form.jsx, func addHamsterImage: ', fileName[0])
+		console.log('form.jsx, func addHamsterImage: ', fileName)
+		const formData=new FormData();
+    	formData.append('file', fileName)
 
 		try {
-			const responseImage=await Axios.post('/api/addhamsterImage', fileName[0],{
+			const responseImage=await Axios.post('/api/addhamsterImage', formData,{
 			headers:{
 				'Content-Type':'multipart/form-data'	
 			}
@@ -72,7 +74,7 @@ const Form=()=>{
 	
 	
 			const text = await response.text(); // Parse it as text
-			console.log('form.jsx, func addHamster, text: ', text)
+			// console.log('form.jsx, func addHamster, text: ', text)
 			const data = JSON.parse(text); // Try to parse it as json
 			console.log('response: ', data)
 
