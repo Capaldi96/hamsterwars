@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import '../scss/Statistics.scss';
-import FadeEffectGamesPlayed from './FadeEffect/FadeEffectGamesPlayed'
-import FadeEffectTop5Winners from './FadeEffect/FadeEffectTop5Winners'
-import FadeEffectTop5Loosers from './FadeEffect/FadeEffectTop5Loosers'
-import FadeEffectLeastParticipated from './FadeEffect/FadeEffectLeastParticipated'
-import FadeEffectLatestBattles from './FadeEffect/FadeEffectLatestBattles' 
+import FadeEffectGamesPlayed from './fadeEffect/FadeEffectGamesPlayed'
+import FadeEffectTop5Winners from './fadeEffect/FadeEffectTop5Winners'
+import FadeEffectTop5Loosers from './fadeEffect/FadeEffectTop5Loosers'
+import FadeEffectLeastParticipated from './fadeEffect/FadeEffectLeastParticipated'
+import FadeEffectLatestBattles from './fadeEffect/FadeEffectLatestBattles' 
 
 import GetGamesPlayed from './statisticsApiReq/GetGamesPlayed'
 import GetTopLoosers from './statisticsApiReq/GetTopLoosers'
