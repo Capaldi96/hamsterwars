@@ -1,5 +1,4 @@
-import React, { useState,useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import '../scss/BattleCard.scss';
 
@@ -8,9 +7,8 @@ const BattleCard = props => {
 
 
 	const wrapperFunction = () => {
-		props.hamster.wins++;
-		props.hamster.games++;
-		props.setWinner(props.hamster)
+		props.setWinnerId(props.hamster._id)
+		//props.setWinnerAndLooser(props.hamster._id)
 		props.setShowCutestH1(false);
 	}
 

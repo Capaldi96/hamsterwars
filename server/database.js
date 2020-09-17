@@ -76,7 +76,7 @@ function addHamster(reqBody, callback){
         }
     )
 }
-function editHamster(obj, callback){
+function editHamster(obj,id, callback){
     MongoClient.connect(url, {useUnifiedTopology:true},
         async (error, client) => {
             if (error){
@@ -85,7 +85,7 @@ function editHamster(obj, callback){
             }
             const col = client.db(dbName).collection(dbCollection);
             try {
-                const result = await col.updateOne({_id: obj._id }, { $set: obj });
+                const result = await col.updateOne({_id: new ObjectID(id) }, { $set: obj });
                 callback({
                     result: result.result,
                     ops: result.ops
