@@ -33,8 +33,9 @@
 			width:14em;
 	
 			.form-group{
-				margin-bottom:.3em;
+				margin-bottom:.5em;
 				transition:all .3s;//*transition för att allt ska växa, det kan nog tas bort sen
+				position: relative;
 				
 	
 				.form-label{
@@ -83,7 +84,18 @@
 					transform:translateY(-3.2em) scale(.9);
 					
 				}
-			
+				.error-message{
+					height: 0.3em;
+					position: absolute;
+					top: 2.3em;
+					span{
+						color: white;
+						font-size: 0.9em;
+						margin-left: 0.3em;
+						background-color: $orange;
+						padding: 0.1em;
+					}
+				}
 			}
 		}
 	button{

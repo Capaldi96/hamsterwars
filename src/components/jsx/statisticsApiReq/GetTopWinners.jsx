@@ -24,7 +24,8 @@ const GetTopWinners = () => {
 			<img className="ellipse" src={require('../../../assets/ellipseTop5Winners.svg')} alt=""/>
 
 			<div className="potatoeText">
-			{top5Winners.map(winners => (<h1 key={winners.name}>{winners.name}</h1>))}
+			<h1 className="statPotatoeHeader">Top 5 winners</h1>
+			{top5Winners.map(winners => (<p key={winners.name}>{winners.name}</p>))}
 		
 			</div>
 			</div>

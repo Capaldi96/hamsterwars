@@ -1,8 +1,13 @@
 @import 'mixins.scss';
+@import 'variables.scss';
 
 // .potatoeContainer{
 // position: relative;
 // }
+
+.statPotatoeHeader{
+	
+}
 
 .potatoeText{
  	background-color: transparent;
@@ -166,16 +171,10 @@
   }
 
   @media (max-width: 700px) {
-
 	.circlesInRowContainer{
 	justify-items: center;
-	grid-template-rows: 20vh 1fr 20vh;
+	grid-template-rows: 10vh 1fr 30vh;
 }
-
-.ellipse1{
-
-}
-
 
 .circlesInRow{	
 	display: grid; 
@@ -194,8 +193,18 @@
 	grid-row: 1/2;	
 }
 
+.miniIconText1{
+	grid-column: 2/3;
+	grid-row: 1/2;	
+}
+
 .statCircle2{
 	grid-column: 1/2;
+	grid-row: 2/3;	
+}
+
+.miniIconText2{
+	grid-column: 2/3;
 	grid-row: 2/3;	
 }
 
@@ -204,13 +213,28 @@
 	grid-row: 3/4;	
 }
 
+.miniIconText3{
+	grid-column: 2/3;
+	grid-row: 3/4;	
+}
+
 .statCircle4{
 	grid-column: 1/2;
 	grid-row: 4/5;	
 }
 
+.miniIconText4{
+	grid-column: 2/3;
+	grid-row: 4/5;	
+}
+
 .statCircle5{
 	grid-column: 1/2;
+	grid-row: 5/5;	
+}
+
+.miniIconText5{
+	grid-column: 2/3;
 	grid-row: 5/5;	
 }
 
@@ -223,7 +247,7 @@
 	  }
 	  .miniIconText{
 		  display:inline;
-		  color: #EFA377;
+		  color: $orange;
 		  justify-self: start;
 	  }
 	  
