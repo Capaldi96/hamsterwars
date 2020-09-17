@@ -24,7 +24,7 @@ const BattleResult = () => {
 
 	}
 	function updateWinner(hamster) {
-		console.log('updatewinner' + (hamster))
+		hamster.latestBattle = new Date().toISOString().slice(0,19).replace('T','-');
 		axios.put('/api/updateHamster/' + hamster._id, {
 			name: hamster.name,
 			age: hamster.age,
@@ -33,11 +33,13 @@ const BattleResult = () => {
 			imgName: hamster.imgName,
 			defeats: hamster.defeats,
 			wins: hamster.wins,
+			latestBattle: hamster.latestBattle,
 			games: hamster.games,
 			latestGame: hamster.latestGame
 		})
 	}
 	function updateLooser(hamster) {
+		hamster.latestBattle = new Date().toISOString().slice(0,19).replace('T','-');
 		axios.put('/api/updateHamster/' + hamster._id, {
 			name: hamster.name,
 			age: hamster.age,
@@ -45,6 +47,7 @@ const BattleResult = () => {
 			loves: hamster.loves,
 			imgName: hamster.imgName,
 			defeats: hamster.defeats,
+			latestBattle: hamster.latestBattle,
 			wins: hamster.wins,
 			games: hamster.games,
 			latestGame: hamster.latestGame
@@ -77,10 +80,7 @@ const BattleResult = () => {
 				defeats: hamster1.defeats++
 			}))
 		}
-
-
 		setShowResult(true)
-
 	}
 
 	useEffect(() => {
