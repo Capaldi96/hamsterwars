@@ -29,11 +29,13 @@ app.get('/api/getAllHamsters', (req, res)=>{
 		res.send(dataOrError);
 	})
 })
+
 app.get('/api/Battle', (req, res)=>{
 	getGroupOfHamsters('battle',dataOrError => {
 		res.send(dataOrError);
 	})
 })
+
 app.get('/api/topWinners', (req, res)=>{
 	getGroupOfHamsters('topWinners',dataOrError => {
 		res.send(dataOrError);
@@ -95,11 +97,9 @@ app.get('/api/LeastGames', (req, res) => {
 	})
 })
 
-
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);
