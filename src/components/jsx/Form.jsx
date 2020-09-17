@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React ,{useState} from 'react'
 import { useForm } from "react-hook-form";
 import '../scss/Form.scss'
@@ -14,6 +15,13 @@ const Form=()=>{
 	const [fileName, setFileName] = useState('Choose file')
 
 	const { register, handleSubmit, errors } = useForm();
+
+ 	const onChangeSaveFile=(e)=>{
+		setImage(e.target.value)
+		setFileName(e.target.files)
+		console.log('image: ', image)
+		console.log('filename: ', fileName)
+	}
 	const onSubmit = data => console.log(data);
 
 	let newHamster = {
@@ -28,9 +36,30 @@ const Form=()=>{
 		latestGame: ''
 	}
 
+	async function addHamsterImage(){
+
+		console.log('form.jsx, func addHamsterImage: ', fileName[0])
+
+		try {
+			const responseImage=await Axios.post('/api/addhamsterImage', fileName[0],{
+			headers:{
+				'Content-Type':'multipart/form-data'	
+			}
+		
+		})
+			
+		}//slut try
+			catch ( error ){
+			console.log('Something went wrong when adding a new image')
+		}//slut catch
+			
+	} //slut func
+	
+
 	async function addHamster(){
 
-		console.log('newHamster: ', newHamster)
+		console.log('form.jsx func addHamster, newHamster: ', newHamster)
+	
 		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{
@@ -43,18 +72,25 @@ const Form=()=>{
 	
 	
 			const text = await response.text(); // Parse it as text
-			console.log('text: ', text)
+			console.log('form.jsx, func addHamster, text: ', text)
 			const data = JSON.parse(text); // Try to parse it as json
 			console.log('response: ', data)
 
 			//TODO Lägg upp meddelande om success when adding hamster
 
 
-		} catch(error){
+		} catch (error) {
 			console.log('something went wrong when adding hamster')
 		}
+
 		
-	
+	}
+
+	const addNewHamster = () => {
+		console.log('addNewHamsterClick funkar')
+		addHamster();
+		addHamsterImage();
+
 	}
 
 	return (
@@ -149,15 +185,15 @@ const Form=()=>{
 						value={image}
 						placeholder='image placeholder'
 						ref={register({ required: true })}
-						onChange={event=>setImage(event.target.value)}/>
-						<label htmlFor="image" className='form-label'>{ fileName }</label>
+						onChange={onChangeSaveFile}/>
+						<label htmlFor="image" className='form-label'></label>
 						<div className="error-message">
 							{errors.image && errors.image.type==='required' && <span>Please upload hamster image</span>}
 						</div>
 					</div>
 					<input type="submit" /> 
 				</form>
-				<button onClick={addHamster}>Add hamster</button>
+				<button onClick={addNewHamster}>Add hamster</button>
 			</div>
 		</div>
 )
