@@ -38,6 +38,7 @@
 	width: 38vw;
 }
 #battleResult .container .nextBattleBtn {
+	@include button;
 	position: relative;
 	z-index: 3;
 }
