@@ -97,7 +97,7 @@ const BattleResult = () => {
 				updateLooser(hamster1)
 			}
 		}
-	}, [hamster1])
+	}, [hamster1, hamster2])
 
 
 	let winnerData;
