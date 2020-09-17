@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const BattleResult = () => {
 	const [winnerId, setWinnerId] = useState(null);
-	const [showResult, setShowResult] = useState(null);
+	const [showResult, setShowResult] = useState(false);
 	const [hamster1, setHamster1] = useState({});
 	const [hamster2, setHamster2] = useState({})
 	const [showCutestH1, setShowCutestH1] = useState(true);
@@ -137,15 +137,14 @@ const BattleResult = () => {
 			<div className="container">
 				{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 				<div className="match-container">
-					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinner={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
+					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
 					<img className="VS" src={require('../../assets/vs.png')}></img>
-					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinner={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
+					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 				</div>
-				{showResult ? winnerData : null}
+				{showResult ? null : winnerData} 
 			</div>
 		</div>
 	);
-
 }
 
 export default BattleResult;
