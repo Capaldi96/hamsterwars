@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
@@ -14,8 +14,8 @@ const BattleCard = props => {
 	
 
 	return (
-		<div className="flip-card" >
-			<img className="flip-card-info" src={require('../../assets/info.svg')} /> 
+		 <div className="flip-card" >
+			<img className="flip-card-info" alt="info" src={require('../../assets/info.svg')} /> 
 			<div className="flip-card-inner">
 				<div className="flip-card-front">
 					{ props.disableImg ? <img
