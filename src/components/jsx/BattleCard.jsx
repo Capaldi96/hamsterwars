@@ -11,8 +11,6 @@ const BattleCard = props => {
 		console.log('hamster clicked')
 	}
 
-	
-
 	return (
 		<div className="flip-card" >
 			<img className="flip-card-info" src={require('../../assets/info.svg')} /> 
