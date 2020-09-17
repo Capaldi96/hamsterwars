@@ -54,7 +54,7 @@ app.post('/api/addhamster', (req, res) => {
 })
 
 app.put('/api/updateHamster/:id', (req, res)=>{
-	editHamster(req.body, () => {
+	editHamster(req.body, req.params.id, () => {
 		res.send(req.body);
 	})
 })
