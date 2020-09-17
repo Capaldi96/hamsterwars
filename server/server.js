@@ -46,26 +46,21 @@ app.get('/api/topLoosers', (req, res) => {
 	})
 })
 
-/* app.post('/api/addhamster', (req, res) => {
+app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
 
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError);
 	})
-}) */
-
-app.post('/api/addhamster', (req, res) => {
-  
-	const file = req.files.file;
-  
-	file.mv(`${__dirname}/client/public/uploads/${file.name}`, () => {
-	  res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
-	})
-
-	addHamster(req.body, dataOrError => {
-		res.send(dataOrError);
-	})
 });
+
+app.post('/api/addhamsterImage', (req, res)=>{
+
+	if(!req.files) return 
+	const file= req.files.file;
+	console.log('server.js, file: ', file)
+	file.mv(`${__dirname}/../src/assets/${file.name}`)
+})
 
 app.put('/api/updateHamster/:id', (req, res)=>{
 	editHamster(req.body, () => {
