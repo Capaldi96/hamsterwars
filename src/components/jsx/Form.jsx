@@ -11,17 +11,18 @@ const Form=()=>{
 	const [age, setAge]=useState('')
 	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
-	const [image, setImage]=useState('')
-	const [fileName, setFileName] = useState('Choose file');
+	const [imageName, setImageName]=useState('')
+	const [imageFile, setimageFile] = useState('');
 
 
 	const { register, handleSubmit, errors } = useForm();
 
  	const onChangeSaveFile=(e)=>{
-		setImage(e.target.value)
-		setFileName(e.target.files[0])
-		console.log('image: ', image)
-		console.log('filename: ', fileName)
+		setImageName(e.target.value)
+		setimageFile(e.target.files[0])
+		console.log('imageName: ', imageName)
+		console.log('imageFile: ', imageFile)
+		console.log('imageFile.name: ', imageFile.name)
 	}
 	const onSubmit = data => console.log(data);
 
@@ -30,26 +31,29 @@ const Form=()=>{
 		age:age,
 		favFood:favFood,
 		loves:loves,
-		imgName:image,
+		imgName:imageFile.name,
 		wins:0,
 		defeats:0,
 		games:0,
 		latestGame: ''
 	}
 
+	//TODO lägg ej upp hamster om hamsterimage inte lyckas, och tvärtom.
+
 	async function addHamsterImage(){
 
-		console.log('form.jsx, func addHamsterImage: ', fileName)
+		console.log('form.jsx, func addHamsterImage imagefile: ', imageFile)
+		console.log('form.jsx, func addHamsterImage imagefile.name: ', imageFile.name)
 		const formData=new FormData();
-    	formData.append('file', fileName)
+    	formData.append('file', imageFile)
 
 		try {
 			const responseImage=await Axios.post('/api/addhamsterImage', formData,{
 			headers:{
 				'Content-Type':'multipart/form-data'	
 			}
-		})
-		console.log('responseImage', responseImage)
+			})
+			console.log('responseAddImage', responseImage)
 			
 		}//slut try
 			catch ( error ){
@@ -62,8 +66,8 @@ const Form=()=>{
 	async function addHamster(){
 		console.log('form.jsx func addHamster, newHamster: ', newHamster)
 		/* const formData=new FormData();
-    	formData.append('file', fileName)
-		console.log('form.jsx addHamster formdata (filename): ', formData) */
+    	formData.append('file', imageFile)
+		console.log('form.jsx addHamster formdata (imageFile): ', formData) */
 	
 		try {
 			const response= await fetch('/api/addhamster', {
@@ -78,7 +82,7 @@ const Form=()=>{
 	
 			const text = await response.text();
 			const data = JSON.parse(text); 
-			console.log('response: ', data)
+			console.log('response addhamster: ', data)
 
 			//TODO Lägg upp meddelande om success when adding hamster
 
@@ -86,12 +90,11 @@ const Form=()=>{
 		} catch (error) {
 			console.log(' addhamster: something went wrong when adding hamster')
 		}
-
-		
+	
 	}
 
 	const addNewHamster = () => {
-		console.log('addNewHamsterClick funkar')
+		
 		addHamster();
 		addHamsterImage();
 
@@ -184,7 +187,7 @@ const Form=()=>{
 						className='form-control'
 						id='image'
 						name='image' 
-						value={image}
+						value={imageName}
 						placeholder='image placeholder'
 						ref={register({ required: true })}
 						onChange={onChangeSaveFile}/>
