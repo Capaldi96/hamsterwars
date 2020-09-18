@@ -12,14 +12,15 @@ const Form=()=>{
 	const [loves, setLoves]=useState('')
 	// const [image, setImage]=useState('')
 	const [imageFile, setimageFile] = useState('');
+	const [imageLabelText, setImageLabelText]=useState('Image')
 
 	const { register, handleSubmit, errors } = useForm();
 
  	const onChangeSaveFile=(e)=>{
-		// setImage(e.target.value)
+	
 		setimageFile(e.target.files[0])
-		// console.log('image: ', image)
-		// console.log('imageFile: ', imageFile)
+		setImageLabelText('New image ready to upload')
+	
 	}
 	const onSubmit = data => console.log(data);
 
@@ -172,15 +173,17 @@ const Form=()=>{
 
 					{/* Image */}
 					<div className='form-group'>
+						
+						<label htmlFor="imageFile" className='imageFile-label'>{imageLabelText}
 						<input type='file'
-						className='form-control'
+						// className='form-control'
 						id='imageFile'
-						name='imageFile' 
+						name='imageFile'
 						// value={imageFile}
 						placeholder='imageFile placeholder'
 						ref={register({ required: true })}
 						onChange={onChangeSaveFile}/>
-						<label htmlFor="imageFile" className='form-label'></label>
+						</label>
 						<div className="error-message">
 							{errors.imageFile && errors.imageFile.type==='required' && <span>Please upload hamster image</span>}
 						</div>
