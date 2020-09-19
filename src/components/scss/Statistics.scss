@@ -70,12 +70,15 @@
 	background-color: #D8DBBA;
 	border: 2px solid #D8DBBA;
 	border-radius: 50%;
+	border: 2px solid $lightgreen;
 	display: flex;
 	justify-content: center;
+	transition: all 0.7s ease 0s;
 }
 
 .circleSpecifics:hover{
-	border: 2px solid #F3C8AE;
+	border: 2px solid $orange;
+	background-color: #BEC0A3;
 	transition: all 0.7s ease 0s;
 }
 
