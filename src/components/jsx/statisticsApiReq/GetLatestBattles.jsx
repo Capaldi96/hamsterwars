@@ -3,6 +3,18 @@ import axios from 'axios';
 import '../../scss/Statistics.scss'
 
 const GetLatestBattles = () => {
+	const [latestBattles, setLatestBattles] = useState([]);
+
+		useEffect(() => {
+		axios.get('/api/LatestGames')
+		.then(res => {
+			console.log(res)
+			setLatestBattles(res.data)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	},[])
 	return (
 		<div>
 	
@@ -12,7 +24,7 @@ const GetLatestBattles = () => {
 
 			<div className="potatoeText">
 			<h1 className="statPotatoeHeader">Latest battles</h1>
-			
+			{latestBattles.map(latestGames => (<p key={latestGames.name}>{latestGames.name}{latestGames.latestGame}</p>))}
 			</div>
 			</div>
 			
