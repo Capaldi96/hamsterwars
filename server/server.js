@@ -106,6 +106,12 @@ app.get('/api/LeastGames', (req, res) => {
 	})
 })
 
+app.get('/api/LatestGames', (req, res) => {
+	getGroupOfHamsters('latestGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
