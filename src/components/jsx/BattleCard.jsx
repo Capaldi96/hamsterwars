@@ -3,18 +3,24 @@ import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
 
+	const [crownForWinner, setCrownForWinner] = useState(false);
+	
 	const wrapperFunction = () => {
 		props.setWinnerId(props.hamster._id)
 		//props.setWinnerAndLooser(props.hamster._id)
 		props.setShowCutestH1(false);
 		props.setDisableImg(true);
 		console.log('hamster clicked')
+		setCrownForWinner(true);
 	}
 
 	return (
+		
 		 <div className="flip-card" >
-			<img className="flip-card-info" alt="info" src={require('../../assets/info.svg')} /> 
+			<img className="flip-card-info" alt="info" src={require('../../assets/information_kopia.png')} />
+			
 			<div className="flip-card-inner">
+			<div className="flip-card-crown">{crownForWinner ? <img src={require('../../assets/crown.png')} /> : null}</div>
 				<div className="flip-card-front">
 					{ props.disableImg ? <img
 						className="competitior-img"

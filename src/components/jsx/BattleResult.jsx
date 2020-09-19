@@ -13,6 +13,7 @@ const BattleResult = () => {
 
 
 
+
 	useEffect(() => {
 		getMatch()
 	}, []);
@@ -21,7 +22,6 @@ const BattleResult = () => {
 		let data = response.data;
 		setHamster1(data[0]);
 		setHamster2(data[1]);
-
 	}
 	function updateWinner(hamster) {
 		hamster.latestGame = new Date().toISOString().slice(0,19).replace('T','-');
@@ -115,6 +115,7 @@ const BattleResult = () => {
 					<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
 				</div>
 			</div>
+			
 	} else if (winnerId === hamster2._id) {
 		winnerData =
 			<div className="resultPotato">
@@ -125,7 +126,6 @@ const BattleResult = () => {
 					<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
 				</div>
 			</div>
-
 	}
 
 	function nextBattleBtn(){
