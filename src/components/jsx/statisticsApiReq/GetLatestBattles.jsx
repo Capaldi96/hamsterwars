@@ -22,9 +22,15 @@ const GetLatestBattles = () => {
 
 			<img className="ellipse" src={require('../../../assets/ellipseLatestBattles.svg')} alt=""/>
 
-			<div className="potatoeText">
+			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Latest battles</h1>
-			{latestBattles.map(latest => (<p key={latest.name}>{latest.name}{latest.latestGame}</p>))}
+
+			<div className="gridgrid">
+
+			{latestBattles.map(latest => (<p className="statEllipseListLatest" key={latest.latestGame}>{latest.name}
+			<span className="statEllipseListLatestSmall"> ({latest.latestGame}) </span></p>))}
+			</div>
+
 			</div>
 			</div>
 			

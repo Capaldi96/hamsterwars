@@ -29,7 +29,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Games played */}
 {/* Games played - fade potatoe */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
-<div className="ellipsbackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
+<div className="ellipsebackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
 <GetGamesPlayed /></div>
 </FadeEffectGamesPlayed> 
 {/* Games played - green circles */}
@@ -42,7 +42,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 winners */}
 {/* Top 5 winners - fade potatoe */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
-<div className="ellipsbackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
+<div className="ellipsebackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
 <GetTopWinners /></div>
 </FadeEffectTop5Winners> 
 {/* Top 5 winners - green circles */}
@@ -55,7 +55,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 loosers */}
 {/* Top 5 loosers - fade potatoe */}
 <FadeEffectTop5Loosers showTop5Loosers={showTop5Loosers}>
-<div className="ellipsbackground" onClick={() => setShowTop5Loosers(showTop5Loosers => !showTop5Loosers)}>
+<div className="ellipsebackground" onClick={() => setShowTop5Loosers(showTop5Loosers => !showTop5Loosers)}>
 <GetTopLoosers /></div>
 </FadeEffectTop5Loosers> 
 {/* Top 5 loosers - green circles */}
@@ -68,7 +68,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Least participated */}
 {/* Least participated - fade potatoe */}
 <FadeEffectLeastParticipated showLeastParticipated={showLeastParticipated}>
-<div className="ellipsbackground" onClick={() => setShowLeastParticipated(showLeastParticipated => !showLeastParticipated)}>
+<div className="ellipsebackground" onClick={() => setShowLeastParticipated(showLeastParticipated => !showLeastParticipated)}>
 <GetLeastParticipated /></div>
 </FadeEffectLeastParticipated> 
 {/* Least participated - green circles */}
@@ -81,7 +81,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Latest battles */}
 {/* Latest battles - fade potatoe */}
 <FadeEffectLatestBattles showLatestBattles={showLatestBattles}>
-<div className="ellipsbackground" onClick={() => setShowLatestBattles(showLatestBattles => !showLatestBattles)}>
+<div className="ellipsebackground" onClick={() => setShowLatestBattles(showLatestBattles => !showLatestBattles)}>
 <GetLatestBattles /></div>
 </FadeEffectLatestBattles> 
 {/* Latest battles - green circles */}
