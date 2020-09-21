@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../scss/Home.scss';
 
-const home = () => {
+const Home = () => {
 
 	return (
 	  <div>
