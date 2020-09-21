@@ -6,25 +6,24 @@ const BattleCard = props => {
 
 	const wrapperFunction = () => {
 		props.setWinnerId(props.hamster._id)
-		//props.setWinnerAndLooser(props.hamster._id)
 		props.setShowCutestH1(false);
 		setDisableImg(true);
 	}
 
 	return (
 		<div className="flip-card" >
-			<img className="flip-card-info" src={require('../../assets/info.svg')} /> 
+			<img className="flip-card-info" src={require('../../assets/information_kopia.png')} /> 
 			<div className="flip-card-inner">
 				<div className="flip-card-front">
 					{disableImg ? <img
 					
 						className="competitior-img"
-						src="https://i.pinimg.com/originals/04/d2/34/04d23484b0a7ab2c1840b4c6a7cf78c7.jpg"
+						src={"../../assets/" + props.hamster.imgName}
 						alt="Avatar"
 					/> : <img
 						onClick={wrapperFunction}
 						className="competitior-img"
-						src="https://i.pinimg.com/originals/04/d2/34/04d23484b0a7ab2c1840b4c6a7cf78c7.jpg"
+						src={props.hamster.imgName}
 						alt="Avatar"
 					/>}
 				</div>
