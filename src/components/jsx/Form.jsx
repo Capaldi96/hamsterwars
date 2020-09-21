@@ -12,7 +12,7 @@ const Form=()=>{
 	const [loves, setLoves]=useState('')
 	// const [image, setImage]=useState('')
 	const [imageFile, setimageFile] = useState('');
-	const [imageLabelText, setImageLabelText]=useState('Image')
+	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 
 	const { register, handleSubmit, errors } = useForm();
 
