@@ -22,9 +22,9 @@ const [leastParticipated, setLeastParticipated] = useState([]);
 
 			<img className="ellipse" src={require('../../../assets/ellipseLeastParticipated.svg')} alt=""/>
 
-			<div className="potatoeText">
+			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Least Participated</h1>
-			{leastParticipated.map(leastGames => (<p key={leastGames.name}>{leastGames.name}</p>))}
+			{leastParticipated.map(leastGames => (<p className="statEllipseList" key={leastGames.name}>{leastGames.name}</p>))}
 			</div>
 			</div>
 		</div>

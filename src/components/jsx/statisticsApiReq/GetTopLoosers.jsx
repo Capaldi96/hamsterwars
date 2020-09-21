@@ -22,9 +22,9 @@ const [top5Loosers, setTop5Loosers] = useState([]);
 
 			<img className="ellipse" src={require('../../../assets/ellipseTop5Loosers.svg')} alt=""/>
 
-			<div className="potatoeText">
+			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Top 5 loosers</h1>
-			{top5Loosers.map(loosers => (<p key={loosers.name}>{loosers.name}</p>))}
+			{top5Loosers.map(loosers => (<p className="statEllipseList" key={loosers.name}>{loosers.name}</p>))}
 			
 			</div>
 			</div>

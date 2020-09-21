@@ -140,6 +140,9 @@ function getGroupOfHamsters(sort,callback){
 			break;
 		case 'latestBattles':
 			break;
+		case 'latestGames':
+			filter = [ {$sort: {latestGame : -1} },{ $limit: 10 } ];
+			break;
 		case 'battle':
 			filter = [ {$sample: {size : 2} }];	
 			break;
