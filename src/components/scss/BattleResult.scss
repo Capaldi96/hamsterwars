@@ -1,6 +1,10 @@
 @import "mixins.scss";
 @import 'variables.scss';
 
+/* .confetti-wrap{
+	
+} */
+
 #battleResult{
 	position: relative;
 	margin-top: 10vh;
@@ -95,7 +99,7 @@
 	#battleResult .match-container{
         grid-template-columns: 4fr 1fr 4fr;
 		max-width:70vw;
-		margin-top: 6em;
+		margin-top: 7em;
 	}
 	
     #battleResult .flip-card h1 {
@@ -116,6 +120,7 @@
 	#battleResult .container .nextBattleBtn {
 		position: relative;
 		z-index: 3;
+		@include button;
 	}
 	
 	#battleResult .winnerData{

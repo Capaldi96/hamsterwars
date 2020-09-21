@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../scss/Home.scss';
 
 const home = () => {
@@ -17,4 +17,4 @@ const home = () => {
 	);
   }
   
-  export default home;
+  export default Home;
