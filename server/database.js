@@ -54,8 +54,6 @@ function getGroup(filter, callback) {
 function addHamster(reqBody, callback){
 	console.log('database addHamster')
 
-	
-
     const document = reqBody;
     MongoClient.connect(url, {useUnifiedTopology: true},
         async (error, client) => {
@@ -110,6 +108,29 @@ function editHamster(obj,id, callback){
 function getAllHamsters(callback) {
     get({}, callback)
 }
+function deleteHamster(id, callback){
+	MongoClient.connect(url, {useUnifiedTopology:true},
+        async (error, client) => {
+            if (error){
+                callback("'Error! Couldnt connect'");
+                return;
+            }
+            const col = client.db(dbName).collection(dbCollection);
+            try {
+                const result = await col.deleteOne({_id: new ObjectID(id)});
+                callback({
+                    result: result.result,
+                    ops: result.ops
+                })
+            } catch(error){
+                console.error('Couldnt delete hamster: ' + error.message);
+                callback('error');
+            } finally{
+                client.close();
+            }
+        }
+    )
+}
 
 function getGroupOfHamsters(sort,callback){
 	let filter;
@@ -153,5 +174,6 @@ module.exports = {
     getAllHamsters,
 	getGroupOfHamsters,
 	addHamster,
-	editHamster
+	editHamster,
+	deleteHamster
 }

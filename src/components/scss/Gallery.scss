@@ -1,0 +1,53 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.container-list{
+	margin: 5em 2em 3em;
+	padding: 1em;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5em 1em;
+}
+.container-list div{
+	background: $lightgreen;
+	padding: 1em;
+	border-radius: 15px;
+}
+.container-list div p{
+	margin-bottom: 0.3em;
+}
+.container-list span{
+	font-weight: bold;
+	display: block;
+	color: $orange;
+	font-size: 1.2em;
+	margin-bottom: 0.5em;
+}
+.container-list .list{
+	display: flex;
+	flex-direction: column;
+}
+.list button{
+	border: 2px solid $orange;
+	border-radius: 5px;
+	background: transparent;
+	color: $orange;
+	padding: 0.2em 0.3em;
+	margin: 0;
+	position: absolute;
+	align-self: flex-end
+}
+.list button:hover{
+	cursor: pointer;
+}
+
+@media screen and (max-width: 850px){
+	.container-list{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (max-width: 550px){
+	.container-list{
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
