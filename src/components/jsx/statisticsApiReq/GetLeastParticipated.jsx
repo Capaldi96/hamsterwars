@@ -24,7 +24,7 @@ const [leastParticipated, setLeastParticipated] = useState([]);
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Least participated</h1>
-			{leastParticipated.map(leastGames => (<p className="statEllipseList" key={leastGames.name}>{leastGames.name}</p>))}
+			{leastParticipated.map((leastGames, index) => (<p className="statEllipseList" key={leastGames.name+index}>{leastGames.name}</p>))}
 			</div>
 			</div>
 		</div>
