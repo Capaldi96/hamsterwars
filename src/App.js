@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { Counter } from './features/counter/Counter';
 import './App.scss';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
@@ -8,6 +8,7 @@ import Header from '../src/components/jsx/Header';
 import Footer from '../src/components/jsx/Footer';
 import BattleResult from '../src/components/jsx/BattleResult';
 import Statistic from '../src/components/jsx/Statistic';
+import Gallery from '../src/components/jsx/Gallery';
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
 				<Route path="/Form" component={Form} />
 				<Route path="/Battle" component={BattleResult} />
 				<Route path="/Statistic" component={Statistic} />
+				<Route path="/Gallery" component={Gallery} />
+
 				<Footer />
 			</div>
 		</Router>

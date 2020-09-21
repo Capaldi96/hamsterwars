@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
 
-const GetTopLoosers = ()=> {
+const GetTopLoosers = () => {
 const [top5Loosers, setTop5Loosers] = useState([]);
 
 		useEffect(() => {
@@ -22,8 +22,9 @@ const [top5Loosers, setTop5Loosers] = useState([]);
 
 			<img className="ellipse" src={require('../../../assets/ellipseTop5Loosers.svg')} alt=""/>
 
-			<div className="potatoeText">
-			{top5Loosers.map(loosers => (<h1 key={loosers.name}>{loosers.name}</h1>))}
+			<div className="ellipseTextContainer">
+			<h1 className="statPotatoeHeader">Top 5 loosers</h1>
+			{top5Loosers.map(loosers => (<p className="statEllipseList" key={loosers.name}>{loosers.name}</p>))}
 			
 			</div>
 			</div>

@@ -29,11 +29,13 @@ app.get('/api/getAllHamsters', (req, res)=>{
 		res.send(dataOrError);
 	})
 })
+
 app.get('/api/Battle', (req, res)=>{
 	getGroupOfHamsters('battle',dataOrError => {
 		res.send(dataOrError);
 	})
 })
+
 app.get('/api/topWinners', (req, res)=>{
 	getGroupOfHamsters('topWinners',dataOrError => {
 		res.send(dataOrError);
@@ -48,9 +50,18 @@ app.get('/api/topLoosers', (req, res) => {
 
 app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
+
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError);
 	})
+});
+
+app.post('/api/addhamsterImage', (req, res)=>{
+
+	if(!req.files) return 
+	const file= req.files.file;
+	console.log('server.js, file: ', file)
+	file.mv(`${__dirname}/../src/assets/${file.name}`)
 })
 
 app.put('/api/updateHamster/:id', (req, res)=>{
@@ -95,11 +106,15 @@ app.get('/api/LeastGames', (req, res) => {
 	})
 })
 
+app.get('/api/LatestGames', (req, res) => {
+	getGroupOfHamsters('latestGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
 
 app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);

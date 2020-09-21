@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React ,{useState} from 'react'
 import { useForm } from "react-hook-form";
 import '../scss/Form.scss'
@@ -5,15 +6,22 @@ import '../scss/Form.scss'
 
 const Form=()=>{
 
-	// const [name, setName]=useState('')
 	const [name, setName]=useState('')
 	const [age, setAge]=useState('')
 	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
-	const [image, setImage]=useState('')
-	const [fileName, setFileName] = useState('Choose file')
+	// const [image, setImage]=useState('')
+	const [imageFile, setimageFile] = useState('');
+	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 
 	const { register, handleSubmit, errors } = useForm();
+
+ 	const onChangeSaveFile=(e)=>{
+	
+		setimageFile(e.target.files[0])
+		setImageLabelText('New image ready to upload')
+	
+	}
 	const onSubmit = data => console.log(data);
 
 	let newHamster = {
@@ -21,38 +29,65 @@ const Form=()=>{
 		age:age,
 		favFood:favFood,
 		loves:loves,
-		imgName:image,
+		imgName:imageFile.name,
 		wins:0,
 		defeats:0,
 		games:0,
 		latestGame: ''
 	}
 
+	async function addHamsterImage(){
+
+		console.log('form.jsx, func addHamsterImage: ', imageFile)
+		const formData=new FormData();
+    	formData.append('file', imageFile)
+
+		try {
+			const responseImage=await Axios.post('/api/addhamsterImage', formData,{
+			headers:{
+				'Content-Type':'multipart/form-data'	
+			}
+		})
+		console.log('responseImage', responseImage)
+			
+		}//slut try
+			catch ( error ){
+			console.log('addHasterImage: Something went wrong when adding a new image')
+		}//slut catch
+			
+	} //slut func
+	
 	async function addHamster(){
+		console.log('form.jsx func addHamster, newHamster: ', newHamster)
+	
 		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{
 					'Accept':'application/json',
-					'Content-Type':'application/json'
+					'Content-Type':'application/json',
 				},
 				method:'POST',
 				body:JSON.stringify(newHamster)
 			});
 	
 	
-			const text = await response.text(); // Parse it as text
-			console.log('text: ', text)
-			const data = JSON.parse(text); // Try to parse it as json
+			const text = await response.text();
+			const data = JSON.parse(text); 
 			console.log('response: ', data)
 
 			//TODO Lägg upp meddelande om success when adding hamster
 
 
-		} catch(error){
-			console.log('something went wrong when adding hamster')
+		} catch (error) {
+			console.log(' addhamster: something went wrong when adding hamster')
 		}
+
 		
-	
+	}
+
+	const addNewHamster = () => {
+		addHamster();
+		addHamsterImage();
 	}
 
 	return (
@@ -135,27 +170,27 @@ const Form=()=>{
 							{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
 						</div>
 					</div>
-				
-				
-				{/* 	//!  */}
+
 					{/* Image */}
 					<div className='form-group'>
+						
+						<label htmlFor="imageFile" className='imageFile-label'>{imageLabelText}
 						<input type='file'
-						className='form-control'
-						id='image'
-						name='image' 
-						value={image}
-						placeholder='image placeholder'
+						// className='form-control'
+						id='imageFile'
+						name='imageFile'
+						// value={imageFile}
+						placeholder='imageFile placeholder'
 						ref={register({ required: true })}
-						onChange={event=>setImage(event.target.value)}/>
-						<label htmlFor="image" className='form-label'>{ fileName }</label>
+						onChange={onChangeSaveFile}/>
+						</label>
 						<div className="error-message">
-							{errors.image && errors.image.type==='required' && <span>Please upload hamster image</span>}
+							{errors.imageFile && errors.imageFile.type==='required' && <span>Please upload hamster image</span>}
 						</div>
 					</div>
 					<input type="submit" /> 
 				</form>
-				<button onClick={addHamster}>Add hamster</button>
+				<button onClick={addNewHamster}>Add hamster</button>
 			</div>
 		</div>
 )
