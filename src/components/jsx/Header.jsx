@@ -4,7 +4,6 @@ import '../scss/Header.scss';
 const header = (props) => {
 
 	function toggle(){
-		console.log('toggle click')
 		const navbar = document.querySelector('.navbar');
 		navbar.classList.toggle('change');
 	}
