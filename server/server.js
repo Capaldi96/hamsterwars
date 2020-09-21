@@ -19,9 +19,7 @@ app.use(express.json());
 app.use(cors());
 app.use(fileUpload())
 // add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
-app.use(express.static("public"));
-
+app.use(express.static(path.join(__dirname, '../assets')))
 
 
 app.get('/api/getAllHamsters', (req, res)=>{
@@ -31,6 +29,7 @@ app.get('/api/getAllHamsters', (req, res)=>{
 })
 
 app.get('/api/Battle', (req, res)=>{
+	console.log(path.join(__dirname,'../assets'));
 	getGroupOfHamsters('battle',dataOrError => {
 		res.send(dataOrError);
 	})
@@ -61,7 +60,7 @@ app.post('/api/addhamsterImage', (req, res)=>{
 	if(!req.files) return 
 	const file= req.files.file;
 	console.log('server.js, file: ', file)
-	file.mv(`${__dirname}/../src/assets/${file.name}`)
+	file.mv(`assets/${file.name}`)
 })
 
 app.put('/api/updateHamster/:id', (req, res)=>{
