@@ -1,5 +1,6 @@
 @import "variables.scss";
 
+// Button
 @mixin button {
 	background: #FBF2E3;
 	border: 2px solid $lightpurple;
@@ -8,4 +9,11 @@
 	padding:10px 28px;
 	font-size: 1em;
 	cursor:pointer;
+}
+// Button hover
+@mixin button-hover{
+	color:  #FBF2E3;
+	text-decoration: none;
+	background: $lightpurple;
+	transition: all 0.4s ease 0s;
 }
