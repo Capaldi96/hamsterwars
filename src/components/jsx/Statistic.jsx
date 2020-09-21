@@ -29,7 +29,7 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Games played */}
 {/* Games played - fade potatoe */}
 <FadeEffectGamesPlayed showGamesPlayed={showGamesPlayed}>
-<div className="ellipsebackground" onClick={() => setShowGamesPlayed(show => !showGamesPlayed)}>
+<div className="ellipsebackground" onClick={() => setShowGamesPlayed(showGamesPlayed => !showGamesPlayed)}>
 <GetGamesPlayed /></div>
 </FadeEffectGamesPlayed> 
 {/* Games played - green circles */}

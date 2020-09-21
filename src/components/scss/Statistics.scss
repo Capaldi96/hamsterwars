@@ -132,29 +132,34 @@
 
 .gridgrid{
 display: grid;
-grid-template-columns: 1fr 1fr;
+grid-template-columns: 1fr 10vw 1fr;
 grid-template-rows: 5fr;
 }
 
 .statEllipseListLatest{
 	font-size: 2em;
 }
-.statEllipseListLatestSmall{
-	color: $lightpurple;
-	font-size: 0.5em;
-}
 
-.statEllipseListLatest:nth-child(even){
-	grid-column: 1/2;
-	justify-self: start;
-	margin-right: 10px;
-	margin-left: 30px;
-}
-
-.statEllipseListLatest:nth-child(odd){
+.vsTag{
 	grid-column: 2/3;
-	justify-self: start;
-	margin-left: 30px;
+	justify-self: center;
+	font-size: 2em;
+	color: $lightpurple;
+}
+.vsTag1{
+	grid-row: 1/2;
+}
+.vsTag2{
+	grid-row: 2/3;
+}
+.vsTag3{
+	grid-row: 3/4;
+}
+.vsTag4{
+	grid-row: 4/5;
+}
+.vsTag5{
+	grid-row: 5/6;
 }
 
 .statEllipseListLatest:nth-child(1){
@@ -171,6 +176,16 @@ grid-template-rows: 5fr;
 }
 .statEllipseListLatest:nth-child(9){
 	grid-row: 5/6;
+}
+
+.statEllipseListLatest:nth-child(even){
+	grid-column: 1/2;
+	justify-self: center;
+}
+
+.statEllipseListLatest:nth-child(odd){
+	grid-column: 3/4;
+	justify-self: center;
 }
 
 
@@ -301,19 +316,32 @@ grid-template-rows: 5fr;
 }
 
 .statPotatoeHeader{
-	font-size: 2em;
+	font-size: 2.5em;
 	margin-top: 30px;
+	margin-bottom: 10px;
 }
 
 .statEllipseList{
 	font-size: 1.5em;
 }
 
-.statEllipseListLatest{
-	font-size: 1.2em;
+.statEllipseListLatest, .vsTag{
+	font-size: 1.5em;
 }
-.statEllipseListLatestSmall{
-	color: $lightpurple;
-	font-size: 0.5em;
+
+  }
+
+  @media (max-width: 500px) {
+	.statPotatoeHeader{
+	font-size: 1.5em;
+	margin-top: 70px;
 }
+
+.statEllipseList{
+	font-size: 1.1em;
+}
+.statEllipseListLatest, .vsTag{
+	font-size: 1em;
+}
+
   }
