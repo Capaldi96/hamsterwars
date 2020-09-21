@@ -53,6 +53,9 @@ function getGroup(filter, callback) {
 } 
 function addHamster(reqBody, callback){
 	console.log('database addHamster')
+
+	
+
     const document = reqBody;
     MongoClient.connect(url, {useUnifiedTopology: true},
         async (error, client) => {
@@ -136,6 +139,9 @@ function getGroupOfHamsters(sort,callback){
 			filter = [ {"$group" : { _id : null, sumAllGames : { "$sum" : {"$sum" : ["$wins", "$defeats"]}}}}];
 			break;
 		case 'latestBattles':
+			break;
+		case 'latestGames':
+			filter = [ {$sort: {latestGame : -1} },{ $limit: 10 } ];
 			break;
 		case 'battle':
 			filter = [ {$sample: {size : 2} }];	

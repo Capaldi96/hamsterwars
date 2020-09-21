@@ -84,6 +84,22 @@
 					transform:translateY(-3.2em) scale(.9);
 					
 				}
+				.imageFile-label{
+					background-color:white;
+					border-radius:10px;
+					color:#aaa;
+					display: block;
+					padding: 9px 9px;
+					cursor: pointer;
+					#imageFile{
+						display:none;
+					}
+
+				}
+				.imageFile-label:hover{
+					background-color:rgb(231, 230, 230);
+				}
+			
 				.error-message{
 					height: 0.3em;
 					position: absolute;
@@ -100,6 +116,7 @@
 		}
 	button{
 		margin-top:1em;
+		@include button
 	}
 }
 

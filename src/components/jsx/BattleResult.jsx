@@ -9,6 +9,7 @@ const BattleResult = () => {
 	const [hamster1, setHamster1] = useState({});
 	const [hamster2, setHamster2] = useState({})
 	const [showCutestH1, setShowCutestH1] = useState(true);
+	const [disableImg, setDisableImg] = useState(false);
 
 
 
@@ -38,7 +39,10 @@ const BattleResult = () => {
 		})
 	}
 	function updateLooser(hamster) {
-		hamster.latestGame = new Date().toISOString().slice(0,19).replace('T','-');
+		hamster.latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
+
+		hamster.games++;
+		hamster.defeats++;
 		axios.put('/api/updateHamster/' + hamster._id, {
 			name: hamster.name,
 			age: hamster.age,
@@ -133,9 +137,9 @@ const BattleResult = () => {
 			<div className="container">
 				{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 				<div className="match-container">
-					<BattleCard setShowCutestH1={setShowCutestH1} hamster={hamster1} setWinnerId={setWinnerId} setWinnerAndLooser={setWinnerAndLooser} />
-					<img className="VS" src={require('../../assets/vs.png')}></img>
-					<BattleCard setShowCutestH1={setShowCutestH1} hamster={hamster2} setWinnerId={setWinnerId} setWinnerAndLooser={setWinnerAndLooser} />
+					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
+					<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
+					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 				</div>
 				{showResult ? winnerData : null}
 			</div>
