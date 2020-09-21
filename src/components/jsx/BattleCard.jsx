@@ -18,12 +18,12 @@ const BattleCard = props => {
 				<div className="flip-card-front">
 					{ props.disableImg ? <img
 						className="competitior-img"
-						src={'1Starwarshamster.jpg'}
+						src={props.hamster.imgName}
 						alt="Avatar"
 					/> : <img
 						onClick={wrapperFunction}
 						className="competitior-img"
-						src={'1Starwarshamster.jpg'}
+						src={props.hamster.imgName}
 						alt="Avatar"
 					/> }
 				</div>
