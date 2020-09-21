@@ -6,22 +6,21 @@ import '../scss/Form.scss'
 
 const Form=()=>{
 
-	// const [name, setName]=useState('')
 	const [name, setName]=useState('')
 	const [age, setAge]=useState('')
 	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
-	const [image, setImage]=useState('')
-	const [fileName, setFileName] = useState('Choose file');
-
+	// const [image, setImage]=useState('')
+	const [imageFile, setimageFile] = useState('');
+	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 
 	const { register, handleSubmit, errors } = useForm();
 
  	const onChangeSaveFile=(e)=>{
-		setImage(e.target.value)
-		setFileName(e.target.files[0])
-		console.log('image: ', image)
-		console.log('filename: ', fileName)
+	
+		setimageFile(e.target.files[0])
+		setImageLabelText('New image ready to upload')
+	
 	}
 	const onSubmit = data => console.log(data);
 
@@ -30,7 +29,7 @@ const Form=()=>{
 		age:age,
 		favFood:favFood,
 		loves:loves,
-		imgName:image,
+		imgName:imageFile.name,
 		wins:0,
 		defeats:0,
 		games:0,
@@ -39,9 +38,9 @@ const Form=()=>{
 
 	async function addHamsterImage(){
 
-		console.log('form.jsx, func addHamsterImage: ', fileName)
+		console.log('form.jsx, func addHamsterImage: ', imageFile)
 		const formData=new FormData();
-    	formData.append('file', fileName)
+    	formData.append('file', imageFile)
 
 		try {
 			const responseImage=await Axios.post('/api/addhamsterImage', formData,{
@@ -58,12 +57,8 @@ const Form=()=>{
 			
 	} //slut func
 	
-
 	async function addHamster(){
 		console.log('form.jsx func addHamster, newHamster: ', newHamster)
-		/* const formData=new FormData();
-    	formData.append('file', fileName)
-		console.log('form.jsx addHamster formdata (filename): ', formData) */
 	
 		try {
 			const response= await fetch('/api/addhamster', {
@@ -91,10 +86,8 @@ const Form=()=>{
 	}
 
 	const addNewHamster = () => {
-		console.log('addNewHamsterClick funkar')
 		addHamster();
 		addHamsterImage();
-
 	}
 
 	return (
@@ -180,17 +173,19 @@ const Form=()=>{
 
 					{/* Image */}
 					<div className='form-group'>
+						
+						<label htmlFor="imageFile" className='imageFile-label'>{imageLabelText}
 						<input type='file'
-						className='form-control'
-						id='image'
-						name='image' 
-						value={image}
-						placeholder='image placeholder'
+						// className='form-control'
+						id='imageFile'
+						name='imageFile'
+						// value={imageFile}
+						placeholder='imageFile placeholder'
 						ref={register({ required: true })}
 						onChange={onChangeSaveFile}/>
-						<label htmlFor="image" className='form-label'></label>
+						</label>
 						<div className="error-message">
-							{errors.image && errors.image.type==='required' && <span>Please upload hamster image</span>}
+							{errors.imageFile && errors.imageFile.type==='required' && <span>Please upload hamster image</span>}
 						</div>
 					</div>
 					<input type="submit" /> 
