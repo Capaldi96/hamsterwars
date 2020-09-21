@@ -1,6 +1,10 @@
 @import "mixins.scss";
 @import 'variables.scss';
 
+/* .confetti-wrap{
+	
+} */
+
 #battleResult{
 	position: relative;
 	margin-top: 10vh;
@@ -116,6 +120,7 @@
 	#battleResult .container .nextBattleBtn {
 		position: relative;
 		z-index: 3;
+		@include button;
 	}
 	
 	#battleResult .winnerData{

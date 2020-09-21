@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../scss/BattleResult.scss';
 import BattleCard from './BattleCard'
 import axios from 'axios';
+import Confetti from 'react-confetti'
+import {useWindowSize} from 'react-use';
 
 const BattleResult = () => {
 	const [winnerId, setWinnerId] = useState(null);
@@ -10,7 +12,8 @@ const BattleResult = () => {
 	const [hamster2, setHamster2] = useState({})
 	const [showCutestH1, setShowCutestH1] = useState(true);
 	const [disableImg, setDisableImg] = useState(false);
-
+	const [confetti, setConfetti] = useState(false);
+	const {width, height} = useWindowSize();
 
 
 
@@ -133,13 +136,15 @@ const BattleResult = () => {
 	}
 
 	return (
+
 		<div id="battleResult">
+			{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
 			<div className="container">
 				{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 				<div className="match-container">
-					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
+					<BattleCard setConfetti={setConfetti}  setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
 					<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
-					<BattleCard setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
+					<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 				</div>
 				{showResult ? null : winnerData} 
 			</div>

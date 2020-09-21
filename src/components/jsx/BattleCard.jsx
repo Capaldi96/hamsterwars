@@ -12,6 +12,7 @@ const BattleCard = props => {
 		props.setDisableImg(true);
 		console.log('hamster clicked')
 		setCrownForWinner(true);
+		props.setConfetti(true);
 	}
 
 	return (

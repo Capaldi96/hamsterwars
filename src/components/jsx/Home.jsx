@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../scss/Home.scss';
 
-const home = () => {
+const Home = () => {
+	const [confetti, setConfetti] = useState(false);
+	
+
+	function onClick() {
+		setConfetti(true)
+	}
+
+	const config = {
+		angle: "95",
+		spread: "116",
+		startVelocity: "29",
+		elementCount: 70,
+		dragFriction: "0.11",
+		duration: 3000,
+		stagger: 3,
+		width: "7px",
+		height: "7px",
+		perspective: "500px",
+		colors: ["#f00", "#0f0", "#00f"]
+	  };
+	/* return <Confetti active={ someProp } config={ config }/> */
+
 	return (
 	  <div>
 		<main className="home-main">
@@ -16,4 +38,4 @@ const home = () => {
 	);
   }
   
-  export default home;
+  export default Home;
