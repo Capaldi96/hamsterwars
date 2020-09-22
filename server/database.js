@@ -108,6 +108,7 @@ function editHamster(obj,id, callback){
 function getAllHamsters(callback) {
     get({}, callback)
 }
+
 function deleteHamster(id, callback){
 	MongoClient.connect(url, {useUnifiedTopology:true},
         async (error, client) => {
