@@ -26,6 +26,8 @@ const BattleResult = () => {
 		setHamster1(data[0]);
 		setHamster2(data[1]);
 	}
+
+		
 	function updateWinner(hamster) {
 		hamster.latestGame = new Date().toISOString().slice(0,19).replace('T','-');
 		axios.put('/api/updateHamster/' + hamster._id, {
@@ -43,7 +45,6 @@ const BattleResult = () => {
 	}
 	function updateLooser(hamster) {
 		hamster.latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
-
 		hamster.games++;
 		hamster.defeats++;
 		axios.put('/api/updateHamster/' + hamster._id, {
@@ -104,7 +105,7 @@ const BattleResult = () => {
 				updateLooser(hamster1)
 			}
 		}
-	}, [hamster1])
+	}, [hamster1, hamster2])
 
 
 	let winnerData;
@@ -146,7 +147,7 @@ const BattleResult = () => {
 					<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
 					<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 				</div>
-				{showResult ? null : winnerData} 
+				{showResult ? winnerData : null} 
 			</div>
 		</div>
 	);

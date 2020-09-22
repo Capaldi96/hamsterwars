@@ -15,21 +15,19 @@ const BattleCard = props => {
 	}
 
 	return (
-		
-		 <div className="flip-card" >
-			<img className="flip-card-info" alt="info" src={require('../../assets/information_kopia.png')} />
-			
+		<div className="flip-card" >
+			<img className="flip-card-info" alt="info" src={require('../../assets/information_kopia.png')} /> 
 			<div className="flip-card-inner">
 			<div className="flip-card-crown">{crownForWinner ? <img src={require('../../assets/crown.png')} /> : null}</div>
 				<div className="flip-card-front">
 					{ props.disableImg ? <img
 						className="competitior-img"
-						src={"../../assets/" + props.hamster.imgName}
+						src={props.hamster.imgName}
 						alt="Avatar"
 					/> : <img
 						onClick={wrapperFunction}
 						className="competitior-img"
-						src={'../../' + props.hamster.imgName}
+						src={props.hamster.imgName}
 						alt="Avatar"
 					/> }
 				</div>
