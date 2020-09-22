@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, getFixedBattle } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle } = require('./database.js');
 
 
 
@@ -113,6 +113,19 @@ app.get('/api/LeastGames', (req, res) => {
 app.get('/api/LatestGames', (req, res) => {
 	getGroupOfHamsters('latestGames', dataOrError => {
 		res.send(dataOrError);
+	})
+})
+app.get('/api/gallery', (req, res) => {
+	console.log('GET / gallery')
+	getAllHamsters(dataOrError => {
+		res.send(dataOrError);
+	})
+})
+app.delete('/api/deleteHamster/:id', (req, res) => {
+	console.log('GET / deleteHamster')
+	deleteHamster(req.params.id, dataOrError => {
+		console.log(req.params.id)
+		res.send(dataOrError)
 	})
 })
 
