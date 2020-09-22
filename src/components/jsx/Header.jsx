@@ -4,7 +4,6 @@ import '../scss/Header.scss';
 const header = (props) => {
 
 	function toggle(){
-		console.log('toggle click')
 		const navbar = document.querySelector('.navbar');
 		navbar.classList.toggle('change');
 	}
@@ -32,6 +31,9 @@ const header = (props) => {
 					</li>
 					<li className="nav-item">
 					<a href="/Statistic" className="nav-link">Statistic</a>
+					</li>
+					<li className="nav-item">
+					<a href="/Gallery" className="nav-link">Gallery</a>
 					</li>
 				</ul>
 			</nav>

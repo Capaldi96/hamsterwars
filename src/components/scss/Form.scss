@@ -5,18 +5,22 @@
 	position:relative;
 	height:100vh;
 }
+.hamsterAdded{
+	background-color:green;
+	border:1px solid green;
+}
 
 .form-wrapper{
 	position:absolute;
 	background-image:url('../../assets/formpotatomobile.svg');
-	height:80%;
+	height:85vh;
 	background-size:contain;
 	background-repeat:no-repeat;
 	background-position:center;
-	top: 5em;
+	top: 4em;
 	z-index: 10;
-	margin-left: .5em;
-	margin-right: .5em ;
+	margin-left: auto;
+	margin-right: auto ;
 	left: 0;
 	right: 0;
 	display:flex;
@@ -26,42 +30,36 @@
 	
 		p{
 			color:$orange;
-			font-size:22px;
+			font-size:19px;
 			margin-bottom:1em;
 		}
 		.form{
-			width:14em;
+			width:10.5em;
 	
 			.form-group{
 				margin-bottom:.5em;
 				transition:all .3s;//*transition för att allt ska växa, det kan nog tas bort sen
 				position: relative;
 				
-	
 				.form-label{
 					//*för floating labels
 					font-size:1em;
 					color:#aaa;
 					display:block;
-					transform:translateY(-1.7em);//*styr labeltexten höjdledes i inputfältet
+					transform:translateY(-1.55em);//*styr labeltexten höjdledes i inputfältet
 					padding-left:.5em;
 					transform-origin:0 0;//*rör sig upp till övre vänstra hörnet
 					transition:all .3s;
+					cursor:text;
 
 				}
-
 				//inputfält
 				.form-control{
 			
-					font-size:1.2em;
-					//floating labels
-					//*för styling av inputfält, vi kan ändra dessa tror jag
-			
+					font-size:.9em;
 					border-radius:10px;
 					border-color:#ccc;
-					// border-style:none none solid none;
 					width:100%;
-					// transition:all .5s;	//*styr border bottom på formcontrol focus orange
 					padding:7px;
 					
 				}
@@ -71,28 +69,44 @@
 
 				.form-control:focus{
 					outline:none;
-					// border-color:orange;
+				
 				}
-
 				.form-control:focus + .form-label{
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
-					transform:translateY(-3.2em) scale(.9);
-					color:grey;
+					transform:translateY(-2.7em) scale(.8);
+					color:rgb(175, 174, 174);
+				
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
-					transform:translateY(-3.2em) scale(.9);
+					transform:translateY(-2.7em) scale(.8);
 					
+				}
+				.imageFile-label{
+					background-color:white;
+					border-radius:10px;
+					color:#aaa;
+					display: block;
+					padding: 7px 7px;
+					cursor: pointer;
+					#imageFile{
+						display:none;
+					}
+
+				}
+				.imageFile-label:hover{
+					background-color:rgb(231, 230, 230);
 				}
 				.error-message{
 					height: 0.3em;
 					position: absolute;
-					top: 2.3em;
+					right:0;
+					margin-right:0.3em;
+					top: 1.7em;
+					
 					span{
-						color: white;
-						font-size: 0.9em;
-						margin-left: 0.3em;
-						background-color: $orange;
+						color: $darkpurple;
+						font-size: 0.8em;
 						padding: 0.1em;
 					}
 				}
@@ -100,7 +114,31 @@
 		}
 	button{
 		margin-top:1em;
-		@include button;
+		@include button
+	}
+	button:hover{
+		@include button-hover;
+	}
+}
+
+@media screen and (min-width: 360px){
+	.form-wrapper{
+		
+		p{
+			font-size:21px;
+		}
+
+		.form{
+			width:15em;
+
+			.error-message{
+				top: 2em;
+				
+				span{
+					font-size: 0.9em;
+				}
+			}
+		}
 	}
 }
 
@@ -108,6 +146,7 @@
 @media screen and (min-width:642px){
 
 	.form-wrapper{
+		height:78vh;
 		background-image:url('../../assets/formpotatodesktop.svg');
 		top: 5em;
 		margin-left: auto;
@@ -115,102 +154,68 @@
 		
 		.form{
 
-			width:23em;
-			
+			width:21em;
+
 			.form-group{
-	
-				.form-label{
-					font-size:1em;
-					transform:translateY(-1.65em);//*styr labeltexten höjdledes i inputfältet
-					
+
+				.error-message{
+					top: 1.9em;
+					span{
+						font-size: 0.9em;
+				
+					}
 				}
-				.form-control:focus + .form-label{
-					//translate styr hur högt de hamnar 2 är lägre, 3 högre
-					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
-					transform:translateY(-3.1em) scale(.9);
-					color:grey;
-						
-				}
-				.form-control:not(:placeholder-shown) + .form-label{
-					transform:translateY(-3.1em) scale(.9);
-					
-				}
-			
 			}
-	
 		}
-
 	}
-
 }
 @media screen and (min-width:880px){
 	.form-wrapper{
+		height:78vh;
 		top: 5em;
-		
+
 		.form{
 
 			width:23em;
+
 			.form-group{
 
-				.form-label{
-					font-size:1em;
-					transform:translateY(-1.65em);//*styr labeltexten höjdledes i inputfältet
-					
+				.error-message{
+					top: 1.9em;
+					span{
+						font-size: 0.9em;
+				
+					}
 				}
-				.form-control:focus + .form-label{
-					//translate styr hur högt de hamnar 2 är lägre, 3 högre
-					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
-					transform:translateY(-3.1em) scale(.9);
-					color:grey;
-						
-				}
-				.form-control:not(:placeholder-shown) + .form-label{
-					transform:translateY(-3.1em) scale(.9);
-					
-				}
-			
 			}
-
 		}
-
 	}
-
 }
 
 @media screen and (min-width: 1076px){
 
 	.form-wrapper{
 		background-image:url('../../assets/formpotatodesktop.svg');
-		height:35em;
+		height:78vh;
 		top: 5em;
 		margin-left: auto;
 		margin-right: auto;
 
 		.form{
 			width:23em;
+
 			.form-group{
 
-				.form-label{
-					font-size:1em;
-					transform:translateY(-1.65em);//*styr labeltexten höjdledes i inputfältet
+				.error-message{
+					top: 1.9em;
 					
+					span{
+						font-size: 0.9em;
+				
+					}
 				}
-				.form-control:focus + .form-label{
-					//translate styr hur högt de hamnar 2 är lägre, 3 högre
-					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
-					transform:translateY(-3.1em) scale(.9);
-					color:grey;
-				}
-				.form-control:not(:placeholder-shown) + .form-label{
-					transform:translateY(-3.1em) scale(.9);
-					
-				}
-	
 			}
-
 		}
-
 	}
-	
 }
 

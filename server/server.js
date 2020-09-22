@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle } = require('./database.js');
 
 
 
@@ -19,25 +19,29 @@ app.use(express.json());
 app.use(cors());
 app.use(fileUpload())
 // add middlewares
-app.use(express.static(path.join(__dirname, "..", "build")));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, '../assets')))
 
 
-
-app.get('/api/getAllHamsters', (req, res)=>{
+app.get('/api/getAllHamsters', (req, res) => {
 	getAllHamsters(dataOrError => {
 		res.send(dataOrError);
 	})
 })
+app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
+	getFixedBattle(req.params.id1, req.params.id2, dataOrError => {
+		res.send(dataOrError);
+	})
+})
+app.get('/api/Battle', (req, res) => {
+	console.log(req.params)
 
-app.get('/api/Battle', (req, res)=>{
-	getGroupOfHamsters('battle',dataOrError => {
+	getGroupOfHamsters('battle', dataOrError => {
 		res.send(dataOrError);
 	})
 })
 
-app.get('/api/topWinners', (req, res)=>{
-	getGroupOfHamsters('topWinners',dataOrError => {
+app.get('/api/topWinners', (req, res) => {
+	getGroupOfHamsters('topWinners', dataOrError => {
 		res.send(dataOrError);
 	})
 });
@@ -56,15 +60,15 @@ app.post('/api/addhamster', (req, res) => {
 	})
 });
 
-app.post('/api/addhamsterImage', (req, res)=>{
+app.post('/api/addhamsterImage', (req, res) => {
 
-	if(!req.files) return 
-	const file= req.files.file;
+	if (!req.files) return
+	const file = req.files.file;
 	console.log('server.js, file: ', file)
-	file.mv(`${__dirname}/../src/assets/${file.name}`)
+	file.mv(`../assets/${file.name}`)
 })
 
-app.put('/api/updateHamster/:id', (req, res)=>{
+app.put('/api/updateHamster/:id', (req, res) => {
 	editHamster(req.body, req.params.id, () => {
 		res.send(req.body);
 	})
@@ -103,6 +107,25 @@ app.get('/api/MostGames', (req, res) => {
 app.get('/api/LeastGames', (req, res) => {
 	getGroupOfHamsters('leastGames', dataOrError => {
 		res.send(dataOrError);
+	})
+})
+
+app.get('/api/LatestGames', (req, res) => {
+	getGroupOfHamsters('latestGames', dataOrError => {
+		res.send(dataOrError);
+	})
+})
+app.get('/api/gallery', (req, res) => {
+	console.log('GET / gallery')
+	getAllHamsters(dataOrError => {
+		res.send(dataOrError);
+	})
+})
+app.delete('/api/deleteHamster/:id', (req, res) => {
+	console.log('GET / deleteHamster')
+	deleteHamster(req.params.id, dataOrError => {
+		console.log(req.params.id)
+		res.send(dataOrError)
 	})
 })
 
