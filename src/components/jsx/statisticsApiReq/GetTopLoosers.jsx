@@ -24,7 +24,7 @@ const [top5Loosers, setTop5Loosers] = useState([]);
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Top 5 loosers</h1>
-			{top5Loosers.map(loosers => (<p className="statEllipseList" key={loosers.name}>{loosers.name}</p>))}
+			{top5Loosers.map((loosers, index) => (<p className="statEllipseList" key={loosers.name+index}>{loosers.name}</p>))}
 			
 			</div>
 			</div>

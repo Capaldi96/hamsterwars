@@ -13,6 +13,7 @@ const GetLatestBattles = () => {
 		})
 		.catch(err => {
 			console.log(err)
+			
 		})
 	},[])
 	return (
@@ -27,8 +28,13 @@ const GetLatestBattles = () => {
 
 			<div className="gridgrid">
 
-			{latestBattles.map(latest => (<p className="statEllipseListLatest" key={latest.latestGame}>{latest.name}
-			<span className="statEllipseListLatestSmall"> ({latest.latestGame}) </span></p>))}
+			{/* index is added to be able to map same name */}
+			{latestBattles.map((latest, index) => (<p className="statEllipseListLatest" key={latest.name+index}>{latest.name}</p>))}
+			<p className="vsTag1 vsTag"> vs </p>
+			<p className="vsTag2 vsTag"> vs </p>
+			<p className="vsTag3 vsTag"> vs </p>
+			<p className="vsTag4 vsTag"> vs </p>
+			<p className="vsTag5 vsTag"> vs </p>
 			</div>
 
 			</div>
