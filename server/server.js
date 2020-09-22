@@ -32,10 +32,8 @@ app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
 		res.send(dataOrError);
 	})
 })
-app.get('/api/Battle', (req, res) => {
-	console.log(req.params)
-
-	getGroupOfHamsters('battle', dataOrError => {
+app.get('/api/randomHamster', (req, res) => {
+	getGroupOfHamsters('randomHamster', dataOrError => {
 		res.send(dataOrError);
 	})
 })

@@ -9,12 +9,14 @@ const BattleCard = props => {
 		props.setWinnerId(props.hamster._id)
 		props.setShowCutestH1(false);
 		props.setDisableImg(true);
-		console.log('hamster clicked')
 		setCrownForWinner(true);
 		props.setConfetti(true);
 	}
 
+
+	
 	return (
+		
 		<div className="flip-card" >
 			<img className="flip-card-info" alt="info" src={require('../../assets/information_kopia.png')} /> 
 			<div className="flip-card-inner">
