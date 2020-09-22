@@ -10,9 +10,9 @@ const Form=()=>{
 	const [age, setAge]=useState('')
 	const [favFood, setFavFood]=useState('')
 	const [loves, setLoves]=useState('')
-	// const [image, setImage]=useState('')
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
+	
 
 	const { register, handleSubmit, errors } = useForm();
 
@@ -22,11 +22,11 @@ const Form=()=>{
 		setImageLabelText('New image ready to upload')
 	
 	}
-	const onSubmit = data => console.log(data);
+	const onSubmit = data => console.log(data);//TODO denna ska nog bort?
 
 	let newHamster = {
 		name:name,
-		age:age,
+		age:Number(age),
 		favFood:favFood,
 		loves:loves,
 		imgName:imageFile.name,
@@ -37,18 +37,15 @@ const Form=()=>{
 	}
 
 	async function addHamsterImage(){
-
-		console.log('form.jsx, func addHamsterImage: ', imageFile)
 		const formData=new FormData();
     	formData.append('file', imageFile)
 
 		try {
-			const responseImage=await Axios.post('/api/addhamsterImage', formData,{
+			await Axios.post('/api/addhamsterImage', formData,{
 			headers:{
 				'Content-Type':'multipart/form-data'	
 			}
 		})
-		console.log('responseImage', responseImage)
 			
 		}//slut try
 			catch ( error ){
@@ -58,7 +55,6 @@ const Form=()=>{
 	} //slut func
 	
 	async function addHamster(){
-		console.log('form.jsx func addHamster, newHamster: ', newHamster)
 	
 		try {
 			const response= await fetch('/api/addhamster', {
@@ -70,24 +66,20 @@ const Form=()=>{
 				body:JSON.stringify(newHamster)
 			});
 	
-	
 			const text = await response.text();
 			const data = JSON.parse(text); 
 			console.log('response: ', data)
-
-			//TODO Lägg upp meddelande om success when adding hamster
-
 
 		} catch (error) {
 			console.log(' addhamster: something went wrong when adding hamster')
 		}
 
-		
 	}
 
 	const addNewHamster = () => {
 		addHamster();
 		addHamsterImage();
+		
 	}
 
 	return (
@@ -104,12 +96,12 @@ const Form=()=>{
 						className='form-control'
 						value={name}
 						placeholder='name placeholder'
-						ref={register({ required: true, maxLength:15 })}
+						ref={register({ required: true, maxLength:10 })}
 						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
 							{errors.name && errors.name.type==='required' && <span>Please enter the hamsters name</span>}
-							{errors.name && errors.name.type==='maxLength' && <span>Hey! Max 15 characters</span>}
+							{errors.name && errors.name.type==='maxLength' && <span>Hey! Max 10 characters</span>}
 						</div>
 					</div>
 
@@ -191,7 +183,11 @@ const Form=()=>{
 					<input type="submit" /> 
 				</form>
 				<button onClick={addNewHamster}>Add hamster</button>
+				
+		
 			</div>
+	
+
 		</div>
 )
 }

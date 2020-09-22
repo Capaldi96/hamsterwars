@@ -13,7 +13,8 @@
 	background-size:contain;
 	background-repeat:no-repeat;
 	background-position:center;
-	top: 5em;
+	top: 5em;//TODO sätt procent här istället för em
+	// top:50%;
 	z-index: 10;
 	margin-left: .5em;
 	margin-right: .5em ;
@@ -47,6 +48,7 @@
 					padding-left:.5em;
 					transform-origin:0 0;//*rör sig upp till övre vänstra hörnet
 					transition:all .3s;
+					cursor:text;
 
 				}
 
@@ -63,6 +65,7 @@
 					width:100%;
 					// transition:all .5s;	//*styr border bottom på formcontrol focus orange
 					padding:7px;
+					
 					
 				}
 				.form-control::placeholder{
@@ -117,6 +120,9 @@
 	button{
 		margin-top:1em;
 		@include button
+	}
+	button:hover{
+		@include button-hover;
 	}
 }
 
@@ -199,6 +205,10 @@
 		background-image:url('../../assets/formpotatodesktop.svg');
 		height:35em;
 		top: 5em;
+		// bottom:auto;
+		// top:10%;
+	
+  
 		margin-left: auto;
 		margin-right: auto;
 
