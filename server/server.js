@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, getFixedBattle } = require('./database.js');
 
 
 
@@ -22,21 +22,26 @@ app.use(fileUpload())
 app.use(express.static(path.join(__dirname, '../assets')))
 
 
-app.get('/api/getAllHamsters', (req, res)=>{
+app.get('/api/getAllHamsters', (req, res) => {
 	getAllHamsters(dataOrError => {
 		res.send(dataOrError);
 	})
 })
+app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
+	getFixedBattle(req.params.id1, req.params.id2, dataOrError => {
+		res.send(dataOrError);
+	})
+})
+app.get('/api/Battle', (req, res) => {
+	console.log(req.params)
 
-app.get('/api/Battle', (req, res)=>{
-	console.log(path.join(__dirname,'../assets'));
-	getGroupOfHamsters('battle',dataOrError => {
+	getGroupOfHamsters('battle', dataOrError => {
 		res.send(dataOrError);
 	})
 })
 
-app.get('/api/topWinners', (req, res)=>{
-	getGroupOfHamsters('topWinners',dataOrError => {
+app.get('/api/topWinners', (req, res) => {
+	getGroupOfHamsters('topWinners', dataOrError => {
 		res.send(dataOrError);
 	})
 });
@@ -55,15 +60,15 @@ app.post('/api/addhamster', (req, res) => {
 	})
 });
 
-app.post('/api/addhamsterImage', (req, res)=>{
+app.post('/api/addhamsterImage', (req, res) => {
 
-	if(!req.files) return 
-	const file= req.files.file;
+	if (!req.files) return
+	const file = req.files.file;
 	console.log('server.js, file: ', file)
 	file.mv(`assets/${file.name}`)
 })
 
-app.put('/api/updateHamster/:id', (req, res)=>{
+app.put('/api/updateHamster/:id', (req, res) => {
 	editHamster(req.body, req.params.id, () => {
 		res.send(req.body);
 	})

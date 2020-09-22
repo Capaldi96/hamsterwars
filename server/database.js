@@ -53,9 +53,6 @@ function getGroup(filter, callback) {
 } 
 function addHamster(reqBody, callback){
 	console.log('database addHamster')
-
-	
-
     const document = reqBody;
     MongoClient.connect(url, {useUnifiedTopology: true},
         async (error, client) => {
@@ -110,7 +107,9 @@ function editHamster(obj,id, callback){
 function getAllHamsters(callback) {
     get({}, callback)
 }
-
+function getFixedBattle(id1,id2,callback){
+	get({'_id' : { $in : [ new ObjectID(id1), new ObjectID(id2)] }}, callback)
+}
 function getGroupOfHamsters(sort,callback){
 	let filter;
 	switch (sort) {
@@ -156,5 +155,6 @@ module.exports = {
     getAllHamsters,
 	getGroupOfHamsters,
 	addHamster,
-	editHamster
+	editHamster,
+	getFixedBattle
 }
