@@ -1,7 +1,9 @@
 import Axios from 'axios';
+// import { response } from 'express';
 import React ,{useState} from 'react'
 import { useForm } from "react-hook-form";
 import '../scss/Form.scss'
+// import FormHamsterAddedMessage from './FormHamsterAddedMessage'
 
 
 const Form=()=>{
@@ -12,6 +14,7 @@ const Form=()=>{
 	const [loves, setLoves]=useState('')
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
+	const [displayForm, setDisplayForm]=useState(false)
 	
 
 	const { register, handleSubmit, errors } = useForm();
@@ -46,6 +49,7 @@ const Form=()=>{
 				'Content-Type':'multipart/form-data'	
 			}
 		})
+		
 			
 		}//slut try
 			catch ( error ){
@@ -69,21 +73,37 @@ const Form=()=>{
 			const text = await response.text();
 			const data = JSON.parse(text); 
 			console.log('response: ', data)
+			// displayComp=()=>{
+			// 	// if(response.status===200){
+		
+			// 	// 	displayContent=<FormHamsterAddedMessage/>
+			// 	// }
+			// 	if(displayForm){
+		
+			// 		displayContent=<FormHamsterAddedMessage/>
+			// 	}
+			// }
 
 		} catch (error) {
 			console.log(' addhamster: something went wrong when adding hamster')
 		}
 
 	}
+	//*Ev gör global variabel för response så att fler funktioner kan använda sig av den.
 
 	const addNewHamster = () => {
 		addHamster();
 		addHamsterImage();
 		
 	}
+	
+	
 
 	return (
 		<div className='form-component'>
+		
+			{/* {displayContent} */}
+			
 			<div className='form-wrapper'>
 
 				<p>Add your own hamster</p>
@@ -100,7 +120,7 @@ const Form=()=>{
 						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
-							{errors.name && errors.name.type==='required' && <span>Please enter the hamsters name</span>}
+							{errors.name && errors.name.type==='required' && <span>Oops, forgot the name!</span>}
 							{errors.name && errors.name.type==='maxLength' && <span>Hey! Max 10 characters</span>}
 						</div>
 					</div>
@@ -117,7 +137,7 @@ const Form=()=>{
 						onChange={event=>setAge(event.target.value)}/>
 						<label htmlFor="age" className='form-label'>Age in months</label>
 						<div className="error-message">
-							{errors.age && errors.age.type==='required' && <span>The age please</span>}
+							{errors.age && errors.age.type==='required' && <span>Dont forget the age.</span>}
 							{errors.age && errors.age.type==='maxLength' && <span>Whops! Max 10 characters</span>}
 							{errors.age && errors.age.type==='minLength' && <span>Min 1 character</span>}
 						</div>
@@ -137,7 +157,7 @@ const Form=()=>{
 						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
 						<div className="error-message">
-							{errors.favFood && errors.favFood.type==='required' && <span>Enter favorite food please</span>}
+							{errors.favFood && errors.favFood.type==='required' && <span>Fav food here please.</span>}
 							{errors.favFood && errors.favFood.type==='maxLength' && <span>Max 10 characters please</span>}
 							{errors.favFood && errors.favFood.type==='minLength' && <span>Min 2 character</span>}
 						</div>
@@ -157,7 +177,7 @@ const Form=()=>{
 						onChange={event=>setLoves(event.target.value)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
 						<div className="error-message">
-							{errors.loves && errors.loves.type==='required' && <span>Poor hamster, nothing to love?</span>}
+							{errors.loves && errors.loves.type==='required' && <span>Some love here plz.</span>}
 							{errors.loves && errors.loves.type==='maxLength' && <span>Max 15 characters</span>}
 							{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
 						</div>
@@ -177,7 +197,7 @@ const Form=()=>{
 						onChange={onChangeSaveFile}/>
 						</label>
 						<div className="error-message">
-							{errors.imageFile && errors.imageFile.type==='required' && <span>Please upload hamster image</span>}
+							{errors.imageFile && errors.imageFile.type==='required' && <span>Need an image :*</span>}
 						</div>
 					</div>
 					<input type="submit" /> 
