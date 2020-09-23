@@ -4,7 +4,6 @@
 .Gallery {
 	overflow: scroll;
 }
-
 .container-list{
 	margin: 9% 3em 15%;
 	padding: 1em;
@@ -34,7 +33,7 @@
 	width: 90%;
 	height: 27vh;
 }
-.list button{
+.delete-button{
 	border: 2px solid $orange;
 	border-radius: 5px;
 	background: transparent;
@@ -44,9 +43,8 @@
 	position: absolute;
 	align-self: flex-end;
 	transition: ease-in 0.2s;
-	
 }
-.list button:hover{
+.delete-button:hover{
 	cursor: pointer;
 	border: 3px solid $orange;
 	font-weight: bold;
@@ -55,22 +53,63 @@
 	width: 100%;
 	height: 100%;
 }
-.flip-card-front-gallery{
-	border: 2px solid green;
+
+// Flip cards
+.flip-card-gallery {
+	background-color: transparent;
+	width: 90%;
+	height: 27vh;
+	perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+
+  .flip-card-inner-gallery {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card-gallery:hover .flip-card-inner-gallery {
+	transform: rotateY(180deg);
 }
-.flip-card-back-gallery{
-	border: 2px solid blue;
+  
+  /* Position the front and back side */
+.flip-card-front-gallery, .flip-card-back-gallery{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
 }
+  
+  /* Style the front side (fallback if image is missing) */
+.flip-card-front-gallery {
+	background-color: $orange;
+	color: white;
+}
+  
+  /* Style the back side */
+.flip-card-back-gallery {
+	background-color: $lightgreen;
+	color: white;
+	transform: rotateY(180deg);
+}
+
+// Loading
 .loading{
 	display: flex;
 	place-content: center;
-
 }
 .loading h2{
 	font-size: 4vh;
 	margin-top: 30vh;
 	color: $orange;
 }
+
+
+// Media
 @media screen and (max-width: 1000px){
 	.container-list{
 		grid-template-columns: repeat(3, 1fr);

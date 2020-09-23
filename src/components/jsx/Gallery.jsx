@@ -37,18 +37,17 @@ const Gallery = () => {
 	else {
 		status = 
 			<main>
-				<div className="container-list">
-					<div className="flip-card-gallery">
-						<div className="flip-card-inner-gallery">
+				{hamsterList.map(hamster => (
+				<div className="flip-card-gallery" key={hamster._id}>
+					<div className="flip-card-inner-gallery">
+						<div className="container-list">
 							{/* FRONT */}
-							{hamsterList.map(hamster => (
-							<div  key={hamster._id}className="flip-card-front-gallery list">
+							<div className="flip-card-front-gallery list">
 								<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
-							</div>))}
+							</div> 
 							{/* BACK */}
-							{hamsterList.map(hamster => (
-							<div key={hamster._id}className="flip-card-back-gallery list">
-								<button onClick={() => deleteHamster(hamster._id)}>{statusDelete}</button>
+							<div className="flip-card-back-gallery list">
+								<button className="delete-button" onClick={() => deleteHamster(hamster._id)}>{statusDelete}</button>
 								<p><span>{hamster.name}</span></p>
 								<p>Years: {hamster.age}</p>
 								<p>Games: {hamster.games}</p> 
@@ -56,12 +55,11 @@ const Gallery = () => {
 								<p>Loves: {hamster.loves}</p>
 								<p>Wins: {hamster.wins}</p> 
 								<p>Losses: {hamster.defeats}</p>
-							</div>))}
+							</div>
 						</div>
 					</div>
-				</div>
-			</main>
-		
+				</div>))}
+			</main>	
 	}
 	
 
