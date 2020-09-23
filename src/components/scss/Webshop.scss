@@ -1,0 +1,54 @@
+@import "mixins.scss";
+@import 'variables.scss';
+
+
+.container{
+    display: grid;
+    grid-template-rows: 15% 70% 15%;
+    gap: 1.5em 1em;
+    height: 100vh;
+}
+
+#webshop .container main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-right: 15em;
+    padding-left: 15em;
+    place-items: center;
+    gap: 3em;
+    z-index: 1;
+    overflow: scroll;
+}
+
+#webshop .container .shop{
+    z-index: 2;
+    display: flex;
+}
+
+#webshop .container .shopping-cart{
+    width: 4vw;
+    height: 8vh;
+    justify-content: start;
+    margin-top: 8vh;
+    margin-left: 8vw;
+}
+
+#webshop .container main div {
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    background-color: $lightgreen;
+    padding: 1em;
+    border-radius: 15px;
+    place-items: center;
+}
+
+#webshop .container main div .image{
+    width: 15vw;
+    border: 1px solid grey;
+}
+
+#webshop .container main div .buy-btn{
+    width: 65px;
+    height: 35px;
+    margin-top: 10px;
+}

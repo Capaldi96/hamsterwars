@@ -35,6 +35,9 @@ const header = (props) => {
 					<li className="nav-item">
 					<a href="/Gallery" className="nav-link">Gallery</a>
 					</li>
+					<li className="nav-item">
+					<a href="/Webshop" className="nav-link">Webshop</a>
+					</li>
 				</ul>
 			</nav>
 			<img className="top-wave" src={require('../../assets/top_waves.png')} alt="wave"/>

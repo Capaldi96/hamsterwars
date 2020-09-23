@@ -9,6 +9,7 @@ import Footer from '../src/components/jsx/Footer';
 import BattleResult from '../src/components/jsx/BattleResult';
 import Statistic from '../src/components/jsx/Statistic';
 import Gallery from '../src/components/jsx/Gallery';
+import Webshop from '../src/components/jsx/Webshop';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
 				<Route path="/Battle" component={BattleResult} />
 				<Route path="/Statistic" component={Statistic} />
 				<Route path="/Gallery" component={Gallery} />
-
+				<Route path="/Webshop" component={Webshop} />
 				<Footer />
 			</div>
 		</Router>
