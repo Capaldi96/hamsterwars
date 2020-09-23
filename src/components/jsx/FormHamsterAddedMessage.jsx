@@ -1,5 +1,6 @@
 import React from "react";
-import '../scss/Form.scss';
+import '../scss/Form.scss'
+
 
 
 const FormHamsterAddedMessage=(props)=>{
@@ -7,16 +8,12 @@ const FormHamsterAddedMessage=(props)=>{
 
 	return(
 
-		<div className='hamsterAddedMsg'>
+		<div className='hamster-added-wrapper'>
 
-		<div className='addedMsg-wrapper'>
-
-			<p className='hamstertext'>Hamster added!</p>
-			<button onClick={()=>props.setDisplayForm(true)}>Ok, thanks!</button>
-
-		</div>
+			<img  className="hamster-dancing" src={require('../../assets/hamster_dancing.png')} alt="Hamster Icon"/>
+			<p className='hamster-text'>Hamster added!</p>
 			
-
+			<button onClick={()=>props.setDisplayForm(true)}>Ok, thanks!</button>
 
 		</div>
 

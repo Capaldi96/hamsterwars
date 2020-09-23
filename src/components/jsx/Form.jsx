@@ -1,19 +1,18 @@
+
 import React ,{useState} from 'react'
 import '../scss/Form.scss'
-import FormInputFields from './FormInputFields';
+import FormInput from './FormInput';
 import FormHamsterAddedMessage from './FormHamsterAddedMessage'
 
 
 const Form=()=>{
 
-	
-	const [displayForm, setDisplayForm]=useState(true)
-	
+	const [displayForm, setDisplayForm]=useState(false)
 	
 	let comp=''
 
 	if(displayForm){
-		comp=<FormInputFields displayForm={displayForm} setDisplayForm={setDisplayForm}/>
+		comp=<FormInput displayForm={displayForm} setDisplayForm={setDisplayForm}/>
 	}
 	else{
 		comp=<FormHamsterAddedMessage setDisplayForm={setDisplayForm}/>
@@ -21,14 +20,15 @@ const Form=()=>{
 
 
 	return (
+
 		<div className='form-component'>
-	
-		
+
 			{comp}
 
-
 		</div>
-)}
+		
+	)
+}
 
 
 

@@ -118,6 +118,7 @@ const BattleResult = () => {
 					<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
 					<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
 				</div>
+				
 			</div>
 			
 	} else if (winnerId === hamster2._id) {
@@ -129,6 +130,7 @@ const BattleResult = () => {
 					<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
 					<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
 				</div>
+				
 			</div>
 	}
 
