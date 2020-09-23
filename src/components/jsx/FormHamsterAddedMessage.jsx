@@ -8,10 +8,12 @@ const FormHamsterAddedMessage=(props)=>{
 
 	return(
 
-		<div className='hamsterAddedMsg'>
-			<p>Hamster added!</p>
-			<button onClick={()=>props.setDisplayForm(true)}>Ok, thanks!</button>
+		<div className='hamster-added-wrapper'>
 
+			<img  className="hamster-dancing" src={require('../../assets/formHamster.svg')} alt="Hamster Icon"/>
+			<p className='hamster-text'>Hamster added!</p>
+			
+			<button onClick={()=>props.setDisplayForm(true)}>Ok, thanks!</button>
 
 		</div>
 

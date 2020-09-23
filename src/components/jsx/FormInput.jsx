@@ -12,13 +12,21 @@ const FormInput=(props)=>{
 	const [loves, setLoves]=useState('')
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
-	const { register, handleSubmit, errors } = useForm();	
+	const { register, errors, handleSubmit} = useForm({mode: 'onTouched'});	
 
 	const onChangeSaveFile=(e)=>{
 		setimageFile(e.target.files[0])
 		setImageLabelText('New image ready to upload')
 	}
-	const onSubmit = data => console.log(data);//TODO denna ska nog bort?
+	// const onSubmit = data => console.log('data from input: ',data);//TODO denna ska nog bort?
+	const [newHamster2, setNewHamster2]=useState({})
+	const onSubmit=(data)=>{
+		console.log('newHamster2 innan set: ', newHamster2)
+		console.log('data from input: ',data);
+		setNewHamster2(data)
+		console.log('newHamster2 efter set: ', newHamster2)
+
+	}
 
 	// let newHamster = {
 	// 	name:name,
@@ -33,7 +41,7 @@ const FormInput=(props)=>{
 	// }
 
 	let newHamster = {
-		name:'TestHamster2',
+		name:'Hannas testhamster',
 		age:Number('2'),
 		favFood:'Testmat',
 		loves:'testloves',
@@ -53,11 +61,11 @@ const FormInput=(props)=>{
 			headers:{
 				'Content-Type':'multipart/form-data'	
 			}
-
-			
+	
 		})
 		console.log('i addhamsterimage')
 		console.log('response addhamsterimage: ', response)
+		//? varför ser man inte dessa console logs?
 			
 		}//slut try
 			catch ( error ){
@@ -102,13 +110,14 @@ const FormInput=(props)=>{
 		
 	}
 	
-
+	// <form className='form' onSubmit={handleSubmit(onSubmit)}></form>
 	return (
 
 		<div className='form-wrapper'>
 
 				<p>Add your own hamster</p>
 				<form className='form' onSubmit={handleSubmit(onSubmit)}>
+				
 					{/* Name */}
 					<div className='form-group'>
 						<input type='text'
