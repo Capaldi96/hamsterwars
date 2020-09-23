@@ -45,6 +45,9 @@
 	@include button;
 	position: relative;
 	z-index: 3;
+	padding: 7px;
+	width: fit-content;
+	left: 1.5em;
 }
 
 #battleResult .winnerData{
@@ -121,6 +124,8 @@
 		position: relative;
 		z-index: 3;
 		@include button;
+		width: fit-content;
+		left: 3em;
 	}
 	
 	#battleResult .winnerData{
