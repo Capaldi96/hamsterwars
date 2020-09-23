@@ -181,5 +181,6 @@ module.exports = {
 	getGroupOfHamsters,
 	addHamster,
 	editHamster,
-	deleteHamster
+	deleteHamster,
+	getFixedBattle
 }

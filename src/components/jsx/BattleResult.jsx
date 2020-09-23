@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../scss/BattleResult.scss';
 import BattleCard from './BattleCard'
 import axios from 'axios';
