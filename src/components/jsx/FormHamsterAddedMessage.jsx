@@ -1,14 +1,16 @@
 import React from "react";
-import '../scss/Statistics.scss';
+import '../scss/Form.scss'
 
 
-const FormHamsterAddedMessage=()=>{
+
+const FormHamsterAddedMessage=(props)=>{
 
 
 	return(
 
-		<div className='HamsterAddedMsg'>
+		<div className='hamsterAddedMsg'>
 			<p>Hamster added!</p>
+			<button onClick={()=>props.setDisplayForm(true)}>Ok, thanks!</button>
 
 
 		</div>

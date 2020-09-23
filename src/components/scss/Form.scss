@@ -4,13 +4,18 @@
 .form-component{
 	position:relative;
 	height:100vh;
-}
-.hamsterAdded{
-	background-color:green;
-	border:1px solid green;
+
+	.hamsterAddedMsg{
+		.hamstertext{
+			display:grid;
+			place-items:center;
+			font-size:1em;
+		}
+	}
 }
 
-.form-wrapper{
+
+.form-wrapper, .hamsterAddedMsg{
 	position:absolute;
 	background-image:url('../../assets/formpotatomobile.svg');
 	height:85vh;
@@ -27,10 +32,12 @@
 	flex-direction:column;
 	justify-content:center;
 	align-items:center;
+	border:1px solid purple;
 	
 		p{
 			color:$orange;
-			font-size:19px;
+			font-size:13px;
+			
 			margin-bottom:1em;
 		}
 		.form{
@@ -122,8 +129,8 @@
 }
 
 @media screen and (min-width: 360px){
-	.form-wrapper{
-		
+	.form-wrapper, .hamsterAddedMsg{
+		border:1px solid green;
 		p{
 			font-size:21px;
 		}
@@ -145,16 +152,17 @@
 
 @media screen and (min-width:642px){
 
-	.form-wrapper{
+	.form-wrapper, .hamsterAddedMsg{
 		height:78vh;
 		background-image:url('../../assets/formpotatodesktop.svg');
 		top: 5em;
 		margin-left: auto;
 		margin-right: auto;
+		border:1px dotted lightblue;
 		
 		.form{
 
-			width:21em;
+			width:22em;
 
 			.form-group{
 
@@ -170,13 +178,13 @@
 	}
 }
 @media screen and (min-width:880px){
-	.form-wrapper{
+	.form-wrapper, .hamsterAddedMsg{
 		height:78vh;
 		top: 5em;
-
+		border:1px solid hotpink;
 		.form{
 
-			width:23em;
+			width:22em;
 
 			.form-group{
 
@@ -194,15 +202,16 @@
 
 @media screen and (min-width: 1076px){
 
-	.form-wrapper{
+	.form-wrapper, .hamsterAddedMsg{
 		background-image:url('../../assets/formpotatodesktop.svg');
 		height:78vh;
 		top: 5em;
 		margin-left: auto;
 		margin-right: auto;
+		border:1px solid blue;
 
 		.form{
-			width:23em;
+			width:22em;
 
 			.form-group{
 
