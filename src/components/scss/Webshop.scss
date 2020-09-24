@@ -21,6 +21,15 @@
     overflow-x: hidden;
 }
 
+#webshop .container main h2 {
+    margin-bottom: 15px;
+}
+
+#webshop .container main .price {
+    font-size: 19px;
+    color: $darkpurple;
+}
+
 #webshop .container .shop{
     z-index: 2;
     display: flex;
@@ -42,7 +51,7 @@
 
 #webshop .container main div {
     display: grid;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 20% 55% 20% 5%;
     background-color: $lightgreen;
     padding: 1em;
     border-radius: 15px;
@@ -56,7 +65,7 @@
 
 #webshop .container main div .buy-btn{
     @include button;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
