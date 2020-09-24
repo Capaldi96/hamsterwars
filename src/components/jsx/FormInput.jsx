@@ -18,33 +18,19 @@ const FormInput=(props)=>{
 		setimageFile(e.target.files[0])
 		setImageLabelText('New image ready to upload')
 	}
-	// const onSubmit = data => console.log('data from input: ',data);//TODO denna ska nog bort?
-	const [newHamster2, setNewHamster2]=useState({})
-	const onSubmit=(data)=>{
-		console.log('newHamster2 innan set: ', newHamster2)
-		console.log('data from input: ',data);
-		setNewHamster2(data)
-		console.log('newHamster2 efter set: ', newHamster2)
+
+	const onSubmit=()=>{
+		
+		addHamster();
+		addHamsterImage();
 
 	}
 
-	// let newHamster = {
-	// 	name:name,
-	// 	age:Number(age),
-	// 	favFood:favFood,
-	// 	loves:loves,
-	// 	imgName:imageFile.name,
-	// 	wins:0,
-	// 	defeats:0,
-	// 	games:0,
-	// 	latestGame: ''
-	// }
-
 	let newHamster = {
-		name:'Hannas testhamster',
-		age:Number('2'),
-		favFood:'Testmat',
-		loves:'testloves',
+		name:name,
+		age:Number(age),
+		favFood:favFood,
+		loves:loves,
 		imgName:imageFile.name,
 		wins:0,
 		defeats:0,
@@ -102,13 +88,12 @@ const FormInput=(props)=>{
 			console.log(' addhamster: something went wrong when adding hamster: ', error)
 		}
 	}
-	//*Ev gör global variabel för response så att fler funktioner kan använda sig av den.
 
-	const addNewHamster = () => {
-		addHamster();
-		addHamsterImage();
+	// const addNewHamster = () => {
+	// 	addHamster();
+	// 	addHamsterImage();
 		
-	}
+	// }
 	
 	// <form className='form' onSubmit={handleSubmit(onSubmit)}></form>
 	return (
@@ -210,9 +195,9 @@ const FormInput=(props)=>{
 							{errors.imageFile && errors.imageFile.type==='required' && <span>Need an image 😘</span>}
 						</div>
 					</div>
-					<input type="submit" /> 
+					<input type="submit" value='Add hamster' className='submit-button'/> 
 				</form>
-				<button onClick={addNewHamster}>Add hamster</button>
+				{/* <button onClick={addNewHamster}>Add hamster</button> */}
 				
 		
 			</div>

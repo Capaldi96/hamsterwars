@@ -18,7 +18,6 @@
 			place-items:center;
 			font-size:2em;
 		}
-	
 	}
 }
 
@@ -40,7 +39,6 @@
 	flex-direction:column;
 	justify-content:center;
 	align-items:center;
-	border:1px solid purple;
 	
 		p{
 			color:$orange;
@@ -50,27 +48,25 @@
 		}
 		.form{
 			width:10.5em;
+			display:grid;
 	
 			.form-group{
 				margin-bottom:.5em;
-				transition:all .3s;//*transition för att allt ska växa, det kan nog tas bort sen
+				transition:all .3s;//transition för att allt ska växa, det kan nog tas bort sen
 				position: relative;
 				
 				.form-label{
-					//*för floating labels
 					font-size:1em;
 					color:#aaa;
 					display:block;
-					transform:translateY(-1.55em);//*styr labeltexten höjdledes i inputfältet
+					transform:translateY(-1.55em);//styr labeltexten höjdledes i inputfältet
 					padding-left:.5em;
-					transform-origin:0 0;//*rör sig upp till övre vänstra hörnet
+					transform-origin:0 0;//rör sig upp till övre vänstra hörnet
 					transition:all .3s;
 					cursor:text;
 
 				}
-				//inputfält
 				.form-control{
-			
 					font-size:.9em;
 					border-radius:10px;
 					border-color:#ccc;
@@ -81,7 +77,6 @@
 				.form-control::placeholder{
 					color: transparent;
 				}
-
 				.form-control:focus{
 					outline:none;
 				
@@ -107,7 +102,6 @@
 					#imageFile{
 						display:none;
 					}
-
 				}
 				.imageFile-label:hover{
 					background-color:rgb(231, 230, 230);
@@ -126,23 +120,24 @@
 					}
 				}
 			}
+			.submit-button{
+				@include button;
+				justify-self:center;
+				margin-top:1em;
+				
+			}
+			.submit-button:hover{
+				@include button-hover
+			}
 		}
-	button{
-		margin-top:1em;
-		@include button
-	}
-	button:hover{
-		@include button-hover;
-	}
+
 }
 
 @media screen and (min-width: 360px){
 	.form-wrapper, .hamster-added-wrapper{
-		border:1px solid green;
 		p{
 			font-size:21px;
 		}
-
 		.form{
 			width:15em;
 
@@ -159,15 +154,12 @@
 
 
 @media screen and (min-width:642px){
-
 	.form-wrapper, .hamster-added-wrapper{
 		height:78vh;
 		background-image:url('../../assets/formpotatodesktop.svg');
 		top: 5em;
 		margin-left: auto;
 		margin-right: auto;
-		border:1px dotted lightblue;
-		
 		.form{
 
 			width:22em;
@@ -189,7 +181,6 @@
 	.form-wrapper, .hamster-added-wrapper{
 		height:78vh;
 		top: 5em;
-		border:1px solid hotpink;
 		.form{
 
 			width:22em;
@@ -216,8 +207,6 @@
 		top: 5em;
 		margin-left: auto;
 		margin-right: auto;
-		border:1px solid blue;
-
 		.form{
 			width:22em;
 
