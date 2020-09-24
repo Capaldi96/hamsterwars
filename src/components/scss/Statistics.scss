@@ -144,7 +144,7 @@ grid-template-rows: 5fr;
 justify-items: center;
 }
 
-.statEllipseListLatest{
+.statEllipseListLatest, .statEllipseListLatestLoading{
 font-size: 2em;
 }
 
@@ -326,7 +326,7 @@ margin-bottom: 10px;
 font-size: 1.5em;
 }
 
-.statEllipseListLatest, .vsTag{
+.statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 1.5em;
 }
 
@@ -340,7 +340,7 @@ margin-top: 70px;
 .statEllipseList{
 font-size: 1.1em;
 }
-.statEllipseListLatest, .vsTag{
+.statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 1.1em;
 }
 .statEllipseListGamesPlayed{
@@ -351,7 +351,7 @@ margin-top: 30px;
 
 @media (max-width: 400px) {
 
-.statEllipseListLatest, .vsTag{
+.statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 0.9em;
 }
 .statEllipseListGamesPlayed{
