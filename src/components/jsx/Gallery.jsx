@@ -36,58 +36,28 @@ const Gallery = () => {
 	} 
 	else {
 		status = 
-			<main>
-				{hamsterList.map(hamster => (
-				<div className="flip-card-gallery" key={hamster._id}>
-					<div className="flip-card-inner-gallery">
-						<div className="container-list">
-							{/* FRONT */}
-							<div className="flip-card-front-gallery list">
-								<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
-							</div> 
-							{/* BACK */}
-							<div className="flip-card-back-gallery list">
-								<button className="delete-button" onClick={() => deleteHamster(hamster._id)}>{statusDelete}</button>
-								<p><span>{hamster.name}</span></p>
-								<p>Years: {hamster.age}</p>
-								<p>Games: {hamster.games}</p> 
-								<p>Favfood: {hamster.favFood}</p> 
-								<p>Loves: {hamster.loves}</p>
-								<p>Wins: {hamster.wins}</p> 
-								<p>Losses: {hamster.defeats}</p>
-							</div>
-						</div>
+				<main>
+					<div className="container-list">
+						{hamsterList.map(hamster => (
+						<div key={hamster._id} className="list">
+							<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
+							<button onClick={() => deleteHamster(hamster._id)}>X</button>
+							<p ><span>{hamster.name}</span></p>
+							<p>Years: {hamster.age}</p>
+							<p>Games: {hamster.games}</p>
+							<p>Favfood: {hamster.favFood}</p>
+							<p>Loves: {hamster.loves}</p>
+							<p>Wins: {hamster.wins}</p>
+							<p>Losses: {hamster.defeats}</p>
+						</div>))}
 					</div>
-				</div>))}
-			</main>	
+				</main>
 	}
 	
 
 	return (
 		<div className="Gallery">
-		{/* 	<main>
-					<div className="container-list">
-						{hamsterList.map(hamster => (
-						<div key={hamster._id} className="list font">
-							<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
-						</div>))}
-					</div>
-					<div className="container-list">
-						{hamsterList.map(hamster => (
-						<div key={hamster._id} className="list back">
-							<button onClick={() => deleteHamster(hamster._id)}>{message}</button>
-							<p ><span>{hamster.name}</span></p>
-							<p>Years: {hamster.age}</p>
-							<p>Games: {hamster.games}</p> 
-							<p>Favfood: {hamster.favFood}</p> 
-							<p>Loves: {hamster.loves}</p>
-							<p>Wins: {hamster.wins}</p> 
-							<p>Losses: {hamster.defeats}</p>
-						</div>))}
-					</div>
-			</main> */}
 			<div>{status}</div>
-
 		</div>
 	)
 }
