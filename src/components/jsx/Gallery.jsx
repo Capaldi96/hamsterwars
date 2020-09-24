@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-/* import ScrollTopArrow from './ScrollTopArrow' */
+import ScrollTopArrow from './ScrollTopArrow'
 import '../scss/Gallery.scss';
 
 
@@ -8,7 +8,27 @@ const Gallery = () => {
 
 	const [hamsterList, setHamsterList] = useState([]);
 	const [statusDelete, setStatusDelete] = useState('Delete');
+	const [showScroll, setShowScroll] = useState(true) // ändra till false
 
+	useEffect(() => {
+		const checkScrollTop = () => {
+			console.log('checkScrollTop')
+			if (!showScroll && window.pageYOffset > 400){
+				console.log('if window.pageYOffset', window.pageYOffset )
+			  setShowScroll(true)
+			} else if (showScroll && window.pageYOffset <= 400){
+			  setShowScroll(false)
+			}
+		  };
+	  
+		window.addEventListener('scroll', checkScrollTop)
+	  }, [])
+	
+
+	const scrollTop = () =>{
+		console.log('scrollTop click')
+		window.scrollTo({top: 0, behavior: 'smooth'}); // useref gallery (länk till dom element)
+	};
 
 	useEffect(() => {
 		getHamsters();
@@ -56,10 +76,10 @@ const Gallery = () => {
 	
 
 	return (
-		<div className="Gallery">
+		<div className="Gallery" onScroll={() => console.log('Scroll i gallery')}>
 			<main>
 				<div>{status}</div>
-				{/* <ScrollTopArrow/> */}
+				{<ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/>}
 			</main>
 		</div>
 	)
