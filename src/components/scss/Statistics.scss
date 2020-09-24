@@ -158,6 +158,10 @@ font-size: 2em;
 color: $lightpurple;
 }
 
+.statEllipseListLatestLoading{
+grid-column: 2/3;	
+grid-row: 1/2;
+}
 
 .statEllipseListLatest:nth-child(1){
 grid-row: 1/2;
