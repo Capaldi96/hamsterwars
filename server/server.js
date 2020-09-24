@@ -65,7 +65,6 @@ app.post('/api/addhamster', (req, res) => {
 });
 
 app.post('/api/addhamsterImage', (req, res) => {
-
 	if (!req.files) return
 	const file = req.files.file;
 	console.log('server.js, file: ', file)
