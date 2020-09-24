@@ -3,8 +3,8 @@
 .flip-card-info{
     float:right;
 	top:1vh;
-	right:1vh;
-    width: 2em;
+	right:0.5vh;
+    width: 6vw;
     position: relative;
 	z-index: 2;
 }
@@ -18,7 +18,7 @@
 
 .flip-card {
 	background-color: transparent;
-    width: 60%;
+    width: 70%;
 	height: 25vh;
     perspective: 1000px;
     border-radius: 15px;
@@ -47,7 +47,7 @@
 }
 
 .flip-card .inner-card-p{
-	font-size: 17px;
+	font-size: 2vh;
 	line-height: 1.3;
 }
 
@@ -59,7 +59,7 @@
 	height: 100%;
 	-webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border: 1em solid $lightgreen;
+    border: 1.5vh solid $lightgreen;
     border-radius: 15px;
 }
 
@@ -76,5 +76,15 @@
 }
 
 .flip-card-h1{
-	font-size: 35px;
+	font-size: 3vh;
+}
+@media only screen and (min-width: 700px){
+	.flip-card-info{
+		float:right;
+		top:1vh;
+		right:0.5vh;
+		width: 2vw;
+		position: relative;
+		z-index: 2;
+	}
 }

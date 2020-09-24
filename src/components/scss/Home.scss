@@ -1,97 +1,110 @@
-@import 'mixins.scss';
+@import "mixins.scss";
 
-.link-toBattle{
-	@include button
+.link-toBattle {
+	@include button;
 }
-.link-toBattle{
+.link-toBattle {
 	text-decoration: none;
 }
-.home-main{
+.home-main {
 	position: relative;
 	text-align: center;
-	height:100vh;
+	height: 100vh;
 }
-.home-container{
+.home-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	background-image: url('../../assets/home-potato.svg');
-	height: 35em;
+	background-image: url("../../assets/home-potato.svg");
+	height: 60vh;
 	width: 70%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-	top: 4em;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	top: 10vh;
 	z-index: 10;
 	margin-left: auto;
-    margin-right: auto;
-    left: 0;
+	margin-right: auto;
+	left: 0;
 	right: 0;
 }
-.home-container > h1{
-	font-size: 3em;
+.home-container > h1 {
+	font-size: 6vh;
 	line-height: 1.1em;
 	margin-bottom: 0.5em;
 }
-.home-container p{
+.home-container p {
+	font-size: 2vh;
 	color: $orange;
 	line-height: 1.4em;
 	margin-bottom: 3em;
 	padding: 0 5em 0;
 }
-.hamster-icon{
+.hamster-icon {
 	position: absolute;
-	width: 15em;
-	top: -1em;
-	left: 70%;
+	width: 15%;
+	top: 3vh;
+	left: 65%;
 	z-index: 15;
 }
 // Shake
 .hamster-icon {
-	animation: shake 0.85s cubic-bezier(.36,.07,.19,.97) both;
+	animation: shake 0.85s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 	transform: translate3d(0, 0, 0);
 	backface-visibility: hidden;
 	perspective: 1000px;
-  }
-  @keyframes shake {
-	10%, 90% {
-	  transform: translate3d(-1px, 0, 0);
+}
+@keyframes shake {
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0);
 	}
-	
-	20%, 80% {
-	  transform: translate3d(2px, 0, 0);
-	}
-  
-	30%, 50%, 70% {
-	  transform: translate3d(-4px, 0, 0);
-	}
-  
-	40%, 60% {
-	  transform: translate3d(4px, 0, 0);
-	}
-  }
 
-@media screen and (max-width: 950px){
-	.hamster-icon{
-		left: 75%;
-		width: 12em;
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%,
+	60% {
+		transform: translate3d(4px, 0, 0);
 	}
 }
-@media screen and (max-width: 800px){
-	.home-container{
+// @media screen and (max-width: 1150px) {
+// 	.hamster-icon {
+// 		left: 75%;
+// 		width: 15vw;
+// 		top: 3vh;
+// 	}
+// }
+@media screen and (max-width: 950px) {
+	.hamster-icon {
+		left: 75%;
+		width: 15vw;
+		top: 3vh;
+	}
+}
+@media screen and (max-width: 800px) {
+	.home-container {
 		height: 35em;
 		width: 80%;
 		top: 3em;
 	}
-	.home-container p{
+	.home-container p {
 		font-size: 1em;
 	}
 }
-@media screen and (max-width: 700px){
-	.home-container{
-		background-image:url('../../assets/home-potato-responsive1.svg');
+@media screen and (max-width: 700px) {
+	.home-container {
+		background-image: url("../../assets/home-potato-responsive1.svg");
 		height: 80%;
 		width: auto;
 		background-size: contain;
@@ -99,8 +112,8 @@
 		background-position: center;
 		margin-top: 0;
 		z-index: 10;
-		margin-left: .5em;
-		margin-right: .5em;
+		margin-left: 0.5em;
+		margin-right: 0.5em;
 		left: 0;
 		right: 0;
 		display: flex;
@@ -108,32 +121,32 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.hamster-icon{
+	.hamster-icon {
 		display: none;
 	}
-	.home-container > h1{
+	.home-container > h1 {
 		font-size: 2em;
 	}
-	.home-container p{
+	.home-container p {
 		font-size: 0.9em;
 		padding: 0 13em 0;
 	}
 }
-@media screen and (max-width: 600px){
-	.home-container p{
+@media screen and (max-width: 600px) {
+	.home-container p {
 		padding: 0 9em 0;
 	}
 }
-@media screen and (max-width: 500px){
-	.home-container p{
+@media screen and (max-width: 500px) {
+	.home-container p {
 		padding: 0 6em 0;
 	}
 }
-@media screen and (max-width: 350px){
-	.home-container > h1{
+@media screen and (max-width: 350px) {
+	.home-container > h1 {
 		font-size: 1.7em;
 	}
-	.home-container p{
+	.home-container p {
 		padding: 0 2em 0;
 	}
 }

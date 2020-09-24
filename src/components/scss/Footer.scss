@@ -4,11 +4,14 @@
 	width:100%;
 }
 .bottom-wave{
+	position: fixed;
+	bottom: 0;
 	width: 50%;
 
 }
 @media screen and (max-width: 880px) {
 	.bottom-wave{
+
 		width: 80%;
 	}
   }
