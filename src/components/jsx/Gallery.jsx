@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+/* import ScrollTopArrow from './ScrollTopArrow' */
 import '../scss/Gallery.scss';
+
 
 const Gallery = () => {
 
@@ -36,28 +38,29 @@ const Gallery = () => {
 	} 
 	else {
 		status = 
-				<main>
-					<div className="container-list">
-						{hamsterList.map(hamster => (
-						<div key={hamster._id} className="list">
-							<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
-							<button onClick={() => deleteHamster(hamster._id)}>X</button>
-							<p ><span>{hamster.name}</span></p>
-							<p>Years: {hamster.age}</p>
-							<p>Games: {hamster.games}</p>
-							<p>Favfood: {hamster.favFood}</p>
-							<p>Loves: {hamster.loves}</p>
-							<p>Wins: {hamster.wins}</p>
-							<p>Losses: {hamster.defeats}</p>
-						</div>))}
-					</div>
-				</main>
+			<div className="container-list">
+				{hamsterList.map(hamster => (
+				<div key={hamster._id} className="list">
+					<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
+					<button onClick={() => deleteHamster(hamster._id)}>X</button>
+					<p ><span>{hamster.name}</span></p>
+					<p>Years: {hamster.age}</p>
+					<p>Games: {hamster.games}</p>
+					<p>Favfood: {hamster.favFood}</p>
+					<p>Loves: {hamster.loves}</p>
+					<p>Wins: {hamster.wins}</p>
+					<p>Losses: {hamster.defeats}</p>
+				</div>))}
+			</div>
 	}
 	
 
 	return (
 		<div className="Gallery">
-			<div>{status}</div>
+			<main>
+				<div>{status}</div>
+				{/* <ScrollTopArrow/> */}
+			</main>
 		</div>
 	)
 }

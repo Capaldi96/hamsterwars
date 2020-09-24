@@ -2,7 +2,10 @@
 @import 'mixins.scss';
 
 .Gallery {
-    overflow: scroll;
+	overflow: scroll;
+}
+main{
+	height: 5000px;
 }
 .container-list{
     margin: 9% 3em 15%;
