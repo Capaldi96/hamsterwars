@@ -4,12 +4,15 @@ import '../../scss/Statistics.scss'
 
 const GetLatestBattles = () => {
 	const [latestBattles, setLatestBattles] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 		useEffect(() => {
+		setLoading(true)
 		axios.get('/api/LatestGames')
 		.then(res => {
 			console.log(res)
 			setLatestBattles(res.data)
+			setLoading(false)
 		})
 		.catch(err => {
 			console.log(err)
@@ -29,7 +32,8 @@ const GetLatestBattles = () => {
 			<div className="gridgrid">
 
 			{/* index is added to be able to map same name */}
-			{latestBattles.map((latest, index) => (<p className="statEllipseListLatest" key={latest.name+index}>{latest.name}</p>))}
+			{loading ? <p className="statEllipseListGamesPlayed">Loading...</p> : latestBattles.map((latest, index) => (<p className="statEllipseListLatest" key={latest.name+index}>{latest.name}</p>))}
+			
 			<p className="vsTag1 vsTag"> vs </p>
 			<p className="vsTag2 vsTag"> vs </p>
 			<p className="vsTag3 vsTag"> vs </p>
