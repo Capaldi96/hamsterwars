@@ -38,7 +38,7 @@ const GetLatestBattles = () => {
 			
 			))}
 
-			{loading ? <p className="statEllipseListLatest">Loading...</p> : 
+			{loading ? <p className="statEllipseListLatestLoading">Loading...</p> : 
 			
 			<div className="tagsStatContainer">
 			<p className="vsTag"> vs </p>
