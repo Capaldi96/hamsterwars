@@ -110,6 +110,12 @@ function getAllHamsters(callback) {
 function getFixedBattle(id1,id2,callback){
 	get({'_id' : { $in : [ new ObjectID(id1), new ObjectID(id2)] }}, callback)
 }
+function getFairBattle(matches,callback){
+	console.log(matches)
+	let tenPerecent = (10 / 100) * matches;
+	console.log(tenPerecent)
+	get({ games: {$lte: tenPerecent} },callback)
+}
 
 function deleteHamster(id, callback){
 	MongoClient.connect(url, {useUnifiedTopology:true},
@@ -182,5 +188,6 @@ module.exports = {
 	addHamster,
 	editHamster,
 	deleteHamster,
-	getFixedBattle
+	getFixedBattle,
+	getFairBattle
 }

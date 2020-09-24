@@ -27,6 +27,7 @@ const BattleResult = () => {
 			console.log("inte samma")
 			setHamster1(hamster1.data[0]);
 			setHamster2(hamster2.data[0]);
+			console.log(hamster1.data[0])
 		} else {
 			console.log("samma")
 			getMatch()

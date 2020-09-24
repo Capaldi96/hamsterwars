@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle, getFairBattle } = require('./database.js');
 
 
 
@@ -30,6 +30,12 @@ app.get('/api/getAllHamsters', (req, res) => {
 app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
 	getFixedBattle(req.params.id1, req.params.id2, dataOrError => {
 		res.send(dataOrError);
+	})
+})
+app.get('/api/fairBattle', (req, res) => {
+	
+	getFairBattle(matches,dataOrError =>{
+
 	})
 })
 app.get('/api/randomHamster', (req, res) => {

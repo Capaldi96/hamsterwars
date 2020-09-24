@@ -4,9 +4,7 @@ import '../scss/BattleCard.scss';
 const BattleCard = props => {
 
 	const [crownForWinner, setCrownForWinner] = useState(false);
-	console.log(props.disableImg)
 	const wrapperFunction = () => {
-
 		if(props.disableImg === false){
 			props.setDisableImg(true);
 			props.setWinnerId(props.hamster._id)
