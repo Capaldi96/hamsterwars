@@ -32,13 +32,22 @@ const GetLatestBattles = () => {
 			<div className="gridgrid">
 
 			{/* index is added to be able to map same name */}
-			{loading ? <p className="statEllipseListGamesPlayed">Loading...</p> : latestBattles.map((latest, index) => (<p className="statEllipseListLatest" key={latest.name+index}>{latest.name}</p>))}
+			{loading ? <span></span> : 
 			
-			<p className="vsTag1 vsTag"> vs </p>
-			<p className="vsTag2 vsTag"> vs </p>
-			<p className="vsTag3 vsTag"> vs </p>
-			<p className="vsTag4 vsTag"> vs </p>
-			<p className="vsTag5 vsTag"> vs </p>
+			latestBattles.map((latest, index) => (<p className="statEllipseListLatest" key={latest.name+index}>{latest.name} </p>
+			
+			))}
+
+			{loading ? <p className="statEllipseListLatest">Loading...</p> : 
+			
+			<div className="tagsStatContainer">
+			<p className="vsTag"> vs </p>
+			<p className="vsTag"> vs </p>
+			<p className="vsTag"> vs </p>
+			<p className="vsTag"> vs </p>
+			<p className="vsTag"> vs </p></div>}
+			
+
 			</div>
 
 			</div>

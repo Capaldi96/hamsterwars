@@ -141,33 +141,23 @@ margin-top: 60px;
 display: grid;
 grid-template-columns: 25vw 7vw 25vw;
 grid-template-rows: 5fr;
+justify-items: center;
 }
 
 .statEllipseListLatest{
 font-size: 2em;
 }
 
+.tagsStatContainer{
+grid-column: 2/3;	
+grid-row: 1/6;
+}
+
 .vsTag{
-grid-column: 2/3;
-justify-self: center;
 font-size: 2em;
 color: $lightpurple;
 }
-.vsTag1{
-grid-row: 1/2;
-}
-.vsTag2{
-grid-row: 2/3;
-}
-.vsTag3{
-grid-row: 3/4;
-}
-.vsTag4{
-grid-row: 4/5;
-}
-.vsTag5{
-grid-row: 5/6;
-}
+
 
 .statEllipseListLatest:nth-child(1){
 grid-row: 1/2;

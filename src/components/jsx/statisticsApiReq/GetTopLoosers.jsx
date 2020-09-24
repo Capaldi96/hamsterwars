@@ -27,7 +27,7 @@ const [loading, setLoading] = useState(false);
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Top 5 loosers</h1>
-			{loading ? <p className="statEllipseListGamesPlayed">Loading...</p> : top5Loosers.map((loosers, index) => (<p className="statEllipseList" key={loosers.name+index}>{loosers.name}</p>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : top5Loosers.map((loosers, index) => (<p className="statEllipseList" key={loosers.name+index}>{loosers.name}</p>))}
 			
 			</div>
 			</div>

@@ -28,7 +28,7 @@ const GetTopWinners = () => {
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Top 5 winners</h1>
-			{loading ? <p className="statEllipseListGamesPlayed">Loading...</p> : top5Winners.map((winners, index) => (<p className="statEllipseList" key={winners.name+index}>{winners.name}</p>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : top5Winners.map((winners, index) => (<p className="statEllipseList" key={winners.name+index}>{winners.name}</p>))}
 		
 			</div>
 			</div>
