@@ -18,6 +18,13 @@
     width: 90%;
     height: 54vh;
 }
+.container-list .competitorBackground{
+	background:$darkpurple;
+	padding: 1em;
+    border-radius: 15px;
+    width: 90%;
+    height: 54vh;
+}
 .container-list div p{
     margin-bottom: 0.3em;
     font-size: 2vh;
@@ -34,7 +41,7 @@
     flex-direction: column;
     position: relative;
 }
-.list button{
+.list button, .hand-icon{
     border: 2px solid $orange;
     border-radius: 100%;
     background: $orange;
@@ -47,6 +54,15 @@
     align-self: flex-end;
     transition: ease-in 0.2s;
 }
+.hand-icon{
+	height:4vh;
+}
+.hand-icon:hover{
+	cursor:pointer;
+}
+.card-cursor:hover{
+	cursor:pointer;
+}
 .list button:hover{
     cursor: pointer;
     border: 3px solid $orange;
@@ -57,6 +73,7 @@
 	height: 25vh;
 	border-radius: 12px;
 }
+
 
 // Loading
 .loading{

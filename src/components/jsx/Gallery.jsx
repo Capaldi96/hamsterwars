@@ -4,8 +4,8 @@ import ScrollTopArrow from './ScrollTopArrow'
 import '../scss/Gallery.scss';
 
 
-const Gallery = () => {
-
+const Gallery = (props) => {
+	
 	const [hamsterList, setHamsterList] = useState([]);
 	const [showScroll, setShowScroll] = useState(true) // ändra till false
 	const gallery = useRef()
@@ -60,6 +60,42 @@ const Gallery = () => {
 		console.log(response)
 		getHamsters();
 	}
+	let classIcon=''
+	//TODO Här är jag==================================
+
+	//TODO pågående: byta färg på klickat kort från grön till lila
+	if(props.toCompetitorsComp){
+		console.log('tocomp är true')
+		console.log(props)
+		classIcon='card-cursor'
+
+	}else{
+		console.log('tocomp är false')
+		console.log(props)
+		
+	}
+	let competitorBackground=''
+	const addCompetitors=()=>{
+		
+		if(props.toCompetitorsComp){
+			console.log('click funkar i addCompetitors')
+			competitorBackground='competitorBackground'
+			console.log(competitorBackground)
+
+		}
+	}
+	//TOGGLE kod exempel
+
+	// const [isOn, setIsOn]=useState(true)
+
+    // let buttonText="Turn Off";
+    // let isOnClassName="isOnLight"
+    // if(!isOn){
+    //     buttonText="Turn On"
+    //     isOnClassName="isOffDark"
+
+    // }
+
 
 	let status = null;
 	if (!hamsterList.length) {
@@ -67,11 +103,13 @@ const Gallery = () => {
 	} 
 	else {
 		status = 
-			<div className="container-list">
+			<div className="container-list" >
 				{hamsterList.map(hamster => (
-				<div key={hamster._id} className="list">
+				<div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={()=>addCompetitors()}>
 					<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
-					<button onClick={() => deleteHamster(hamster._id)}>X</button>
+					{!props.toCompetitorsComp ? (<button onClick={() => deleteHamster(hamster._id)}>X</button>) : (	<img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}
+				
+				
 					<p ><span>{hamster.name}</span></p>
 					<p>Years: {hamster.age}</p>
 					<p>Games: {hamster.games}</p>

@@ -3,10 +3,14 @@
 
 .Competitors{
 	overflow: scroll;
-}
-button{
-	@include button
-}
-button:hover{
-	@include button-hover
+	
+	.go-to-battle-button{
+		@include button
+	}
+	.go-to-battle-button:hover{
+		@include button-hover
+	}
+	
+
+
 }

@@ -17,7 +17,7 @@ const BattleResult = () => {
 	const { width, height } = useWindowSize();
 	const [chosenHamster1, setChosenHamster1] = useState(null);
 	const [chosenHamster2, setChosenHamster2] = useState(null);
-	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
+	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);//!glöm inte att ändra denna till false när klar
 
 
 
@@ -180,7 +180,7 @@ const BattleResult = () => {
 	}
 	else{
 		content = 
-			<Competitors setChosenHamster1={setChosenHamster1} setChosenHamster2={setChosenHamster2} chosenHamster1={chosenHamster1} chosenHamster2={chosenHamster2}/>
+			<Competitors setChosenHamster1={setChosenHamster1} setChosenHamster2={setChosenHamster2} chosenHamster1={chosenHamster1} chosenHamster2={chosenHamster2} toCompetitorsComp={toCompetitorsComp}/>
 		
 	}
 
