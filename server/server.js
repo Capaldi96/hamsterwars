@@ -32,10 +32,10 @@ app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
 		res.send(dataOrError);
 	})
 })
-app.get('/api/fairBattle', (req, res) => {
-	
+app.get('/api/fairBattle/:matches', (req, res) => {
+	let matches = parseInt(req.params.matches);
 	getFairBattle(matches,dataOrError =>{
-
+		res.send(dataOrError);
 	})
 })
 app.get('/api/randomHamster', (req, res) => {

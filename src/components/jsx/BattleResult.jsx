@@ -10,6 +10,7 @@ const BattleResult = () => {
 	const [showResult, setShowResult] = useState(false);
 	const [hamster1, setHamster1] = useState(null);
 	const [hamster2, setHamster2] = useState(null)
+	const [matches, setMatches] = useState(null);
 	const [showCutestH1, setShowCutestH1] = useState(true);
 	const [disableImg, setDisableImg] = useState(false);
 	const [confetti, setConfetti] = useState(false);
@@ -18,19 +19,27 @@ const BattleResult = () => {
 
 
 	useEffect(() => {
-		getMatch()
+		getMatches()
 	}, []);
+	useEffect(() => {
+		if (matches) {
+			console.log(matches)
+			getMatch()
+		}
+	}, [matches]);
+	async function getMatches() {
+		let matches = await axios.get('/api/sumAllGames')
+		setMatches(matches.data[0].sumAllGames);
+	}
 	async function getMatch() {
-		let hamster1 = await axios.get('/api/randomHamster');
-		let hamster2 = await axios.get('/api/randomHamster');
-		if (hamster1 !== hamster2) {
-			console.log("inte samma")
+		let hamster1 = await axios.get('/api/fairBattle/' + matches);
+		let hamster2 = await axios.get('/api/fairBattle/' + matches);
+		if (hamster1.data[0] === hamster2.data[0]) {
+			getMatch()
+			console.log("samma")
+		} else {
 			setHamster1(hamster1.data[0]);
 			setHamster2(hamster2.data[0]);
-			console.log(hamster1.data[0])
-		} else {
-			console.log("samma")
-			getMatch()
 		}
 	}
 
@@ -47,7 +56,6 @@ const BattleResult = () => {
 			wins: hamster.wins,
 			latestBattle: hamster.latestGame,
 			games: hamster.games,
-			latestGame: hamster.latestGame
 		})
 	}
 	function updateLooser(hamster) {
@@ -64,7 +72,6 @@ const BattleResult = () => {
 			latestBattle: hamster.latestGame,
 			wins: hamster.wins,
 			games: hamster.games,
-			latestGame: hamster.latestGame
 		})
 	}
 	function setWinnerAndLooser() {
