@@ -4,12 +4,15 @@ import '../../scss/Statistics.scss'
 
 const GetTopLoosers = () => {
 const [top5Loosers, setTop5Loosers] = useState([]);
+const [loading, setLoading] = useState(false);
 
 		useEffect(() => {
+		setLoading(true)
 		axios.get('/api/TopLoosers')
 		.then(res => {
 			console.log(res)
 			setTop5Loosers(res.data)
+			setLoading(false)
 		})
 		.catch(err => {
 			console.log(err)
@@ -24,7 +27,7 @@ const [top5Loosers, setTop5Loosers] = useState([]);
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Top 5 loosers</h1>
-			{top5Loosers.map((loosers, index) => (<p className="statEllipseList" key={loosers.name+index}>{loosers.name}</p>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : top5Loosers.map((loosers, index) => (<p className="statEllipseList" key={loosers.name+index}>{loosers.name}</p>))}
 			
 			</div>
 			</div>

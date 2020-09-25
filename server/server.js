@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const cors = require('cors');
-const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle } = require('./database.js');
+const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle, getFairBattle } = require('./database.js');
 
 
 
@@ -32,10 +32,14 @@ app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
 		res.send(dataOrError);
 	})
 })
-app.get('/api/Battle', (req, res) => {
-	console.log(req.params)
+app.get('/api/fairBattle', (req, res) => {
+	
+	getFairBattle(matches,dataOrError =>{
 
-	getGroupOfHamsters('battle', dataOrError => {
+	})
+})
+app.get('/api/randomHamster', (req, res) => {
+	getGroupOfHamsters('randomHamster', dataOrError => {
 		res.send(dataOrError);
 	})
 })
@@ -61,7 +65,6 @@ app.post('/api/addhamster', (req, res) => {
 });
 
 app.post('/api/addhamsterImage', (req, res) => {
-
 	if (!req.files) return
 	const file = req.files.file;
 	console.log('server.js, file: ', file)
@@ -129,9 +132,9 @@ app.delete('/api/deleteHamster/:id', (req, res) => {
 	})
 })
 
-app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-});
+// app.use((req, res, next) => {
+// 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+// });
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);

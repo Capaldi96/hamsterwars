@@ -1,0 +1,16 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.Competitors{
+	overflow: scroll;
+	
+	.go-to-battle-button{
+		@include button
+	}
+	.go-to-battle-button:hover{
+		@include button-hover
+	}
+	
+
+
+}

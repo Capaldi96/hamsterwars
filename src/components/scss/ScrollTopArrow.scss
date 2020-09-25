@@ -1,0 +1,30 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.scrollTop {
+	position: fixed; 
+	width: 100%;
+	bottom: 20px;
+	align-items: center;
+	justify-content: flex-end;
+	z-index: 1000;
+	cursor: pointer;
+	animation: fadeInScrollTopArrow 0.3s;
+	transition: opacity 0.4s;
+	opacity: 0.5;
+  }
+  
+  .scrollTop:hover{
+	opacity: 1;
+	text-align: end;
+  }
+
+  
+  @keyframes fadeInScrollTopArrow {
+	0% {
+	  opacity: 0;
+	}
+	100% {
+	  opacity: 0.5;
+	}
+  }

@@ -7,23 +7,16 @@ import FormHamsterAddedMessage from './FormHamsterAddedMessage'
 
 const Form=()=>{
 
-	const [displayForm, setDisplayForm]=useState(true)
-	
-	let comp=''
-
-	if(displayForm){
-		comp=<FormInput displayForm={displayForm} setDisplayForm={setDisplayForm}/>
-	}
-	else{
-		comp=<FormHamsterAddedMessage setDisplayForm={setDisplayForm}/>
-	}
-
+	const [displayForm, setDisplayForm]=useState(false)
 
 	return (
 
 		<div className='form-component'>
-
-			{comp}
+			{displayForm ? 
+			(<FormInput displayForm={displayForm} setDisplayForm={setDisplayForm}/>) 
+			: 
+			(<FormHamsterAddedMessage setDisplayForm={setDisplayForm}/>)}
+	
 
 		</div>
 		

@@ -12,59 +12,19 @@ const FormInput=(props)=>{
 	const [loves, setLoves]=useState('')
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
-	const { register, errors, handleSubmit} = useForm();	
-	// {mode: 'onTouched'}
-	// const [newHamster, setNewHamster]=useState({})
+	const { register, errors, handleSubmit} = useForm({mode: 'onTouched'});	
+	const [loading, setLoading]=useState(false)
 
 	const onChangeSaveFile=(e)=>{
 		setimageFile(e.target.files[0])
 		setImageLabelText('New image ready to upload')
 	}
-	// const onSubmit = data => console.log('data from input: ',data);//TODO denna ska nog bort?
-	//det valideras på ontouched, vilket innebär att den inte säger till om tex max antal bokstäver förrän man lämnat fältet. Vill att den ska säga till direkt ang det.
-	
-	let hamsterImage=''
-	const onSubmit=(data)=>{
 
-		// console.log('onSubmit')
-		// console.log('Allt: ',data)
-		// console.log('Bildfil: ',data.imageFile[0])
-		// console.log('Bildfilsnamn: ',data.imageFile[0].name)
-		// let newHamsterData={
-		// 	name:data.name,
-		// 	age:Number(data.age),
-		// 	favFood:data.favFood,
-		// 	loves:data.loves,
-		// 	imgName:data.imageFile[0].name,
-		// 	wins:0,
-		// 	defeats:0,
-		// 	games:0,
-		// 	latestGame: ''
-
-
-		// }
-		// setNewHamster(newHamsterData)
-		// hamsterImage=data.imageFile[0]
-
-		// console.log('newHamster: ', newHamster)
-		// console.log('Hamsterimage: ', hamsterImage)
-	
-		// addHamster();
-		// addHamsterImage();
+	const onSubmit=()=>{
 		
-		// addHamster(data);
-		// addHamsterImage(newHamsterImage)
-
 		addHamster();
 		addHamsterImage();
-		
 
-	}
-
-	const addNewHamster = () => {
-		addHamster();
-		addHamsterImage();
-		
 	}
 
 	let newHamster = {
@@ -115,8 +75,8 @@ const FormInput=(props)=>{
 	} //slut func
 	
 	async function addHamster(){
-		
-		console.log('i addhamster: ', newHamster)
+		setLoading(true)
+	
 		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{
@@ -132,17 +92,14 @@ const FormInput=(props)=>{
 			let dataHamster = JSON.parse(text); 
 			console.log('response i inputfields: ', dataHamster)
 			if(dataHamster.ops.length){
-				
-				props.setDisplayForm(false)
-				
+				setLoading(false)
+				props.setDisplayForm(false)	
 			}
-	
-
+		
 		} catch (error) {
 			console.log(' addhamster: something went wrong when adding hamster: ', error)
 		}
 	}
-
 
 
 	return (
@@ -164,8 +121,8 @@ const FormInput=(props)=>{
 						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
-							{errors.name && errors.name.type==='required' && <span>Oops, forgot the name!</span>}
-							{errors.name && errors.name.type==='maxLength' && <span>Hey! Max 10 characters</span>}
+							{errors.name && errors.name.type==='required' && <span>*Oops, forgot the name!</span>}
+							{errors.name && errors.name.type==='maxLength' && <span>*Hey! Max 10 characters</span>}
 						</div>
 					</div>
 
@@ -181,9 +138,9 @@ const FormInput=(props)=>{
 						onChange={event=>setAge(event.target.value)}/>
 						<label htmlFor="age" className='form-label'>Age in months</label>
 						<div className="error-message">
-							{errors.age && errors.age.type==='required' && <span>Dont forget the age.</span>}
-							{errors.age && errors.age.type==='maxLength' && <span>Whops! Max 10 characters</span>}
-							{errors.age && errors.age.type==='minLength' && <span>Min 1 character</span>}
+							{errors.age && errors.age.type==='required' && <span>*Dont forget the age</span>}
+							{errors.age && errors.age.type==='maxLength' && <span>*Whops! Max 10 characters</span>}
+							{errors.age && errors.age.type==='minLength' && <span>*Min 1 character</span>}
 						</div>
 					</div>
 				
@@ -201,14 +158,13 @@ const FormInput=(props)=>{
 						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
 						<div className="error-message">
-							{errors.favFood && errors.favFood.type==='required' && <span>Fav food here please.</span>}
-							{errors.favFood && errors.favFood.type==='maxLength' && <span>Max 10 characters please</span>}
-							{errors.favFood && errors.favFood.type==='minLength' && <span>Min 2 character</span>}
+							{errors.favFood && errors.favFood.type==='required' && <span>*Fav food here please</span>}
+							{errors.favFood && errors.favFood.type==='maxLength' && <span>*Max 10 characters please</span>}
+							{errors.favFood && errors.favFood.type==='minLength' && <span>*Min 2 character</span>}
 						</div>
 					</div>
 					
 					
-
 					{/* Loves */}
 					<div className='form-group'>
 						<input type='text'
@@ -221,9 +177,9 @@ const FormInput=(props)=>{
 						onChange={event=>setLoves(event.target.value)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
 						<div className="error-message">
-							{errors.loves && errors.loves.type==='required' && <span>Some love here plz.</span>}
-							{errors.loves && errors.loves.type==='maxLength' && <span>Max 15 characters</span>}
-							{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
+							{errors.loves && errors.loves.type==='required' && <span>*Some love here plz</span>}
+							{errors.loves && errors.loves.type==='maxLength' && <span>*Max 15 characters</span>}
+							{errors.loves && errors.loves.type==='minLength' && <span>*Min 2 character</span>}
 						</div>
 					</div>
 
@@ -241,12 +197,14 @@ const FormInput=(props)=>{
 						onChange={onChangeSaveFile}/>
 						</label>
 						<div className="error-message">
-							{errors.imageFile && errors.imageFile.type==='required' && <span>Need an image 😘</span>}
+							{errors.imageFile && errors.imageFile.type==='required' && <span>*Need an image 😘</span>}
 						</div>
 					</div>
-					<input type="submit" className='submit-button' value='Add hamster' /> 
+					{/* <input type="submit" value='Add hamster' className='submit-button'/>  */}
+				
+					{loading ? <p className='loading-text'>Loading...</p> : <input type="submit" value='Add hamster' className='submit-button'/> }
 				</form>
-				<button onClick={addNewHamster}>Add hamster</button>
+				{/* <button onClick={addNewHamster}>Add hamster</button> */}
 				
 		
 			</div>

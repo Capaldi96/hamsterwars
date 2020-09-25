@@ -141,32 +141,26 @@ margin-top: 60px;
 display: grid;
 grid-template-columns: 25vw 7vw 25vw;
 grid-template-rows: 5fr;
+justify-items: center;
 }
 
-.statEllipseListLatest{
+.statEllipseListLatest, .statEllipseListLatestLoading{
 font-size: 2em;
+}
+
+.tagsStatContainer{
+grid-column: 2/3;	
+grid-row: 1/6;
 }
 
 .vsTag{
-grid-column: 2/3;
-justify-self: center;
 font-size: 2em;
 color: $lightpurple;
 }
-.vsTag1{
+
+.statEllipseListLatestLoading{
+grid-column: 2/3;	
 grid-row: 1/2;
-}
-.vsTag2{
-grid-row: 2/3;
-}
-.vsTag3{
-grid-row: 3/4;
-}
-.vsTag4{
-grid-row: 4/5;
-}
-.vsTag5{
-grid-row: 5/6;
 }
 
 .statEllipseListLatest:nth-child(1){
@@ -332,7 +326,7 @@ margin-bottom: 10px;
 font-size: 1.5em;
 }
 
-.statEllipseListLatest, .vsTag{
+.statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 1.5em;
 }
 
@@ -346,7 +340,7 @@ margin-top: 70px;
 .statEllipseList{
 font-size: 1.1em;
 }
-.statEllipseListLatest, .vsTag{
+.statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 1.1em;
 }
 .statEllipseListGamesPlayed{
@@ -357,7 +351,7 @@ margin-top: 30px;
 
 @media (max-width: 400px) {
 
-.statEllipseListLatest, .vsTag{
+.statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 0.9em;
 }
 .statEllipseListGamesPlayed{
