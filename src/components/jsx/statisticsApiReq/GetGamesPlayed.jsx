@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
 
-const GetTopLoosers = ()=> {
+const GetGamesPlayed = ()=> {
 const [gamesPlayed, setGamesPlayed] = useState([]);
 const [loading, setLoading] = useState(false);
 
@@ -36,4 +36,4 @@ const [loading, setLoading] = useState(false);
 	)
 }
 
-export default GetTopLoosers;
+export default GetGamesPlayed;
