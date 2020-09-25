@@ -10,7 +10,7 @@
 	justify-content: end;
 	z-index: 1000;
 	cursor: pointer;
-	animation: fadeIn 0.3s;
+	animation: fadeInScrollToTop 0.3s;
 	transition: opacity 0.4s;
 	opacity: 0.5;
 	border: 2px solid green;
@@ -20,7 +20,7 @@
 	opacity: 1;
   }
   
-  @keyframes fadeIn {
+  @keyframes fadeInScrollToTop {
 	0% {
 	  opacity: 0;
 	}
