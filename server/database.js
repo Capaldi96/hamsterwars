@@ -14,9 +14,9 @@ function get( filter, callback) {
         }
 
         const theCollection = client.db(dbName).collection(dbCollection); 
-
+		
         try{
-            const cursor = theCollection.find(filter);
+            const cursor = theCollection.find();
             const array = await cursor.toArray();
             callback(array);
 
@@ -100,10 +100,6 @@ function editHamster(obj,id, callback){
     )
 }
 
-/* function postWinnerHamster(){
-
-} */
-
 function getAllHamsters(callback) {
     get({}, callback)
 }
@@ -111,10 +107,23 @@ function getFixedBattle(id1,id2,callback){
 	get({'_id' : { $in : [ new ObjectID(id1), new ObjectID(id2)] }}, callback)
 }
 function getFairBattle(matches,callback){
-	console.log(matches)
-	let tenPerecent = (10 / 100) * matches;
-	console.log(tenPerecent)
-	get({ games: {$lte: tenPerecent} },callback)
+	let y = Math.floor(Math.random() * 101);
+	console.log(y)
+	let x;
+	if(y < 13){
+		x = (matches * 0.125);
+	} else if(y < 25){
+		x = (matches * 0.25);
+	} else if(y < 50){
+		x = (matches * 0.5);
+	} else if(y < 75){
+		x = (matches * 0.75);
+	} else{
+		x = matches;
+	}
+	console.log(x)
+	let filter = [	{$sort: { games : 1} },{ $limit: x}, {$sample: {size: 1}}];
+	getGroup(filter,callback)
 }
 
 function deleteHamster(id, callback){
@@ -166,9 +175,7 @@ function getGroupOfHamsters(sort,callback){
 			filter = [ {$group: {_id: null, sumAllDefeats: {$sum: "$defeats"} }} ];
 			break;
 		case 'sumAllGames':
-			filter = [ {"$group" : { _id : null, sumAllGames : { "$sum" : {"$sum" : ["$wins", "$defeats"]}}}}];
-			break;
-		case 'latestBattles':
+			filter = [ {"$group" : { _id : null, sumAllGames : { "$sum" : {"$sum" : "$games"}}}}];
 			break;
 		case 'latestGames':
 			filter = [ {$sort: {latestGame : -1} },{ $limit: 10 } ];
