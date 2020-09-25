@@ -14,16 +14,27 @@
 			position:relative;
 			animation:jumping;
 			animation-duration:1s;
-			animation-delay:1s;
+			animation-delay:.3s;
 			// animation-fill-mode: forwards;
 			
 		}
+		// @keyframes jumping{
+		// 	0%{top:0px;}
+		// 	20%{top:-50px;}
+		// 	60%{top:0px;}
+		// 	80%{top:-50px;}
+		// 	100%{top:0px;}
+		// }
 		@keyframes jumping{
 			0%{top:0px;}
-			20%{top:-50px;}
-			60%{top:0px;}
-			80%{top:-50px;}
-			100%{top:0px;}
+			11%{top:-50px;}
+			22%{top:0px;}
+			33%{top:-50px;}
+			44%{top:0px;}
+			55%{top:-50px;}
+			66%{top:0px;}
+			77%{top:-50px;}
+			88%{top:0px;}
 		}
 		.hamster-text{
 			display:grid;
