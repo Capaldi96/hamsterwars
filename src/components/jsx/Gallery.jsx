@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import ScrollTopArrow from './ScrollTopArrow'
 import '../scss/Gallery.scss';
@@ -7,32 +7,37 @@ import '../scss/Gallery.scss';
 const Gallery = () => {
 
 	const [hamsterList, setHamsterList] = useState([]);
-	const [statusDelete, setStatusDelete] = useState('Delete');
+	/* const [statusDelete, setStatusDelete] = useState(null); */
 	const [showScroll, setShowScroll] = useState(true) // ändra till false
+	const gallery = useRef()
 
 	useEffect(() => {
-		const checkScrollTop = () => {
-			console.log('checkScrollTop')
-			if (!showScroll && window.pageYOffset > 400){
-				console.log('if window.pageYOffset', window.pageYOffset )
-			  setShowScroll(true)
-			} else if (showScroll && window.pageYOffset <= 400){
-			  setShowScroll(false)
-			}
-		  };
-	  
+		getHamsters();
+		console.log('gallery.current', gallery.current)
+		console.log('showScroll utanför', showScroll)
+
 		window.addEventListener('scroll', checkScrollTop)
 	  }, [])
+	  
 	
 
 	const scrollTop = () =>{
 		console.log('scrollTop click')
-		window.scrollTo({top: 0, behavior: 'smooth'}); // useref gallery (länk till dom element)
+		gallery.current.scrollTo({top: 0, behavior: 'smooth'});
 	};
 
-	useEffect(() => {
-		getHamsters();
-	}, [])
+	const checkScrollTop = () => {
+		console.log('checkScrollTop')
+		console.log('showScroll utanför if sats', showScroll)
+		if (!showScroll && gallery.current.pageYOffset > 100){
+			console.log('if window.pageYOffset', gallery.current.pageYOffset )
+		  setShowScroll(true)
+		} else if (showScroll && gallery.current.pageYOffset <= 100){
+			console.log('showScroll else if', showScroll)
+		  setShowScroll(false)
+		}
+	  };
+
 
 	async function getHamsters(){
 		await axios.get('/api/gallery')
@@ -74,9 +79,10 @@ const Gallery = () => {
 			</div>
 	}
 	
+	
 
 	return (
-		<div className="Gallery" onScroll={() => console.log('Scroll i gallery')}>
+		<div className="Gallery" ref={gallery} onScroll={() => console.log('Scroll i gallery')}>
 			<main>
 				<div>{status}</div>
 				{<ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/>}
