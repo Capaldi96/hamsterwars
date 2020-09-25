@@ -1,10 +1,13 @@
 import React from 'react'
+import Gallery from './Gallery';
+import '../scss/Competitors.scss';
 
-export const Competitors = () => {
+export const Competitors = (props) => {
+
 	return (
-		<div>
+		<div className="Competitors">
 			<h2>Choose your hamsters.</h2>
-			<h2>You have choosen x and x to battle.</h2>
+			<h2>You have choosen {props.hamster1} and {props.hamster2} to battle.</h2>
 			<button>Go to battle</button>
 			<Gallery/>
 		</div>

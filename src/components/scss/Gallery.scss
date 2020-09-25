@@ -37,9 +37,10 @@
 .list button{
     border: 2px solid $orange;
     border-radius: 100%;
-    background: transparent;
-    color: $orange;
-	padding: 0.3vh 0.7vh;
+    background: $orange;
+	color: white;
+	font-weight: bold;
+	padding: 0.4vh 0.7vh;
 	font-size: 2vh;
     margin: 0;
     position: absolute;

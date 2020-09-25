@@ -7,18 +7,19 @@ import '../scss/Gallery.scss';
 const Gallery = () => {
 
 	const [hamsterList, setHamsterList] = useState([]);
-	/* const [statusDelete, setStatusDelete] = useState(null); */
 	const [showScroll, setShowScroll] = useState(true) // ändra till false
 	const gallery = useRef()
 
 	useEffect(() => {
 		getHamsters();
+
 		console.log('gallery.current', gallery.current)
 		console.log('showScroll utanför', showScroll)
 
-		window.addEventListener('scroll', checkScrollTop)
+		gallery.current.addEventListener('scroll', checkScrollTop);
 	  }, [])
 	  
+	
 	
 
 	const scrollTop = () =>{
@@ -29,16 +30,18 @@ const Gallery = () => {
 	const checkScrollTop = () => {
 		console.log('checkScrollTop')
 		console.log('showScroll utanför if sats', showScroll)
-		if (!showScroll && gallery.current.pageYOffset > 100){
-			console.log('if window.pageYOffset', gallery.current.pageYOffset )
-		  setShowScroll(true)
-		} else if (showScroll && gallery.current.pageYOffset <= 100){
-			console.log('showScroll else if', showScroll)
-		  setShowScroll(false)
+	
+		if (!showScroll && gallery.current.pageYOffset > 200){
+			console.log('checkScrollTop if')
+		  	setShowScroll(true)
+		  console.log('showScroll utanför i if sats', showScroll)
+		} else if (showScroll && gallery.current.pageYOffset <= 200){
+		  	setShowScroll(false)
+		  	console.log('showScroll else if', showScroll)
 		}
 	  };
 
-
+	// getHamsters
 	async function getHamsters(){
 		await axios.get('/api/gallery')
 		.then(res => {
@@ -50,6 +53,7 @@ const Gallery = () => {
 		})
 	}
 
+	// deleteHamster
 	async function deleteHamster(id){
 		const response = await axios.delete('/api/deleteHamster/' + id);
 		console.log('response', response)
@@ -76,11 +80,9 @@ const Gallery = () => {
 					<p>Wins: {hamster.wins}</p>
 					<p>Losses: {hamster.defeats}</p>
 				</div>))}
-			</div>
+			</div> 
 	}
 	
-	
-
 	return (
 		<div className="Gallery" ref={gallery} onScroll={() => console.log('Scroll i gallery')}>
 			<main>

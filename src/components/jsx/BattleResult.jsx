@@ -4,6 +4,7 @@ import BattleCard from './BattleCard'
 import axios from 'axios';
 import Confetti from 'react-confetti'
 import { useWindowSize } from 'react-use';
+import Competitors from './Competitors';
 
 const BattleResult = () => {
 	const [winnerId, setWinnerId] = useState(null);
@@ -14,6 +15,9 @@ const BattleResult = () => {
 	const [disableImg, setDisableImg] = useState(false);
 	const [confetti, setConfetti] = useState(false);
 	const { width, height } = useWindowSize();
+	const [chosenHamster1, setChosenHamster1] = useState(null);
+	const [chosenHamster2, setChosenHamster2] = useState(null);
+	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 
 
 
@@ -143,23 +147,46 @@ const BattleResult = () => {
 		window.location.reload(false);
 	}
 
-	return (
-		<>
-			{hamster1 && hamster2 ?
-				<div id="battleResult">
-					{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
-					<div className="container">
-						{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
-						<div className="match-container">
-							<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
-							<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
-							<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
+	function goToCompetitorsComp(){
+		console.log('goToCompetitorsComp click')
+		setToCompetitorsComp(true)
+	}
 
-						</div>
-						{showResult ? winnerData : null}
-					</div>
+	let content = null;
+	if(!toCompetitorsComp){
+		content = 
+			<>
+				<div className="test">
+					<p>Wanna choose your competitors? </p>
+					<button onClick={goToCompetitorsComp}>Choose hamster</button>
 				</div>
+
+				{hamster1 && hamster2 ?
+					<div id="battleResult">
+						{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
+						<div className="container">
+							{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
+							<div className="match-container">
+								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
+								<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
+								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
+
+							</div>
+							{showResult ? winnerData : null}
+						</div>
+					</div>
 				: null}
+			</>
+	}
+	else{
+		content = 
+			<Competitors setChosenHamster1={setChosenHamster1} setChosenHamster2={setChosenHamster2} chosenHamster1={chosenHamster1} chosenHamster2={chosenHamster2}/>
+		
+	}
+
+	return (
+		<>	
+			{ content }
 		</>
 
 	);

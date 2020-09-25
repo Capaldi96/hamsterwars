@@ -1,0 +1,12 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.Competitors{
+	overflow: scroll;
+}
+button{
+	@include button
+}
+button:hover{
+	@include button-hover
+}
