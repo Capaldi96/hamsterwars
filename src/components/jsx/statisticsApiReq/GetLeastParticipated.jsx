@@ -4,12 +4,15 @@ import '../../scss/Statistics.scss'
 
 const GetLeastParticipated = () => {
 const [leastParticipated, setLeastParticipated] = useState([]);
+const [loading, setLoading] = useState(false);
 
 		useEffect(() => {
+		setLoading(true)
 		axios.get('/api/LeastGames')
 		.then(res => {
 			console.log(res)
 			setLeastParticipated(res.data)
+			setLoading(false)
 		})
 		.catch(err => {
 			console.log(err)
@@ -24,7 +27,7 @@ const [leastParticipated, setLeastParticipated] = useState([]);
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Least participated</h1>
-			{leastParticipated.map((leastGames, index) => (<p className="statEllipseList" key={leastGames.name+index}>{leastGames.name}</p>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : leastParticipated.map((leastGames, index) => (<p className="statEllipseList" key={leastGames.name+index}>{leastGames.name}</p>))}
 			</div>
 			</div>
 		</div>

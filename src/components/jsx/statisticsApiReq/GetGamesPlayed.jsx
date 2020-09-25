@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
 
-const GetTopLoosers = ()=> {
+const GetGamesPlayed = ()=> {
 const [gamesPlayed, setGamesPlayed] = useState([]);
+const [loading, setLoading] = useState(false);
+
+
 
 		useEffect(() => {
+		setLoading(true)
 		axios.get('/api/SumAllGames')
 		.then(res => {
 			console.log(res)
 			setGamesPlayed(res.data)
-		})
+			setLoading(false)
+		}) 
 		.catch(err => {
 			console.log(err)
 		})
 	},[])
-
-
 
 		return (
 		<div>
@@ -24,7 +27,7 @@ const [gamesPlayed, setGamesPlayed] = useState([]);
 			<img className="ellipse" src={require('../../../assets/ellipseGamesPlayed.svg')} alt=""/>
 			<div className="ellipseTextContainer">
 			<h2 className="statPotatoeHeader">Games played</h2>
-			{gamesPlayed.map(games => (<p className="statEllipseListGamesPlayed" key={games.sumAllGames}>{games.sumAllGames}</p>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : gamesPlayed.map(games => (<p className="statEllipseListGamesPlayed" key={games.sumAllGames}>{games.sumAllGames}</p>))}
 
 			</div>
 			{/* </div> */}
@@ -33,4 +36,4 @@ const [gamesPlayed, setGamesPlayed] = useState([]);
 	)
 }
 
-export default GetTopLoosers;
+export default GetGamesPlayed;
