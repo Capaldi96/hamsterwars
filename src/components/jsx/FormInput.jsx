@@ -13,6 +13,7 @@ const FormInput=(props)=>{
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 	const { register, errors, handleSubmit} = useForm({mode: 'onTouched'});	
+	const [loading, setLoading]=useState(false)
 
 	const onChangeSaveFile=(e)=>{
 		setimageFile(e.target.files[0])
@@ -61,7 +62,8 @@ const FormInput=(props)=>{
 	} //slut func
 	
 	async function addHamster(){
-		console.log('i addhamster: ',props.displayForm)
+		setLoading(true)
+	
 		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{
@@ -77,25 +79,16 @@ const FormInput=(props)=>{
 			let dataHamster = JSON.parse(text); 
 			console.log('response i inputfields: ', dataHamster)
 			if(dataHamster.ops.length){
-				console.log('i ifsats: ',dataHamster.ops[0])
-				
-				props.setDisplayForm(false)
-				console.log('i ifsats: ',props.displayForm)
+				setLoading(false)
+				props.setDisplayForm(false)	
 			}
-	
-
+		
 		} catch (error) {
 			console.log(' addhamster: something went wrong when adding hamster: ', error)
 		}
 	}
 
-	// const addNewHamster = () => {
-	// 	addHamster();
-	// 	addHamsterImage();
-		
-	// }
-	
-	// <form className='form' onSubmit={handleSubmit(onSubmit)}></form>
+
 	return (
 
 		<div className='form-wrapper'>
@@ -115,8 +108,8 @@ const FormInput=(props)=>{
 						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
-							{errors.name && errors.name.type==='required' && <span>Oops, forgot the name!</span>}
-							{errors.name && errors.name.type==='maxLength' && <span>Hey! Max 10 characters</span>}
+							{errors.name && errors.name.type==='required' && <span>*Oops, forgot the name!</span>}
+							{errors.name && errors.name.type==='maxLength' && <span>*Hey! Max 10 characters</span>}
 						</div>
 					</div>
 
@@ -132,9 +125,9 @@ const FormInput=(props)=>{
 						onChange={event=>setAge(event.target.value)}/>
 						<label htmlFor="age" className='form-label'>Age in months</label>
 						<div className="error-message">
-							{errors.age && errors.age.type==='required' && <span>Dont forget the age.</span>}
-							{errors.age && errors.age.type==='maxLength' && <span>Whops! Max 10 characters</span>}
-							{errors.age && errors.age.type==='minLength' && <span>Min 1 character</span>}
+							{errors.age && errors.age.type==='required' && <span>*Dont forget the age</span>}
+							{errors.age && errors.age.type==='maxLength' && <span>*Whops! Max 10 characters</span>}
+							{errors.age && errors.age.type==='minLength' && <span>*Min 1 character</span>}
 						</div>
 					</div>
 				
@@ -152,14 +145,13 @@ const FormInput=(props)=>{
 						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
 						<div className="error-message">
-							{errors.favFood && errors.favFood.type==='required' && <span>Fav food here please.</span>}
-							{errors.favFood && errors.favFood.type==='maxLength' && <span>Max 10 characters please</span>}
-							{errors.favFood && errors.favFood.type==='minLength' && <span>Min 2 character</span>}
+							{errors.favFood && errors.favFood.type==='required' && <span>*Fav food here please</span>}
+							{errors.favFood && errors.favFood.type==='maxLength' && <span>*Max 10 characters please</span>}
+							{errors.favFood && errors.favFood.type==='minLength' && <span>*Min 2 character</span>}
 						</div>
 					</div>
 					
 					
-
 					{/* Loves */}
 					<div className='form-group'>
 						<input type='text'
@@ -172,9 +164,9 @@ const FormInput=(props)=>{
 						onChange={event=>setLoves(event.target.value)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
 						<div className="error-message">
-							{errors.loves && errors.loves.type==='required' && <span>Some love here plz.</span>}
-							{errors.loves && errors.loves.type==='maxLength' && <span>Max 15 characters</span>}
-							{errors.loves && errors.loves.type==='minLength' && <span>Min 2 character</span>}
+							{errors.loves && errors.loves.type==='required' && <span>*Some love here plz</span>}
+							{errors.loves && errors.loves.type==='maxLength' && <span>*Max 15 characters</span>}
+							{errors.loves && errors.loves.type==='minLength' && <span>*Min 2 character</span>}
 						</div>
 					</div>
 
@@ -192,10 +184,12 @@ const FormInput=(props)=>{
 						onChange={onChangeSaveFile}/>
 						</label>
 						<div className="error-message">
-							{errors.imageFile && errors.imageFile.type==='required' && <span>Need an image 😘</span>}
+							{errors.imageFile && errors.imageFile.type==='required' && <span>*Need an image 😘</span>}
 						</div>
 					</div>
-					<input type="submit" value='Add hamster' className='submit-button'/> 
+					{/* <input type="submit" value='Add hamster' className='submit-button'/>  */}
+				
+					{loading ? <p className='loading-text'>Loading...</p> : <input type="submit" value='Add hamster' className='submit-button'/> }
 				</form>
 				{/* <button onClick={addNewHamster}>Add hamster</button> */}
 				

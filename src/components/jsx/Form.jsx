@@ -9,21 +9,24 @@ const Form=()=>{
 
 	const [displayForm, setDisplayForm]=useState(true)
 	
-	let comp=''
+	// let comp=''
 
-	if(displayForm){
-		comp=<FormInput displayForm={displayForm} setDisplayForm={setDisplayForm}/>
-	}
-	else{
-		comp=<FormHamsterAddedMessage setDisplayForm={setDisplayForm}/>
-	}
+	// if(displayForm){
+	// 	comp=<FormInput displayForm={displayForm} setDisplayForm={setDisplayForm}/>
+	// }
+	// else{
+	// 	comp=<FormHamsterAddedMessage setDisplayForm={setDisplayForm}/>
+	// }
 
 
 	return (
 
 		<div className='form-component'>
-
-			{comp}
+			{displayForm ? 
+			(<FormInput displayForm={displayForm} setDisplayForm={setDisplayForm}/>) 
+			: 
+			(<FormHamsterAddedMessage setDisplayForm={setDisplayForm}/>)}
+			{/* {comp} */}
 
 		</div>
 		

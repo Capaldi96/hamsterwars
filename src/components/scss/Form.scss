@@ -8,15 +8,33 @@
 	.hamster-added-wrapper{
 
 		.hamster-dancing{
-			border:1px solid hotpink;
+		
 			height:5em;
 			margin-bottom:1em;
+			position:relative;
+			animation:jumping;
+			animation-duration:1s;
+			animation-delay:1s;
+			// animation-fill-mode: forwards;
 			
+		}
+		@keyframes jumping{
+			0%{top:0px;}
+			20%{top:-50px;}
+			60%{top:0px;}
+			80%{top:-50px;}
+			100%{top:0px;}
 		}
 		.hamster-text{
 			display:grid;
 			place-items:center;
 			font-size:2em;
+		}
+		button{
+			@include button;
+		}
+		button:hover{
+			@include button-hover;
 		}
 	}
 }
@@ -128,6 +146,11 @@
 			}
 			.submit-button:hover{
 				@include button-hover
+			}
+			.loading-text{
+				text-align:center;
+				margin-top:.5em;
+				color:$darkpurple
 			}
 		}
 
