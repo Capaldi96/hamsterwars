@@ -12,39 +12,66 @@ const FormInput=(props)=>{
 	const [loves, setLoves]=useState('')
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
-	const { register, errors, handleSubmit} = useForm({mode: 'onTouched'});	
+	const { register, errors, handleSubmit} = useForm();	
+	// {mode: 'onTouched'}
+	// const [newHamster, setNewHamster]=useState({})
 
 	const onChangeSaveFile=(e)=>{
 		setimageFile(e.target.files[0])
 		setImageLabelText('New image ready to upload')
 	}
 	// const onSubmit = data => console.log('data from input: ',data);//TODO denna ska nog bort?
-	const [newHamster2, setNewHamster2]=useState({})
+	//det valideras på ontouched, vilket innebär att den inte säger till om tex max antal bokstäver förrän man lämnat fältet. Vill att den ska säga till direkt ang det.
+	
+	let hamsterImage=''
 	const onSubmit=(data)=>{
-		console.log('newHamster2 innan set: ', newHamster2)
-		console.log('data from input: ',data);
-		setNewHamster2(data)
-		console.log('newHamster2 efter set: ', newHamster2)
+
+		// console.log('onSubmit')
+		// console.log('Allt: ',data)
+		// console.log('Bildfil: ',data.imageFile[0])
+		// console.log('Bildfilsnamn: ',data.imageFile[0].name)
+		// let newHamsterData={
+		// 	name:data.name,
+		// 	age:Number(data.age),
+		// 	favFood:data.favFood,
+		// 	loves:data.loves,
+		// 	imgName:data.imageFile[0].name,
+		// 	wins:0,
+		// 	defeats:0,
+		// 	games:0,
+		// 	latestGame: ''
+
+
+		// }
+		// setNewHamster(newHamsterData)
+		// hamsterImage=data.imageFile[0]
+
+		// console.log('newHamster: ', newHamster)
+		// console.log('Hamsterimage: ', hamsterImage)
+	
+		// addHamster();
+		// addHamsterImage();
+		
+		// addHamster(data);
+		// addHamsterImage(newHamsterImage)
+
+		addHamster();
+		addHamsterImage();
+		
 
 	}
 
-	// let newHamster = {
-	// 	name:name,
-	// 	age:Number(age),
-	// 	favFood:favFood,
-	// 	loves:loves,
-	// 	imgName:imageFile.name,
-	// 	wins:0,
-	// 	defeats:0,
-	// 	games:0,
-	// 	latestGame: ''
-	// }
+	const addNewHamster = () => {
+		addHamster();
+		addHamsterImage();
+		
+	}
 
 	let newHamster = {
-		name:'Hannas testhamster',
-		age:Number('2'),
-		favFood:'Testmat',
-		loves:'testloves',
+		name:name,
+		age:Number(age),
+		favFood:favFood,
+		loves:loves,
 		imgName:imageFile.name,
 		wins:0,
 		defeats:0,
@@ -52,9 +79,22 @@ const FormInput=(props)=>{
 		latestGame: ''
 	}
 
+	// let newHamster = {
+	// 	name:'Hannas testhamster',
+	// 	age:Number('2'),
+	// 	favFood:'Testmat',
+	// 	loves:'testloves',
+	// 	imgName:imageFile.name,
+	// 	wins:0,
+	// 	defeats:0,
+	// 	games:0,
+	// 	latestGame: ''
+	// }
+
 	async function addHamsterImage(){
 		const formData=new FormData();
-    	formData.append('file', imageFile)
+		formData.append('file', hamsterImage)
+		console.log('i addHamsterImage: ', formData)
 
 		try {
 			const response=await Axios.post('/api/addhamsterImage', formData,{
@@ -75,7 +115,8 @@ const FormInput=(props)=>{
 	} //slut func
 	
 	async function addHamster(){
-		console.log('i addhamster: ',props.displayForm)
+		
+		console.log('i addhamster: ', newHamster)
 		try {
 			const response= await fetch('/api/addhamster', {
 				headers:{
@@ -91,10 +132,9 @@ const FormInput=(props)=>{
 			let dataHamster = JSON.parse(text); 
 			console.log('response i inputfields: ', dataHamster)
 			if(dataHamster.ops.length){
-				console.log('i ifsats: ',dataHamster.ops[0])
 				
 				props.setDisplayForm(false)
-				console.log('i ifsats: ',props.displayForm)
+				
 			}
 	
 
@@ -102,15 +142,9 @@ const FormInput=(props)=>{
 			console.log(' addhamster: something went wrong when adding hamster: ', error)
 		}
 	}
-	//*Ev gör global variabel för response så att fler funktioner kan använda sig av den.
 
-	const addNewHamster = () => {
-		addHamster();
-		addHamsterImage();
-		
-	}
-	
-	// <form className='form' onSubmit={handleSubmit(onSubmit)}></form>
+
+
 	return (
 
 		<div className='form-wrapper'>
@@ -210,7 +244,7 @@ const FormInput=(props)=>{
 							{errors.imageFile && errors.imageFile.type==='required' && <span>Need an image 😘</span>}
 						</div>
 					</div>
-					<input type="submit" /> 
+					<input type="submit" className='submit-button' value='Add hamster' /> 
 				</form>
 				<button onClick={addNewHamster}>Add hamster</button>
 				

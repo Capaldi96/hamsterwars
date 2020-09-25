@@ -7,7 +7,7 @@ import FormHamsterAddedMessage from './FormHamsterAddedMessage'
 
 const Form=()=>{
 
-	const [displayForm, setDisplayForm]=useState(false)
+	const [displayForm, setDisplayForm]=useState(true)
 	
 	let comp=''
 

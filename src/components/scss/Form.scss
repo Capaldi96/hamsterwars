@@ -125,6 +125,12 @@
 						padding: 0.1em;
 					}
 				}
+
+			
+			}
+			.submit-button{
+			
+				@include button
 			}
 		}
 	button{
