@@ -89,7 +89,7 @@
 					color:#aaa;
 					display:block;
 					transform:translateY(-1.55em);//styr labeltexten höjdledes i inputfältet
-					padding-left:.5em;
+					margin-left:.5em;
 					transform-origin:0 0;//rör sig upp till övre vänstra hörnet
 					transition:all .3s;
 					cursor:text;
@@ -97,10 +97,14 @@
 				}
 				.form-control{
 					font-size:.9em;
-					border-radius:10px;
-					border-color:#ccc;
+					border-radius:5px;
+					border:2px solid grey;
+					// border-color:$mediumbeige;
 					width:100%;
 					padding:7px;
+					background-color:$mediumbeige;
+					transition:all .5s;
+					// border-style:solid;
 					
 				}
 				.form-control::placeholder{
@@ -108,13 +112,19 @@
 				}
 				.form-control:focus{
 					outline:none;
+					box-shadow:none;
+					border:2px solid orange;
+					// border-color:orange;
 				
 				}
 				.form-control:focus + .form-label{
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
 					transform:translateY(-2.7em) scale(.8);
-					color:rgb(175, 174, 174);
+					color:orange;
+					// 
+					background-color:$mediumbeige;
+					display:inline-block;
 				
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
@@ -151,24 +161,25 @@
 
 			
 			}
-			.submit-button{
 			
-				@include button
-			}
-			.submit-button{
-				@include button;
-				justify-self:center;
-				margin-top:1em;
-				
-			}
-			.submit-button:hover{
-				@include button-hover
-			}
-			.loading-text{
-				text-align:center;
-				margin-top:.5em;
-				color:$darkpurple
-			}
+		}
+		button{
+			
+			@include button
+		}
+		button{
+			@include button;
+			justify-self:center;
+			margin-top:1em;
+			
+		}
+		button:hover{
+			@include button-hover
+		}
+		.loading-text{
+			text-align:center;
+			margin-top:.5em;
+			color:$darkpurple
 		}
 
 }
