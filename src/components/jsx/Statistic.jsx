@@ -4,13 +4,17 @@ import FadeEffectGamesPlayed from './fadeEffect/FadeEffectGamesPlayed'
 import FadeEffectTop5Winners from './fadeEffect/FadeEffectTop5Winners'
 import FadeEffectTop5Loosers from './fadeEffect/FadeEffectTop5Loosers'
 import FadeEffectLeastParticipated from './fadeEffect/FadeEffectLeastParticipated'
-import FadeEffectLatestBattles from './fadeEffect/FadeEffectLatestBattles' 
+import FadeEffectLatestBattles from './fadeEffect/FadeEffectLatestBattles'
+import FadeEffectMoreInfoTopWinners from './fadeEffect/FadeEffectMoreInfoTopWinners'
+
+ 
 
 import GetGamesPlayed from './statisticsApiReq/GetGamesPlayed'
 import GetTopLoosers from './statisticsApiReq/GetTopLoosers'
 import GetTopWinners from './statisticsApiReq/GetTopWinners'
 import GetLatestBattles from './statisticsApiReq/GetLatestBattles'
 import GetLeastParticipated from './statisticsApiReq/GetLeastParticipated'
+import GetMoreInfoTopWinners from './statisticsApiReq/GetMoreInfoTopWinners'
 
 
 const Statistic = () => {
@@ -18,7 +22,9 @@ const [showGamesPlayed, setShowGamesPlayed] = useState(false);
 const [showTop5Winners, setShowTop5Winners] = useState(false);
 const [showTop5Loosers, setShowTop5Loosers] = useState(false);
 const [showLeastParticipated, setShowLeastParticipated] = useState(false);
-const [showLatestBattles, setShowLatestBattles] = useState(false);  
+const [showLatestBattles, setShowLatestBattles] = useState(false); 
+const [showMoreInfoTopWinners, setShowMoreInfoTopWinners] = useState(false);  
+const [showMoreInfoLoosers, setShowMoreInfoLoosers] = useState(false);  
  
 
 	return (
@@ -94,6 +100,30 @@ onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}
 <img className="iconInsideCircle" src={require('../../assets/iconLatestBattles.svg')} alt=""/> 
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconLatestBattles.svg')} alt=""/></div>
 <p className="miniIconText5 miniIconText">Latests battles</p>
+
+
+
+{/* More info top winners */}
+{/* More info top winners - fade potatoe */}
+<FadeEffectMoreInfoTopWinners showMoreInfoTopWinners={showMoreInfoTopWinners}>
+<div className="ellipsebackground" onClick={() => setShowMoreInfoTopWinners(showMoreInfoTopWinners => !showMoreInfoTopWinners)}>
+<GetMoreInfoTopWinners /></div>
+</FadeEffectMoreInfoTopWinners> 
+{/* Latest battles - green circles */}
+<div className="statCircle6 circleSpecifics" onClick={() => setShowMoreInfoTopWinners(showMoreInfoTopWinners => !showMoreInfoTopWinners)}></div>
+<p className="miniIconText6 miniIconText">More info winners</p>
+
+
+
+{/* More info top loosers */}
+{/* More info top loosers - fade potatoe */}
+<FadeEffectMoreInfoTopWinners showMoreInfoTopWinners={showMoreInfoTopWinners}>
+<div className="ellipsebackground" onClick={() => setShowMoreInfoTopWinners(showMoreInfoTopWinners => !showMoreInfoTopWinners)}>
+<GetMoreInfoTopWinners /></div>
+</FadeEffectMoreInfoTopWinners> 
+{/* Latest battles - green circles */}
+<div className="statCircle7 circleSpecifics" onClick={() => setShowMoreInfoTopWinners(showMoreInfoTopWinners => !showMoreInfoTopWinners)}></div>
+<p className="miniIconText7 miniIconText">More info loosers</p>
 
 </div>
 </div>

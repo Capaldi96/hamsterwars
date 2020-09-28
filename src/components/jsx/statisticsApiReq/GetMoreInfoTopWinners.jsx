@@ -22,7 +22,7 @@ const GetMoreInfoTopWinners = () => {
 	return (
 		<div>
 
-			<div className="potatoeContainer">
+			{/* <div className="potatoeContainer">
 
 			<img className="ellipse" src={require('../../../assets/ellipseTop5Winners.svg')} alt=""/>
 
@@ -34,7 +34,7 @@ const GetMoreInfoTopWinners = () => {
 			</div>
 
 			
-			</div>
+			</div> */}
 
 
 
