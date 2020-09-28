@@ -25,16 +25,13 @@ cursor: pointer;
 height: 220px;
 width: 220px;
 background-color: $lightgreen;
-border: 2px solid $lightgreen;
 border-radius: 50%;
-border: 2px solid $lightgreen;
 display: flex;
 justify-content: center;
 transition: all 0.7s ease 0s;
 }
 
 .circleSpecifics:hover{
-border: 2px solid $orange;
 background-color: $hovergreen;
 transition: all 0.7s ease 0s;
 }
