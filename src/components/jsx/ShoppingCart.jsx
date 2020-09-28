@@ -1,44 +1,50 @@
 import React, { useState } from 'react';
 import '../scss/ShoppingCart.scss';
+import Webshop from './Webshop'
 
 const ShoppingCart = props => {
+    const [webshop, setWebshop] = useState(false);
+    /* const [list, setList] = useState([]) */
+
+
+    let newList = [];
+
+    console.log("cart item is: ", props.cartItem)
+
+    let obj = 
+    <div className="cart" key={props.cartItem.id}>
+        <img className="cart-img" src={props.cartItem.image}></img>
+        <p>{props.cartItem.type}</p>
+        <p>Quantity: {props.count}</p>
+        <p>Total cost: {props.cost}</p>
+    </div>
+
+    /* setList() */
+
+    newList.push(obj)
+
+    console.log("List with object: ", newList)
 
     return(
+    <div>
+        {webshop ? <Webshop  /> : null }
         <div id="shoppingcart">
             <div className="container">
                 <div></div>
                 <div className="header-cart">
-                        <div className="flex">
-                            <a href="/Webshop" >  <p className="to-shop"> Back to shop</p></a>
-                            <h2 className="shopping-header">Your Shopping Cart</h2>
-                        </div>
+                    <div className="flex">
+                        <a href="/Webshop" onClick={ e => { e.preventDefault(); setWebshop(true)}} >  <p className="to-shop"> Back to shop</p></a>
+                        <h2 className="shopping-header">Your Shopping Cart</h2>
+                    </div>
                     <div className="cart-container">
-                    
-                        <div className="cart">
-                            <img className="cart-img" src={require('../../assets/preview.jpg')}></img>
-                            <p>White Hamster T-shirt</p>
-                            <p>Quantity: {props.count}</p>
-                            <p>Total cost: 50$</p>
-                        </div>
-
-                        <div className="cart">
-                            <img className="cart-img" src={require('../../assets/preview.jpg')}></img>
-                            <p>T-SHIRT</p>
-                            <p>Quantity: 1</p>
-                            <p>Total cost: 50$</p>
-                        </div>
-
-                        <div className="cart">
-                            <img className="cart-img" src={require('../../assets/preview.jpg')}></img>
-                            <p>T-SHIRT</p>
-                            <p>Quantity: 1</p>
-                            <p>Total cost: 50$</p>
-                        </div>
+                        
+                        {newList}
 
                     </div>
                 </div>
                 <div></div>
             </div>
+        </div>
         </div>
         )
 }
