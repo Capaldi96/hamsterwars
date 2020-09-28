@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import React ,{useState} from 'react'
+import React ,{useEffect, useState} from 'react'
 import '../scss/Form.scss'
 
 
@@ -117,29 +117,20 @@ const FormInput=(props)=>{
 	const validateName=()=>{
 		console.log('validateName körs	')
 		
-		if(name.length<1){
-			
-			invalidMessage='Oops, forgot the name!'
-		
-			return false
-		}
-		if(name.length>10){
-			
-			invalidMessage='Hey! Max 10 characters'
-
-			return false
-		}
-	
-		else{
-			
-			return true;
-		}
+		if(name.length<1){ invalidMessage='Oops, forgot the name!'; return false; }
+		if(name.length>10){ invalidMessage='Hey! Max 10 characters'; return false }
+		return true;
 	
 	}
-
+	useEffect()=()=>{
+		//ev lägga i use effectmen spelar ingen roll egentligen
+	}
 	let isValidName=validateName(name)
+
+
 	// om touched alltså true  och name mindre än noll alltså true=invalid
-	
+	const nameclasName= nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'
+	//TODO flytta ut all mer avancerad kod från jsx
 	return (
 
 		<div className='form-wrapper'>
@@ -152,7 +143,8 @@ const FormInput=(props)=>{
 						<input type='text'
 						id="name"
 						name='name'
-						className={ nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'}
+						// className={ nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'}
+						className={nameclasName}
 						value={name}
 						placeholder='name placeholder'
 						onBlur={()=>setNameIsTouched(true)}
@@ -162,9 +154,6 @@ const FormInput=(props)=>{
 						{nameIsTouched && !isValidName ? <span>{invalidMessage}</span> : <span></span>}
 						{!showSubmitMessage ? <span></span> : <span>Glöm ej!</span>}
 
-				 		
-					
-					
 						</div>
 					</div>
 
