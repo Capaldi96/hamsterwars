@@ -8,6 +8,7 @@ const Gallery = (props) => {
 	
 	const [hamsterList, setHamsterList] = useState([]);
 	const [showScroll, setShowScroll] = useState(true) // ändra till false
+	const [competitorBackground, setCompetitorBackground] = useState('')
 	const windowGallery = useRef()
 
 	useEffect(() => {
@@ -45,7 +46,7 @@ const Gallery = (props) => {
 	async function getHamsters(){
 		await axios.get('/api/gallery')
 		.then(res => {
-			console.log('Hamsters', res.data);
+			/* console.log('Hamsters', res.data); */
 			setHamsterList(res.data)
 		})
 		.catch(err => {
@@ -63,18 +64,26 @@ const Gallery = (props) => {
 	let classIcon=''
 	//TODO Här är jag==================================
 	if(props.toCompetitorsComp){
-		console.log('tocomp är true')
 		classIcon='card-cursor'
 	}
 	else{
 		console.log('tocomp är false')		
 	}
 
-	const [competitorBackground, setCompetitorBackground] = useState('')
-	const addCompetitors=(id)=>{
+	
+	/* props.setChosenHamster() */ // skicka till battle när man klicka på knapp, ska vara state variabel
+	
+	const addCompetitors=(id) => {
 		if(props.toCompetitorsComp){
-			console.log('hamster id', id)
+			props.setShowText(false)
+			console.log('hamster id', id) // hamster objekt
+
+			props.competitorsList.push(id)
+			console.log('competitorsList', props.competitorsList)
+			
+
 			setCompetitorBackground('competitorBackground')
+
 		}
 	}
 	// To do
