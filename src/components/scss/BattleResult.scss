@@ -2,7 +2,7 @@
 @import 'variables.scss';
 
 #battleResult{
-	margin-top: 15vh;
+	margin-top: 5vh;
 }
 #battleResult .container {
 	height: 80vh;
@@ -72,6 +72,9 @@
 }
 
 @media only screen and (min-width: 700px){
+	#battleResult{
+		margin-top: 15vh;
+	}
 	#battleResult .container .VS {
 		height: 12vh;
 	}

@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 const path = require('path')
+const { cloudinary } = require('./cloudinary')
 const cors = require('cors');
 const { getAllHamsters, getGroupOfHamsters, addHamster, editHamster, deleteHamster, getFixedBattle, getFairBattle } = require('./database.js');
 
@@ -58,7 +59,6 @@ app.get('/api/topLoosers', (req, res) => {
 
 app.post('/api/addhamster', (req, res) => {
 	console.log('POST / addhamster', req.body)
-
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError);
 	})
@@ -69,6 +69,24 @@ app.post('/api/addhamsterImage', (req, res) => {
 	const file = req.files.file;
 	console.log('server.js, file: ', file)
 	file.mv(`./assets/${file.name}`)
+})
+
+
+
+
+
+
+app.post('/api/uploadImage', async (req, res) => {
+	try{	
+		const fileStr = req.body.data;
+		const uploadedResponse = await cloudinary.uploader.upload(fileStr,{
+			upload_preset:'hamsterwars',
+		})
+		res.json({status:'success',id: uploadedResponse.public_id})
+	} catch(error){
+		console.log(error)
+		res.status(500).json({err: 'Something went wrong'})
+	}
 })
 
 app.put('/api/updateHamster/:id', (req, res) => {

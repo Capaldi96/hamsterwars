@@ -6,6 +6,7 @@ import Confetti from 'react-confetti'
 import { useWindowSize } from 'react-use';
 import Competitors from './Competitors';
 
+
 const BattleResult = () => {
 	const [winnerId, setWinnerId] = useState(null);
 	const [showResult, setShowResult] = useState(false);
@@ -27,7 +28,6 @@ const BattleResult = () => {
 	}, []);
 	useEffect(() => {
 		if (matches) {
-			console.log(matches)
 			getMatch()
 		}
 	}, [matches]);
@@ -38,13 +38,22 @@ const BattleResult = () => {
 	async function getMatch() {
 		let hamster1 = await axios.get('/api/fairBattle/' + matches);
 		let hamster2 = await axios.get('/api/fairBattle/' + matches);
-		if (hamster1.data[0] === hamster2.data[0]) {
-			getMatch()
-			console.log("samma")
+		if (hamster1.data[0]._id === hamster2.data[0]._id) {			
+			return getMatch();	
 		} else {
 			setHamster1(hamster1.data[0]);
 			setHamster2(hamster2.data[0]);
 		}
+	}
+	function nextBattle(){
+		setHamster1(null)
+		setHamster2(null)
+		setDisableImg(false);
+		setShowResult(false);
+		setShowCutestH1(true);
+		setWinnerId(null);
+		getMatches();
+
 	}
 
 
@@ -134,7 +143,7 @@ const BattleResult = () => {
 						<p className="winnerData-p">Winner is: 		<strong>{hamster1.name}</strong></p>
 						<p className="winnerData-p">Current rank:  	<strong>{hamster1.rank}</strong></p>
 						<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
-						<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
+						<button className="nextBattleBtn" onClick={nextBattle}>Next Battle</button>
 					</div>
 				</div>
 
@@ -145,15 +154,11 @@ const BattleResult = () => {
 						<p className="winnerData-p">Winner is: 		<strong>{hamster2.name}</strong></p>
 						<p className="winnerData-p">Current rank:  	<strong>{hamster2.rank}</strong></p>
 						<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
-						<button className="nextBattleBtn" onClick={nextBattleBtn}>Next Battle</button>
+						<button className="nextBattleBtn" onClick={nextBattle}>Next Battle</button>
 					</div>
 				</div>
 		}
 	}
-	function nextBattleBtn() {
-		window.location.reload(false);
-	}
-
 	function goToCompetitorsComp(){
 		console.log('goToCompetitorsComp click')
 		setToCompetitorsComp(true)

@@ -108,7 +108,6 @@ function getFixedBattle(id1,id2,callback){
 }
 function getFairBattle(matches,callback){
 	let y = Math.floor(Math.random() * 101);
-	console.log(y)
 	let x;
 	if(y < 13){
 		x = (matches * 0.125);
