@@ -8,34 +8,34 @@ const Gallery = (props) => {
 	
 	const [hamsterList, setHamsterList] = useState([]);
 	const [showScroll, setShowScroll] = useState(true) // ändra till false
-	const gallery = useRef()
+	const windowGallery = useRef()
 
 	useEffect(() => {
 		getHamsters();
 
-		console.log('gallery.current', gallery.current)
+		console.log('gallery.current', windowGallery.current)
 		console.log('showScroll utanför', showScroll)
 
-		gallery.current.addEventListener('scroll', checkScrollTop);
+		windowGallery.current.addEventListener('scroll', checkScrollTop);
 	  }, [])
 	  
 	
 	
-
+	// Back to top
 	const scrollTop = () =>{
 		console.log('scrollTop click')
-		gallery.current.scrollTo({top: 0, behavior: 'smooth'});
+		windowGallery.current.scrollTo({top: 0, behavior: 'smooth'});
 	};
 
 	const checkScrollTop = () => {
 		console.log('checkScrollTop')
 		console.log('showScroll utanför if sats', showScroll)
 	
-		if (!showScroll && gallery.current.pageYOffset > 200){
+		if (!showScroll && windowGallery.current.pageYOffset > 200){
 			console.log('checkScrollTop if')
 		  	setShowScroll(true)
 		  console.log('showScroll utanför i if sats', showScroll)
-		} else if (showScroll && gallery.current.pageYOffset <= 200){
+		} else if (showScroll && windowGallery.current.pageYOffset <= 200){
 		  	setShowScroll(false)
 		  	console.log('showScroll else if', showScroll)
 		}
@@ -62,40 +62,26 @@ const Gallery = (props) => {
 	}
 	let classIcon=''
 	//TODO Här är jag==================================
-
-	//TODO pågående: byta färg på klickat kort från grön till lila
 	if(props.toCompetitorsComp){
 		console.log('tocomp är true')
-		console.log(props)
 		classIcon='card-cursor'
-
-	}else{
-		console.log('tocomp är false')
-		console.log(props)
-		
 	}
-	let competitorBackground=''
-	const addCompetitors=()=>{
-		
-		if(props.toCompetitorsComp){
-			console.log('click funkar i addCompetitors')
-			competitorBackground='competitorBackground'
-			console.log(competitorBackground)
+	else{
+		console.log('tocomp är false')		
+	}
 
+	const [competitorBackground, setCompetitorBackground] = useState('')
+	const addCompetitors=(id)=>{
+		if(props.toCompetitorsComp){
+			console.log('hamster id', id)
+			setCompetitorBackground('competitorBackground')
 		}
 	}
-	//TOGGLE kod exempel
-
-	// const [isOn, setIsOn]=useState(true)
-
-    // let buttonText="Turn Off";
-    // let isOnClassName="isOnLight"
-    // if(!isOn){
-    //     buttonText="Turn On"
-    //     isOnClassName="isOffDark"
-
-    // }
-
+	// To do
+	// ändra färg på BARA de man klickar på
+	// begränsa att man bara kan klicka på två hamstrar (lista)
+	// Toggle
+	// sätta de klickade hamstrarna i state variablarna chosenHamster..
 
 	let status = null;
 	if (!hamsterList.length) {
@@ -105,7 +91,7 @@ const Gallery = (props) => {
 		status = 
 			<div className="container-list" >
 				{hamsterList.map(hamster => (
-				<div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={()=>addCompetitors()}>
+				<div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={() => addCompetitors(hamster._id)}>
 					<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
 					{!props.toCompetitorsComp ? (<button onClick={() => deleteHamster(hamster._id)}>X</button>) : (	<img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}
 				
@@ -122,7 +108,7 @@ const Gallery = (props) => {
 	}
 	
 	return (
-		<div className="Gallery" ref={gallery} onScroll={() => console.log('Scroll i gallery')}>
+		<div className="Gallery" ref={windowGallery} onScroll={() => console.log('Scroll i gallery')}>
 			<main>
 				<div>{status}</div>
 				{<ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/>}
