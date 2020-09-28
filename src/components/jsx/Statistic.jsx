@@ -42,8 +42,13 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 winners */}
 {/* Top 5 winners - fade potatoe */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
-<div className="ellipsebackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
-<GetTopWinners /></div>
+<div className="ellipsebackground" 
+onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}
+>
+<GetTopWinners />
+
+</div>
+
 </FadeEffectTop5Winners> 
 {/* Top 5 winners - green circles */}
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
