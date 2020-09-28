@@ -10,13 +10,13 @@ const Gallery = (props) => {
     const windowGallery = useRef()
     useEffect(() => {
         getHamsters();
-        console.log('gallery.current', windowGallery.current)
-        console.log('showScroll utanför', showScroll)
+        
         windowGallery.current.addEventListener('scroll', checkScrollTop);
 	  }, [])
 
 	  useEffect(() => {
-		console.log('useeffect competitorList')
+		console.log('useeffect competitorList', props.competitorsList)
+		
     
 	  }, [props.competitorsList])
       
@@ -57,16 +57,15 @@ const Gallery = (props) => {
         console.log('response', response)
         console.log(response)
         getHamsters();
-    }
+	}
+	
+	//Ändra pointern på korten beroende på om Gallery eller Competitors visas
     let classIcon=''
-    //TODO Här är jag==================================
     if(props.toCompetitorsComp){
         classIcon='card-cursor'
     }
-    else{
-        console.log('tocomp är false')     
-    }
     
+    //Lägger till competitors i lista med ett klick
     const handleCompetitors=(id) => {
         if(!props.toCompetitorsComp){
 			return
@@ -75,16 +74,39 @@ const Gallery = (props) => {
 		console.log('hamster id', id) // hamster id
 		// funktioner som jobbar på en lista, skapa ny lista med en kopia av gamla listan spread op, hjälp av if(vill inte ha dubbleter) och find()
 		
+		//1 kolla om elementet vi klickar på just nu redan finns i competitorslist, avnänd find
+		//2 om den finns i listan, lägg inte till och ändra background.--> (competitorBackground='')
+		//3 om den inte finns i listan, lägg till.
 
-		let array = [...props.competitorsList];
-		array.push(id)
-		props.setCompetitorsList(array)
+		if (props.competitorsList.length <= 1){
+			console.log('det fanns INTE två hamstrar i listan')
 
+			let dubbel= props.competitorsList.find(hamsterId => hamsterId===id)
+
+			if(!dubbel) {
+
+				console.log('det fanns ingen dubbel, ny hamster läggs till i listan')
+				let array = [...props.competitorsList];
+				array.push(id)
+				props.setCompetitorsList(array)
+
+			}else{
+				console.log('det finns en dubbel: ', dubbel)
+			}
+
+		}
+
+		
+		
 		console.log('competitorsList', props.competitorsList)
+
+
 		
 
-		// fall 1 - hur lägger vi in en compe när listan är tom
-		// fall 2 - hur lägger vi in en när listan har ett element
+		
+
+		// fall 1 - hur lägger vi in en compe när listan är tom DONE!
+		// fall 2 - hur lägger vi in en när listan har ett element DONE!
 		// fall 2b - klickar bara samma element i listan vad händer då.. toogle??
 		// fall 3 - när listan har 2 eller 3 element
     }

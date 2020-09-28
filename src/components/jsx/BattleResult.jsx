@@ -154,7 +154,7 @@ const BattleResult = () => {
 	}
 
 	function goToCompetitorsComp(){
-		console.log('goToCompetitorsComp click')
+		
 		setToCompetitorsComp(true)
 	}
 
