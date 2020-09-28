@@ -122,9 +122,9 @@ const FormInput=(props)=>{
 		return true;
 	
 	}
-	useEffect()=()=>{
-		//ev lägga i use effectmen spelar ingen roll egentligen
-	}
+	// useEffect()=()=>{
+	// 	//ev lägga i use effectmen spelar ingen roll egentligen
+	// }
 	let isValidName=validateName(name)
 
 
