@@ -3,14 +3,17 @@
 
 .Competitors{
 	overflow: scroll;
-	
+	h2{
+		display: inline;
+	}
 	.go-to-battle-button{
 		@include button
 	}
 	.go-to-battle-button:hover{
 		@include button-hover
 	}
-	
-
-
+	.container-competitors{
+		margin-top: 10vh;
+		margin-left: 1em;
+	}
 }
