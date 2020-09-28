@@ -49,13 +49,8 @@ const [showMoreInfoTopLoosers, setShowMoreInfoTopLoosers] = useState(false);
 {/* Top 5 winners */}
 {/* Top 5 winners - fade potatoe */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
-<div className="ellipsebackground" 
-onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}
->
-<GetTopWinners />
-
-</div>
-
+<div className="ellipsebackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}
+><GetTopWinners /></div>
 </FadeEffectTop5Winners> 
 {/* Top 5 winners - green circles */}
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
@@ -115,7 +110,6 @@ onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}
 <img className="iconInsideCircle" src={require('../../assets/iconWinnerCommonalities.svg')} alt=""/>
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconWinnerLooserCommonalities.svg')} alt=""/></div>
 <p className="miniIconText6 miniIconText">Winner commonalities</p>
-
 
 
 {/* More info top loosers */}
