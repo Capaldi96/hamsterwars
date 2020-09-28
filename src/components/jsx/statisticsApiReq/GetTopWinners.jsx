@@ -4,12 +4,15 @@ import '../../scss/Statistics.scss'
 
 const GetTopWinners = () => {
 	const [top5Winners, setTop5Winners] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 		useEffect(() => {
+		setLoading(true)
 		axios.get('/api/TopWinners')
 		.then(res => {
 			console.log(res)
 			setTop5Winners(res.data)
+			setLoading(false)
 		})
 		.catch(err => {
 			console.log(err)
@@ -25,7 +28,7 @@ const GetTopWinners = () => {
 
 			<div className="ellipseTextContainer">
 			<h1 className="statPotatoeHeader">Top 5 winners</h1>
-			{top5Winners.map((winners, index) => (<p className="statEllipseList" key={winners.name+index}>{winners.name}</p>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : top5Winners.map((winners, index) => (<p className="statEllipseList" key={winners.name+index}>{winners.name}</p>))}
 		
 			</div>
 			</div>

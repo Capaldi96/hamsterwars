@@ -4,32 +4,30 @@ import '../scss/BattleCard.scss';
 const BattleCard = props => {
 
 	const [crownForWinner, setCrownForWinner] = useState(false);
-	
 	const wrapperFunction = () => {
-		props.setWinnerId(props.hamster._id)
-		props.setShowCutestH1(false);
-		props.setDisableImg(true);
-		console.log('hamster clicked')
-		setCrownForWinner(true);
-		props.setConfetti(true);
+		if(props.disableImg === false){
+			props.setDisableImg(true);
+			props.setWinnerId(props.hamster._id)
+			props.setShowCutestH1(false);
+			setCrownForWinner(true);
+			props.setConfetti(true);
+		}
 	}
 
+
+	
 	return (
-		<div className="flip-card" >
+		
+		<div className="flip-card" onClick={wrapperFunction}>
 			<img className="flip-card-info" alt="info" src={require('../../assets/information_kopia.png')} /> 
 			<div className="flip-card-inner">
 			<div className="flip-card-crown">{crownForWinner ? <img src={require('../../assets/crown.png')} /> : null}</div>
 				<div className="flip-card-front">
-					{ props.disableImg ? <img
+					<img
 						className="competitior-img"
 						src={props.hamster.imgName}
 						alt="Avatar"
-					/> : <img
-						onClick={wrapperFunction}
-						className="competitior-img"
-						src={props.hamster.imgName}
-						alt="Avatar"
-					/> }
+					/>
 				</div>
 				<div className="flip-card-back">
 					<h1 className="flip-card-h1">{props.hamster.name}</h1>
