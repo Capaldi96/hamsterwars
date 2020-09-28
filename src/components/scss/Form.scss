@@ -89,7 +89,7 @@
 					color:#aaa;
 					display:block;
 					transform:translateY(-1.55em);//styr labeltexten höjdledes i inputfältet
-					margin-left:.5em;
+					padding-left:.5em;
 					transform-origin:0 0;//rör sig upp till övre vänstra hörnet
 					transition:all .3s;
 					cursor:text;
@@ -97,34 +97,29 @@
 				}
 				.form-control{
 					font-size:.9em;
-					border-radius:5px;
-					border:2px solid grey;
-					// border-color:$mediumbeige;
+					border-radius:10px;
+					border-color:#ccc;
 					width:100%;
 					padding:7px;
-					background-color:$mediumbeige;
-					transition:all .5s;
-					// border-style:solid;
+				
 					
 				}
+				.invalid{
+					background:purple;
+				}
+				
 				.form-control::placeholder{
 					color: transparent;
 				}
 				.form-control:focus{
 					outline:none;
-					box-shadow:none;
-					border:2px solid orange;
-					// border-color:orange;
 				
 				}
 				.form-control:focus + .form-label{
 					//translate styr hur högt de hamnar 2 är lägre, 3 högre
 					//scale styr hur stora/små de blir, .8 är mindre, .9 är större
 					transform:translateY(-2.7em) scale(.8);
-					color:orange;
-					// 
-					background-color:$mediumbeige;
-					display:inline-block;
+					color:rgb(175, 174, 174);
 				
 				}
 				.form-control:not(:placeholder-shown) + .form-label{
@@ -145,6 +140,7 @@
 				.imageFile-label:hover{
 					background-color:rgb(231, 230, 230);
 				}
+				
 				.error-message{
 					height: 0.3em;
 					position: absolute;
@@ -158,14 +154,8 @@
 						padding: 0.1em;
 					}
 				}
-
-			
 			}
-			
-		}
-		button{
-			
-			@include button
+		
 		}
 		button{
 			@include button;

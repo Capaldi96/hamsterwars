@@ -13,14 +13,18 @@ const FormInput=(props)=>{
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 	const [loading, setLoading]=useState(false)
 
+	const [nameIsTouched, setNameIsTouched]=useState(false)
+	const [ageIsTouched, setAgeIsTouched]=useState(false)
+	const [favFoodIsTouched, setFavFoodIsTouched]=useState(false)
+	const [lovesIsTouched, setLovesIsTouched]=useState(false)
+	const [imageFileIsTouched, setImageFileIsTouched]=useState(false)
+
+
 	const onChangeSaveFile=(e)=>{
 		setimageFile(e.target.files[0])
 		setImageLabelText('New image ready to upload')
 	}
 
-	const addNewHamster=()=>{
-		console.log('addnewhamster cklick')
-	}
 
 
 	let newHamster = {
@@ -87,7 +91,55 @@ const FormInput=(props)=>{
 		}
 	}
 
+	let invalidMessage=''
+	const [showSubmitMessage, setShowSubmitMessage]=useState(false)
+	// let showSubmitMessage=false;
+	console.log(showSubmitMessage)
+	const addNewHamster=()=>{
+		
+		if (isValidName && testValid){
+			console.log('allt är valid och true, dags att posta hamster')
+			
+		}
+		else{
+			console.log('inte ok, post ej')
+			console.log('showsubmittmesasge: ', showSubmitMessage)
+			//TODO när setShowSubmitmessage (ändra namn på denna) blir true ska en ikon dyka upp under alla inputfält.
+			setShowSubmitMessage(true);
+		
+			
+			
+		}
+	}
 
+	let testValid=true//ta bort denna, enbart för test. Se även rad 96. Ska ersättas av övriga variabler för alla inputfält
+	
+	const validateName=()=>{
+		console.log('validateName körs	')
+		
+		if(name.length<1){
+			
+			invalidMessage='Oops, forgot the name!'
+		
+			return false
+		}
+		if(name.length>10){
+			
+			invalidMessage='Hey! Max 10 characters'
+
+			return false
+		}
+	
+		else{
+			
+			return true;
+		}
+	
+	}
+
+	let isValidName=validateName(name)
+	// om touched alltså true  och name mindre än noll alltså true=invalid
+	
 	return (
 
 		<div className='form-wrapper'>
@@ -100,14 +152,19 @@ const FormInput=(props)=>{
 						<input type='text'
 						id="name"
 						name='name'
-						className='form-control'
+						className={ nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'}
 						value={name}
 						placeholder='name placeholder'
+						onBlur={()=>setNameIsTouched(true)}
 						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
-						 {/* <span>*Oops, forgot the name!</span>
-						 <span>*Hey! Max 10 characters</span> */}
+						{nameIsTouched && !isValidName ? <span>{invalidMessage}</span> : <span></span>}
+						{!showSubmitMessage ? <span></span> : <span>Glöm ej!</span>}
+
+				 		
+					
+					
 						</div>
 					</div>
 
@@ -119,6 +176,7 @@ const FormInput=(props)=>{
 						className='form-control'
 						value={age}
 						placeholder='age placeholder'
+						onBlur={()=>setAgeIsTouched(true)}
 						onChange={event=>setAge(event.target.value)}/>
 						<label htmlFor="age" className='form-label'>Age in months</label>
 						<div className="error-message">
@@ -138,6 +196,7 @@ const FormInput=(props)=>{
 						className='form-control' 
 						value={favFood}
 						placeholder='food placeholder'
+						onBlur={()=>setFavFoodIsTouched(true)}
 						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
 						<div className="error-message">
@@ -156,6 +215,7 @@ const FormInput=(props)=>{
 						name='loves' 
 						value={loves}
 						placeholder='love placeholder'
+						onBlur={()=>setLovesIsTouched(true)}
 						onChange={event=>setLoves(event.target.value)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
 						<div className="error-message">
@@ -175,6 +235,7 @@ const FormInput=(props)=>{
 						name='imageFile'
 						// value={imageFile}
 						placeholder='imageFile placeholder'
+						onBlur={()=>setImageFileIsTouched(true)}
 						onChange={onChangeSaveFile}/>
 						</label>
 						<div className="error-message">
@@ -185,6 +246,7 @@ const FormInput=(props)=>{
 				</form>
 					
 				{loading ? <p className='loading-text'>Loading...</p> : 	<button onClick={addNewHamster}>Add hamster</button>}
+				{showSubmitMessage ? <p>Nånting saknas, har du fyllt i allt?</p> : <p>Välkommen</p>}
 			
 		
 			</div>
