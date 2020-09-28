@@ -12,47 +12,60 @@ const BattleResult = () => {
 	const [showResult, setShowResult] = useState(false);
 	const [hamster1, setHamster1] = useState(null);
 	const [hamster2, setHamster2] = useState(null)
-	const [matches, setMatches] = useState(null);
+	const [allHamsters, setAllHamsters] = useState(null);
 	const [showCutestH1, setShowCutestH1] = useState(true);
 	const [disableImg, setDisableImg] = useState(false);
 	const [confetti, setConfetti] = useState(false);
 	const { width, height } = useWindowSize();
 	const [chosenHamsters, setChosenHamsters] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);//!glöm inte att ändra denna till false när klar
+	let content = null;
 
 
 
 	useEffect(() => {
-		getMatches()
+		getAllHamsters()
 	}, []);
 	useEffect(() => {
-		if (matches) {
-			getMatch()
+		if (allHamsters !== null) {
+			getBattle()
 		}
-	}, [matches]);
-	async function getMatches() {
-		let matches = await axios.get('/api/sumAllGames')
-		setMatches(matches.data[0].sumAllGames);
-	}
-	async function getMatch() {
-		let hamster1 = await axios.get('/api/fairBattle/' + matches);
-		let hamster2 = await axios.get('/api/fairBattle/' + matches);
-		if (hamster1.data[0]._id === hamster2.data[0]._id) {			
-			return getMatch();	
-		} else {
-			setHamster1(hamster1.data[0]);
-			setHamster2(hamster2.data[0]);
+	}, [allHamsters]);
+	async function getAllHamsters() {
+		let allHamsters = await axios.get('/api/getAllHamsters')
+		if (allHamsters.data.length !== 0){
+			setAllHamsters(allHamsters.data.length);
+		}
+		else {
+			setLoading(false)
 		}
 	}
-	function nextBattle(){
+	async function getBattle() {
+		if(allHamsters < 2)
+			return;
+		else{
+			let hamster1 = await axios.get('/api/fairBattle/' + allHamsters);
+			let hamster2 = await axios.get('/api/fairBattle/' + allHamsters);
+			if (hamster1.data[0]._id === hamster2.data[0]._id) {
+				return getBattle();
+			} else {
+				setHamster1(hamster1.data[0]);
+				setHamster2(hamster2.data[0]);
+			}
+		}
+		setLoading(false)
+	}
+	function nextBattle() {
+		setLoading(true);
+		setAllHamsters(null)
 		setHamster1(null)
 		setHamster2(null)
 		setDisableImg(false);
 		setShowResult(false);
 		setShowCutestH1(true);
 		setWinnerId(null);
-		getMatches();
-
+		getAllHamsters();
 	}
 
 
@@ -140,7 +153,6 @@ const BattleResult = () => {
 				<div className="resultPotato">
 					<div className="winnerData">
 						<p className="winnerData-p">Winner is: 		<strong>{hamster1.name}</strong></p>
-						<p className="winnerData-p">Current rank:  	<strong>{hamster1.rank}</strong></p>
 						<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
 						<button className="nextBattleBtn" onClick={nextBattle}>Next Battle</button>
 					</div>
@@ -151,29 +163,26 @@ const BattleResult = () => {
 				<div className="resultPotato">
 					<div className="winnerData">
 						<p className="winnerData-p">Winner is: 		<strong>{hamster2.name}</strong></p>
-						<p className="winnerData-p">Current rank:  	<strong>{hamster2.rank}</strong></p>
 						<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
 						<button className="nextBattleBtn" onClick={nextBattle}>Next Battle</button>
 					</div>
 				</div>
 		}
 	}
-	function goToCompetitorsComp(){
+	function goToCompetitorsComp() {
 		console.log('goToCompetitorsComp click')
 		setToCompetitorsComp(true)
 	}
 
-	let content = null;
-	if(!toCompetitorsComp){
-		content = 
+	if (!toCompetitorsComp) {
+		content =
 			<>
-				<div className="test">
-					<p>Wanna choose your competitors? </p>
-					<button onClick={goToCompetitorsComp}>Choose hamster</button>
-				</div>
-
 				{hamster1 && hamster2 ?
 					<div id="battleResult">
+						<div className="test">
+							<p>Wanna choose your competitors? </p>
+							<button onClick={goToCompetitorsComp}>Choose hamster</button>
+						</div>
 						{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
 						<div className="container">
 							{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
@@ -186,18 +195,30 @@ const BattleResult = () => {
 							{showResult ? winnerData : null}
 						</div>
 					</div>
-				: null}
+					:
+					<div id="battleResult">
+						<div className="noResults">
+								<h2>Uhoh! No hamsters. Add one!</h2>
+								<a href="/form" className="link-to">Go to form</a>
+						</div>
+					</div>}
 			</>
 	}
-	else{
-		content = 
-			<Competitors chosenHamsters={chosenHamsters} setChosenHamsters={setChosenHamsters} toCompetitorsComp={toCompetitorsComp}/>
-		
+	else if (toCompetitorsComp) {
+		content =
+			<Competitors chosenHamsters={chosenHamsters} setChosenHamsters={setChosenHamsters} toCompetitorsComp={toCompetitorsComp} />
+
 	}
 
 	return (
-		<>	
-			{ content }
+		<>
+			{loading ?
+				<div id="battleResult">
+					<div className="noResults">
+						<h1 className='loading-text'>Loading...</h1>
+					</div>
+				</div>
+				: content}
 		</>
 
 	);

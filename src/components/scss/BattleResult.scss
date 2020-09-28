@@ -3,9 +3,10 @@
 
 #battleResult{
 	margin-top: 5vh;
+	height: 80vh;
 }
 #battleResult .container {
-	height: 80vh;
+	height: 100%;
 	display: grid;
 	place-items: center;
 	grid-template-rows: 2fr 4fr 3fr;
@@ -35,19 +36,22 @@
 	place-items: center;
 	width: 38vw;
 }
+#battleResult .link-to{
+	@include link
+}
+#battleResult .noResults{
+	display:grid;
+	place-items: center;
+	grid-gap: 2vh;
+}
 #battleResult .container .nextBattleBtn {
-	@include button;
-	position: relative;
-	z-index: 3;
-	padding: 7px;
-	width: fit-content;
-	left: 1.5em;
+	@include button;	
 }
 
 #battleResult .winnerData{
 	display: grid;
-	grid-template-rows: 1fr 1fr 1fr 1fr;
-	align-items: center;
+	grid-template-rows: 1fr 1fr 1fr;
+	place-items: center;
 }
 
 #battleResult .winnerData-p{
@@ -109,19 +113,11 @@
 		position: relative;
 		margin-top: 10vh;
 	}
-
-	#battleResult .container .nextBattleBtn {
-		position: relative;
-		z-index: 3;
-		@include button;
-		width: fit-content;
-		left: 3em;
-	}
 	
 	#battleResult .winnerData{
 		display: grid;
-		grid-template-rows: 1fr 1fr 1fr 1fr; 
-		align-items: center;
+		grid-template-rows: 1fr 1fr 1fr; 
+		place-items: center;
 	}
 	
 	#battleResult .winnerData-p{

@@ -106,22 +106,21 @@ function getAllHamsters(callback) {
 function getFixedBattle(id1,id2,callback){
 	get({'_id' : { $in : [ new ObjectID(id1), new ObjectID(id2)] }}, callback)
 }
-function getFairBattle(matches,callback){
+function getFairBattle(allHamsters,callback){
 	let y = Math.floor(Math.random() * 101);
 	let x;
-	if(y < 13){
-		x = (matches * 0.125);
-	} else if(y < 25){
-		x = (matches * 0.25);
-	} else if(y < 50){
-		x = (matches * 0.5);
-	} else if(y < 75){
-		x = (matches * 0.75);
-	} else{
-		x = matches;
+	if( y < allHamsters * 0.75){
+		x = (allHamsters * 0.75);
+	}else if( y < allHamsters * 0.5){
+		x = (allHamsters * 0.5);
+	}else if( y < allHamsters * 0.25){
+		x = (allHamsters * 0.25)
+	}else if( y < allHamsters * 0.125){
+		x = (allHamsters * 0.125)
+	}else {
+		x = allHamsters;
 	}
-	console.log(x)
-	let filter = [	{$sort: { games : 1} },{ $limit: x}, {$sample: {size: 1}}];
+	let filter = [{$sort: { games : 1} },{ $limit: x}, {$sample: {size: 1}}];	
 	getGroup(filter,callback)
 }
 

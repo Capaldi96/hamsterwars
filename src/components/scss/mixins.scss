@@ -2,18 +2,29 @@
 
 // Button
 @mixin button {
-	background: #FBF2E3;
+	background: #fbf2e3;
 	border: 2px solid $lightpurple;
 	border-radius: 8px;
 	color: $lightpurple;
-	padding:10px 28px;
+	padding: 10px 28px;
 	font-size: 1em;
-	cursor:pointer;
+	cursor: pointer;
 }
 // Button hover
-@mixin button-hover{
-	color:  #FBF2E3;
+@mixin button-hover {
+	color: #fbf2e3;
 	text-decoration: none;
 	background: $lightpurple;
 	transition: all 0.4s ease 0s;
+}
+
+@mixin link {
+	background: #fbf2e3;
+	border: 2px solid $lightpurple;
+	border-radius: 8px;
+	color: $lightpurple;
+	padding: 10px 28px;
+	font-size: 1em;
+	cursor: pointer;
+	text-decoration: none;
 }

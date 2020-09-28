@@ -22,6 +22,7 @@ const FormInput = (props) => {
 
 
 	const onSubmit = () => {
+		setLoading(true)
 		const reader = new FileReader()
 		reader.readAsDataURL(imageFile);
 		reader.onloadend = () => {
@@ -49,7 +50,6 @@ const FormInput = (props) => {
 			}
 			addHamster(newHamster)
 		} catch (error) {
-			console.log(error)
 		}
 	}
 	// gamla add hmasterimage functionen
@@ -75,7 +75,6 @@ const FormInput = (props) => {
 
 	async function addHamster(newHamster) {
 		console.log(newHamster)
-		setLoading(true)
 
 		try {
 			const response = await fetch('/api/addhamster', {
@@ -173,7 +172,7 @@ const FormInput = (props) => {
 						name='loves'
 						value={loves}
 						placeholder='love placeholder'
-						ref={register({ required: true, maxLength: 15, minLength: 2 })}
+						ref={register({ required: true, maxLength: 30, minLength: 2 })}
 						onChange={event => setLoves(event.target.value)} />
 					<label htmlFor="loves" className='form-label'>Loves</label>
 					<div className="error-message">

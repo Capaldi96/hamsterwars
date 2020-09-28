@@ -16,9 +16,9 @@ app.use((req, res, next) => {
 	next();
 })
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({limit: '2mb'}));
 app.use(cors());
-app.use(fileUpload())
+//app.use(fileUpload())
 // add middlewares
 app.use(express.static(path.join(__dirname, '../assets')))
 
@@ -33,9 +33,9 @@ app.get('/api/fixedBattle/:id1/:id2', (req, res) => {
 		res.send(dataOrError);
 	})
 })
-app.get('/api/fairBattle/:matches', (req, res) => {
-	let matches = parseInt(req.params.matches);
-	getFairBattle(matches,dataOrError =>{
+app.get('/api/fairBattle/:hamsters', (req, res) => {
+	let hamsters = parseInt(req.params.hamsters);
+	getFairBattle(hamsters,dataOrError =>{
 		res.send(dataOrError);
 	})
 })
