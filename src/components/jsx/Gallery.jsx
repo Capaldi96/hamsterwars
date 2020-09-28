@@ -93,18 +93,30 @@ const Gallery = (props) => {
 	// sätta de klickade hamstrarna i state variablarna chosenHamster..
 
 	let status = null;
+	let loadingText=null
 	if (!hamsterList.length) {
-		status = <div className="loading"><h2>Loading...</h2></div>;
+		loadingText = <div className="loading"><h2>Loading...</h2></div>;
 	} 
 	else {
-		status = 
-			<div className="container-list" >
-				{hamsterList.map(hamster => (
+
+		status=hamsterList.map(hamster=>{
+
+			
+		if(props.competitorsList.length){
+			console.log('i if sat för att det fanns nåt i listan')
+			if (hamster._id===props.competitorsList[0] || hamster._id===props.competitorsList[1]){
+				console.log('id var lika')
+			}
+
+		}
+			
+
+			return (
+				
 				<div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={() => addCompetitors(hamster._id)}>
 					<img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
 					{!props.toCompetitorsComp ? (<button onClick={() => deleteHamster(hamster._id)}>X</button>) : (	<img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}
-				
-				
+			
 					<p ><span>{hamster.name}</span></p>
 					<p>Years: {hamster.age}</p>
 					<p>Games: {hamster.games}</p>
@@ -112,14 +124,26 @@ const Gallery = (props) => {
 					<p>Loves: {hamster.loves}</p>
 					<p>Wins: {hamster.wins}</p>
 					<p>Losses: {hamster.defeats}</p>
-				</div>))}
-			</div> 
-	}
+				</div>
+				
+			)
+
+
+
+		})//slut map
+
+			
+	}//slut else
 	
 	return (
 		<div className="Gallery" ref={windowGallery} onScroll={() => console.log('Scroll i gallery')}>
 			<main>
-				<div>{status}</div>
+				<div>{loadingText}</div>
+				<div>
+					<div className="container-list">{status}</div>
+
+				</div>
+				
 				{<ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/>}
 			</main>
 		</div>
