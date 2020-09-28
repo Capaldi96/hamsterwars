@@ -10,6 +10,7 @@ import BattleResult from '../src/components/jsx/BattleResult';
 import Statistic from '../src/components/jsx/Statistic';
 import Gallery from '../src/components/jsx/Gallery';
 import Webshop from '../src/components/jsx/Webshop';
+import ShoppingCart from '../src/components/jsx/ShoppingCart';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 				<Route path="/Statistic" component={Statistic} />
 				<Route path="/Gallery" component={Gallery} />
 				<Route path="/Webshop" component={Webshop} />
+				<Route path="/ShoppingCart" component={ShoppingCart} />
 				<Footer />
 			</div>
 		</Router>

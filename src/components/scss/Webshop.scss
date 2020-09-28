@@ -2,7 +2,7 @@
 @import 'variables.scss';
 
 
-.container{
+#webshop .container{
     display: grid;
     grid-template-rows: 15% 70% 15%;
     gap: 1.5em 1em;
@@ -18,6 +18,21 @@
     gap: 3em;
     z-index: 1;
     overflow: scroll;
+    overflow-x: hidden;
+}
+
+#webshop .container .disabled {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+#webshop .container main h2 {
+    margin-bottom: 15px;
+}
+
+#webshop .container main .price {
+    font-size: 19px;
+    color: $darkpurple;
 }
 
 #webshop .container .shop{
@@ -25,17 +40,23 @@
     display: flex;
 }
 
+#webshop .container .shop a{
+    text-decoration: none;
+    font-size: 25px;
+    color: $darkpurple;
+}
+
 #webshop .container .shopping-cart{
     width: 4vw;
     height: 8vh;
     justify-content: start;
     margin-top: 8vh;
-    margin-left: 8vw;
+    margin-left: 7vw;
 }
 
 #webshop .container main div {
     display: grid;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 20% 55% 20% 5%;
     background-color: $lightgreen;
     padding: 1em;
     border-radius: 15px;
@@ -44,11 +65,15 @@
 
 #webshop .container main div .image{
     width: 15vw;
-    border: 1px solid grey;
 }
 
 #webshop .container main div .buy-btn{
-    width: 65px;
-    height: 35px;
+    @include button;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
+
+#webshop .container main div .buy-btn:hover{
+    @include button-hover;
+}
+
