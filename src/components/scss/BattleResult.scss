@@ -55,6 +55,10 @@
 #battleResult .container .battleBtn {
 	@include button;	
 }
+#battleResult .container .battleBtn:hover {
+	@include button-hover;	
+}
+
 
 #battleResult .winnerData{
 	display: grid;

@@ -25,7 +25,12 @@ const BattleResult = (props) => {
 
 
 	useEffect(() => {
-		getAllHamsters()
+		if(chosenHamsters.length !== 0){
+			setHamster1(chosenHamsters[0])
+			setHamster2(chosenHamsters[1])
+		}else{
+			getAllHamsters()
+		}
 	}, []);
 	useEffect(() => {
 		if(chosenHamsters.length !== 0){
