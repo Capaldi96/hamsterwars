@@ -11,7 +11,9 @@ const Competitors = (props) => {
 
 	const goToBattle = () => {
 		console.log('goToBattle click')
-		/* props.setChosenHamsters(competitorsList) */
+		console.log('i competitorcomp, competitorlist: ', competitorsList)
+		
+		props.setChosenHamsters(competitorsList) 
 	}
 	
 
