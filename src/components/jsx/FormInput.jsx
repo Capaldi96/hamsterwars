@@ -91,6 +91,8 @@ const FormInput=(props)=>{
 		}
 	}
 
+
+
 	let invalidMessage=''
 	const [showSubmitMessage, setShowSubmitMessage]=useState(false)
 	// let showSubmitMessage=false;
@@ -130,6 +132,7 @@ const FormInput=(props)=>{
 
 	// om touched alltså true  och name mindre än noll alltså true=invalid
 	const nameclasName= nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'
+	const //TODO Fixa dynamiskt klassnamn!!! Måste kunna lägga till för invalid när man klickar på sumbit
 	//TODO flytta ut all mer avancerad kod från jsx
 	return (
 
