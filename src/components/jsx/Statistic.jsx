@@ -4,13 +4,18 @@ import FadeEffectGamesPlayed from './FadeEffect/FadeEffectGamesPlayed'
 import FadeEffectTop5Winners from './FadeEffect/FadeEffectTop5Winners'
 import FadeEffectTop5Loosers from './FadeEffect/FadeEffectTop5Loosers'
 import FadeEffectLeastParticipated from './FadeEffect/FadeEffectLeastParticipated'
-import FadeEffectLatestBattles from './FadeEffect/FadeEffectLatestBattles' 
+import FadeEffectLatestBattles from './FadeEffect/FadeEffectLatestBattles'
+import FadeEffectMoreInfoTopWinners from './FadeEffect/FadeEffectMoreInfoTopWinners'
+import FadeEffectMoreInfoTopLoosers from './FadeEffect/FadeEffectMoreInfoTopLoosers'
+
 
 import GetGamesPlayed from './statisticsApiReq/GetGamesPlayed'
 import GetTopLoosers from './statisticsApiReq/GetTopLoosers'
 import GetTopWinners from './statisticsApiReq/GetTopWinners'
 import GetLatestBattles from './statisticsApiReq/GetLatestBattles'
 import GetLeastParticipated from './statisticsApiReq/GetLeastParticipated'
+import GetMoreInfoTopWinners from './statisticsApiReq/GetMoreInfoTopWinners'
+import GetMoreInfoTopLoosers from './statisticsApiReq/GetMoreInfoTopLoosers'
 
 
 const Statistic = () => {
@@ -18,7 +23,9 @@ const [showGamesPlayed, setShowGamesPlayed] = useState(false);
 const [showTop5Winners, setShowTop5Winners] = useState(false);
 const [showTop5Loosers, setShowTop5Loosers] = useState(false);
 const [showLeastParticipated, setShowLeastParticipated] = useState(false);
-const [showLatestBattles, setShowLatestBattles] = useState(false);  
+const [showLatestBattles, setShowLatestBattles] = useState(false); 
+const [showMoreInfoTopWinners, setShowMoreInfoTopWinners] = useState(false);  
+const [showMoreInfoTopLoosers, setShowMoreInfoTopLoosers] = useState(false);  
  
 
 	return (
@@ -42,8 +49,8 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 {/* Top 5 winners */}
 {/* Top 5 winners - fade potatoe */}
 <FadeEffectTop5Winners showTop5Winners={showTop5Winners}>
-<div className="ellipsebackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
-<GetTopWinners /></div>
+<div className="ellipsebackground" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}
+><GetTopWinners /></div>
 </FadeEffectTop5Winners> 
 {/* Top 5 winners - green circles */}
 <div className="statCircle2 circleSpecifics" onClick={() => setShowTop5Winners(showTop5Winners => !showTop5Winners)}>
@@ -89,6 +96,33 @@ const [showLatestBattles, setShowLatestBattles] = useState(false);
 <img className="iconInsideCircle" src={require('../../assets/iconLatestBattles.svg')} alt=""/> 
 <img className="miniIconInsideCircle" src={require('../../assets/miniIconLatestBattles.svg')} alt=""/></div>
 <p className="miniIconText5 miniIconText">Latests battles</p>
+
+
+
+{/* More info top winners */}
+{/* More info top winners - fade potatoe */}
+<FadeEffectMoreInfoTopWinners showMoreInfoTopWinners={showMoreInfoTopWinners}>
+<div className="ellipsebackground" onClick={() => setShowMoreInfoTopWinners(showMoreInfoTopWinners => !showMoreInfoTopWinners)}>
+<GetMoreInfoTopWinners /></div>
+</FadeEffectMoreInfoTopWinners> 
+{/* Latest battles - green circles */}
+<div className="statCircle6 circleSpecifics" onClick={() => setShowMoreInfoTopWinners(showMoreInfoTopWinners => !showMoreInfoTopWinners)}>
+<img className="iconInsideCircle" src={require('../../assets/iconWinnerCommonalities.svg')} alt=""/>
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconWinnerLooserCommonalities.svg')} alt=""/></div>
+<p className="miniIconText6 miniIconText">Winner commonalities</p>
+
+
+{/* More info top loosers */}
+{/* More info top loosers - fade potatoe */}
+<FadeEffectMoreInfoTopLoosers showMoreInfoTopLoosers={showMoreInfoTopLoosers}>
+<div className="ellipsebackground" onClick={() => setShowMoreInfoTopLoosers(showMoreInfoTopLoosers => !showMoreInfoTopLoosers)}>
+<GetMoreInfoTopLoosers /></div>
+</FadeEffectMoreInfoTopLoosers> 
+{/* Latest battles - green circles */}
+<div className="statCircle7 circleSpecifics" onClick={() => setShowMoreInfoTopLoosers(showMoreInfoTopLoosers => !showMoreInfoTopLoosers)}>
+<img className="iconInsideCircle" src={require('../../assets/iconLooserCommonalities.svg')} alt=""/>
+<img className="miniIconInsideCircle" src={require('../../assets/miniIconWinnerLooserCommonalities.svg')} alt=""/></div>
+<p className="miniIconText7 miniIconText">Looser commonalities</p>
 
 </div>
 </div>

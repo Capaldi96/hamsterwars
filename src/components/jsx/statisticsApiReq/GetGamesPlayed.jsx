@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
 
-const GetTopLoosers = ()=> {
+const GetGamesPlayed = ()=> {
 const [gamesPlayed, setGamesPlayed] = useState([]);
 const [loading, setLoading] = useState(false);
 
@@ -27,8 +27,12 @@ const [loading, setLoading] = useState(false);
 			<img className="ellipse" src={require('../../../assets/ellipseGamesPlayed.svg')} alt=""/>
 			<div className="ellipseTextContainer">
 			<h2 className="statPotatoeHeader">Games played</h2>
-			{loading ? <p className="statEllipseList">Loading...</p> : gamesPlayed.map(games => (<p className="statEllipseListGamesPlayed" key={games.sumAllGames}>{games.sumAllGames}</p>))}
 
+			<div className="statEllipseListGP">
+			
+			{loading ? <p>Loading...</p> : gamesPlayed.map(games => (<p key={games.sumAllGames}>{games.sumAllGames}</p>))}
+			
+			</div>
 			</div>
 			{/* </div> */}
 
@@ -36,4 +40,4 @@ const [loading, setLoading] = useState(false);
 	)
 }
 
-export default GetTopLoosers;
+export default GetGamesPlayed;

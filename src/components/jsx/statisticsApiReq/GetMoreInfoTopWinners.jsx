@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
 
-const GetTopWinners = () => {
+const GetMoreInfoTopWinners = () => {
 	const [top5Winners, setTop5Winners] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -28,12 +28,11 @@ const GetTopWinners = () => {
 
 			<div className="ellipseTextContainer">
 			<div className="potatoeGrid">
-			<h1 className="statPotatoeHeader">Top 5 winners</h1>
-
-
-			<div className="statEllipseList">
+			<h1 className="moreInfoStatPotatoeHeader">Do the winners have anything in common?</h1>
+			<div className="moreInfoStatEllipseList">
 			<ol>
-			{loading ? <p>Loading...</p> : top5Winners.map((winners, index) => (<li key={winners.name+index}>{winners.name}</li>))}
+			{loading ? <p className="statEllipseList">Loading...</p> : top5Winners.map((winners, index) => (
+				<li key={winners.loves+index}> {winners.name} loves to <span className="moreInfopurple">{winners.loves}</span> and eat <span className="moreInfopurple">{winners.favFood}</span></li>))}
 			</ol>
 			</div>
 			</div>
@@ -41,9 +40,10 @@ const GetTopWinners = () => {
 			</div>
 
 
+
 			
 		</div>
 	)
 }
 
-export default GetTopWinners; 
+export default GetMoreInfoTopWinners; 

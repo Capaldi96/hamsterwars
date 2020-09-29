@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../scss/Header.scss';
 
-const header = (props) => {
-
+const Header = (props) => {
+	const [hidden, setHidden] = useState(false)
+	
 	function toggle(){
 		const navbar = document.querySelector('.navbar');
 		navbar.classList.toggle('change');
+		setHidden(!hidden);
 	}
 
 	return (
 	<div>
 		<header className="App-header">
+
+		{hidden && (
+			<div className="outsideClickDiv" onClick={toggle}></div>
+		)}
+	
 			<nav className="navbar"> 
 
 				<img className="mobile-logo" src={require('../../assets/hamster.png')} alt="logo"/>
@@ -46,6 +53,6 @@ const header = (props) => {
 	);
   }
   
-  export default header;
+  export default Header;
 
 

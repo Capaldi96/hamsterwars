@@ -26,8 +26,15 @@ const [loading, setLoading] = useState(false);
 			<img className="ellipse" src={require('../../../assets/ellipseLeastParticipated.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
+			<div className="potatoeGrid">
 			<h1 className="statPotatoeHeader">Least participated</h1>
-			{loading ? <p className="statEllipseList">Loading...</p> : leastParticipated.map((leastGames, index) => (<p className="statEllipseList" key={leastGames.name+index}>{leastGames.name}</p>))}
+
+			<div className="statEllipseList">
+			<ol>
+			{loading ? <p>Loading...</p> : leastParticipated.map((leastGames, index) => (<li key={leastGames.name+index}>{leastGames.name}</li>))}
+			</ol>
+			</div>
+			</div>
 			</div>
 			</div>
 		</div>

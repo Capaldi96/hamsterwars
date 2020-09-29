@@ -27,9 +27,10 @@ const GetLatestBattles = () => {
 			<img className="ellipse" src={require('../../../assets/ellipseLatestBattles.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
-			<h1 className="statPotatoeHeader">Latest battles</h1>
+			
 
-			<div className="gridgrid">
+			<div className="potatoeGrid">
+			<h1 className="statPotatoeHeader">Latest battles</h1>
 
 			{/* index is added to be able to map same name */}
 			{loading ? <span></span> : 
@@ -38,7 +39,7 @@ const GetLatestBattles = () => {
 			
 			))}
 
-			{loading ? <p className="statEllipseListLatestLoading">Loading...</p> : 
+			{loading ? <p className="latestLoading">Loading...</p> : 
 			
 			<div className="tagsStatContainer">
 			<p className="vsTag"> vs </p>
