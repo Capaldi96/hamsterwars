@@ -17,8 +17,7 @@ const BattleResult = () => {
 	const [confetti, setConfetti] = useState(false);
 	const { width, height } = useWindowSize();
 	const [chosenHamsters, setChosenHamsters] = useState([]);
-	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);//!glöm inte att ändra denna till false när klar
-
+	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 
 
 	useEffect(() => {

@@ -7,7 +7,8 @@ const Gallery = (props) => {
     
     const [hamsterList, setHamsterList] = useState([]);
     const [showScroll, setShowScroll] = useState(true) // ändra till false
-    const windowGallery = useRef()
+	const windowGallery = useRef()
+	
     useEffect(() => {
         getHamsters();
         
@@ -15,13 +16,10 @@ const Gallery = (props) => {
 	  }, [])
 
 	  useEffect(() => {
-		console.log('useeffect competitorList', props.competitorsList)
+		console.log('useEffect competitorList', props.competitorsList)
 		
-    
 	  }, [props.competitorsList])
       
-    
-    
     // Back to top
     const scrollTop = () =>{
         console.log('scrollTop click')
@@ -54,8 +52,6 @@ const Gallery = (props) => {
     // deleteHamster
     async function deleteHamster(id){
         const response = await axios.delete('/api/deleteHamster/' + id);
-        console.log('response', response)
-        console.log(response)
         getHamsters();
 	}
 	
@@ -71,53 +67,29 @@ const Gallery = (props) => {
 			return
 		}
 		props.setShowText(false)
-		console.log('hamster id', id) // hamster id
-		// funktioner som jobbar på en lista, skapa ny lista med en kopia av gamla listan spread op, hjälp av if(vill inte ha dubbleter) och find()
 		
-		//1 kolla om elementet vi klickar på just nu redan finns i competitorslist, avnänd find
-		//2 om den finns i listan, lägg inte till och ändra background.--> (competitorBackground='')
-		//3 om den inte finns i listan, lägg till.
+		//
+		if(props.competitorsList.find(hamsterId => hamsterId === id)){
+			props.setCompetitorsList(props.competitorsList.filter(hamsterId => hamsterId !== id)) 
 
-		if (props.competitorsList.length <= 1){
-			console.log('det fanns INTE två hamstrar i listan')
-
-			let dubbel= props.competitorsList.find(hamsterId => hamsterId===id)
-
-			if(!dubbel) {
-
-				console.log('det fanns ingen dubbel, ny hamster läggs till i listan')
-				let array = [...props.competitorsList];
-				array.push(id)
-				props.setCompetitorsList(array)
-
-			}else{
-				console.log('det finns en dubbel: ', dubbel)
-			}
-
+			props.setStatusButton(true) 
 		}
+		//
+		else if(props.competitorsList.length <= 1){
+			let array = [...props.competitorsList];
+			array.push(id)
+			props.setCompetitorsList(array)
 
-		
-		
-		console.log('competitorsList', props.competitorsList)
-
-
-		
-
-		
-
-		// fall 1 - hur lägger vi in en compe när listan är tom DONE!
-		// fall 2 - hur lägger vi in en när listan har ett element DONE!
-		// fall 2b - klickar bara samma element i listan vad händer då.. toogle??
-		// fall 3 - när listan har 2 eller 3 element
-    }
-    // To do
-    // ändra färg på BARA de man klickar på
-    // begränsa att man bara kan klicka på två hamstrar (lista)
-    // Toggle
-    // sätta de klickade hamstrarna i state variablarna chosenHamster..
+			if(array.length === 2){
+				props.setStatusButton(false) 
+			}
+		}
+	}
+	
     let status = null;
 	let loadingText = null;
 	let competitorBackground = '';
+
     if (!hamsterList.length) {
         loadingText = <div className="loading"><h2>Loading...</h2></div>;
     } 
@@ -125,18 +97,15 @@ const Gallery = (props) => {
         status=hamsterList.map(hamster=>{
     
         if(props.competitorsList.length){
-            console.log('i if sat för att det fanns nåt i listan')
-            if (hamster._id===props.competitorsList[0] || hamster._id===props.competitorsList[1]){ // ändra till find()
-				console.log('id var lika', props.competitorsList[0], props.competitorsList[1])
-				competitorBackground= 'competitorBackground'
+            if (hamster._id === props.competitorsList[0] || hamster._id === props.competitorsList[1]){ 
+				competitorBackground = 'competitorBackground'
 			}
 			else{
-				competitorBackground= ''
+				competitorBackground = ''
 			}
         }
             
             return (
-                
                 <div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={() => handleCompetitors(hamster._id)}>
                     <img src={hamster.imgName} alt="Hamster" className="hamster-image"/>
                     {!props.toCompetitorsComp ? (<button onClick={() => deleteHamster(hamster._id)}>X</button>) : (  <img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}

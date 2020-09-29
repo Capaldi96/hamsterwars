@@ -9,11 +9,16 @@
 	.go-to-battle-button{
 		@include button
 	}
-	.go-to-battle-button:hover{
+	.go-to-battle-button:hover:not(:disabled){
 		@include button-hover
 	}
+	.go-to-battle-button:disabled{
+		border: 2px solid lightgrey;
+		color: lightgrey;
+	}
+
 	.container-competitors{
-		margin-top: 10vh;
+		margin-top: 15vh;
 		margin-left: 1em;
 	}
 }
