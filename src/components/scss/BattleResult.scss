@@ -29,7 +29,15 @@
     width: 100%;
     height: 100%;
 }
-
+#battleResult .orange{
+	color: $orange;
+}
+#battleResult .textDiv{
+	display: grid;
+	place-items: center;
+	grid-gap: 1vh;
+	margin:2vh 0
+}
 .resultPotato{
 	height: 38vh;
 	display: grid;
@@ -44,7 +52,7 @@
 	place-items: center;
 	grid-gap: 2vh;
 }
-#battleResult .container .nextBattleBtn {
+#battleResult .container .battleBtn {
 	@include button;	
 }
 

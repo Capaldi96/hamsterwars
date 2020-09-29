@@ -7,7 +7,7 @@ import { useWindowSize } from 'react-use';
 import Competitors from './Competitors';
 
 
-const BattleResult = () => {
+const BattleResult = (props) => {
 	const [winnerId, setWinnerId] = useState(null);
 	const [showResult, setShowResult] = useState(false);
 	const [hamster1, setHamster1] = useState(null);
@@ -28,6 +28,12 @@ const BattleResult = () => {
 		getAllHamsters()
 	}, []);
 	useEffect(() => {
+		if(chosenHamsters.length !== 0){
+			setHamster1(chosenHamsters[0])
+			setHamster2(chosenHamsters[1])
+		}
+	}, [chosenHamsters]);
+	useEffect(() => {
 		if (allHamsters !== null) {
 			getBattle()
 		}
@@ -35,16 +41,17 @@ const BattleResult = () => {
 	async function getAllHamsters() {
 		let allHamsters = await axios.get('/api/getAllHamsters')
 		if (allHamsters.data.length !== 0){
-			setAllHamsters(allHamsters.data.length);
+			setAllHamsters(0);
 		}
 		else {
 			setLoading(false)
 		}
 	}
 	async function getBattle() {
-		if(allHamsters < 2)
+		if(allHamsters < 2){
+			setLoading(false)
 			return;
-		else{
+		} else{
 			let hamster1 = await axios.get('/api/fairBattle/' + allHamsters);
 			let hamster2 = await axios.get('/api/fairBattle/' + allHamsters);
 			if (hamster1.data[0]._id === hamster2.data[0]._id) {
@@ -57,7 +64,9 @@ const BattleResult = () => {
 		setLoading(false)
 	}
 	function nextBattle() {
+		
 		setLoading(true);
+		setConfetti(false)
 		setAllHamsters(null)
 		setHamster1(null)
 		setHamster2(null)
@@ -154,7 +163,7 @@ const BattleResult = () => {
 					<div className="winnerData">
 						<p className="winnerData-p">Winner is: 		<strong>{hamster1.name}</strong></p>
 						<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
-						<button className="nextBattleBtn" onClick={nextBattle}>Next Battle</button>
+						<button className="battleBtn" onClick={nextBattle}>Next Battle</button>
 					</div>
 				</div>
 
@@ -164,7 +173,7 @@ const BattleResult = () => {
 					<div className="winnerData">
 						<p className="winnerData-p">Winner is: 		<strong>{hamster2.name}</strong></p>
 						<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
-						<button className="nextBattleBtn" onClick={nextBattle}>Next Battle</button>
+						<button className="battleBtn" onClick={nextBattle}>Next Battle</button>
 					</div>
 				</div>
 		}
@@ -179,13 +188,13 @@ const BattleResult = () => {
 			<>
 				{hamster1 && hamster2 ?
 					<div id="battleResult">
-						<div className="test">
-							<p>Wanna choose your competitors? </p>
-							<button onClick={goToCompetitorsComp}>Choose hamster</button>
-						</div>
 						{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
 						<div className="container">
-							{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
+							<div className="textDiv">
+								<p className="orange">Wanna choose your competitors? </p>
+								<button className="battleBtn" onClick={goToCompetitorsComp}>Choose hamster</button>
+								{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
+							</div>
 							<div className="match-container">
 								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
 								<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
@@ -197,7 +206,7 @@ const BattleResult = () => {
 					</div>
 					:
 					<div id="battleResult">
-						<div className="noResults">
+						<div className="loading">
 								<h2>Uhoh! No hamsters. Add one!</h2>
 								<a href="/form" className="link-to">Go to form</a>
 						</div>
@@ -214,8 +223,8 @@ const BattleResult = () => {
 		<>
 			{loading ?
 				<div id="battleResult">
-					<div className="noResults">
-						<h1 className='loading-text'>Loading...</h1>
+					<div className="loading">
+						<h2>Loading...</h2>
 					</div>
 				</div>
 				: content}

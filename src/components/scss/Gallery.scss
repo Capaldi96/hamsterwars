@@ -77,8 +77,10 @@
 
 // Loading
 .loading{
-    display: flex;
-    place-content: center;
+	display: grid;
+	place-items: center;
+	grid-gap: 1vh;
+	text-align: center;
 }
 .loading h2{
     font-size: 4vh;
@@ -100,5 +102,10 @@
 @media screen and (max-width: 550px){
     .container-list{
         grid-template-columns: repeat(1, 1fr);
-    }
+	}
+	.loading h2{
+		font-size: 3.5vh;
+		margin-left:1em;
+		margin-right:1em;
+	}
 }

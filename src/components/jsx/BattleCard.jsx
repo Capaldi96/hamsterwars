@@ -28,7 +28,7 @@ const BattleCard = props => {
 					/>
 				</div>
 				<div className="flip-card-back">
-					<h1 className="flip-card-h1">{props.hamster.name}</h1>
+					<h2 className="flip-card-h1">{props.hamster.name}</h2>
 					<p className="inner-card-p">Years: {props.hamster.age}</p>
 					<p className="inner-card-p">Games: {props.hamster.games}</p>
 					<p className="inner-card-p">FavFood: {props.hamster.favFood}</p>

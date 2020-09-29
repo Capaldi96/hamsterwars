@@ -19,7 +19,7 @@
 .flip-card {
 	background-color: transparent;
     width: 70%;
-	height: 25vh;
+	height: 20vh;
     perspective: 1000px;
     border-radius: 15px;
 }
@@ -75,10 +75,13 @@
     border: 1em solid $lightgreen;
 }
 
-.flip-card-h1{
+.flip-card-h2{
 	font-size: 3vh;
 }
 @media only screen and (min-width: 700px){
+	#battleResult .flip-card{
+		height:25vh;
+	}
 	.flip-card-info{
 		float:right;
 		top:1vh;
