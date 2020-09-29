@@ -7,7 +7,7 @@ const Header = (props) => {
 	function toggle(){
 		const navbar = document.querySelector('.navbar');
 		navbar.classList.toggle('change');
-		const hide = setHidden(!hidden);
+		setHidden(!hidden);
 	}
 
 	return (
@@ -18,7 +18,6 @@ const Header = (props) => {
 			<div className="outsideClickDiv" onClick={toggle}></div>
 		)}
 	
-
 			<nav className="navbar"> 
 
 				<img className="mobile-logo" src={require('../../assets/hamster.png')} alt="logo"/>

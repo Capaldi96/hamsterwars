@@ -4,15 +4,11 @@
 
 // Green circle related
 .circlesInRowContainer{
-display: grid; 
-grid-template-columns: 1fr;
-grid-template-rows: 1fr 1fr 1fr;
-margin-top: -20vh;
-// z-index: 1;
+overflow: scroll;
 }
 
-
 .circlesInRow{
+margin-top: 20vh;
 grid-column: 1/2;
 grid-row: 2/3;	
 display: grid; 
@@ -168,8 +164,8 @@ margin-top: 60px;
 
 .gridgrid{
 display: grid;
-grid-template-columns: 25vw 7vw 25vw;
-grid-template-rows: 5fr;
+grid-template-columns: auto auto auto;
+grid-template-rows: 5fr; 
 justify-items: center;
 }
 
@@ -210,34 +206,30 @@ grid-row: 5/6;
 
 .statEllipseListLatest:nth-child(even){
 grid-column: 1/2;
-justify-self: center;
+justify-self: start;
+margin-right: 20px;
 }
 
 .statEllipseListLatest:nth-child(odd){
 grid-column: 3/4;
-justify-self: center;
+justify-self: start;
+margin-left: 20px;
 }
 
 
 @media (max-width: 970px) {
-.circlesInRowContainer{
-grid-template-rows: 25vh 1fr 15vh;
-grid-template-rows: 15% 1fr 1fr 15%;
-margin-top: -5vh;
-}
-
 .circlesInRow{
-grid-row: 2/3;
+display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: 1fr 1fr 1fr;
 justify-items: center;
 grid-gap: 1em;
+margin-top: 15vh;
 }
 
 .statCircle1{
 grid-column: 1/2;
 grid-row: 1/2;	
-
 }
 
 .statCircle2{
@@ -272,25 +264,30 @@ grid-row: 3/4;
 }
 
 @media (max-width: 770px) {
-	.circlesInRowContainer{
-
-margin-top: 0vh;
-}
 .circleSpecifics{
-
 height: 200px;
 width: 200px;
-
 }
 }
 
-@media (max-width: 680px) {
-.circlesInRowContainer{
-justify-items: center;
-grid-template-rows: 10vh 1fr 60vh;
+@media (max-width: 800px) {
+.statPotatoeHeader{
+// font-size: 2.5em;
+margin-top: -20px;
+margin-bottom: 10px;
+}
+}
+
+@media (max-width: 720px) {
+.statPotatoeHeader{
+font-size: 2.5em;
+// margin-top: -20px;
+// margin-bottom: 10px;
+}
 
 }
 
+@media (max-width: 690px) {
 .circlesInRow{	
 display: grid; 
 grid-template-columns: 1fr 1fr;
@@ -299,6 +296,7 @@ justify-items: center;
 align-items: center;
 align-self: center;
 grid-gap: 0em;
+margin-top: 10vh;
 }
 
 .miniIconInsideCircle{
@@ -390,13 +388,13 @@ justify-self: start;
 
 .circleSpecifics{
 margin: 10px 0 10px 0;
-height: 80px;
-width: 80px;
+height: 120px;
+width: 120px;
 }
 
 .statPotatoeHeader{
 font-size: 2.5em;
-margin-top: 30px;
+margin-top: 10px;
 margin-bottom: 10px;
 }
 
@@ -410,17 +408,29 @@ font-size: 1.5em;
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
 .statPotatoeHeader{
 font-size: 1.5em;
-margin-top: 70px;
+margin-top: 30px;
 }
-.statEllipseList{
-font-size: 1.1em;
-}
+
 .statEllipseListLatest, .vsTag, .statEllipseListLatestLoading{
 font-size: 1.1em;
 }
+
+}
+
+@media (max-width: 500px) {
+.circleSpecifics{
+height: 80px;
+width: 80px;
+}
+
+.statEllipseList{
+font-size: 1.1em;
+}
+
+
 .statEllipseListGamesPlayed{
 font-size: 2em;
 margin-top: 30px;
