@@ -95,15 +95,17 @@ const Gallery = (props) => {
     } 
     else {
         status=hamsterList.map(hamster=>{
-    
-        if(props.competitorsList.length){
-            if (hamster._id === props.competitorsList[0] || hamster._id === props.competitorsList[1]){ 
-				competitorBackground = 'competitorBackground'
+		if(props.toCompetitorsComp){
+			if(props.competitorsList.length){
+				if (hamster._id === props.competitorsList[0] || hamster._id === props.competitorsList[1]){ 
+					competitorBackground = 'competitorBackground'
+				}
+				else{
+					competitorBackground = ''
+				}
 			}
-			else{
-				competitorBackground = ''
-			}
-        }
+		}
+        
             
             return (
                 <div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={() => handleCompetitors(hamster._id)}>
