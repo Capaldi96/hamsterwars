@@ -2,11 +2,17 @@
 @import 'variables.scss';
 
 
+
 #webshop .container{
     display: grid;
     grid-template-rows: 15% 70% 15%;
     gap: 1.5em 1em;
     height: 100vh;
+}
+
+#webshop .container .disabled {
+    opacity: 0.4;
+    cursor: pointer;
 }
 
 #webshop .container main {
@@ -21,10 +27,6 @@
     overflow-x: hidden;
 }
 
-#webshop .container .disabled {
-    opacity: 0.4;
-    cursor: pointer;
-}
 
 #webshop .container main h2 {
     margin-bottom: 15px;
@@ -77,3 +79,97 @@
     @include button-hover;
 }
 
+.qwe{
+    color: green;
+    font-size: 100px;
+}
+
+
+@media only screen and (max-width: 1030px){
+
+    #webshop .container main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-right: 12em;
+        padding-left: 12em;
+        place-items: center;
+        gap: 3em;
+        z-index: 1;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    #webshop .container main div {
+        display: grid;
+        grid-template-rows: 20% 45% 20% 15%;
+        background-color: $lightgreen;
+        padding: 1em;
+        border-radius: 15px;
+        place-items: center;
+    }
+
+    #webshop .container .shop a{
+        text-decoration: none;
+        font-size: 25px;
+        color: $darkpurple;
+    }
+    
+    #webshop .container .shopping-cart{
+        width: 8vw;
+        height: 8vh;
+        justify-content: start;
+        margin-top: 8vh;
+        margin-left: 7vw;
+    }
+
+}
+
+@media only screen and (max-width: 1260px){
+
+
+    #webshop .container .shopping-cart{
+        width: 8vw;
+        height: 8vh;
+        justify-content: start;
+        margin-top: 8vh;
+        margin-left: 7vw;
+    }
+
+}
+
+@media only screen and (max-width: 740px){
+
+    #webshop .container main {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding-right: 5em;
+        padding-left: 5em;
+        place-items: center;
+        gap: 3em;
+        z-index: 1;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    #webshop .container main div {
+        display: grid;
+        grid-template-rows: 20% 45% 20% 15%;
+        background-color: $lightgreen;
+        padding: 1em;
+        border-radius: 15px;
+        place-items: center;
+    }
+
+    #webshop .container .shopping-cart{
+        width: 12vw;
+        height: 8vh;
+        justify-content: start;
+        margin-top: 8vh;
+        margin-left: 7vw;
+    }
+
+    #webshop .container main div .image{
+        width: 27vw;
+    }
+
+}
