@@ -14,6 +14,7 @@ import ShoppingCart from '../src/components/jsx/ShoppingCart';
 
 function App() {
 
+
 	return (
 		<Router>
 			<div className="App">

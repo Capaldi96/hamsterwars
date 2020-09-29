@@ -19,20 +19,30 @@ const BattleResult = (props) => {
 	const { width, height } = useWindowSize();
 	const [chosenHamsters, setChosenHamsters] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);//!glöm inte att ändra denna till false när klar
+	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 	let content = null;
 
 
 
+	// useEffect(() => {
+	// 	console.log('I battleresult, chosen hamster är: ', chosenHamsters)
+	// 	getAllHamsters()
+	// }, []);
 	useEffect(() => {
-		getAllHamsters()
-	}, []);
-	useEffect(() => {
-		if(chosenHamsters.length !== 0){
-			setHamster1(chosenHamsters[0])
-			setHamster2(chosenHamsters[1])
-		}
-	}, [chosenHamsters]);
+		console.log('battleresult, chosenhamster: ', chosenHamsters)
+        if(chosenHamsters.length !== 0){
+            setHamster1(chosenHamsters[0])
+            setHamster2(chosenHamsters[1])
+        }else{
+            getAllHamsters()
+        }
+    }, []);
+	// useEffect(() => {
+	// 	if(chosenHamsters.length !== 0){
+	// 		setHamster1(chosenHamsters[0])
+	// 		setHamster2(chosenHamsters[1])
+	// 	}
+	// }, [chosenHamsters]);
 	useEffect(() => {
 		if (allHamsters !== null) {
 			getBattle()
