@@ -41,7 +41,7 @@ const BattleResult = (props) => {
 	async function getAllHamsters() {
 		let allHamsters = await axios.get('/api/getAllHamsters')
 		if (allHamsters.data.length !== 0){
-			setAllHamsters(0);
+			setAllHamsters(allHamsters.data.length);
 		}
 		else {
 			setLoading(false)

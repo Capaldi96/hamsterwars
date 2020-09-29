@@ -22,3 +22,11 @@
 		margin-left: 1em;
 	}
 }
+.Competitors >.Gallery .container-list{
+	margin-top: 0;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.5em 1em;
+    gap: 1.5em 1em;
+}
