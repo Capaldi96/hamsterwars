@@ -93,10 +93,9 @@ const FormInput=(props)=>{
 
 
 
-	let invalidMessage=''
+	
 	const [showSubmitMessage, setShowSubmitMessage]=useState(false)
-	// let showSubmitMessage=false;
-	console.log(showSubmitMessage)
+
 	const addNewHamster=()=>{
 		
 		if (isValidName && testValid){
@@ -117,7 +116,6 @@ const FormInput=(props)=>{
 	let testValid=true//ta bort denna, enbart för test. Se även rad 96. Ska ersättas av övriga variabler för alla inputfält
 	
 	const validateName=()=>{
-		console.log('validateName körs	')
 		
 		if(name.length<1){ invalidMessage='Oops, forgot the name!'; return false; }
 		if(name.length>10){ invalidMessage='Hey! Max 10 characters'; return false }
@@ -131,9 +129,16 @@ const FormInput=(props)=>{
 
 
 	// om touched alltså true  och name mindre än noll alltså true=invalid
-	const nameclasName= nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'
-	const //TODO Fixa dynamiskt klassnamn!!! Måste kunna lägga till för invalid när man klickar på sumbit
+	const nameClassName= nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'
+	//TODO Fixa dynamiskt klassnamn!!! Måste kunna lägga till för invalid när man klickar på sumbit
 	//TODO flytta ut all mer avancerad kod från jsx
+	const inputName=(e)=>{
+		setName(e.target.value)
+		if(showSubmitMessage===true){
+			setShowSubmitMessage(false)
+		} 
+		
+	}
 	return (
 
 		<div className='form-wrapper'>
@@ -147,15 +152,16 @@ const FormInput=(props)=>{
 						id="name"
 						name='name'
 						// className={ nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'}
-						className={nameclasName}
+						className={nameClassName}
 						value={name}
 						placeholder='name placeholder'
 						onBlur={()=>setNameIsTouched(true)}
-						onChange={event=>setName(event.target.value)}/>
+						onChange={event=>inputName(event)}/>
+						{/* onChange={event=>setName(event.target.value)}/> */}
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
 						{nameIsTouched && !isValidName ? <span>{invalidMessage}</span> : <span></span>}
-						{!showSubmitMessage ? <span></span> : <span>Glöm ej!</span>}
+						{!showSubmitMessage ? <span></span> : <span>☝️ Eyy!</span>}
 
 						</div>
 					</div>
@@ -238,7 +244,7 @@ const FormInput=(props)=>{
 				</form>
 					
 				{loading ? <p className='loading-text'>Loading...</p> : 	<button onClick={addNewHamster}>Add hamster</button>}
-				{showSubmitMessage ? <p>Nånting saknas, har du fyllt i allt?</p> : <p>Välkommen</p>}
+				
 			
 		
 			</div>
