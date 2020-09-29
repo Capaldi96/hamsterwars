@@ -27,17 +27,16 @@ const GetMoreInfoTopWinners = () => {
 			<img className="ellipse" src={require('../../../assets/ellipseTop5Winners.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
-			<h1 className="statPotatoeHeader">Do the winners have anything</h1><br/>
-				<h1 className="statPotatoeHeader">in common?</h1>
+			<div className="potatoeGrid">
+			<h1 className="moreInfoStatPotatoeHeader">Do the winners have anything in common?</h1>
+			<div className="moreInfoStatEllipseList">
 			<ol>
 			{loading ? <p className="statEllipseList">Loading...</p> : top5Winners.map((winners, index) => (
-				<li className="moreInfoStatEllipseList" key={winners.loves+index}> {winners.name} loves to {winners.loves} and eat {winners.favFood}</li>))}
+				<li key={winners.loves+index}> {winners.name} loves to <span className="moreInfopurple">{winners.loves}</span> and eat <span className="moreInfopurple">{winners.favFood}</span></li>))}
 			</ol>
-		
-
 			</div>
-
-			
+			</div>
+			</div>
 			</div>
 
 
