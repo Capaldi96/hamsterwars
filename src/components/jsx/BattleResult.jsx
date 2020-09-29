@@ -179,7 +179,7 @@ const BattleResult = (props) => {
 		}
 	}
 	function goToCompetitorsComp() {
-		console.log('goToCompetitorsComp click')
+		
 		setToCompetitorsComp(true)
 	}
 

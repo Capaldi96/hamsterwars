@@ -13,7 +13,7 @@ const Competitors = (props) => {
 		console.log('goToBattle click')
 		/* props.setChosenHamsters(competitorsList) */
 	}
-	console.log('statusButton', statusButton)
+	
 
 	return (
 		<div className="Competitors" ref={windowCompetitors}>
