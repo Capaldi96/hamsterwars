@@ -15,11 +15,7 @@ const Gallery = (props) => {
 		windowGallery.current.addEventListener('scroll', checkScrollTop);
 	}, [])
 
-	useEffect(() => {
-		console.log('useEffect competitorList', props.competitorsList)
-
-	}, [props.competitorsList])
-
+	
 	// Back to top
 	const scrollTop = () => {
 		
@@ -40,7 +36,7 @@ const Gallery = (props) => {
 	async function getHamsters() {
 		await axios.get('/api/gallery')
 			.then(res => {
-				/* console.log('Hamsters', res.data); */
+				
 				setHamsterList(res.data)
 			})
 			.catch(err => {
@@ -73,7 +69,6 @@ const Gallery = (props) => {
 
 			//skapa en ny lista med alla utom den klickade hamstern
 			props.setCompetitorsList(props.competitorsList.filter(hamster2 => hamster2._id !== hamster._id))
-
 			props.setStatusButton(true)
 		}
 		// lägger till ny hamster i listan om den inte är full (två hamstrar i listan)
@@ -93,7 +88,6 @@ const Gallery = (props) => {
 	let loadingText = null;
 	let competitorBackground = '';
 
-	
 	if (!hamsterList.length) {
 		loadingText = <div className="loading"><h2>Loading...</h2></div>;
 	}

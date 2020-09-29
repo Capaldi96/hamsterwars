@@ -7,7 +7,7 @@ import { useWindowSize } from 'react-use';
 import Competitors from './Competitors';
 
 
-const BattleResult = (props) => {
+const BattleResult = () => {
 	const [winnerId, setWinnerId] = useState(null);
 	const [showResult, setShowResult] = useState(false);
 	const [hamster1, setHamster1] = useState(null);
@@ -17,32 +17,22 @@ const BattleResult = (props) => {
 	const [disableImg, setDisableImg] = useState(false);
 	const [confetti, setConfetti] = useState(false);
 	const { width, height } = useWindowSize();
-	const [chosenHamsters, setChosenHamsters] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 	let content = null;
 
+		const setChosenHamsters=(chosenHamsters)=>{
 
+			setHamster1(chosenHamsters[0])
+			setHamster2(chosenHamsters[1])
+		}
 
-	// useEffect(() => {
-	// 	console.log('I battleresult, chosen hamster är: ', chosenHamsters)
-	// 	getAllHamsters()
-	// }, []);
 	useEffect(() => {
-		console.log('battleresult, chosenhamster: ', chosenHamsters)
-        if(chosenHamsters.length !== 0){
-            setHamster1(chosenHamsters[0])
-            setHamster2(chosenHamsters[1])
-        }else{
-            getAllHamsters()
-        }
+	
+        getAllHamsters()
+        
     }, []);
-	// useEffect(() => {
-	// 	if(chosenHamsters.length !== 0){
-	// 		setHamster1(chosenHamsters[0])
-	// 		setHamster2(chosenHamsters[1])
-	// 	}
-	// }, [chosenHamsters]);
+
 	useEffect(() => {
 		if (allHamsters !== null) {
 			getBattle()
@@ -225,7 +215,7 @@ const BattleResult = (props) => {
 	}
 	else if (toCompetitorsComp) {
 		content =
-			<Competitors chosenHamsters={chosenHamsters} setChosenHamsters={setChosenHamsters} toCompetitorsComp={toCompetitorsComp} />
+			<Competitors setChosenHamsters={setChosenHamsters} setToCompetitorsComp={setToCompetitorsComp} toCompetitorsComp={toCompetitorsComp} />
 
 	}
 
