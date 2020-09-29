@@ -12,12 +12,16 @@ import classicps from "../../assets/classicps.png"
 import drone from "../../assets/drone2.png"
 import facemask from "../../assets/facemask.png"
 
-const Webshop = props => {
+const Webshop = () => {
     const [count, setCount] = useState(0)
     const [shoppingcart, setShoppingcart] = useState(false)
     const [cost, setCost] = useState(0)
     const [cartItem, setCartItem] = useState(null);
     const [disablecart, setDisablecart] = useState(true);
+    const [list, setList] = useState([])
+    const [totalCost, setTotalCost] = useState(0);
+
+    
 
    
     let itemList = [
@@ -59,7 +63,7 @@ const Webshop = props => {
         },
         {
             type: "Classic Ps",
-            id: 7,
+            id: 7, 
             cost: 2000,
             image: classicps
         },
@@ -83,9 +87,9 @@ const Webshop = props => {
         }
     ];
 
-       let products = itemList.map(items => {
+        let products = itemList.map(items => {
 
-           let item = 
+            let item = 
                 <div key={items.id}>
                     <h2>{items.type}</h2>
                     <img className="image"  src={items.image}></img>
@@ -95,20 +99,30 @@ const Webshop = props => {
             return item;
         });
 
-        
-
         function onBuy (id) {
-            setCount(count + 1);
+            //Chooses the item you click
             let checkoutItem = itemList.find(item => item.id === id);
+
             setCartItem(checkoutItem);
+            setCount(count + 1);
+            /* console.log("count:",count) */
             setCost(checkoutItem.cost * count);
-            console.log(checkoutItem.cost * count);
+            /* console.log("cost", checkoutItem.cost * count) */
             setDisablecart(false);
+
+            // For the shoppingcart array
+            let array = [...list];
+            array.push(checkoutItem);
+            setList(array);
+
+
+            setTotalCost(count * cost);
+            /* console.log("total cost: ", count * cost) */
         }
-    
+
     return(
         <div id="webshop">
-            {shoppingcart ? <ShoppingCart cost={cost} count={count} cartItem={cartItem} /> : null}
+            {shoppingcart ? <ShoppingCart  totalcost={totalCost} list={list} count={count} cartItem={cartItem} /> : null}
                 <div className="container">
                     <div className="shop">
                         { disablecart ? <img className="shopping-cart disabled" src={require('../../assets/shopping-cart.png')}></img> : <a href="/ShoppingCart" onClick={ e => {e.preventDefault(); setShoppingcart(true);}} > <img className="shopping-cart" src={require('../../assets/shopping-cart.png')}></img> {count} </a>} 
