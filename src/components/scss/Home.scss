@@ -74,30 +74,37 @@
 		transform: translate3d(4px, 0, 0);
 	}
 }
-// @media screen and (max-width: 1150px) {
-// 	.hamster-icon {
-// 		left: 75%;
-// 		width: 15vw;
-// 		top: 3vh;
-// 	}
-// }
+@media screen and (max-width: 1150px) {
+	.hamster-icon {
+		left: 75%;
+		width: 15vw;
+		top: 10vh;
+	}
+}
 @media screen and (max-width: 950px) {
 	.hamster-icon {
 		left: 75%;
 		width: 15vw;
-		top: 3vh;
+		top: 5vh;
 	}
-}
-@media screen and (max-width: 800px) {
 	.home-container {
-		height: 35em;
+		height: 70vh;
 		width: 80%;
-		top: 3em;
+		top: 5vh;
 	}
 	.home-container p {
 		font-size: 1em;
 	}
 }
+
+@media screen and (max-width: 800px) {
+	.hamster-icon {
+		left: 75%;
+		width: 15vw;
+		top: 10vh;
+	}
+}
+
 @media screen and (max-width: 700px) {
 	.home-container {
 		background-image: url("../../assets/home-potato-responsive1.svg");
