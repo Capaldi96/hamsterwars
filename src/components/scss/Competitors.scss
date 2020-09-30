@@ -26,11 +26,11 @@
 		color: $darkpurple;
 	}
 	.back-to-battle:hover{
-		text-decoration: underline;
+		border-bottom: 1px solid $darkpurple;
 	}
 }
 .Competitors > .Gallery .container-list{
-	margin-top: 0;
+	margin-top: 0.5em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1.5em 1em;
