@@ -49,7 +49,9 @@ const FormInput = (props) => {
 				latestGame: ''
 			}
 			addHamster(newHamster)
-		} catch (error) {
+		}
+		catch (error) {
+			console.log(error)
 		}
 	}
 	// gamla add hmasterimage functionen
@@ -74,8 +76,6 @@ const FormInput = (props) => {
 	// } //slut func
 
 	async function addHamster(newHamster) {
-		console.log(newHamster)
-
 		try {
 			const response = await fetch('/api/addhamster', {
 				headers: {
@@ -89,7 +89,6 @@ const FormInput = (props) => {
 			const text = await response.text();
 			// const data = JSON.parse(text); 
 			let dataHamster = JSON.parse(text);
-			console.log('response i inputfields: ', dataHamster)
 			if (dataHamster.ops.length) {
 				setLoading(false)
 				props.setDisplayForm(false)

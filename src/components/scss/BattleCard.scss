@@ -12,10 +12,16 @@
 .flip-card-crown{
 	position: absolute;
 	z-index: 3;
-	left: 39%;
-	top: -4.3em;
+	left: -9vw;
+	top: -4vh;
+	transform: rotate(-45deg);
+	width:8vh;
+	height:8vh;
 }
-
+.flip-card-crown img{
+	width:100%;
+	height:100%
+}
 .flip-card {
 	background-color: transparent;
     width: 70%;
@@ -90,4 +96,22 @@
 		position: relative;
 		z-index: 2;
 	}
+	.flip-card-crown{
+		left: -2vw;
+		top: -4vh;
+	}
 }
+
+@media only screen and (min-width: 700px) and (max-width: 1350px){
+	.flip-card-crown{
+		left: -2.5vw;
+		top: -4.2vh;
+	}
+}
+@media only screen and (min-width: 700px) and (max-width: 900px){
+	.flip-card-crown{
+		left: -4.5vw;
+		top: -4.2vh;
+	}
+}
+

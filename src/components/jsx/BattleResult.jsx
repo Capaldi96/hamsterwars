@@ -20,17 +20,15 @@ const BattleResult = () => {
 	const [loading, setLoading] = useState(true);
 	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 	let content = null;
-
-		const setChosenHamsters=(chosenHamsters)=>{
-
-			setHamster1(chosenHamsters[0])
-			setHamster2(chosenHamsters[1])
-		}
-
-	useEffect(() => {
 	
+
+	const setChosenHamsters=(chosenHamsters)=>{
+		setHamster1(chosenHamsters[0])
+		setHamster2(chosenHamsters[1])
+	}
+	
+	useEffect(() => {
         getAllHamsters()
-        
     }, []);
 
 	useEffect(() => {
@@ -64,7 +62,6 @@ const BattleResult = () => {
 		setLoading(false)
 	}
 	function nextBattle() {
-		
 		setLoading(true);
 		setConfetti(false)
 		setAllHamsters(null)
@@ -139,12 +136,15 @@ const BattleResult = () => {
 	}
 
 	useEffect(() => {
-		if (winnerId)
+		if (winnerId){
 			setWinnerAndLooser()
+			setEmptyDiv('divMargin');
+		}
 	}, [winnerId])
 
 	useEffect(() => {
 		if (winnerId) {
+			
 			if (hamster1._id === winnerId) {
 				updateWinner(hamster1)
 				updateLooser(hamster2)
@@ -191,13 +191,13 @@ const BattleResult = () => {
 						{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
 						<div className="container">
 							<div className="textDiv">
+								{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 								<p className="orange">Wanna choose your competitors? </p>
 								<button className="battleBtn" onClick={goToCompetitorsComp}>Choose hamster</button>
-								{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 							</div>
 							<div className="match-container">
 								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
-								<img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>
+								{showCutestH1 ? <img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>: <div className={emptyDiv}></div>}
 								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 
 							</div>
