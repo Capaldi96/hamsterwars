@@ -104,6 +104,16 @@
     margin-right: 5em;
 }
 
+#shoppingcart .container .cart-container .cart .deleteBtn {
+    @include button;
+    margin-top: 20px;
+}
+
+#shoppingcart .container .cart-container .cart .deleteBtn:hover {
+    @include button-hover;
+    
+}
+
 #shoppingcart .container .cart-container .cart-properties {
     color: white;
     font-size: 20px;
@@ -116,6 +126,7 @@
     z-index: 5;
     place-self: center;
     margin-bottom: 25px;
+    width: fit-content;
 }
 
 #shoppingcart .container .cart-container .buy:hover {
@@ -153,6 +164,11 @@
         height: 17vh;
     }
 
+    #shoppingcart .container .cart-container .cart .deleteBtn {
+        @include button;
+        margin-top: 0px;
+    }
+
 }
 
 @media only screen and (max-width: 600px){
@@ -178,6 +194,11 @@
         text-align: center;
         font-size: 28px;
         position: relative;
+    }
+
+    #shoppingcart .container .cart-container .cart .deleteBtn {
+        @include button;
+        margin-top: 0px;
     }
 
 }
