@@ -28,9 +28,8 @@ const BattleResult = () => {
 		}
 
 	useEffect(() => {
-	
+
         getAllHamsters()
-        
     }, []);
 
 	useEffect(() => {

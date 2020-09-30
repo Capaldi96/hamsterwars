@@ -21,6 +21,7 @@ const Gallery = (props) => {
 		
 		windowGallery.current.scrollTo({ top: 0, behavior: 'smooth' });
 	};
+	
 	const checkScrollTop = () => {
 
 		if (!showScroll && windowGallery.current.pageYOffset > 200) {
@@ -66,7 +67,7 @@ const Gallery = (props) => {
 
 			//skapa en ny lista med alla utom den klickade hamstern
 			props.setCompetitorsList(props.competitorsList.filter(hamster2 => hamster2._id !== hamster._id))
-			props.setStatusButton(true)
+			props.setDisableButton(true)
 		}
 		// lägger till ny hamster i listan om den inte är full (två hamstrar i listan)
 		else if (props.competitorsList.length <= 1) {
@@ -76,7 +77,7 @@ const Gallery = (props) => {
 
 			//låster upp knappen om listan är full (två hamstrar)
 			if (array.length === 2) {
-				props.setStatusButton(false)
+				props.setDisableButton(false)
 				props.setShowText(false)
 			}
 		}
@@ -108,7 +109,7 @@ const Gallery = (props) => {
 			return (
 				<div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={() => handleCompetitors(hamster)}>
 					<img src={hamster.imgName} alt="Hamster" className="hamster-image" />
-					{!props.toCompetitorsComp ? (<button onClick={() => deleteHamster(hamster._id)}>X</button>) : (<img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}
+					{!props.toCompetitorsComp ? /* (<button onClick={() => deleteHamster(hamster._id)}>X</button>) */ null : (<img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}
 
 					<p ><span>{hamster.name}</span></p>
 					<p>Years: {hamster.age}</p>
@@ -132,7 +133,7 @@ const Gallery = (props) => {
 					<div className="container-list">{status}</div>
 				</div>
 
-				{!props.toCompetitorsComp ? <ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/> : console.log('Scroll to top removed')}
+				{!props.toCompetitorsComp ? <ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/> : null}
 			</main>
 		</div>
 	)
