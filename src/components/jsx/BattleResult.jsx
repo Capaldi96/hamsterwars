@@ -21,16 +21,16 @@ const BattleResult = () => {
 	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 	const [emptyDiv, setEmptyDiv] = useState('');
 	let content = null;
-	
 
-	const setChosenHamsters=(chosenHamsters)=>{
+
+	const setChosenHamsters = (chosenHamsters) => {
 		setHamster1(chosenHamsters[0])
 		setHamster2(chosenHamsters[1])
 	}
-	
+
 	useEffect(() => {
-        getAllHamsters()
-    }, []);
+		getAllHamsters()
+	}, []);
 
 	useEffect(() => {
 		if (allHamsters !== null) {
@@ -38,19 +38,21 @@ const BattleResult = () => {
 		}
 	}, [allHamsters]);
 	async function getAllHamsters() {
-		let allHamsters = await axios.get('/api/getAllHamsters')
-		if (allHamsters.data.length !== 0){
-			setAllHamsters(allHamsters.data.length);
+		try {
+			let allHamsters = await axios.get('/api/getAllHamsters')
+			if (allHamsters.data.length !== 0) {
+				setAllHamsters(allHamsters.data.length);
+			}
+		} catch (error) {
+			console.log(error)
 		}
-		else {
-			setLoading(false)
-		}
+		setLoading(false)
 	}
 	async function getBattle() {
-		if(allHamsters < 2){
+		if (allHamsters < 2) {
 			setLoading(false)
 			return;
-		} else{
+		} else {
 			let hamster1 = await axios.get('/api/fairBattle/' + allHamsters);
 			let hamster2 = await axios.get('/api/fairBattle/' + allHamsters);
 			if (hamster1.data[0]._id === hamster2.data[0]._id) {
@@ -137,7 +139,7 @@ const BattleResult = () => {
 	}
 
 	useEffect(() => {
-		if (winnerId){
+		if (winnerId) {
 			setWinnerAndLooser()
 			setEmptyDiv('divMargin');
 		}
@@ -145,7 +147,7 @@ const BattleResult = () => {
 
 	useEffect(() => {
 		if (winnerId) {
-			
+
 			if (hamster1._id === winnerId) {
 				updateWinner(hamster1)
 				updateLooser(hamster2)
@@ -180,7 +182,7 @@ const BattleResult = () => {
 		}
 	}
 	function goToCompetitorsComp() {
-		
+
 		setToCompetitorsComp(true)
 	}
 
@@ -198,7 +200,7 @@ const BattleResult = () => {
 							</div>
 							<div className="match-container">
 								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
-								{showCutestH1 ? <img className="VS" alt="vs" src={require('../../assets/vs.png')}></img>: <div className={emptyDiv}></div>}
+								{showCutestH1 ? <img className="VS" alt="vs" src={require('../../assets/vs.png')}></img> : <div className={emptyDiv}></div>}
 								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 
 							</div>
@@ -208,8 +210,8 @@ const BattleResult = () => {
 					:
 					<div id="battleResult">
 						<div className="loading">
-								<h2>Uhoh! No hamsters. Add one!</h2>
-								<a href="/form" className="link-to">Go to form</a>
+							<h2>Uhoh! No hamsters. Add one!</h2>
+							<a href="/form" className="link-to">Go to form</a>
 						</div>
 					</div>}
 			</>
