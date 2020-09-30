@@ -20,7 +20,7 @@ app.use(express.json({limit: '2mb'}));
 app.use(cors());
 //app.use(fileUpload())
 // add middlewares
-app.use(express.static(path.join(__dirname, '../assets')))
+app.use(express.static(path.join(__dirname, '/../build')))
 
 
 app.get('/api/getAllHamsters', (req, res) => {
