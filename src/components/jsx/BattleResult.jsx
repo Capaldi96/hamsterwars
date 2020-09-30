@@ -44,9 +44,10 @@ const BattleResult = () => {
 				setAllHamsters(allHamsters.data.length);
 			}
 		} catch (error) {
+			setLoading(false)
 			console.log(error)
 		}
-		setLoading(false)
+	
 	}
 	async function getBattle() {
 		if (allHamsters < 2) {
