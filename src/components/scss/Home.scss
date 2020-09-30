@@ -1,6 +1,10 @@
 @import "mixins.scss";
+
 .home-main .link-to{
 	@include link;
+}
+.home-main .link-to:hover{
+	@include button-hover;
 }
 .home-main {
 	position: relative;

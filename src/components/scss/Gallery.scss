@@ -6,7 +6,6 @@
 }
 .Gallery .container-list{
     margin: 9% 3em 15%;
-    padding: 1em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5em 1em;
@@ -15,15 +14,15 @@
     background: $lightgreen;
     padding: 1em;
     border-radius: 15px;
-    width: 90%;
-    height: 54vh;
+    width: 100%;
+    height: 55vh;
 }
 .container-list .competitorBackground{
-	background:$darkpurple;
+	background: $lightpurple;
 	padding: 1em;
     border-radius: 15px;
-    width: 90%;
-    height: 54vh;
+    width: 100%;
+    height: 55vh;
 }
 .container-list div p{
     margin-bottom: 0.3em;
@@ -90,18 +89,20 @@
 
 // Media
 @media screen and (max-width: 1000px){
-    .container-list{
+    .Gallery .container-list{
         grid-template-columns: repeat(3, 1fr);
     }
 }
 @media screen and (max-width: 850px){
-    .container-list{
+    .Gallery .container-list{
+		margin: 9% 2em 15%;
         grid-template-columns: repeat(2, 1fr);
     }
 }
 @media screen and (max-width: 550px){
-    .container-list{
-        grid-template-columns: repeat(1, 1fr);
+    .Gallery .container-list{
+		grid-template-columns: repeat(1, 1fr);
+		margin: 20% 2em 15%;
 	}
 	.loading h2{
 		font-size: 3.5vh;

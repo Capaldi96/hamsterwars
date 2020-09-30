@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 // import { Counter } from './features/counter/Counter';
 import './App.scss';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
@@ -13,6 +13,7 @@ import Webshop from '../src/components/jsx/Webshop';
 import ShoppingCart from '../src/components/jsx/ShoppingCart';
 
 function App() {
+
 
 	return (
 		<Router>
