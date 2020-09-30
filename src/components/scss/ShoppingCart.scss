@@ -17,7 +17,7 @@
     position: relative;
     top: 4vh;
     left: 2vw;
-    color: black;
+    color: $darkpurple;
     display: inline-block;
     z-index: 3;
 }
@@ -26,15 +26,15 @@
     position: relative;
     top: 4vh;
     left: 2vw;
-    color: black;
+    color: $darkpurple;
     display: inline-block;
     z-index: 3;
-    text-decoration: underline;
+    text-decoration: underline #000000;
 }
 
 #shoppingcart .container .to-shop-after-click {
     position: relative;
-    color: black;
+    color: #000000;
     font-size: 20px;
     display: inline-block;
     z-index: 3;
@@ -91,6 +91,7 @@
     text-align: center;
     font-size: 28px;
     position: relative;
+    bottom: 20px;
 }
 
 #shoppingcart .container .cart-container .cart {
@@ -111,7 +112,6 @@
 
 #shoppingcart .container .cart-container .cart .deleteBtn:hover {
     @include button-hover;
-    
 }
 
 #shoppingcart .container .cart-container .cart-properties {
@@ -123,10 +123,22 @@
     width: 10vw;
     @include button;
     justify-content: center;
-    z-index: 5;
     place-self: center;
     margin-bottom: 25px;
     width: fit-content;
+    margin-top: 15px;
+}
+
+#shoppingcart .container .cart-container .sad {
+    width: 3.5vw;
+    align-self: center;
+    text-align: center;
+}
+
+#shoppingcart .container .cart-container .emptycart {
+    align-self: center;
+    text-align: center;
+    font-size: 25px;
 }
 
 #shoppingcart .container .cart-container .buy:hover {
@@ -138,6 +150,12 @@
     text-align: center;
     margin-bottom: 10px;
     font-size: 24px;
+    z-index: 5;
+}
+
+#shoppingcart .container .cart-container .finishdiv {
+    text-align: center;
+    z-index: 5;
 }
 
 #shoppingcart .container .cart-container .cart .cart-img {
@@ -146,6 +164,24 @@
 }
 
 @media only screen and (max-width: 1117px){
+
+    #shoppingcart .container .buyMessage {
+        background-image: url('../../assets/result-potato-smaller.svg');
+        width: 80vw;
+        height: 60vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #shoppingcart .container .cart-container .sad {
+        width: 5vw;
+        align-self: center;
+        text-align: center;
+    }
 
     #shoppingcart .container .cart-container .cart {
         display: grid;
@@ -172,6 +208,24 @@
 }
 
 @media only screen and (max-width: 600px){
+
+    #shoppingcart .container .buyMessage {
+        background-image: url('../../assets/result-potato-smaller.svg');
+        width: 95vw;
+        height: 60vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #shoppingcart .container .cart-container .sad {
+        width: 8vw;
+        align-self: center;
+        text-align: center;
+    }
 
     #shoppingcart .container .cart-container .cart {
         display: grid;
