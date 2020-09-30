@@ -12,19 +12,12 @@ const FormInput=(props)=>{
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 	const [loading, setLoading]=useState(false)
-	const [showSubmitMessage, setShowSubmitMessage]=useState(false)
-
+	
 	const [nameIsTouched, setNameIsTouched]=useState(false)
 	const [ageIsTouched, setAgeIsTouched]=useState(false)
 	const [favFoodIsTouched, setFavFoodIsTouched]=useState(false)
 	const [lovesIsTouched, setLovesIsTouched]=useState(false)
 	const [imageFileIsTouched, setImageFileIsTouched]=useState(false)
-
-
-	const onChangeSaveFile=(e)=>{
-		setimageFile(e.target.files[0])
-		setImageLabelText('New image ready to upload')
-	}
 
 	let newHamster = {
 		name:name,
@@ -88,51 +81,112 @@ const FormInput=(props)=>{
 		}
 	}
 
+	const [nameSubmitMessage, setNameSubmitMessage]=useState(false)
+	const [ageSubmitMessage, setAgeSubmitMessage]=useState(false)
+	const [favFoodSubmitMessage, setFavFoodSubmitMessage]=useState(false)
+	const [lovesSubmitMessage, setLovesSubmitMessage]=useState(false)
+	const [imageFileSubmitMessage, setImageFileSubmitMessage]=useState(false)
 	
 	const addNewHamster=()=>{
 		
-		if (isValidName ){
+		if (isValidName && isValidAge && isValidFavFood && isValidLoves && isValidImageFile){
 			console.log('allt är valid och true, dags att posta hamster')
+			// addHamster();
+			// addHamsterImage();
 			
 		}
 		else{
 			console.log('inte ok, post ej')
-			console.log('showsubmittmesasge: ', showSubmitMessage)
-			//den sätter ut submitmessage på alla även om vissa är ifyllda
-			//TODO när setShowSubmitmessage (ändra namn på denna) blir true ska en ikon dyka upp under alla inputfält.
-			
-			setShowSubmitMessage(true);
 		
+			if(!isValidName) setNameSubmitMessage(true)
+			if(!isValidAge) setAgeSubmitMessage(true)
+			if(!isValidFavFood) setFavFoodSubmitMessage(true)
+			if(!isValidLoves) setLovesSubmitMessage(true)
+			if(!isValidImageFile) setImageFileSubmitMessage(true)
+
 		}
 	}
 
 	const inputName=(e)=>{
 		setName(e.target.value)
-		// if(showSubmitMessage===true){
-		// 	setShowSubmitMessage(false)
-		// } 
+	 
+	}
+	const inputAge=(e)=>{
+		setAge(e.target.value)
+	}
+	const inputFavFood=(e)=>{
+		setFavFood(e.target.value)
+	}
+	const inputLoves=(e)=>{
+		setLoves(e.target.value)
 	}
 
-	let invalidMessage=''
+	const onChangeSaveFile=(e)=>{
+		setimageFile(e.target.files[0])
+		setImageLabelText('New image ready to upload')
+	}
+
+	let nameInvalidMessage=''
+	let ageInvalidMessage=''
+	let favFoodInvalidMessage=''
+	let lovesInvalidMessage=''
+	let imageFileInvalidMessage=''
 	const validateName=()=>{
-		
-		if(name.length<1){ invalidMessage='Oops, forgot the name!'; return false; }
-		if(name.length>10){ invalidMessage='Hey! Max 10 characters'; return false }
-		return true;
 	
+		if(name.length<1){ nameInvalidMessage='Oops, forgot the name!'; return false; }
+		if(name.length>10) return false
+		return true;
 	}
-	// useEffect()=()=>{
-	// 	//ev lägga i use effectmen spelar ingen roll egentligen
-	// }
-	let isValidName=validateName(name)
+	const validateAge=()=>{
+		//visas om touched och mindre än 1
+		if(age.length<1){ ageInvalidMessage='Dont forget the age'; return false; }
+		//return false om age är längre än 5, meddelande styrs i jsx:en
+		if(age.length>5) return false 
+		return true;
+	}
+	const validateFavFood=()=>{
+		
+		if(favFood.length<1){ favFoodInvalidMessage='Hungry hamster need snack'; return false; }
+		if(favFood.length>10) return false 
+		return true;
+	}
+	const validateLoves=()=>{
+		
+		if(loves.length<1){ lovesInvalidMessage='Some love here plz'; return false; }
+		if(loves.length>15) return false 
+		return true;
+	}
+	const validateImageFile=()=>{
+		
+		// if(!imageFile){ imageFileInvalidMessage='Need an image 😘'; return false}
 
+		if(!imageFile){
+
+			console.log('imagefile: ', imageFile)
+			imageFileInvalidMessage='Need an image 😘'
+
+			return false;
+
+		}
+		return true;
+		
+	}
+
+	let isValidName=validateName()
+	let isValidAge=validateAge()
+	let isValidFavFood=validateFavFood()
+	let isValidLoves=validateLoves()
+	let isValidImageFile=validateImageFile()
+	console.log('isValidiMagefile är: ', isValidImageFile)
 
 	// om touched alltså true  och name mindre än noll alltså true=invalid
 	const nameClassName= nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'
-	// const nameClassName=`form-control ${invalid} ${test}`
-	//TODO Fixa dynamiskt klassnamn!!! Måste kunna lägga till för invalid när man klickar på sumbit
-	//TODO flytta ut all mer avancerad kod från jsx
-	//den här styr om showsubmitmessage ska tas bort och lägger tlil value i name. Behövs denna?
+	const ageClassName= ageIsTouched && !isValidAge ? 'form-control invalid' : 'form-control'
+	const favFoodClassName= favFoodIsTouched && !isValidFavFood ? 'form-control invalid' : 'form-control'
+	const lovesClassName= lovesIsTouched && !isValidLoves ? 'form-control invalid' : 'form-control'
+	const imageFileClassName= imageFileIsTouched  ? 'imageFile-label invalid' : 'imageFile-label'
+	console.log('imagefile is touched: ', imageFileIsTouched)
+
 
 	return (
 
@@ -155,9 +209,9 @@ const FormInput=(props)=>{
 						{/* onChange={event=>setName(event.target.value)}/> */}
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
-						{nameIsTouched && !isValidName ? <span>{invalidMessage}</span> : <span></span>}
-						{!showSubmitMessage ? <span></span> : <span>☝️ Eyy!</span>}
-
+						{nameIsTouched && !isValidName || nameSubmitMessage ? <span>{nameInvalidMessage}</span> : <span></span>}
+						{name.length>10 ? <span>Hey! Max 10 characters please</span> : <span></span>}
+						
 						</div>
 					</div>
 
@@ -166,16 +220,18 @@ const FormInput=(props)=>{
 						<input type='number' 
 						id='age'
 						name='age'
-						className='form-control'
+						className={ageClassName}
 						value={age}
 						placeholder='age placeholder'
 						onBlur={()=>setAgeIsTouched(true)}
-						onChange={event=>setAge(event.target.value)}/>
+						// onChange={event=>setAge(event.target.value)}/>
+						onChange={event=>inputAge(event)}/>
 						<label htmlFor="age" className='form-label'>Age in months</label>
 						<div className="error-message">
-							{/* <span>*Dont forget the age</span>
-							<span>*Whops! Max 10 characters</span>
-							<span>*Min 1 character</span> */}
+						{ageIsTouched && !isValidAge || ageSubmitMessage ? <span>{ageInvalidMessage}</span> : <span></span>}
+						{age.length>5 ? <span>Hey! Max 5 characters please</span> : <span></span>}
+						
+					
 						</div>
 					</div>
 				
@@ -186,16 +242,17 @@ const FormInput=(props)=>{
 						<input type='text'
 						id='favFood'
 						name='favFood'
-						className='form-control' 
+						className={favFoodClassName} 
 						value={favFood}
 						placeholder='food placeholder'
 						onBlur={()=>setFavFoodIsTouched(true)}
-						onChange={event=>setFavFood(event.target.value)}/>
+						// onChange={event=>setFavFood(event.target.value)}/>
+						onChange={event=>inputFavFood(event)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
 						<div className="error-message">
-						{/* <span>*Fav food here please</span>
-						 <span>*Max 10 characters please</span>
-						 <span>*Min 2 character</span> */}
+							{favFoodIsTouched && !isValidFavFood|| favFoodSubmitMessage ? <span>{favFoodInvalidMessage}</span> : <span></span>}
+							{favFood.length>10 ? <span>Hey! Max 10 characters please</span> : <span></span>}
+							
 						</div>
 					</div>
 					
@@ -203,25 +260,26 @@ const FormInput=(props)=>{
 					{/* Loves */}
 					<div className='form-group'>
 						<input type='text'
-						className='form-control'
+						className={lovesClassName}
 						id='loves'
 						name='loves' 
 						value={loves}
 						placeholder='love placeholder'
 						onBlur={()=>setLovesIsTouched(true)}
-						onChange={event=>setLoves(event.target.value)}/>
+						// onChange={event=>setLoves(event.target.value)}/>
+						onChange={event=>inputLoves(event)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
 						<div className="error-message">
-							 {/* <span>*Some love here plz</span>
-							 <span>*Max 15 characters</span>
-						 <span>*Min 2 character</span> */}
+							{lovesIsTouched && !isValidLoves || lovesSubmitMessage ? <span>{lovesInvalidMessage}</span> : <span></span>}
+							{loves.length>15 ? <span>Hey! Max 15 characters please</span> : <span></span>}
+						
 						</div>
 					</div>
 
 					{/* Image */}
 					<div className='form-group'>
 						
-						<label htmlFor="imageFile" className='imageFile-label'>{imageLabelText}
+						<label htmlFor="imageFile" onBlur={()=>setImageFileIsTouched(true)} className={imageFileClassName}>{imageLabelText}
 						<input type='file'
 						// className='form-control'
 						id='imageFile'
@@ -232,13 +290,14 @@ const FormInput=(props)=>{
 						onChange={onChangeSaveFile}/>
 						</label>
 						<div className="error-message">
-					 		{/* <span>*Need an image 😘</span> */}
+							{imageFileIsTouched && !isValidImageFile || imageFileSubmitMessage ? <span>{imageFileInvalidMessage}</span> : <span></span>}
+							
 						</div>
 					</div>
 				
 				</form>
 					
-				{loading ? <p className='loading-text'>Loading...</p> : 	<button onClick={addNewHamster}>Add hamster</button>}
+				{loading ? <p className='loading-text'>Loading...</p> : <button onClick={addNewHamster}>Add hamster</button>}
 				
 			
 		

@@ -105,12 +105,9 @@
 					
 				}
 				.invalid{
-					background:purple;
+					border:1px solid $darkpurple;
 				}
-				
-				.submittest{
-					border:2px solid hotpink;
-				}
+			
 				.form-control::placeholder{
 					color: transparent;
 				}
