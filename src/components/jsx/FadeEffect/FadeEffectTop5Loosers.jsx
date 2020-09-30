@@ -14,7 +14,7 @@ const FadeEffectTop5Loosers = ({ showTop5Loosers, children }) => {
   return (
     render && (
       <div
-        style={{ animation: `${showTop5Loosers ? "fadeIn" : "fadeOut"} 0.8s` }}
+        style={{ animation: `${showTop5Loosers ? "fadeIn" : "fadeOut"} 0.4s` }}
         onAnimationEnd={onAnimationEnd}
       >
         {children}

@@ -14,7 +14,7 @@ const FadeEffectLeastParticipated = ({ showLeastParticipated, children }) => {
   return (
     render && (
       <div
-        style={{ animation: `${showLeastParticipated ? "fadeIn" : "fadeOut"} 0.8s` }}
+        style={{ animation: `${showLeastParticipated ? "fadeIn" : "fadeOut"} 0.4s` }}
         onAnimationEnd={onAnimationEnd}
       >
         {children}

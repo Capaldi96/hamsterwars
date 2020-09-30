@@ -14,7 +14,7 @@ const FadeEffectMoreInfoTopWinners = ({ showMoreInfoTopWinners, children }) => {
   return (
     render && (
       <div
-        style={{ animation: `${showMoreInfoTopWinners ? "fadeIn" : "fadeOut"} 0.8s` }}
+        style={{ animation: `${showMoreInfoTopWinners ? "fadeIn" : "fadeOut"} 0.4s` }}
         onAnimationEnd={onAnimationEnd}
       >
         {children}
