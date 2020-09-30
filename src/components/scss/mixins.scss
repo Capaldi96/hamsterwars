@@ -3,9 +3,9 @@
 // Button
 @mixin button {
 	background: #fbf2e3;
-	border: 2px solid $lightpurple;
+	border: 2px solid $darkpurple;
 	border-radius: 8px;
-	color: $lightpurple;
+	color: $darkpurple;
 	padding: 1.1vh 2.8vh;
 	font-size: 1em;
 	cursor: pointer;
@@ -14,15 +14,15 @@
 @mixin button-hover {
 	color: #fbf2e3;
 	text-decoration: none;
-	background: $lightpurple;
+	background: $darkpurple;
 	transition: all 0.4s ease 0s;
 }
 
 @mixin link {
 	background: #fbf2e3;
-	border: 2px solid $lightpurple;
+	border: 2px solid $darkpurple;
 	border-radius: 8px;
-	color: $lightpurple;
+	color: $darkpurple;
 	padding: 1.1vh 2.8vh;
 	font-size: 1em;
 	cursor: pointer;
