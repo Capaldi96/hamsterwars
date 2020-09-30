@@ -16,7 +16,7 @@ const FormInput=(props)=>{
 	const [ageIsTouched, setAgeIsTouched]=useState(false)
 	const [favFoodIsTouched, setFavFoodIsTouched]=useState(false)
 	const [lovesIsTouched, setLovesIsTouched]=useState(false)
-	const [imageFileIsTouched, setImageFileIsTouched]=useState(false)
+	// const [imageFileIsTouched, setImageFileIsTouched]=useState(false)
 
 	let newHamster = {
 		name:name,
@@ -138,6 +138,7 @@ const FormInput=(props)=>{
 		
 		if (isValidName && isValidAge && isValidFavFood && isValidLoves && isValidImageFile){
 			console.log('allt är valid, dags att posta hamster')
+			
 			//! Jonas nya funktion ska köras här
 			// addHamsterImage();
 		}
@@ -152,28 +153,11 @@ const FormInput=(props)=>{
 		}
 	}
 
-	//TODO ta bort dessa och ändra i inputfälten till setName direkt på onChange
-	const inputName=(e)=>{
-		setName(e.target.value) 
-	}
-	const inputAge=(e)=>{
-		setAge(e.target.value)
-	}
-	const inputFavFood=(e)=>{
-		setFavFood(e.target.value)
-	}
-	const inputLoves=(e)=>{
-		setLoves(e.target.value)
-	}
 	const onChangeSaveFile=(e)=>{
 		setimageFile(e.target.files[0])
 		setImageLabelText('New image ready to upload')
 	}
 
-	
-
-
-	
 	return (
 
 		<div className='form-wrapper'>
@@ -186,13 +170,11 @@ const FormInput=(props)=>{
 						<input type='text'
 						id="name"
 						name='name'
-						// className={ nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'}
 						className={nameClassName}
 						value={name}
 						placeholder='name placeholder'
 						onBlur={()=>setNameIsTouched(true)}
-						onChange={event=>inputName(event)}/>
-						{/* onChange={event=>setName(event.target.value)}/> */}
+						onChange={event=>setName(event.target.value)}/>
 						<label htmlFor="name" className='form-label'>Name</label>
 						<div className="error-message">
 
@@ -211,8 +193,7 @@ const FormInput=(props)=>{
 						value={age}
 						placeholder='age placeholder'
 						onBlur={()=>setAgeIsTouched(true)}
-						// onChange={event=>setAge(event.target.value)}/>
-						onChange={event=>inputAge(event)}/>
+						onChange={event=>setAge(event.target.value)}/>
 						<label htmlFor="age" className='form-label'>Age in months</label>
 						<div className="error-message">
 
@@ -231,8 +212,7 @@ const FormInput=(props)=>{
 						value={favFood}
 						placeholder='food placeholder'
 						onBlur={()=>setFavFoodIsTouched(true)}
-						// onChange={event=>setFavFood(event.target.value)}/>
-						onChange={event=>inputFavFood(event)}/>
+						onChange={event=>setFavFood(event.target.value)}/>
 						<label htmlFor="favFood" className='form-label'>Favorite food</label>
 						<div className="error-message">
 
@@ -251,8 +231,7 @@ const FormInput=(props)=>{
 						value={loves}
 						placeholder='love placeholder'
 						onBlur={()=>setLovesIsTouched(true)}
-						// onChange={event=>setLoves(event.target.value)}/>
-						onChange={event=>inputLoves(event)}/>
+						onChange={event=>setLoves(event.target.value)}/>
 						<label htmlFor="loves" className='form-label'>Loves</label>
 						<div className="error-message">
 
@@ -264,17 +243,15 @@ const FormInput=(props)=>{
 
 					{/* Image */}
 					<div className='form-group'>
-						<label htmlFor="imageFile" onBlur={()=>setImageFileIsTouched(true)} className={imageFileClassName}>{imageLabelText}
+						<label htmlFor="imageFile" className={imageFileClassName}>{imageLabelText}
 						<input type='file'
 						id='imageFile'
 						name='imageFile'
-						// value={imageFile}
 						placeholder='imageFile placeholder'
-						// onBlur={()=>setImageFileIsTouched(true)}
 						onChange={onChangeSaveFile}/>
 						</label>
 						<div className="error-message">
-							{(imageFileIsTouched && !isValidImageFile) || imageFileSubmitMessage ? <span>{imageFileInvalidMessage}</span> : <span></span>}
+							{ imageFileSubmitMessage ? <span>{imageFileInvalidMessage}</span> : <span></span>}
 							
 						</div>
 					</div>
