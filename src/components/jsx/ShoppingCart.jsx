@@ -6,6 +6,8 @@ const ShoppingCart = props => {
     const [webshop, setWebshop] = useState(false);
     const [buy, showBuy] = useState(false);
     const [newlist, setNewlist] = useState(props.list)
+    const [emptyMessage, setEmptyMessage] = useState(false);
+    const [finishBtn, setFinishBtn] = useState(true);
 
 /*     console.log(list) */
 
@@ -18,9 +20,20 @@ const ShoppingCart = props => {
         const newList2 = newlist.filter( item => item.id !== id);
         console.log("The new list after delete click: ", newList2)
         setNewlist(newList2)
+        if(newlist.length <= 1){
+            setEmptyMessage(true)
+            setFinishBtn(false)
+        }
     }
 
-    let asd = newlist.map((items, i )=> {
+    
+
+    let asd =  <div className="finishdiv" ><h3 className="h3-shoppingcart">Total cost: {props.totalcost}$</h3>
+    <button className="buy" onClick={()=>{showBuy(true)}}> Finish </button> </div>
+            
+    
+
+    let newList = newlist.map((items, i )=> {
 
         return  ( <div id={items.id} className="cart" key={i}>
                <img className="cart-img" src={items.image}></img>
@@ -56,11 +69,10 @@ const ShoppingCart = props => {
                     </div>
                     
                     <div className="cart-container">
-
-                        {asd}
-
-                    <h3 className="h3-shoppingcart">Total cost: {props.totalcost}$</h3>
-                    <button className="buy" onClick={()=>{showBuy(true)}}> Finish </button>
+                        {emptyMessage ? <h3 className="emptycart">Shopping cart is empty! Go fill it up... <img className="sad" src={require('../../assets/sad.png')} /></h3> : null}
+                        {newList}
+                        {finishBtn ?  asd
+                        : null}
                    
                     </div>
                 </div> }
