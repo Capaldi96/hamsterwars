@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
+import '../../scss/StatisticsPotatoes.scss'
 
 const GetLatestBattles = () => {
 	const [latestBattles, setLatestBattles] = useState([]);
@@ -29,17 +30,17 @@ const GetLatestBattles = () => {
 			<div className="ellipseTextContainer">
 			
 
-			<div className="potatoeGrid">
+			<div className="latestBattlesPotatoeGrid">
 			<h1 className="statPotatoeHeader">Latest battles</h1>
 
 			{/* index is added to be able to map same name */}
 			{loading ? <span></span> : 
 			
-			latestBattles.map((latest, index) => (<p className="statEllipseListLatest" key={latest.name+index}>{latest.name} </p>
+			latestBattles.map((latest, index) => (<p className="latestBattlesStatList" key={latest.name+index}>{latest.name} </p>
 			
 			))}
 
-			{loading ? <p className="latestLoading">Loading...</p> : 
+			{loading ? <p className="latestLoading statLoadingText">Loading...</p> : 
 			
 			<div className="tagsStatContainer">
 			<p className="vsTag"> vs </p>

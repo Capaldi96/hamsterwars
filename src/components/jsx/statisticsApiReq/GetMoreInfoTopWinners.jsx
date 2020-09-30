@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
+import '../../scss/StatisticsPotatoes.scss'
 
 const GetMoreInfoTopWinners = () => {
 	const [top5Winners, setTop5Winners] = useState([]);
@@ -32,7 +33,7 @@ const GetMoreInfoTopWinners = () => {
 			<div className="moreInfoStatEllipseList">
 			<ol>
 			{loading ? <p className="statEllipseList">Loading...</p> : top5Winners.map((winners, index) => (
-				<li key={winners.loves+index}> {winners.name} loves to <span className="moreInfopurple">{winners.loves}</span> and eat <span className="moreInfopurple">{winners.favFood}</span></li>))}
+				<li key={winners.loves+index}> {winners.name} loves to <span className="statBoldFont">{winners.loves}</span> and eat <span className="statBoldFont">{winners.favFood}</span></li>))}
 			</ol>
 			</div>
 			</div>
