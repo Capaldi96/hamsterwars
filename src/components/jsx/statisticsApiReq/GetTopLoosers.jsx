@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/Statistics.scss'
+import '../../scss/StatisticsPotatoes.scss'
 
 const GetTopLoosers = () => {
 const [top5Loosers, setTop5Loosers] = useState([]);
@@ -23,7 +24,7 @@ const [loading, setLoading] = useState(false);
 		<div>
 			<div className="potatoeContainer">
 
-			<img className="ellipse" src={require('../../../assets/ellipseTop5Loosers.svg')} alt=""/>
+			<img className="ellipse" src={require('../../../assets/ellipse1.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
 			<div className="potatoeGrid">
@@ -31,7 +32,7 @@ const [loading, setLoading] = useState(false);
 
 			<div className="statEllipseList">
 			<ol>
-			{loading ? <p >Loading...</p> : top5Loosers.map((loosers, index) => (<li  key={loosers.name+index}>{loosers.name}</li>))}
+			{loading ? <p className="statLoadingText">Loading...</p> : top5Loosers.map((loosers, index) => (<li  key={loosers.name+index}>{loosers.name}</li>))}
 			</ol>
 			</div>
 			</div>

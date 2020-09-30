@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../scss/Statistics.scss';
+import '../scss/StatisticsPotatoes.scss'
 import FadeEffectGamesPlayed from './FadeEffect/FadeEffectGamesPlayed'
 import FadeEffectTop5Winners from './FadeEffect/FadeEffectTop5Winners'
 import FadeEffectTop5Loosers from './FadeEffect/FadeEffectTop5Loosers'

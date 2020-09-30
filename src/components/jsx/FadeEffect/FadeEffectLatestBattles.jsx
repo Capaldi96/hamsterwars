@@ -14,7 +14,7 @@ const FadeEffectLatestBattles = ({ showLatestBattles, children }) => {
   return (
     render && (
       <div
-        style={{ animation: `${showLatestBattles ? "fadeIn" : "fadeOut"} 0.8s` }}
+        style={{ animation: `${showLatestBattles ? "fadeIn" : "fadeOut"} 0.4s` }}
         onAnimationEnd={onAnimationEnd}
       >
         {children}

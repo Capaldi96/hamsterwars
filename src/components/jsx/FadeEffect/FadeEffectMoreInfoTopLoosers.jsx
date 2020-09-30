@@ -14,7 +14,7 @@ const FadeEffectMoreInfoTopLoosers = ({ showMoreInfoTopLoosers, children }) => {
   return (
     render && (
       <div
-        style={{ animation: `${showMoreInfoTopLoosers ? "fadeIn" : "fadeOut"} 0.8s` }}
+        style={{ animation: `${showMoreInfoTopLoosers ? "fadeIn" : "fadeOut"} 0.4s` }}
         onAnimationEnd={onAnimationEnd}
       >
         {children}
