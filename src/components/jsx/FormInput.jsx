@@ -12,6 +12,7 @@ const FormInput=(props)=>{
 	const [imageFile, setimageFile] = useState('');
 	const [imageLabelText, setImageLabelText]=useState('Click to upload image')
 	const [loading, setLoading]=useState(false)
+	const [showSubmitMessage, setShowSubmitMessage]=useState(false)
 
 	const [nameIsTouched, setNameIsTouched]=useState(false)
 	const [ageIsTouched, setAgeIsTouched]=useState(false)
@@ -25,8 +26,6 @@ const FormInput=(props)=>{
 		setImageLabelText('New image ready to upload')
 	}
 
-
-
 	let newHamster = {
 		name:name,
 		age:Number(age),
@@ -38,8 +37,6 @@ const FormInput=(props)=>{
 		games:0,
 		latestGame: ''
 	}
-
-
 
 	async function addHamsterImage(){
 		const formData=new FormData();
@@ -91,30 +88,32 @@ const FormInput=(props)=>{
 		}
 	}
 
-
-
 	
-	const [showSubmitMessage, setShowSubmitMessage]=useState(false)
-
 	const addNewHamster=()=>{
 		
-		if (isValidName && testValid){
+		if (isValidName ){
 			console.log('allt är valid och true, dags att posta hamster')
 			
 		}
 		else{
 			console.log('inte ok, post ej')
 			console.log('showsubmittmesasge: ', showSubmitMessage)
+			//den sätter ut submitmessage på alla även om vissa är ifyllda
 			//TODO när setShowSubmitmessage (ändra namn på denna) blir true ska en ikon dyka upp under alla inputfält.
+			
 			setShowSubmitMessage(true);
 		
-			
-			
 		}
 	}
 
-	let testValid=true//ta bort denna, enbart för test. Se även rad 96. Ska ersättas av övriga variabler för alla inputfält
-	
+	const inputName=(e)=>{
+		setName(e.target.value)
+		// if(showSubmitMessage===true){
+		// 	setShowSubmitMessage(false)
+		// } 
+	}
+
+	let invalidMessage=''
 	const validateName=()=>{
 		
 		if(name.length<1){ invalidMessage='Oops, forgot the name!'; return false; }
@@ -130,15 +129,11 @@ const FormInput=(props)=>{
 
 	// om touched alltså true  och name mindre än noll alltså true=invalid
 	const nameClassName= nameIsTouched && !isValidName ? 'form-control invalid' : 'form-control'
+	// const nameClassName=`form-control ${invalid} ${test}`
 	//TODO Fixa dynamiskt klassnamn!!! Måste kunna lägga till för invalid när man klickar på sumbit
 	//TODO flytta ut all mer avancerad kod från jsx
-	const inputName=(e)=>{
-		setName(e.target.value)
-		if(showSubmitMessage===true){
-			setShowSubmitMessage(false)
-		} 
-		
-	}
+	//den här styr om showsubmitmessage ska tas bort och lägger tlil value i name. Behövs denna?
+
 	return (
 
 		<div className='form-wrapper'>
