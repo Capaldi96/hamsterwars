@@ -9,16 +9,20 @@ const Competitors = (props) => {
 	const [statusButton, setStatusButton] = useState(true);
 	
 	const goToBattle = () => {
-
 		props.setChosenHamsters(competitorsList) 
 		props.setToCompetitorsComp(false)
-	
 	}	
+	const backButton = (e) => {
+		e.preventDefault()
+		props.setToCompetitorsComp(true)
+	}
 
 	return (
 		<div className="Competitors">
-				{showText ? <div className="container-competitors"><h2>Choose two hamsters.</h2></div> : <div className="container-competitors"><h2>Thank you! Click on button to continue.</h2><button className='go-to-battle-button' onClick={goToBattle} disabled={statusButton}>Go to battle</button></div>}
-			
+			{showText ? <div className="container-competitors"><h2>Choose two hamsters.</h2></div> : <div className="container-competitors"><h2>Thank you! Click on button to continue.</h2><button className='go-to-battle-button' onClick={goToBattle} disabled={statusButton}>Go to battle</button></div>}	
+
+			<a href="/Battle" onClick={(e) => backButton} className="back-to-battle">Back to battle</a>		
+		
 			<Gallery chosenHamsters={props.chosenHamsters} setChosenHamsters={props.setChosenHamsters} toCompetitorsComp={props.toCompetitorsComp} competitorsList={competitorsList} setCompetitorsList={setCompetitorsList} setShowText={setShowText} statusButton={statusButton} setStatusButton={setStatusButton}/>
 		</div>
 	)

@@ -24,12 +24,9 @@ const Gallery = (props) => {
 	const checkScrollTop = () => {
 
 		if (!showScroll && windowGallery.current.pageYOffset > 200) {
-			console.log('checkScrollTop if')
 			setShowScroll(true)
-			console.log('showScroll utanför i if sats', showScroll)
 		} else if (showScroll && windowGallery.current.pageYOffset <= 200) {
 			setShowScroll(false)
-			console.log('showScroll else if', showScroll)
 		}
 	};
 	// getHamsters
