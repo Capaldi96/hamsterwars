@@ -144,9 +144,9 @@ app.delete('/api/deleteHamster/:id', (req, res) => {
 	})
 })
 
-// app.use((req, res, next) => {
-// 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-// });
+app.use((req, res, next) => {
+	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
 
 app.listen(port, () => {
 	console.log("Server is listening on port" + port);
