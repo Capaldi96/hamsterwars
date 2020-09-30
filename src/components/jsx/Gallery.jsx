@@ -6,7 +6,7 @@ import '../scss/Gallery.scss';
 const Gallery = (props) => {
 
 	const [hamsterList, setHamsterList] = useState([]);
-	const [showScroll, setShowScroll] = useState(true) // ändra till false
+	const [showScroll, setShowScroll] = useState(true)
 	const windowGallery = useRef()
 
 	useEffect(() => {
@@ -62,8 +62,8 @@ const Gallery = (props) => {
 		if (!props.toCompetitorsComp) {
 			return
 		}
-		props.setShowText(false)
-
+		
+		props.setShowText(true)
 		//vid klick på kort, jämför kort med hamster i competitorlist (letar efter en dublett)
 		if (props.competitorsList.find(hamster2 => hamster2._id === hamster._id)) {
 
@@ -80,6 +80,7 @@ const Gallery = (props) => {
 			//låster upp knappen om listan är full (två hamstrar)
 			if (array.length === 2) {
 				props.setStatusButton(false)
+				props.setShowText(false)
 			}
 		}
 	}
@@ -134,7 +135,7 @@ const Gallery = (props) => {
 					<div className="container-list">{status}</div>
 				</div>
 
-				{!props.toCompetitorsComp ? <ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/> : console.log('ScrollTopArrow removed')}
+				{!props.toCompetitorsComp ? <ScrollTopArrow scrollTop={scrollTop} showScroll={showScroll}/> : console.log('Scroll to top removed')}
 			</main>
 		</div>
 	)

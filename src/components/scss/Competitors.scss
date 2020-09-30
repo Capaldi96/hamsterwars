@@ -9,6 +9,9 @@
 	.go-to-battle-button{
 		@include button
 	}
+	.go-to-battle-button{
+		margin-left: 1em;
+	}
 	.go-to-battle-button:hover:not(:disabled){
 		@include button-hover
 	}
@@ -19,14 +22,51 @@
 
 	.container-competitors{
 		margin-top: 15vh;
-		margin-left: 1em;
+		margin-left: 4em;
 	}
 }
-.Competitors >.Gallery .container-list{
+.Competitors > .Gallery .container-list{
 	margin-top: 0;
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1.5em 1em;
     gap: 1.5em 1em;
+}
+// Media
+@media screen and (max-width: 1000px){
+    .Competitors > .Gallery .container-list{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 850px){
+    .Competitors > .Gallery .container-list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 700px){
+    .Competitors .container-competitors{
+		display: flex;
+		flex-direction: column;
+		place-items: center;
+		margin-top: 12vh;
+		margin-left: 0;
+	}
+	.Competitors .container-competitors h2{
+		text-align: center;
+		display: block;
+		margin: 0 2em 0;
+	}
+	.Competitors .container-competitors .go-to-battle-button{
+		margin: 0.8em 0 1em;
+	}
+}
+@media screen and (max-width: 550px){
+    .Competitors > .Gallery .container-list{
+		grid-template-columns: repeat(1, 1fr);
+		margin: 0 2em 15%;
+	}
+	.Competitors .container-competitors{
+		margin-top: 14vh;
+	}
 }
