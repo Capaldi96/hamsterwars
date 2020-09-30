@@ -121,6 +121,9 @@
 					transform:translateY(-2.7em) scale(.8);
 					
 				}
+				.invalid{
+					border:1px solid $darkpurple;
+				}
 				.imageFile-label{
 					background-color:white;
 					border-radius:10px;
@@ -149,20 +152,21 @@
 					}
 				}
 			}
-			.submit-button{
-				@include button;
-				justify-self:center;
-				margin-top:1em;
-				
-			}
-			.submit-button:hover{
-				@include button-hover
-			}
-			.loading-text{
-				text-align:center;
-				margin-top:.5em;
-				color:$darkpurple
-			}
+		
+		}
+		.submitButton{
+			@include button;
+			justify-self:center;
+			margin-top:1em;
+			
+		}
+		.submitButton:hover{
+			@include button-hover
+		}
+		.loading-text{
+			text-align:center;
+			margin-top:.5em;
+			color:$darkpurple
 		}
 
 }
