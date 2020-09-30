@@ -17,67 +17,63 @@ const FormInput=(props)=>{
 	const [favFoodIsTouched, setFavFoodIsTouched]=useState(false)
 	const [lovesIsTouched, setLovesIsTouched]=useState(false)
 
-	let newHamster = {
-		name:name,
-		age:Number(age),
-		favFood:favFood,
-		loves:loves,
-		imgName:imageFile.name,
-		wins:0,
-		defeats:0,
-		games:0,
-		latestGame: ''
-	}
+	const onSubmit = () => {
+        setLoading(true)
+        const reader = new FileReader()
+        reader.readAsDataURL(imageFile);
+        reader.onloadend = () => {
+            uploadImage(reader.result)
+        }
+    }
+    const uploadImage = async (base64Encoded) => {
+        try {
+            let response = await fetch('api/uploadImage', {
+                method: 'POST',
+                body: JSON.stringify({ data: base64Encoded }),
+                headers: { 'Content-type': 'application/json' }
+            })
+            let data = await response.json()
+            let newHamster = {
+                name: name,
+                age: Number(age),
+                favFood: favFood,
+                loves: loves,
+                imgName: 'https://res.cloudinary.com/deusclkek/image/upload/v1601296218/' + data.id,
+                wins: 0,
+                defeats: 0,
+                games: 0,
+                latestGame: ''
+            }
+            addHamster(newHamster)
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
-	async function addHamsterImage(){
-		const formData=new FormData();
-		formData.append('file', imageFile)
-		console.log('i addHamsterImage: ', formData)
+    async function addHamster(newHamster) {
+        try {
+            const response = await fetch('/api/addhamster', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify(newHamster)
+            });
 
-		try {
-			const response=await Axios.post('/api/addhamsterImage', formData,{
-			headers:{
-				'Content-Type':'multipart/form-data'	
-			}
-	
-		})
-		console.log('i addhamsterimage')
-		console.log('response addhamsterimage: ', response)
-		//? varför ser man inte dessa console logs?
-			
-		}//slut try
-			catch ( error ){
-			console.log('addHasterImage: Something went wrong when adding a new image')
-		}//slut catch
-			
-	} //slut func
-	
-	async function addHamster(){
-		setLoading(true)
-	
-		try {
-			const response= await fetch('/api/addhamster', {
-				headers:{
-					'Accept':'application/json',
-					'Content-Type':'application/json',
-				},
-				method:'POST',
-				body:JSON.stringify(newHamster)
-			});
-	
-			const text = await response.text();
-			// const data = JSON.parse(text); 
-			let dataHamster = JSON.parse(text); 
-			console.log('response i inputfields: ', dataHamster)
-			if(dataHamster.ops.length){
-				setLoading(false)
-				props.setDisplayForm(false)	
-			}
-		
-		} catch (error) {
-			console.log(' addhamster: something went wrong when adding hamster: ', error)
-		}
-	}
+            const text = await response.text();
+            // const data = JSON.parse(text); 
+            let dataHamster = JSON.parse(text);
+            if (dataHamster.ops.length) {
+                setLoading(false)
+                props.setDisplayForm(false)
+            }
+
+        } catch (error) {
+            console.log(' addhamster: something went wrong when adding hamster: ', error)
+        }
+    }
 
 	let nameInvalidMessage=''
 	let ageInvalidMessage=''
@@ -135,10 +131,8 @@ const FormInput=(props)=>{
 	const addNewHamster=()=>{
 		
 		if (isValidName && isValidAge && isValidFavFood && isValidLoves && isValidImageFile){
-			console.log('allt är valid, dags att posta hamster')
 			
-			//! Jonas nya funktion ska köras här
-			// addHamsterImage();
+			onSubmit();
 		}
 		else{
 		

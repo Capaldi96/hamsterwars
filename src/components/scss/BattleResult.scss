@@ -2,14 +2,18 @@
 @import 'variables.scss';
 
 #battleResult{
-	margin-top: 5vh;
+	margin-top: 8vh;
 	height: 80vh;
 }
 #battleResult .container {
 	height: 100%;
 	display: grid;
 	place-items: center;
-	grid-template-rows: 2fr 4fr 3fr;
+	grid-template-rows: 1fr 4fr 2fr;
+}
+#battleResult .divMargin{
+	margin-top:1vh;
+	margin-bottom:1vh;
 }
 
 #battleResult .container .battle-h1 {
@@ -35,15 +39,9 @@
 #battleResult .textDiv{
 	display: grid;
 	place-items: center;
-	grid-gap: 1vh;
-	margin:2vh 0
+	margin:2vh 0;
 }
-.resultPotato{
-	height: 38vh;
-	display: grid;
-	place-items: center;
-	width: 38vw;
-}
+
 #battleResult .link-to{
 	@include link
 }
@@ -53,29 +51,37 @@
 	grid-gap: 2vh;
 }
 #battleResult .container .battleBtn {
+	margin-top:1.5vh;
 	@include button;	
 }
+#battleResult .container .battleBtn:hover {
+	@include button-hover;	
+}
+
 
 #battleResult .winnerData{
 	display: grid;
-	grid-template-rows: 1fr 1fr 1fr;
 	place-items: center;
 }
 
 #battleResult .winnerData-p{
 	color: $orange;
-	font-size: 20px;
+	font-size: 2vh;
 }
 
+.resultPotato{
+	
+}
 #battleResult .resultPotato{
-	height: 300px;
-	width: 400px;
+	height: 100%;
+	display: grid;
+	place-items: center;
+	width: 70vw;
 	background-image: url('../../assets/result-potato-smaller.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
-	bottom: 30px;
 }
 
 
@@ -86,7 +92,7 @@
 
 @media only screen and (min-width: 700px){
 	#battleResult{
-		margin-top: 15vh;
+		margin-top: 10vh;
 	}
 	#battleResult .container .VS {
 		height: 12vh;
@@ -113,25 +119,23 @@
 	}
 	
 	#battleResult .resultPotato{
-		height: 40vh;
+		height: 100%;
 		width: 100vw;
 		background-image: url('../../assets/result-potato-smaller.svg');
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
 		position: relative;
-		margin-top: 10vh;
 	}
 	
 	#battleResult .winnerData{
 		display: grid;
-		grid-template-rows: 1fr 1fr 1fr; 
 		place-items: center;
 	}
 	
 	#battleResult .winnerData-p{
 		color: $orange;
-		font-size: 28px;
+		font-size: 2.5vh;
 	}	
 }
 @media only screen and (min-width: 700px) and (max-width:900px){

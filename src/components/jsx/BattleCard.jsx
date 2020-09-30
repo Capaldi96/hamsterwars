@@ -30,11 +30,11 @@ const BattleCard = props => {
 				<div className="flip-card-back">
 					<h2 className="flip-card-h1">{props.hamster.name}</h2>
 					<p className="inner-card-p">Years: {props.hamster.age}</p>
-					<p className="inner-card-p">Games: {props.hamster.games}</p>
 					<p className="inner-card-p">FavFood: {props.hamster.favFood}</p>
 					<p className="inner-card-p">Loves: {props.hamster.loves}</p>
-					<p className="inner-card-p">wins: {props.hamster.wins}</p>
-					<p className="inner-card-p">losses: {props.hamster.defeats}</p>
+					<p className="inner-card-p">Games: {props.hamster.games}</p>
+					<span className="inner-card-p">Wins: {props.hamster.wins} </span>
+					<span className="inner-card-p">Losses: {props.hamster.defeats}</span>
 				</div>
 			</div>
 		</div>
