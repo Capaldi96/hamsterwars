@@ -36,6 +36,7 @@ const BattleResult = () => {
 		if (allHamsters !== null) {
 			getBattle()
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [allHamsters]);
 	async function getAllHamsters() {
 		let allHamsters = await axios.get('/api/getAllHamsters')
@@ -141,6 +142,7 @@ const BattleResult = () => {
 			setWinnerAndLooser()
 			setEmptyDiv('divMargin');
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [winnerId])
 
 	useEffect(() => {
@@ -154,6 +156,7 @@ const BattleResult = () => {
 				updateLooser(hamster1)
 			}
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hamster1, hamster2])
 
 	let winnerData;

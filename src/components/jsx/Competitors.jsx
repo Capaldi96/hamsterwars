@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, { useState} from 'react'
 import Gallery from './Gallery';
 import '../scss/Competitors.scss';
 
