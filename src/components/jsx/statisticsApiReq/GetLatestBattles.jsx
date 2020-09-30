@@ -25,7 +25,7 @@ const GetLatestBattles = () => {
 	
 			<div className="potatoeContainer">
 
-			<img className="ellipse" src={require('../../../assets/ellipseLatestBattles.svg')} alt=""/>
+			<img className="ellipse" src={require('../../../assets/ellipse2.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
 			

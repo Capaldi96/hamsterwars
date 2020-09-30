@@ -25,7 +25,7 @@ const GetTopWinners = () => {
 
 			<div className="potatoeContainer">
 
-			<img className="ellipse" src={require('../../../assets/ellipseTop5Winners.svg')} alt=""/>
+			<img className="ellipse" src={require('../../../assets/ellipse2.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
 			

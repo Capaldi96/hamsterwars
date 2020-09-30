@@ -26,7 +26,7 @@ const [loading, setLoading] = useState(false);
 		return (
 		<div>
 			{/* <div className="potatoeContainer"> */}
-			<img className="ellipse" src={require('../../../assets/ellipseGamesPlayed.svg')} alt=""/>
+			<img className="ellipse" src={require('../../../assets/ellipse1.svg')} alt=""/>
 			<div className="ellipseTextContainer">
 
 			<div className="potatoeGrid">

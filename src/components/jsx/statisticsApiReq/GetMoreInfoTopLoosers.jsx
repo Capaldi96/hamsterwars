@@ -25,10 +25,12 @@ const GetMoreInfoTopLoosers = () => {
 
 			<div className="potatoeContainer">
 
-			<img className="ellipse" src={require('../../../assets/ellipseTop5Loosers.svg')} alt=""/>
+			<img className="ellipse1" src={require('../../../assets/ellipse1.svg')} alt=""/>
+
+			<img className="ellipse2" src={require('../../../assets/ellipseSmallScreen.svg')} alt=""/>
 
 			<div className="ellipseTextContainer">
-			<div className="potatoeGrid">
+			<div className="moreInfoPotatoeGrid">
 			<h1 className="moreInfoStatPotatoeHeader">Do the loosers have anything in common?</h1>
 			<div className="moreInfoStatEllipseList">
 			<ol>
