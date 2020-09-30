@@ -16,7 +16,6 @@ const FormInput=(props)=>{
 	const [ageIsTouched, setAgeIsTouched]=useState(false)
 	const [favFoodIsTouched, setFavFoodIsTouched]=useState(false)
 	const [lovesIsTouched, setLovesIsTouched]=useState(false)
-	// const [imageFileIsTouched, setImageFileIsTouched]=useState(false)
 
 	let newHamster = {
 		name:name,
@@ -131,7 +130,6 @@ const FormInput=(props)=>{
 	const ageClassName= ageIsTouched && !isValidAge ? 'form-control invalid' : 'form-control'
 	const favFoodClassName= favFoodIsTouched && !isValidFavFood ? 'form-control invalid' : 'form-control'
 	const lovesClassName= lovesIsTouched && !isValidLoves ? 'form-control invalid' : 'form-control'
-	//!ta bort isTouched för den funkar ändå inte
 	const imageFileClassName=`imageFile-label`
 
 	const addNewHamster=()=>{
