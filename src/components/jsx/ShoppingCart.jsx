@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import '../scss/ShoppingCart.scss';
 import Webshop from './Webshop'
 
@@ -8,31 +8,29 @@ const ShoppingCart = props => {
     const [newlist, setNewlist] = useState(props.list)
     const [emptyMessage, setEmptyMessage] = useState(false);
     const [finishBtn, setFinishBtn] = useState(true);
+    const [total, setTotal] = useState(null)
 
-/*     console.log(list) */
+    // KÖRS DIREKT.
+    useEffect(() => {
+        reducer(props.list)
+   }, [])
 
-/*     useEffect(() => {
-        setList([...list, props.cartItem])
-    }, [props.cartItem]) */
-
-
+   // DELETE FUNKTION FÖR PRODUKTERNA.
     function deleteItem(id){
-        const newList2 = newlist.filter( item => item.id !== id);
-        console.log("The new list after delete click: ", newList2)
-        setNewlist(newList2)
-        if(newlist.length <= 1){
+        const filteredList = newlist.filter( item => item.id !== id);
+        setNewlist(filteredList)
+        reducer(filteredList)
+        if(filteredList.length === 0){
             setEmptyMessage(true)
             setFinishBtn(false)
         }
     }
 
-    
-
-    let asd =  <div className="finishdiv" ><h3 className="h3-shoppingcart">Total cost: {props.totalcost}$</h3>
+    // FINISH BTN OCH TOTAL COST TAS BORT OM DET INTE FINNS PRODUKTER.
+    let finishMsg =  <div className="finishdiv" ><h3 className="h3-shoppingcart">Total cost: {total}$</h3>
     <button className="buy" onClick={()=>{showBuy(true)}}> Finish </button> </div>
-            
-    
 
+    // MAPPAR IGENOM LISTAN AV OBJEKT SOM MAN KÖPT FRÅN WEBSHOP KOMPONENTEN.
     let newList = newlist.map((items, i )=> {
 
         return  ( <div id={items.id} className="cart" key={i}>
@@ -42,22 +40,42 @@ const ShoppingCart = props => {
                <button className="deleteBtn" onClick={() => deleteItem(items.id)} >X</button>
            </div>);
        
-       });
+    });
+
+    // NY LISTA FÖR NYTT VÄRDE AV TOTALA PRISET.
+    let newCostList = [];
 
 
+    function reducer(list){
+
+        if(list.length === 0){
+            return
+        }
+
+        list.map(item => {
+            newCostList.push(item.cost)
+        })
+
+        let total = newCostList.reduce(function(accumulator, currentValue) {
+            return accumulator + currentValue
+            })
+        setTotal(total)   
+    }
+
+    
+    // MEDDELANDE NÄR MAN CHECKAR UT UR SHOPPEN.
     let buyMessage = 
     <div className="buyMessage">
         <div className="innerText">
             <h2 className="h2-shoppingcart">Thank you for your order!</h2>
-            <h2>Your total was: <strong>{props.totalcost}</strong>$</h2>
+            <h2>Your total was: <strong>{total}</strong>$</h2>
             <a href="/Webshop" onClick={ e => { e.preventDefault(); setWebshop(true)}} >  <p className="to-shop-after-click"> Back to shop</p></a>
         </div>
     </div>
 
-
     return(
     <div>
-        {webshop ? <Webshop  /> : null }
+        { webshop ? <Webshop  /> : null }
         <div id="shoppingcart">
             <div className="container">
                 <div></div>
@@ -69,14 +87,13 @@ const ShoppingCart = props => {
                     </div>
                     
                     <div className="cart-container">
-                        {emptyMessage ? <h3 className="emptycart">Shopping cart is empty! Go fill it up... <img className="sad" src={require('../../assets/sad.png')} /></h3> : null}
-                        {newList}
-                        {finishBtn ?  asd
-                        : null}
+
+                        { emptyMessage ? <h3 className="emptycart">Shopping cart is empty! Go fill it up... <img className="sad" src={require('../../assets/happy.png')} /></h3> : null}
+                        { newList}
+                        { finishBtn ?  finishMsg : null}
                    
                     </div>
                 </div> }
-               
                 <div></div>
             </div>
         </div>
