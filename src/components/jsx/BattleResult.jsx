@@ -19,6 +19,7 @@ const BattleResult = () => {
 	const { width, height } = useWindowSize();
 	const [loading, setLoading] = useState(true);
 	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
+	const [emptyDiv, setEmptyDiv] = useState('');
 	let content = null;
 	
 
