@@ -148,15 +148,19 @@ const BattleResult = () => {
 
 	useEffect(() => {
 		if (winnerId) {
+			console.log('useEffect: ', winnerId,hamster1.games,hamster2.games)
+
+			//console.log("Updating2", hamster1.games)
 			if (hamster1._id === winnerId) {
+			//	console.log("Updating3", hamster1.games)
 				updateWinner(hamster1)
 				updateLooser(hamster2)
 			} else if (hamster2._id === winnerId) {
+				//console.log("Updating4", hamster2)
 				updateWinner(hamster2)
 				updateLooser(hamster1)
 			}
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hamster1, hamster2])
 
 	let winnerData;
