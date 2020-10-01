@@ -98,7 +98,7 @@
 }
 
 #shoppingcart .container .innerText .h2-shoppingcart {
-    font-size: 35px;
+    font-size: 3.9vh;
 }
 
 #shoppingcart .container .cart-container {
@@ -233,13 +233,20 @@
     }
 
 }
+@media only screen and (max-width: 800px){
+	#shoppingcart .container .buyMessage {
+		background-image: url('../../assets/result-potato-smaller.svg');
+		width: 95vw;
+		height: 75vh;
+	}
+}
 
 @media only screen and (max-width: 600px){
 
     #shoppingcart .container .buyMessage {
-        background-image: url('../../assets/result-potato-smaller.svg');
+        background-image: url('../../assets/formpotatomobile.svg');
         width: 95vw;
-        height: 60vh;
+        height: 95vh;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
