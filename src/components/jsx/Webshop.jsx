@@ -19,7 +19,6 @@ const Webshop = () => {
     const [disablecart, setDisablecart] = useState(true);
     const [list, setList] = useState([])
     const [totalCost, setTotalCost] = useState(0);
-    const [countProduct, setCountProduct] = useState(0);
 
     let itemList = [
         {
@@ -99,7 +98,7 @@ const Webshop = () => {
             let item = 
                 <div key={items.id}>
                     <h2>{items.type}</h2>
-                    <img className="image"  src={items.image}></img>
+                    <img className="image" alt="product" src={items.image}></img>
                     <p className="price">${items.cost}</p>
                     <button onClick={() => onBuy(items.id)} className="buy-btn">Buy</button>
                 </div>
@@ -119,47 +118,29 @@ const Webshop = () => {
             setCartItem(checkoutItem);
             setCount(count + 1);
 
-            
-        
             // For the shoppingcart array
             let array = [...list];
             array.push(checkoutItem);
             setList(array);
 
-            /* itemList.reduce */
-
-            
-
-
-            setCountProduct(checkoutItem.count += 1);
-            console.log("checkoutitem.count: ", checkoutItem.count += 1);
-
-            newCost = newCost + checkoutItem.cost;
-
             //COST
+            newCost = newCost + checkoutItem.cost;
             setTotalCost(newCost);
-            console.log("total cost: ", newCost)
         };
 
-
-
-        function reducer(){
-            itemList.reduce((arr, curr) => {
-                
-            })
-        }
 
     return(
         <div id="webshop">
             {shoppingcart ? <ShoppingCart totalcost={totalCost} list={list} count={count} cartItem={cartItem} /> : null}
                 <div className="container">
                     <div className="shop">
-                        { disablecart ? <img className="shopping-cart disabled" src={require('../../assets/shopping-cart.png')}></img> : <a href="/ShoppingCart" onClick={ e => {e.preventDefault(); setShoppingcart(true); reducer();}} > <img className="shopping-cart" src={require('../../assets/shopping-cart.png')}></img> {count} </a>} 
+                        { disablecart ? <img alt="shopping-cart-icon" className="shopping-cart disabled" src={require('../../assets/shopping-cart.png')}></img> : <a href="/ShoppingCart" onClick={ e => {e.preventDefault(); setShoppingcart(true); }} >
+                        <img alt="shopping-cart" className="shopping-cart" src={require('../../assets/shopping-cart.png')}></img> {count} </a>} 
                     </div>
                     <main>
                         {products}
                     </main>
-                    <div></div> // Just for the grid to work.
+                    <div></div>
                 </div>
         </div>
     )

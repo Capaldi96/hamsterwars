@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../scss/BattleCard.scss';
 
 const BattleCard = props => {
-	const url = 'https://res.cloudinary.com/deusclkek/image/upload/v1601296218/'
 	const [crownForWinner, setCrownForWinner] = useState(false);
 	const wrapperFunction = () => {
 		if(props.disableImg === false){
@@ -19,7 +18,7 @@ const BattleCard = props => {
 		<div className="flip-card" onClick={wrapperFunction}>
 			<img className="flip-card-info" alt="info" src={require('../../assets/information_orange.png')} /> 
 			<div className="flip-card-inner">
-			<div className="flip-card-crown">{crownForWinner ? <img src={require('../../assets/crown.png')} /> : null}</div>
+			<div className="flip-card-crown">{crownForWinner ? <img alt="crown-icon" src={require('../../assets/crown.png')} /> : null}</div>
 				<div className="flip-card-front">
 					<img
 						className="competitior-img"
