@@ -12,7 +12,7 @@
 .flip-card-crown{
 	position: absolute;
 	z-index: 3;
-	left: -9vw;
+	left: -4vw;
 	top: -4vh;
 	transform: rotate(-45deg);
 	width:8vh;
@@ -24,7 +24,7 @@
 }
 .flip-card {
 	background-color: transparent;
-	width: 50%;
+	width:50%;
 	height: 20vh;
     perspective: 1000px;
     border-radius: 15px;
@@ -109,11 +109,7 @@
 	}
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1650px){
-	.flip-card {
-	width: 70%;
-}
-}
+
 
 @media only screen and (min-width: 700px) and (max-width: 900px){
 	.flip-card-crown{
@@ -124,5 +120,17 @@
 @media only screen and (max-width: 600px){
 	.flip-card{
 		width: 60%;
+	}
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1650px){
+	.flip-card {
+	
+		width: 70%;
+		
+		
+	}
+	.flip-card-front{
+		height:25vh;
 	}
 }
