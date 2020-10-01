@@ -21,7 +21,7 @@ const BattleResult = () => {
 	const [toCompetitorsComp, setToCompetitorsComp] = useState(false);
 	const [emptyDiv, setEmptyDiv] = useState('');
 	let content = null;
-
+	let winnerData;
 
 	const setChosenHamsters = (chosenHamsters) => {
 		setHamster1(chosenHamsters[0])
@@ -135,7 +135,7 @@ const BattleResult = () => {
 				defeats: hamster1.defeats++
 			}))
 		}
-		let winnerData;
+		
 		if (hamster1 !== null && hamster2 !== null) {
 			if (winnerId === hamster1._id) {
 				winnerData =
