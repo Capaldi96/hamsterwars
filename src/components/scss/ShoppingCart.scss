@@ -33,13 +33,7 @@
     // animation-fill-mode: forwards;
     
 }
-// @keyframes jumping{
-// 	0%{top:0px;}
-// 	20%{top:-50px;}
-// 	60%{top:0px;}
-// 	80%{top:-50px;}
-// 	100%{top:0px;}
-// }
+
 @keyframes jumping{
     0%{top:0px;}
     11%{top:-50px;}
@@ -157,7 +151,7 @@
     margin-top: 15px;
 }
 
-#shoppingcart .container .cart-container .sad {
+#shoppingcart .container .cart-container .happy  {
     width: 3.5vw;
     align-self: center;
     text-align: center;
@@ -205,7 +199,7 @@
         align-items: center;
     }
 
-    #shoppingcart .container .cart-container .sad {
+    #shoppingcart .container .cart-container .happy {
         width: 5vw;
         align-self: center;
         text-align: center;
@@ -256,7 +250,7 @@
         align-items: center;
     }
 
-    #shoppingcart .container .cart-container .sad {
+    #shoppingcart .container .cart-container .happy {
         width: 8vw;
         align-self: center;
         text-align: center;
