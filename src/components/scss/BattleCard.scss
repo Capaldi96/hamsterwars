@@ -108,6 +108,13 @@
 		top: -4.2vh;
 	}
 }
+
+@media only screen and (min-width: 1200px) and (max-width: 1650px){
+	.flip-card {
+	width: 70%;
+}
+}
+
 @media only screen and (min-width: 700px) and (max-width: 900px){
 	.flip-card-crown{
 		left: -4.5vw;
