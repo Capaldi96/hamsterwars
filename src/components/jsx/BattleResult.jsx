@@ -136,6 +136,8 @@ const BattleResult = () => {
 			}))
 		}
 		setShowResult(true)
+		console.log('hamster1',hamster1)
+
 	}
 
 	useEffect(() => {
