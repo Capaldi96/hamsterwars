@@ -68,6 +68,7 @@ grid-column: 2/3;
 justify-self: start;	
 }
 
+
 //Latest battles related component
 .latestBattlesStatList{
 font-size: 2em;
@@ -153,6 +154,11 @@ grid-row: 1/2;
 font-size: 1.2em;
 grid-column: 1/4;
 color: white;
+}
+
+.moreInfoLoadingText{
+	font-size: 2em; 
+	color: $orange;
 }
 
 .moreInfoStatEllipseList li{

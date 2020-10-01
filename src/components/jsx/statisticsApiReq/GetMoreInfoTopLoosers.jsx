@@ -34,7 +34,7 @@ const GetMoreInfoTopLoosers = () => {
 			<h1 className="moreInfoStatPotatoeHeader">Do the loosers have anything in common?</h1>
 			<div className="moreInfoStatEllipseList">
 			<ol>
-			{loading ? <p className="statEllipseList">Loading...</p> : top5Loosers.map((loosers, index) => (
+			{loading ? <p className="moreInfoLoadingText">Loading...</p> : top5Loosers.map((loosers, index) => (
 				<li key={loosers.loves+index}> {loosers.name} loves to <span className="statBoldFont">{loosers.loves}</span> and eat <span className="statBoldFont">{loosers.favFood}</span></li>))}
 			</ol>
 			</div>
