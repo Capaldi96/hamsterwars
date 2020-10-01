@@ -110,6 +110,7 @@ const BattleResult = () => {
 	}
 	function updateWinnerAndLooser() {
 		if (hamster1._id === winnerId) {
+			console.log('hamster1',hamster1)
 			//winner
 			setHamster1(prevState => ({
 				...hamster1,
@@ -151,7 +152,6 @@ const BattleResult = () => {
 	}
 
 	useEffect(() => {
-		console.log('hamster1',hamster1)
 		//console.log('hamster2',hamster2)
 		if (winnerId) {
 			if (hamster1._id === winnerId) {
