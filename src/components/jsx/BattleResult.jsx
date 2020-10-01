@@ -110,8 +110,6 @@ const BattleResult = () => {
 	}
 	function updateWinnerAndLooser() {
 		if (hamster1._id === winnerId) {
-			updateWinner(hamster1)
-			updateLooser(hamster2)
 			//winner
 			setHamster1(prevState => ({
 				...hamster1,
@@ -125,8 +123,6 @@ const BattleResult = () => {
 			}));
 		} else if (hamster2._id === winnerId) {
 			//winner
-			updateWinner(hamster2)
-			updateLooser(hamster1)
 			setHamster2(hamster2 => ({
 				...hamster2,
 				games: hamster2.games++,
@@ -155,12 +151,15 @@ const BattleResult = () => {
 	}
 
 	useEffect(() => {
+		console.log('hamster1',hamster1)
 		//console.log('hamster2',hamster2)
 		if (winnerId) {
 			if (hamster1._id === winnerId) {
-				
+				updateWinner(hamster1)
+				updateLooser(hamster2)
 			} else if (hamster2._id === winnerId) {
-				
+				updateWinner(hamster2)
+				updateLooser(hamster1)
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
