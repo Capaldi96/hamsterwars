@@ -13,6 +13,8 @@ const ShoppingCart = props => {
     // KÖRS DIREKT.
     useEffect(() => {
         reducer(props.list)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    // DELETE FUNKTION FÖR PRODUKTERNA.
@@ -34,7 +36,7 @@ const ShoppingCart = props => {
     let newList = newlist.map((items, i )=> {
 
         return  ( <div id={items.id} className="cart" key={i}>
-               <img className="cart-img" src={items.image}></img>
+               <img className="cart-img" alt="product" src={items.image}></img>
                <h3 className="cart-properties">{items.type}</h3>
                <h3 className="cart-properties">Cost: {items.cost}</h3>
                <button className="deleteBtn" onClick={() => deleteItem(items.id)} >X</button>
@@ -53,7 +55,8 @@ const ShoppingCart = props => {
         }
 
         list.map(item => {
-            newCostList.push(item.cost)
+           let newTotalCost = newCostList.push(item.cost)
+           return newTotalCost;
         })
 
         let total = newCostList.reduce(function(accumulator, currentValue) {
@@ -67,9 +70,10 @@ const ShoppingCart = props => {
     let buyMessage = 
     <div className="buyMessage">
         <div className="innerText">
+            <img  className="hamster-dancing" src={require('../../assets/hamster_dancing.png')} alt="Hamster Icon"/>
             <h2 className="h2-shoppingcart">Thank you for your order!</h2>
             <h2>Your total was: <strong>{total}</strong>$</h2>
-            <a href="/Webshop" onClick={ e => { e.preventDefault(); setWebshop(true)}} >  <p className="to-shop-after-click"> Back to shop</p></a>
+            <button className="to-shop-after-click" href="/Webshop" onClick={ e => { e.preventDefault(); setWebshop(true)}} > Back to shop</button>
         </div>
     </div>
 
@@ -88,7 +92,7 @@ const ShoppingCart = props => {
                     
                     <div className="cart-container">
 
-                        { emptyMessage ? <h3 className="emptycart">Shopping cart is empty! Go fill it up... <img className="sad" src={require('../../assets/happy.png')} /></h3> : null}
+                        { emptyMessage ? <h3 className="emptycart">Shopping cart is empty! Go fill it up... <img className="happy" alt="happy-icon" src={require('../../assets/happy.png')} /></h3> : null}
                         { newList}
                         { finishBtn ?  finishMsg : null}
                    

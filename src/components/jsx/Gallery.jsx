@@ -11,8 +11,17 @@ const Gallery = (props) => {
 
 	useEffect(() => {
 		getHamsters();
+		const checkScrollTop = () => {
+
+			if (!showScroll && windowGallery.current.pageYOffset > 200) {
+				setShowScroll(true)
+			} else if (showScroll && windowGallery.current.pageYOffset <= 200) {
+				setShowScroll(false)
+			}
+		};
 		
 		windowGallery.current.addEventListener('scroll', checkScrollTop);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	
@@ -22,14 +31,7 @@ const Gallery = (props) => {
 		windowGallery.current.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 	
-	const checkScrollTop = () => {
-
-		if (!showScroll && windowGallery.current.pageYOffset > 200) {
-			setShowScroll(true)
-		} else if (showScroll && windowGallery.current.pageYOffset <= 200) {
-			setShowScroll(false)
-		}
-	};
+	
 	// getHamsters
 	async function getHamsters() {
 		await axios.get('/api/gallery')
@@ -42,10 +44,10 @@ const Gallery = (props) => {
 			})
 	}
 	// deleteHamster
-	async function deleteHamster(id) {
+	/* async function deleteHamster(id) {
 		const response = await axios.delete('/api/deleteHamster/' + id);
 		getHamsters();
-	}
+	} */
 
 	//Ändra pointern på korten beroende på om Gallery eller Competitors visas
 	let classIcon = ''
