@@ -12,17 +12,11 @@
 	grid-template-rows: 1fr 1fr;
 	justify-items: center;
 }
-.iconInsideCircle{
-	justify-self: center;
-	align-self: center;
-	height: 15vh;
-	width: 15vh;
-}
 
 .circleSpecifics {
 	cursor: pointer;
-	height: 30vh;
-    width: 30vh;
+	height: 220px;
+	width: 220px;
 	background-color: $lightgreen;
 	border-radius: 50%;
 	display: flex;
@@ -129,11 +123,7 @@
 		opacity: 0;
 	}
 }
-@media screen and (max-height: 800px) {
-    .circlesInRowContainer {
-		overflow-y: scroll;
-    }
-}
+
 @media screen and (max-width: 970px) {
 	.circlesInRow {
 		display: grid;
@@ -141,18 +131,7 @@
 		grid-template-rows: 1fr 1fr 1fr;
 		justify-items: center;
 		grid-gap: 1em;
-		margin-top: 10vh;
-	}
-	.circleSpecifics {
-		cursor: pointer;
-		height: 26vh;
-		width: 26vh;
-	}
-	.iconInsideCircle{
-		justify-self: center;
-		align-self: center;
-		height: 15vh;
-		width: 15vh;
+		margin-top: 15vh;
 	}
 
 	.statCircle1 {
@@ -193,8 +172,8 @@
 
 @media screen and (max-width: 770px) {
 	.circleSpecifics {
-		height: 26vh;
-		width: 26vh;
+		height: 200px;
+		width: 200px;
 	}
 	.circlesInRowContainer {
 		overflow-y: scroll;
@@ -302,14 +281,14 @@
 
 	.circleSpecifics {
 		margin: 10px 0 10px 0;
-		height: 20vh;
-		width: 20vh;
+		height: 120px;
+		width: 120px;
 	}
 }
 
 @media screen and (max-width: 500px) {
 	.circleSpecifics {
-		height: 15vh;
-		width: 15vh;
+		height: 80px;
+		width: 80px;
 	}
 }
