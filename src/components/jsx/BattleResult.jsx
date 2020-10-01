@@ -140,20 +140,20 @@ const BattleResult = () => {
 
 	}
 
-	useEffect(() => {
-		if (winnerId) {
-			updateWinnerAndLooser()
-			setEmptyDiv('divMargin');
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [winnerId])
+	// useEffect(() => {
+	// 	if (winnerId) {
+	// 		updateWinnerAndLooser()
+	// 		setEmptyDiv('divMargin');
+	// 	}
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [winnerId])
 	let example = () => {
-		updateWinnerAndLooser(hamster1,hamster2)
+		updateWinnerAndLooser()
+		setEmptyDiv('divMargin');
 
 	}
 
 	useEffect(() => {
-		console.log('hamster1',hamster1)
 		//console.log('hamster2',hamster2)
 		if (winnerId) {
 			if (hamster1._id === winnerId) {
@@ -208,9 +208,9 @@ const BattleResult = () => {
 								<button className="battleBtn" onClick={goToCompetitorsComp}>Choose hamster</button>
 							</div>
 							<div className="match-container">
-								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
+								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} example={example} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
 								{showCutestH1 ? <img className="VS" alt="vs" src={require('../../assets/vs.png')}></img> : <div className={emptyDiv}></div>}
-								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
+								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} example={example} setShowCutestH1={setShowCutestH1} hamster={hamster2} />
 
 							</div>
 							{showResult ? winnerData : null}

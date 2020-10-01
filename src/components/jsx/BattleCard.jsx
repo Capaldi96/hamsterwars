@@ -5,6 +5,7 @@ const BattleCard = props => {
 	const [crownForWinner, setCrownForWinner] = useState(false);
 	const wrapperFunction = () => {
 		if(props.disableImg === false){
+			props.example();
 			props.setDisableImg(true);
 			props.setWinnerId(props.hamster._id)
 			props.setShowCutestH1(false);
