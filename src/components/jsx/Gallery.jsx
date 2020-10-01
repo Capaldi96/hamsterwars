@@ -111,9 +111,9 @@ const Gallery = (props) => {
 			return (
 				<div key={hamster._id} className={`list ${classIcon} ${competitorBackground}`} onClick={() => handleCompetitors(hamster)}>
 					<img src={hamster.imgName} alt="Hamster" className="hamster-image" />
-					{!props.toCompetitorsComp ? /* (<button onClick={() => deleteHamster(hamster._id)}>X</button>) */ null : (<img alt='hand-icon' className='hand-icon' src='https://www.flaticon.com/svg/static/icons/svg/1612/1612636.svg'></img>)}
+					{!props.toCompetitorsComp ? /* (<button onClick={() => deleteHamster(hamster._id)}>X</button>) */ null : (<img alt='hand-icon' className='hand-icon' src={require('../../assets/hand-icon.png')}></img>)}
 
-					<p ><span>{hamster.name}</span></p>
+					<p><span>{hamster.name}</span></p>
 					<p>Years: {hamster.age}</p>
 					<p>Games: {hamster.games}</p>
 					<p>Favfood: {hamster.favFood}</p>
