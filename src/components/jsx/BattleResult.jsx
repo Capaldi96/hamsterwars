@@ -110,7 +110,7 @@ const BattleResult = () => {
 	}
 	function updateWinnerAndLooser() {
 		if (hamster1._id === winnerId) {
-			console.log("Kalle")
+			console.log("kalle")
 			//winner
 			setHamster1(prevState => ({
 				...hamster1,
@@ -141,18 +141,13 @@ const BattleResult = () => {
 
 	}
 
-	// useEffect(() => {
-	// 	if (winnerId) {
-	// 		updateWinnerAndLooser()
-	// 		setEmptyDiv('divMargin');
-	// 	}
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [winnerId])
-	let example = () => {
-		updateWinnerAndLooser()
-		setEmptyDiv('divMargin');
-
-	}
+	useEffect(() => {
+		if (winnerId) {
+			updateWinnerAndLooser()
+			setEmptyDiv('divMargin');
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [winnerId])
 
 	useEffect(() => {
 		//console.log('hamster2',hamster2)
