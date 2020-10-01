@@ -15,8 +15,8 @@
 
 .circleSpecifics {
 	cursor: pointer;
-	height: 220px;
-	width: 220px;
+	height: 30vh;
+    width: 30vh;
 	background-color: $lightgreen;
 	border-radius: 50%;
 	display: flex;
@@ -172,8 +172,8 @@
 
 @media screen and (max-width: 770px) {
 	.circleSpecifics {
-		height: 200px;
-		width: 200px;
+		height: 30vh;
+		width: 30vh;
 	}
 	.circlesInRowContainer {
 		overflow-y: scroll;
@@ -281,14 +281,14 @@
 
 	.circleSpecifics {
 		margin: 10px 0 10px 0;
-		height: 120px;
-		width: 120px;
+		height: 20vh;
+		width: 20vh;
 	}
 }
 
 @media screen and (max-width: 500px) {
 	.circleSpecifics {
-		height: 80px;
-		width: 80px;
+		height: 15vh;
+		width: 15vh;
 	}
 }
