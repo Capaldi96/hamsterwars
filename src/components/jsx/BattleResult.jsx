@@ -110,6 +110,7 @@ const BattleResult = () => {
 	}
 	function updateWinnerAndLooser() {
 		if (hamster1._id === winnerId) {
+			console.log("Kalle")
 			//winner
 			setHamster1(prevState => ({
 				...hamster1,
