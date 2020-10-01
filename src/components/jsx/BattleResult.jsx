@@ -81,7 +81,7 @@ const BattleResult = () => {
 
 
 	function updateWinner(hamster) {
-		latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
+		let latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
 		hamster.games++;
 		hamster.wins++;
 		axios.put('/api/updateHamster/' + hamster._id, {
@@ -97,7 +97,7 @@ const BattleResult = () => {
 		})
 	}
 	function updateLooser(hamster) {
-		latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
+		let latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
 		hamster.games++;
 		hamster.defeats++;
 		axios.put('/api/updateHamster/' + hamster._id, {
