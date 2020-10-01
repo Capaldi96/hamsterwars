@@ -48,7 +48,7 @@ const BattleResult = () => {
 			setLoading(false)
 			console.log(error)
 		}
-	
+
 	}
 	async function getBattle() {
 		if (allHamsters < 2) {
@@ -135,8 +135,30 @@ const BattleResult = () => {
 				defeats: hamster1.defeats++
 			}))
 		}
+		let winnerData;
+		if (hamster1 !== null && hamster2 !== null) {
+			if (winnerId === hamster1._id) {
+				winnerData =
+					<div className="resultPotato">
+						<div className="winnerData">
+							<p className="winnerData-p">Winner is: 		<strong>{hamster1.name}</strong></p>
+							<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
+							<button className="battleBtn" onClick={nextBattle}>Next Battle</button>
+						</div>
+					</div>
+
+			} else if (winnerId === hamster2._id) {
+				winnerData =
+					<div className="resultPotato">
+						<div className="winnerData">
+							<p className="winnerData-p">Winner is: 		<strong>{hamster2.name}</strong></p>
+							<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
+							<button className="battleBtn" onClick={nextBattle}>Next Battle</button>
+						</div>
+					</div>
+			}
+		}
 		setShowResult(true)
-		console.log('hamster1',hamster1)
 
 	}
 
@@ -163,29 +185,7 @@ const BattleResult = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hamster1, hamster2])
 
-	let winnerData;
-	if (hamster1 !== null && hamster2 !== null) {
-		if (winnerId === hamster1._id) {
-			winnerData =
-				<div className="resultPotato">
-					<div className="winnerData">
-						<p className="winnerData-p">Winner is: 		<strong>{hamster1.name}</strong></p>
-						<p className="winnerData-p">Total games:   	<strong>{hamster1.games}</strong></p>
-						<button className="battleBtn" onClick={nextBattle}>Next Battle</button>
-					</div>
-				</div>
 
-		} else if (winnerId === hamster2._id) {
-			winnerData =
-				<div className="resultPotato">
-					<div className="winnerData">
-						<p className="winnerData-p">Winner is: 		<strong>{hamster2.name}</strong></p>
-						<p className="winnerData-p">Total games:   	<strong>{hamster2.games}</strong></p>
-						<button className="battleBtn" onClick={nextBattle}>Next Battle</button>
-					</div>
-				</div>
-		}
-	}
 	function goToCompetitorsComp() {
 
 		setToCompetitorsComp(true)
