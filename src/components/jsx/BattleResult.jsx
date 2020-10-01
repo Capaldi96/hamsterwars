@@ -90,7 +90,7 @@ const BattleResult = () => {
 			imgName: hamster.imgName,
 			defeats: hamster.defeats,
 			wins: hamster.wins,
-			latestBattle: latestGame,
+			latestGame: latestGame,
 			games: hamster.games,
 		})
 	}
@@ -103,7 +103,7 @@ const BattleResult = () => {
 			loves: hamster.loves,
 			imgName: hamster.imgName,
 			defeats: hamster.defeats,
-			latestBattle: latestGame,
+			latestGame: latestGame,
 			wins: hamster.wins,
 			games: hamster.games,
 		})
@@ -145,8 +145,14 @@ const BattleResult = () => {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [winnerId])
+	let example = () => {
+		updateWinnerAndLooser(hamster1,hamster2)
+
+	}
 
 	useEffect(() => {
+		console.log('hamster1',hamster1)
+		//console.log('hamster2',hamster2)
 		if (winnerId) {
 			if (hamster1._id === winnerId) {
 				updateWinner(hamster1)
