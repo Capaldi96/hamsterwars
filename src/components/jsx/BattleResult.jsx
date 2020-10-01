@@ -110,10 +110,8 @@ const BattleResult = () => {
 			games: hamster.games,
 		})
 	}
-	function setWinnerAndLooser() {
-		console.log('winnerid', winnerId)
+	function updateWinnerAndLooser() {
 		if (hamster1._id === winnerId) {
-			console.log('hamster1', hamster1)
 			//winner
 			setHamster1(prevState => ({
 				...hamster1,
@@ -126,7 +124,6 @@ const BattleResult = () => {
 				defeats: prevState.defeats++
 			}));
 		} else if (hamster2._id === winnerId) {
-			console.log('hamster2', hamster2)
 			//winner
 			setHamster2(hamster2 => ({
 				...hamster2,
@@ -145,7 +142,7 @@ const BattleResult = () => {
 
 	useEffect(() => {
 		if (winnerId) {
-			setWinnerAndLooser()
+			updateWinnerAndLooser()
 			setEmptyDiv('divMargin');
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -161,7 +158,6 @@ const BattleResult = () => {
 				updateLooser(hamster1)
 			}
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hamster1, hamster2])
 
 	let winnerData;
@@ -194,7 +190,7 @@ const BattleResult = () => {
 
 	if (!toCompetitorsComp) {
 		content =
-			<>
+			<div>
 				{hamster1 && hamster2 ?
 					<div id="battleResult">
 						{confetti ? <Confetti width={width} height={height} numberOfPieces={600} recycle={false} gravity={0.075} /> : null}
@@ -220,7 +216,7 @@ const BattleResult = () => {
 							<a href="/form" className="link-to">Go to form</a>
 						</div>
 					</div>}
-			</>
+			</div	>
 	}
 	else if (toCompetitorsComp) {
 		content =
