@@ -142,6 +142,7 @@ const BattleResult = () => {
 
 	useEffect(() => {
 		if (winnerId) {
+			console.log(winnerId)
 			updateWinnerAndLooser()
 			setEmptyDiv('divMargin');
 		}
