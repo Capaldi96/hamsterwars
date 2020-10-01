@@ -14,11 +14,12 @@
 }
 
 #shoppingcart .container .header-cart .flex .to-shop {
+	font-size: 4vh;
     position: relative;
-	top: 4vh;
+	top: 1vh;
     color: $darkpurple;
     display: inline-block;
-    z-index: 3;
+	z-index: 3;
 }
 
 #shoppingcart .hamster-dancing{
@@ -53,7 +54,7 @@
 
 #shoppingcart .container .header-cart .flex .to-shop:hover {
     position: relative;
-    top: 4vh;
+    top: 1vh;
     color: $darkpurple;
     display: inline-block;
     z-index: 3;
@@ -118,7 +119,7 @@
     text-align: center;
     font-size: 28px;
     position: relative;
-    bottom: 1.8em;
+    bottom: 2.3em;
 }
 
 #shoppingcart .container .cart-container .cart {
