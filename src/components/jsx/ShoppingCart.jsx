@@ -86,7 +86,7 @@ const ShoppingCart = props => {
                 { buy ?  buyMessage :  <div className="header-cart">
                     
                     <div className="flex">
-                        <a href="/Webshop" onClick={ e => { e.preventDefault(); setWebshop(true)}} >  <p className="to-shop"> Back to shop</p></a>
+                        <a href="/Webshop" onClick={ e => { e.preventDefault(); setWebshop(true)}} >  <p className="to-shop">←</p></a>
                         <h2 className="shopping-header">Your Shopping Cart</h2>
                     </div>
                     

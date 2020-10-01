@@ -24,7 +24,7 @@
 }
 .flip-card {
 	background-color: transparent;
-    width: 70%;
+	width: 50%;
 	height: 20vh;
     perspective: 1000px;
     border-radius: 15px;
@@ -86,7 +86,7 @@
 }
 @media only screen and (min-width: 700px){
 	#battleResult .flip-card{
-		height:25vh;
+		height:20vh;
 	}
 	.flip-card-info{
 		float:right;
@@ -108,10 +108,21 @@
 		top: -4.2vh;
 	}
 }
+
+@media only screen and (min-width: 1200px) and (max-width: 1650px){
+	.flip-card {
+	width: 70%;
+}
+}
+
 @media only screen and (min-width: 700px) and (max-width: 900px){
 	.flip-card-crown{
 		left: -4.5vw;
 		top: -4.2vh;
 	}
 }
-
+@media only screen and (max-width: 600px){
+	.flip-card{
+		width: 60%;
+	}
+}

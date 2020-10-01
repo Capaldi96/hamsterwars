@@ -14,12 +14,12 @@
 }
 
 #shoppingcart .container .header-cart .flex .to-shop {
+	font-size: 4vh;
     position: relative;
-    top: 4vh;
-    left: 2vw;
+	top: 1vh;
     color: $darkpurple;
     display: inline-block;
-    z-index: 3;
+	z-index: 3;
 }
 
 #shoppingcart .hamster-dancing{
@@ -33,13 +33,7 @@
     // animation-fill-mode: forwards;
     
 }
-// @keyframes jumping{
-// 	0%{top:0px;}
-// 	20%{top:-50px;}
-// 	60%{top:0px;}
-// 	80%{top:-50px;}
-// 	100%{top:0px;}
-// }
+
 @keyframes jumping{
     0%{top:0px;}
     11%{top:-50px;}
@@ -54,8 +48,7 @@
 
 #shoppingcart .container .header-cart .flex .to-shop:hover {
     position: relative;
-    top: 4vh;
-    left: 2vw;
+    top: 1vh;
     color: $darkpurple;
     display: inline-block;
     z-index: 3;
@@ -100,11 +93,11 @@
 }
 
 #shoppingcart .container .innerText .h2-shoppingcart {
-    font-size: 35px;
+    font-size: 3.9vh;
 }
 
 #shoppingcart .container .cart-container {
-    width: 55vw;
+    width: 100%;
     height: 55vh;
     background-color: $lightgreen;
     display: grid;
@@ -120,7 +113,7 @@
     text-align: center;
     font-size: 28px;
     position: relative;
-    bottom: 20px;
+    bottom: 2.3em;
 }
 
 #shoppingcart .container .cart-container .cart {
@@ -158,7 +151,7 @@
     margin-top: 15px;
 }
 
-#shoppingcart .container .cart-container .sad {
+#shoppingcart .container .cart-container .happy  {
     width: 3.5vw;
     align-self: center;
     text-align: center;
@@ -206,7 +199,7 @@
         align-items: center;
     }
 
-    #shoppingcart .container .cart-container .sad {
+    #shoppingcart .container .cart-container .happy {
         width: 5vw;
         align-self: center;
         text-align: center;
@@ -235,13 +228,20 @@
     }
 
 }
+@media only screen and (max-width: 800px){
+	#shoppingcart .container .buyMessage {
+		background-image: url('../../assets/result-potato-smaller.svg');
+		width: 95vw;
+		height: 75vh;
+	}
+}
 
 @media only screen and (max-width: 600px){
 
     #shoppingcart .container .buyMessage {
-        background-image: url('../../assets/result-potato-smaller.svg');
+        background-image: url('../../assets/formpotatomobile.svg');
         width: 95vw;
-        height: 60vh;
+        height: 95vh;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -250,7 +250,7 @@
         align-items: center;
     }
 
-    #shoppingcart .container .cart-container .sad {
+    #shoppingcart .container .cart-container .happy {
         width: 8vw;
         align-self: center;
         text-align: center;
