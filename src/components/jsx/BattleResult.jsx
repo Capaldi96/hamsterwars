@@ -82,8 +82,6 @@ const BattleResult = () => {
 
 	function updateWinner(hamster) {
 		let latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
-		hamster.games++;
-		hamster.wins++;
 		axios.put('/api/updateHamster/' + hamster._id, {
 			name: hamster.name,
 			age: hamster.age,
@@ -98,8 +96,6 @@ const BattleResult = () => {
 	}
 	function updateLooser(hamster) {
 		let latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
-		hamster.games++;
-		hamster.defeats++;
 		axios.put('/api/updateHamster/' + hamster._id, {
 			name: hamster.name,
 			age: hamster.age,
@@ -160,6 +156,7 @@ const BattleResult = () => {
 				updateLooser(hamster1)
 			}
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hamster1, hamster2])
 
 	let winnerData;
