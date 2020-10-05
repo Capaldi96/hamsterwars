@@ -18,7 +18,7 @@ const BattleCard = props => {
 		<div className="flip-card" onClick={wrapperFunction}>
 			<img className="flip-card-info" alt="info" src={require('../../assets/information_orange.png')} /> 
 			<div className="flip-card-inner">
-			<div className="flip-card-crown">{crownForWinner ? <img alt="crown-icon" src={require('../../assets/crown.png')} /> : null}</div>
+			<div className="flip-card-crown">{crownForWinner ? <img alt="crown-icon" src={require('../../assets/crowns.png')} /> : null}</div>
 				<div className="flip-card-front">
 					<img
 						className="competitior-img"

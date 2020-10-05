@@ -25,11 +25,12 @@
 	}
 	.back-to-battle{
 		text-decoration: none;
-		margin: 0 3em 0;
+		margin: 0 2em 0;
 		color: $darkpurple;
+		font-size: 4vh;
 	}
 	.back-to-battle:hover{
-		border-bottom: 1px solid $darkpurple;
+		text-decoration: underline $darkpurple;
 	}
 }
 .Competitors > .Gallery .container-list{
@@ -51,7 +52,7 @@
         grid-template-columns: repeat(2, 1fr);
 	}
 	.Competitors .back-to-battle{
-		margin: 1.5em 2.5em 0;
+		margin: 1.5em 1.5em 0;
 	}
 	.Competitors .container-competitors{
 		margin-left: 2.5em;

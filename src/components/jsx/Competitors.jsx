@@ -21,7 +21,7 @@ const Competitors = (props) => {
 		<div className="Competitors">
 			{showText ? <div className="container-competitors"><h2>Choose two hamsters.</h2></div> : <div className="container-competitors"><h2>Thank you! Click on button to continue.</h2><button className='go-to-battle-button' onClick={goToBattle} disabled={disableButton}>Go to battle</button></div>}	
 
-			<a href="/Battle" onClick={(e) => backButton} className="back-to-battle">Back to battle</a>		
+			<a href="/Battle" onClick={(e) => backButton} className="back-to-battle">←</a>		
 		
 			<Gallery chosenHamsters={props.chosenHamsters} setChosenHamsters={props.setChosenHamsters} toCompetitorsComp={props.toCompetitorsComp} competitorsList={competitorsList} setCompetitorsList={setCompetitorsList} setShowText={setShowText} disableButton={disableButton} setDisableButton={setDisableButton}/>
 		</div>

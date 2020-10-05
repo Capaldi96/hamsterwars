@@ -136,13 +136,11 @@ const BattleResult = () => {
 			}))
 		}
 		setShowResult(true)
-		console.log('hamster1',hamster1)
 
 	}
 
 	useEffect(() => {
 		if (winnerId) {
-			console.log(winnerId)
 			updateWinnerAndLooser()
 			setEmptyDiv('divMargin');
 		}
@@ -187,7 +185,14 @@ const BattleResult = () => {
 		}
 	}
 	function goToCompetitorsComp() {
-
+		setConfetti(false)
+		setAllHamsters(null)
+		setHamster1(null)
+		setHamster2(null)
+		setDisableImg(false);
+		setShowResult(false);
+		setShowCutestH1(true);
+		setWinnerId(null);
 		setToCompetitorsComp(true)
 	}
 
@@ -201,7 +206,7 @@ const BattleResult = () => {
 							<div className="textDiv">
 								{showCutestH1 ? <h1 className="battle-h1">Click on the cutest</h1> : null}
 								<p className="orange">Wanna choose your competitors? </p>
-								<button className="battleBtn" onClick={goToCompetitorsComp}>Choose hamster</button>
+								<button className="battleBtn" onClick={goToCompetitorsComp}>Change hamsters</button>
 							</div>
 							<div className="match-container">
 								<BattleCard setConfetti={setConfetti} setDisableImg={setDisableImg} disableImg={disableImg} setWinnerId={setWinnerId} setShowCutestH1={setShowCutestH1} hamster={hamster1} />
