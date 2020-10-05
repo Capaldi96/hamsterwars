@@ -96,8 +96,6 @@ const BattleResult = () => {
 	}
 	function updateLooser(hamster) {
 		hamster.latestGame = new Date().toISOString().slice(0, 19).replace('T', '-');
-		hamster.games++;
-		hamster.defeats++;
 		axios.put('/api/updateHamster/' + hamster._id, {
 			name: hamster.name,
 			age: hamster.age,
@@ -188,7 +186,14 @@ const BattleResult = () => {
 		}
 	}
 	function goToCompetitorsComp() {
-
+		setConfetti(false)
+		setAllHamsters(null)
+		setHamster1(null)
+		setHamster2(null)
+		setDisableImg(false);
+		setShowResult(false);
+		setShowCutestH1(true);
+		setWinnerId(null);
 		setToCompetitorsComp(true)
 	}
 
